@@ -15022,29 +15022,121 @@ module.exports = g;
 var map = {
 	"./Admin/Auth/Login": [
 		"./resources/js/Pages/Admin/Auth/Login.vue",
-		0
+		0,
+		9
 	],
 	"./Admin/Auth/Login.vue": [
 		"./resources/js/Pages/Admin/Auth/Login.vue",
-		0
+		0,
+		9
 	],
 	"./Admin/Dashboard/Depan": [
 		"./resources/js/Pages/Admin/Dashboard/Depan.vue",
-		3
+		1
 	],
 	"./Admin/Dashboard/Depan.vue": [
 		"./resources/js/Pages/Admin/Dashboard/Depan.vue",
-		3
+		1
+	],
+	"./Admin/Game/Game": [
+		"./resources/js/Pages/Admin/Game/Game.vue",
+		4,
+		5,
+		6
+	],
+	"./Admin/Game/Game.vue": [
+		"./resources/js/Pages/Admin/Game/Game.vue",
+		4,
+		5,
+		6
+	],
+	"./Admin/Game/TambahGame": [
+		"./resources/js/Pages/Admin/Game/TambahGame.vue",
+		2
+	],
+	"./Admin/Game/TambahGame.vue": [
+		"./resources/js/Pages/Admin/Game/TambahGame.vue",
+		2
+	],
+	"./Admin/Server/Server": [
+		"./resources/js/Pages/Admin/Server/Server.vue",
+		4,
+		5,
+		7
+	],
+	"./Admin/Server/Server.vue": [
+		"./resources/js/Pages/Admin/Server/Server.vue",
+		4,
+		5,
+		7
+	],
+	"./Admin/Server/TambahServer": [
+		"./resources/js/Pages/Admin/Server/TambahServer.vue",
+		8
+	],
+	"./Admin/Server/TambahServer.vue": [
+		"./resources/js/Pages/Admin/Server/TambahServer.vue",
+		8
+	],
+	"./Admin/TradeMode/TambahTradeMode": [
+		"./resources/js/Pages/Admin/TradeMode/TambahTradeMode.vue",
+		10
+	],
+	"./Admin/TradeMode/TambahTradeMode.vue": [
+		"./resources/js/Pages/Admin/TradeMode/TambahTradeMode.vue",
+		10
+	],
+	"./Admin/TradeMode/TradeMode": [
+		"./resources/js/Pages/Admin/TradeMode/TradeMode.vue",
+		4,
+		5,
+		11
+	],
+	"./Admin/TradeMode/TradeMode.vue": [
+		"./resources/js/Pages/Admin/TradeMode/TradeMode.vue",
+		4,
+		5,
+		11
 	],
 	"./Depan/Depan": [
 		"./resources/js/Pages/Depan/Depan.vue",
-		1,
-		2
+		4,
+		3
 	],
 	"./Depan/Depan.vue": [
 		"./resources/js/Pages/Depan/Depan.vue",
-		1,
-		2
+		4,
+		3
+	],
+	"./User/Auth/Login": [
+		"./resources/js/Pages/User/Auth/Login.vue",
+		0,
+		13
+	],
+	"./User/Auth/Login.vue": [
+		"./resources/js/Pages/User/Auth/Login.vue",
+		0,
+		13
+	],
+	"./User/Dashboard/Depan": [
+		"./resources/js/Pages/User/Dashboard/Depan.vue",
+		14
+	],
+	"./User/Dashboard/Depan.vue": [
+		"./resources/js/Pages/User/Dashboard/Depan.vue",
+		14
+	],
+	"./User/History/History": [
+		"./resources/js/Pages/User/History/History.vue",
+		4,
+		5,
+		12
+	],
+	"./User/History/History.vue": [
+		"./resources/js/Pages/User/History/History.vue",
+		4,
+		5,
+		12
 	]
 };
 function webpackAsyncContext(req) {
@@ -15125,8 +15217,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.prototype.$route = function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/bintangputra/Documents/Project/CBT/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/bintangputra/Documents/Project/CBT/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/chaostix/Documents/Project/GoldMaster/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/chaostix/Documents/Project/GoldMaster/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
