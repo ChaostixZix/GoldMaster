@@ -15022,11 +15022,13 @@ module.exports = g;
 var map = {
 	"./Admin/Auth/Login": [
 		"./resources/js/Pages/Admin/Auth/Login.vue",
-		0
+		0,
+		12
 	],
 	"./Admin/Auth/Login.vue": [
 		"./resources/js/Pages/Admin/Auth/Login.vue",
-		0
+		0,
+		12
 	],
 	"./Admin/Dashboard/Depan": [
 		"./resources/js/Pages/Admin/Dashboard/Depan.vue",
@@ -15035,6 +15037,66 @@ var map = {
 	"./Admin/Dashboard/Depan.vue": [
 		"./resources/js/Pages/Admin/Dashboard/Depan.vue",
 		3
+	],
+	"./Admin/Game/Game": [
+		"./resources/js/Pages/Admin/Game/Game.vue",
+		1,
+		4,
+		6
+	],
+	"./Admin/Game/Game.vue": [
+		"./resources/js/Pages/Admin/Game/Game.vue",
+		1,
+		4,
+		6
+	],
+	"./Admin/Game/TambahGame": [
+		"./resources/js/Pages/Admin/Game/TambahGame.vue",
+		9
+	],
+	"./Admin/Game/TambahGame.vue": [
+		"./resources/js/Pages/Admin/Game/TambahGame.vue",
+		9
+	],
+	"./Admin/Server/Server": [
+		"./resources/js/Pages/Admin/Server/Server.vue",
+		1,
+		4,
+		7
+	],
+	"./Admin/Server/Server.vue": [
+		"./resources/js/Pages/Admin/Server/Server.vue",
+		1,
+		4,
+		7
+	],
+	"./Admin/Server/TambahServer": [
+		"./resources/js/Pages/Admin/Server/TambahServer.vue",
+		10
+	],
+	"./Admin/Server/TambahServer.vue": [
+		"./resources/js/Pages/Admin/Server/TambahServer.vue",
+		10
+	],
+	"./Admin/TradeMode/TambahTradeMode": [
+		"./resources/js/Pages/Admin/TradeMode/TambahTradeMode.vue",
+		11
+	],
+	"./Admin/TradeMode/TambahTradeMode.vue": [
+		"./resources/js/Pages/Admin/TradeMode/TambahTradeMode.vue",
+		11
+	],
+	"./Admin/TradeMode/TradeMode": [
+		"./resources/js/Pages/Admin/TradeMode/TradeMode.vue",
+		1,
+		4,
+		8
+	],
+	"./Admin/TradeMode/TradeMode.vue": [
+		"./resources/js/Pages/Admin/TradeMode/TradeMode.vue",
+		1,
+		4,
+		8
 	],
 	"./Depan/Depan": [
 		"./resources/js/Pages/Depan/Depan.vue",
@@ -15045,6 +15107,36 @@ var map = {
 		"./resources/js/Pages/Depan/Depan.vue",
 		1,
 		2
+	],
+	"./User/Auth/Login": [
+		"./resources/js/Pages/User/Auth/Login.vue",
+		0,
+		13
+	],
+	"./User/Auth/Login.vue": [
+		"./resources/js/Pages/User/Auth/Login.vue",
+		0,
+		13
+	],
+	"./User/Dashboard/Depan": [
+		"./resources/js/Pages/User/Dashboard/Depan.vue",
+		5
+	],
+	"./User/Dashboard/Depan.vue": [
+		"./resources/js/Pages/User/Dashboard/Depan.vue",
+		5
+	],
+	"./User/History/History": [
+		"./resources/js/Pages/User/History/History.vue",
+		1,
+		4,
+		14
+	],
+	"./User/History/History.vue": [
+		"./resources/js/Pages/User/History/History.vue",
+		1,
+		4,
+		14
 	]
 };
 function webpackAsyncContext(req) {

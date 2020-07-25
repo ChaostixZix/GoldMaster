@@ -16,4 +16,16 @@ class Category extends Model
     {
         return $this->db()->get();
     }
+
+    public function hapus($id)
+    {
+        return $this->db()->where('id_kategori', $id)->delete();
+    }
+
+    public function tambah($kategori)
+    {
+        return $this->db()->insert([
+            'kategori' => $kategori
+        ]);
+    }
 }

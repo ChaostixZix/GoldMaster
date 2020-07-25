@@ -28,7 +28,7 @@ class AdminAuthController extends Controller
 
     public function logout(Request $request)
     {
-        Session::flush();
+        Session::pull('admin');
         return redirect(route('depan.index'));
     }
 }

@@ -153,7 +153,7 @@ var render = function() {
         _vm._v(" "),
         _c("Card", {
           attrs: {
-            Text: "Jumlah Kategori",
+            Text: "Jumlah Game",
             Jumlah: _vm.categoryCount,
             Icon: "newspaper"
           }

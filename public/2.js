@@ -32,6 +32,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Depan",
@@ -95,7 +103,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.jumb[data-v-72cf7520]{\n    background-image: url('https://external-preview.redd.it/zUTMRGV4F1eau1ygpc7yTqef448PPEK-rvZNN-ycOgQ.png?auto=webp&s=37040ff365cae83eaf3f3b567c6e38d1b310b62e');\n    background-size: cover\n}\n", ""]);
+exports.push([module.i, "\n.jumb[data-v-72cf7520]{\n    background-image: url('https://external-preview.redd.it/zUTMRGV4F1eau1ygpc7yTqef448PPEK-rvZNN-ycOgQ.png?auto=webp&s=37040ff365cae83eaf3f3b567c6e38d1b310b62e');\n    background-size: cover;\n    height: 300px;\n}\n", ""]);
 
 // exports
 
@@ -162,12 +170,23 @@ var render = function() {
           _c("div", { staticClass: "card-body" }, [
             _c("p", [
               _vm._v(
-                "Welcome to GoldMaster Website. We provide place to sell online games gold"
+                "Welcome to GoldMaster Website.. We provide place to sell online games gold"
               )
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer bg-whitesmoke" })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-3 col-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("img", {
+              staticClass: "img-fluid",
+              attrs: { src: _vm.$route("depan.index") + "img/wow.png" }
+            })
+          ])
         ])
       ])
     ])

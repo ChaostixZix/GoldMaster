@@ -1,10 +1,10 @@
 <template>
     <div class="col-12">
         <div v-if="$page.flash.success" class="alert alert-success">
-            This is a primary alert.
+            {{$page.flash.success}}
         </div>
         <div v-if="$page.flash.error" class="alert alert-danger">
-            This is a primary alert.
+            {{$page.flash.error}}
         </div>
     </div>
 </template>
