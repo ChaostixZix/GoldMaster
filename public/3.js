@@ -28,6 +28,11 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Card: _Utils_Shared_Card__WEBPACK_IMPORTED_MODULE_1__["default"],
     App: _Utils_Layout_App__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  props: {
+    itemCount: BigInt,
+    userCount: BigInt,
+    categoryCount: BigInt
   }
 });
 
@@ -138,11 +143,21 @@ var render = function() {
       "div",
       { staticClass: "row" },
       [
-        _c("Card", { attrs: { Text: "Test", Jumlah: "10", Icon: "users" } }),
+        _c("Card", {
+          attrs: { Text: "Jumlah User", Jumlah: _vm.userCount, Icon: "users" }
+        }),
         _vm._v(" "),
-        _c("Card", { attrs: { Text: "Test", Jumlah: "10", Icon: "box" } }),
+        _c("Card", {
+          attrs: { Text: "Jumlah Item", Jumlah: _vm.itemCount, Icon: "box" }
+        }),
         _vm._v(" "),
-        _c("Card", { attrs: { Text: "Test", Jumlah: "10", Icon: "newspaper" } })
+        _c("Card", {
+          attrs: {
+            Text: "Jumlah Kategori",
+            Jumlah: _vm.categoryCount,
+            Icon: "newspaper"
+          }
+        })
       ],
       1
     )

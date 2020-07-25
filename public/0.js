@@ -89,16 +89,7 @@ __webpack_require__.r(__webpack_exports__);
       loading: false
     };
   },
-  methods: {
-    login: function login() {
-      var _this = this;
-
-      this.loading = true;
-      this.$inertia.post(this.$route('admin.auth.login'), this.data).then(function () {
-        _this.loading = false;
-      });
-    }
-  }
+  methods: {}
 });
 
 /***/ }),
@@ -244,7 +235,7 @@ var render = function() {
                             staticClass: "needs-validation",
                             attrs: {
                               method: "POST",
-                              action: "#",
+                              action: _vm.$route("admin.auth.login"),
                               novalidate: ""
                             }
                           },
@@ -255,33 +246,13 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.data.email,
-                                    expression: "data.email"
-                                  }
-                                ],
                                 staticClass: "form-control",
                                 attrs: {
                                   id: "email",
                                   type: "email",
+                                  name: "email",
                                   required: "",
                                   autofocus: ""
-                                },
-                                domProps: { value: _vm.data.email },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.data,
-                                      "email",
-                                      $event.target.value
-                                    )
-                                  }
                                 }
                               }),
                               _vm._v(" "),
@@ -305,33 +276,13 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.data.password,
-                                    expression: "data.password"
-                                  }
-                                ],
                                 staticClass: "form-control",
                                 attrs: {
                                   id: "password",
                                   type: "password",
+                                  name: "password",
                                   tabindex: "2",
                                   required: ""
-                                },
-                                domProps: { value: _vm.data.password },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.data,
-                                      "password",
-                                      $event.target.value
-                                    )
-                                  }
                                 }
                               }),
                               _vm._v(" "),
@@ -377,7 +328,7 @@ var render = function() {
                                 {
                                   staticClass:
                                     "btn btn-primary btn-lg btn-block",
-                                  attrs: { type: "button", tabindex: "4" },
+                                  attrs: { type: "submit", tabindex: "4" },
                                   on: { click: _vm.login }
                                 },
                                 [

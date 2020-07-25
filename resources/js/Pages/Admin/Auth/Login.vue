@@ -14,10 +14,10 @@
                             <div class="card-body">
                                 <Spinner v-if="loading"></Spinner>
 
-                                <form v-else method="POST" action="#" class="needs-validation" novalidate="">
+                                <form v-else method="POST" :action="$route('admin.auth.login')" class="needs-validation" novalidate="">
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input id="email" type="email" class="form-control" v-model="data.email" required autofocus>
+                                        <input id="email" type="email" class="form-control" name="email" required autofocus>
                                         <div class="invalid-feedback">
                                             Please fill in your email
                                         </div>
@@ -27,7 +27,7 @@
                                         <div class="d-block">
                                             <label for="password" class="control-label">Password</label>
                                         </div>
-                                        <input id="password" type="password" class="form-control" v-model="data.password" tabindex="2" required>
+                                        <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
                                         <div class="invalid-feedback">
                                             please fill in your password
                                         </div>
@@ -41,7 +41,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="button" @click="login" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                                        <button type="submit" @click="login" class="btn btn-primary btn-lg btn-block" tabindex="4">
                                             Login
                                         </button>
                                     </div>
@@ -74,13 +74,6 @@
             }
         },
         methods: {
-            login()
-            {
-                this.loading = true;
-                this.$inertia.post(this.$route('admin.auth.login'), this.data).then(() => {
-                    this.loading = false;
-                })
-            }
         }
     }
 </script>
