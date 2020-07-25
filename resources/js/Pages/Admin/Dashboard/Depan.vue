@@ -3,7 +3,7 @@
         <div class="row">
             <Card Text="Jumlah User" :Jumlah="userCount" Icon="users"></Card>
             <Card Text="Jumlah Item" :Jumlah="itemCount" Icon="box"></Card>
-            <Card Text="Jumlah Kategori" :Jumlah="categoryCount" Icon="newspaper"></Card>
+            <Card Text="Jumlah Game" :Jumlah="categoryCount" Icon="newspaper"></Card>
         </div>
     </App>
 </template>
