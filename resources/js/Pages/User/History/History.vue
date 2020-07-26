@@ -7,6 +7,73 @@
                         You need to wait for admin approval before you can continue
                     </div>
             </div>
+            <div>
+                <b-modal ok-only ref="details" title="Delivery Details">
+                    <div class="invoice">
+                        <div class="invoice-print">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="invoice-title">
+                                        <div class="invoice-number">Order #{{datadetails.id_order}}</div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <address>
+                                                <strong>Send To:</strong><br>
+                                                {{datadetails.n_karakter}}<br>
+                                            </address>
+                                        </div>
+                                        <div class="col-md-6 text-md-right">
+                                            <address>
+                                                <strong>From:</strong><br>
+                                                {{datadetails.nama}}<br>
+                                            </address>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <address>
+                                                <strong>Trade Method:</strong><br>
+                                                {{datadetails.pengiriman}}<br>
+<!--                                                ujang@maman.com-->
+                                            </address>
+                                        </div>
+                                        <div class="col-md-6 text-md-right">
+                                            <address>
+                                                <strong>Order Date:</strong><br>
+                                                {{datadetails.tgl_pesan}}<br><br>
+                                            </address>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <address>
+                                                <strong>Quantity:</strong><br>
+                                                {{datadetails.quantity}}G<br>
+                                            </address>
+                                        </div>
+<!--                                        <div class="col-md-6 text-md-right">-->
+<!--                                            <address>-->
+<!--                                                <strong>Order Date:</strong><br>-->
+<!--                                                {{datadetails.tgl_pesan}}<br><br>-->
+<!--                                            </address>-->
+<!--                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="text-md-right">
+                            <div class="float-lg-left mb-lg-0 mb-3">
+                                <button class="btn btn-primary btn-icon icon-left"><i class="fa fa-cloud"></i> Upload File</button>
+                                <button v-if="datadetails.file === null" @click="cancel(datadetails.id_order)" class="btn btn-danger btn-icon icon-left"><i class="fas fa-times"></i> Cancel</button>
+                            </div>
+                            <button class="btn btn-warning btn-icon icon-left"><i class="fas fa-print"></i> Print</button>
+                        </div>
+                    </div>
+                </b-modal>
+            </div>
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
@@ -21,12 +88,10 @@
                                     <div class="media-title mb-1">Order #{{p.id_order}} (${{p.price}})</div>
                                     <div class="text-time">{{p.tgl_pesan}}</div>
                                     <div class="media-description text-muted">Sell {{p.quantity}}G for (${{p.price}})</div>
-                                    <div class="media-links">
-                                        <a v-if="p.status_o === 'aktif'" class="btn btn-sm btn-info text-white" href="#">Delivery Details</a>
+                                    <div v-if="p.status_o !== 'done'" class="media-links">
+                                        <a v-if="p.status_o === 'aktif'" @click="details(p)" class="btn btn-sm btn-info text-white" href="#">Delivery Details</a>
                                         <div v-if="p.status_o === 'aktif'" class="bullet"></div>
-                                        <a v-if="p.status_o=== 'aktif'" class="btn btn-sm btn-info text-white" href="#">File Upload</a>
-                                        <div v-if="p.status_o === 'aktif'" class="bullet"></div>
-                                        <a @click="cancel(p.id_order)" class="btn btn-sm btn-danger text-white" href="#">Cancel</a>
+                                        <a v-if="p.file === null" @click="cancel(p.id_order)" class="btn btn-sm btn-danger text-white" href="#">Cancel</a>
                                     </div>
                                 </div>
                             </li>
@@ -37,7 +102,18 @@
         </div>
     </App>
 </template>
-
+<style>
+    .modal-backdrop {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1040;
+        background-color: #000;
+        opacity: 0.3;
+    }
+</style>
 <script>
     import Datatable from "../../../Utils/Shared/Datatable";
     import Pagination from "../../../Utils/Shared/Pagination";
@@ -51,7 +127,6 @@
         },
         mounted() {
             this.load();
-            console.log(this.orders)
         },
         data() {
             //
@@ -68,6 +143,7 @@
             });
             return {
                 tambah: false,
+                datadetails: {},
                 columns: columns,
                 sortKey: 'deadline',
                 sortOrders: sortOrders,
@@ -94,6 +170,11 @@
                     preserveState: false,
                     only: ['orders']
                 })
+            },
+            details(data)
+            {
+                this.datadetails = data;
+                this.$refs['details'].show();
             },
             load() {
                 this.pagination.total = this.data.length;

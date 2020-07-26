@@ -13,8 +13,16 @@ class OrderController extends Controller
     {
         return Inertia::render('Admin/Order/Order', [
             'order' => function () {
-            return (new Order())->getAll();
+                return (new Order())->getAll();
             }
         ]);
     }
+
+    public function update(Request $request)
+    {
+        $req = $request->all();
+        $do = (new Order())->updateRaw($req['id_order'], $req);
+        return redirect()->back();
+    }
+
 }

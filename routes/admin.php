@@ -51,6 +51,15 @@ Route::group([
     ], function ()
     {
         Route::get('list', 'OrderController@index')->name('admin.order');
+        Route::post('update', 'OrderController@update')->name('admin.order.update');
+    });
+
+    Route::group([
+        'prefix' => 'items'
+    ], function ()
+    {
+        Route::get('list', 'ItemsController@index')->name('admin.items');
+        Route::post('update', 'ItemsController@update')->name('admin.items.update');
     });
 
 

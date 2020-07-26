@@ -43,4 +43,9 @@ class Order extends Model
         return $this->db()->insert($insert);
     }
 
+    public function updateRaw($id, array $update)
+    {
+        return $this->db()->where('id_order', $id)->update($update);
+    }
+
 }
