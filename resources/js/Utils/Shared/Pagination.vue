@@ -13,19 +13,18 @@
 
 <template>
     <nav class="pagination" v-else>
-        <a v-if="pagination.prevPage" class="btn btn-info text-white is-small pagination-previous" @click="$emit('prev');">
-            Prev
-        </a>
-        <a class="btn btn-info text-white is-small pagination-previous" v-else :disabled="true">
-            Prev
-        </a>
-
-        <a v-if="pagination.nextPage" class="btn btn-info text-white is-small pagination-next" @click="$emit('next');">
-            Next
-        </a>
-        <a class="btn btn-info text-white is-small pagination-next" v-else :disabled="true">
-            Next
-        </a>
+        <li v-if="pagination.prevPage" @click="$emit('prev');" class="page-item">
+            <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
+        </li>
+        <li v-else :disabled="true" class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
+        </li>
+        <li v-if="pagination.nextPage" @click="$emit('next');" class="page-item">
+            <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+        </li>
+        <li v-else :disabled="true" class="page-item disabled">
+            <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+        </li>
     </nav>
 </template>
 

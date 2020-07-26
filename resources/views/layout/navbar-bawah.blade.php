@@ -12,7 +12,7 @@
                 <ul class="dropdown-menu">
                     <li class="nav-item"><a href="{{route('user.index')}}" class="nav-link">Dashboard</a></li>
                     <li class="nav-item"><a href="{{route('user.history')}}" class="nav-link">History</a></li>
-                    <li class="nav-item"><a class="nav-link">Sell</a></li>
+                    <li class="nav-item"><a href="{{ route('user.sell') }}" class="nav-link">Sell</a></li>
                 </ul>
             </li>
             @if(\Illuminate\Support\Facades\Session::has('admin'))
@@ -24,6 +24,7 @@
                         <li class="nav-item"><a href="{{route('admin.game')}}" class="nav-link">Game</a></li>
                         <li class="nav-item"><a href="{{route('admin.server')}}" class="nav-link">Server</a></li>
                         <li class="nav-item"><a href="{{route('admin.trademode')}}" class="nav-link">Trade Mode</a></li>
+                        <li class="nav-item"><a href="{{route('admin.order')}}" class="nav-link">Order</a></li>
                     </ul>
                 </li>
             @endif
