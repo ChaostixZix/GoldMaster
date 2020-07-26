@@ -21,7 +21,7 @@
         name: "Card",
         props: {
             Text: String,
-            Jumlah: String,
+            Jumlah: Number,
             Icon: String,
             Type: String
         },

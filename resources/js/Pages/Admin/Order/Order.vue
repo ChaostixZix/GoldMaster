@@ -1,36 +1,60 @@
 <template>
-    <App topnav="Your Orders">
+    <App topnav="List Order">
         <div class="row">
             <Messages></Messages>
             <div class="col-12">
-                    <div class="alert alert-warning">
-                        You need to wait for admin approval before you can continue
-                    </div>
-            </div>
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>History</h4>
+                <div class="card card-primary">
+                    <div class="card-header bg-primary">
+                        <div id="dataTableExample_filter" class="dataTables_filter">
+                            <label>
+                                <input @input="resetPagination()" type="search" class="form-control"
+                                       v-model="search" placeholder="Search">
+                            </label>
+                        </div>
                     </div>
                     <div class="card-body">
-                        <ul class="list-unstyled list-unstyled-border list-unstyled-noborder">
-                            <li v-for="p in paginated" class="media">
-                                <div class="media-body">
-                                    <div v-if="p.status_o === 'pending'" class="media-right"><div class="text-warning">Pending</div></div>
-                                    <div v-if="p.status_o === 'aktif'" class="media-right"><div class="text-primary">Active</div></div>
-                                    <div class="media-title mb-1">Order #{{p.id_order}} (${{p.price}})</div>
-                                    <div class="text-time">{{p.tgl_pesan}}</div>
-                                    <div class="media-description text-muted">Sell {{p.quantity}}G for (${{p.price}})</div>
-                                    <div class="media-links">
-                                        <a v-if="p.status_o === 'aktif'" class="btn btn-sm btn-info text-white" href="#">Delivery Details</a>
-                                        <div v-if="p.status_o === 'aktif'" class="bullet"></div>
-                                        <a v-if="p.status_o=== 'aktif'" class="btn btn-sm btn-info text-white" href="#">File Upload</a>
-                                        <div v-if="p.status_o === 'aktif'" class="bullet"></div>
-                                        <a @click="cancel(p.id_order)" class="btn btn-sm btn-danger text-white" href="#">Cancel</a>
+                        <div>
+                            <div id="dataTableExample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <Datatable hide-header="false" :columns="columns" :sortKey="sortKey"
+                                                   :sortOrders="sortOrders" @sort="sortBy">
+                                            <tbody>
+                                            <tr v-for="p in paginated" role="row" class="odd">
+                                                <td>#{{ p.id_order }}</td>
+                                                <td>{{ p.server }}</td>
+                                                <td>{{ p.kategori }}</td>
+                                                <td>{{ p.quantity }}</td>
+                                                <td>{{ p.pengiriman }}</td>
+                                                <td>
+                                                    <div v-if="p.status_o === 'aktif'" class="badge badge-success">Active</div>
+                                                    <div v-if="p.status_o === 'pending'" class="badge badge-warning">Pending</div>
+                                                </td>
+                                                <td>
+                                                    <button v-on:click="hapus(p.id_item)"
+                                                            class="btn btn-sm btn-danger">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </Datatable>
                                     </div>
                                 </div>
-                            </li>
-                        </ul>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-5">
+
+                                    </div>
+                                    <Pagination :pagination="pagination" :client="true" :filtered="filteredProjects"
+                                                @prev="--pagination.currentPage"
+                                                @next="++pagination.currentPage">
+                                    </Pagination>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-primary">
+                        <button @click="tambah = true" class="btn"><i class="fa fa-plus"></i> Tambah</button>
                     </div>
                 </div>
             </div>
@@ -47,27 +71,26 @@
     export default {
         components: {Messages, App, Pagination, Datatable},
         props: {
-            orders: Array
+            order: Array
         },
         mounted() {
             this.load();
-            console.log(this.orders)
         },
         data() {
-            //
             let sortOrders = {};
             let columns = [
-                {width: '33%', label: '#'},
-                {width: '33%', label: 'Character Name'},
+                {width: '10%', label: '#'},
+                {width: '10%', label: 'Server'},
                 {width: '33%', label: 'Game'},
-                {width: '33%', label: 'Server'},
+                {width: '10%', label: 'Quantity'},
+                {width: '10%', label: 'Trade Mode'},
+                {width: '10%', label: 'Status'},
                 {width: '33%', label: 'Action'},
             ];
             columns.forEach((column) => {
                 sortOrders[column.name] = -1;
             });
             return {
-                tambah: false,
                 columns: columns,
                 sortKey: 'deadline',
                 sortOrders: sortOrders,
@@ -88,18 +111,19 @@
             }
         },
         methods: {
-            cancel(id) {
-                this.$inertia.post(this.$route('user.history.cancel', {id: id}), {}, {
+            hapus(id) {
+                this.$inertia.post(this.$route('admin.server.delete', {id: id}), {}, {
                     replace: true,
                     preserveState: false,
-                    only: ['orders']
+                    preserveScroll: false,
+                    only: ['order'],
                 })
             },
             load() {
                 this.pagination.total = this.data.length;
                 let i = 0;
                 let vm = this;
-                this.orders.forEach(function (value, index) {
+                this.order.forEach(function (value, index) {
                     i++;
                     value.nomer = i;
                     vm.data.push(value);

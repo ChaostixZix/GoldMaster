@@ -16,4 +16,9 @@ class Users extends Model
     {
         return $this->db()->get();
     }
+
+    public function getById($id)
+    {
+        return $this->db()->where('id_user', $id)->get();
+    }
 }

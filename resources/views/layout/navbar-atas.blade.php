@@ -245,7 +245,7 @@
                         Hi, {{\Illuminate\Support\Facades\Session::get('user')}}</div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    {{--                <div class="dropdown-title">Logged in 5 min ago</div>--}}
+                                    <div class="dropdown-title">Balance: ${{\Illuminate\Support\Facades\Session::get('saldo')}}</div>
                     {{--                <a href="features-profile.html" class="dropdown-item has-icon">--}}
                     {{--                    <i class="far fa-user"></i> Profile--}}
                     {{--                </a>--}}

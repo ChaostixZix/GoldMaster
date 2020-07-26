@@ -28,6 +28,15 @@ Route::group([
        ], function ()
        {
            Route::get('', 'HistoryController@index')->name('user.history');
+           Route::post('cancel/{id}', 'HistoryController@cancel')->name('user.history.cancel');
+           Route::post('add', 'HistoryController@addOrder')->name('user.history.addorder');
        });
+
+        Route::group([
+            'prefix' => 'sell'
+        ], function ()
+        {
+            Route::get('', 'SellController@index')->name('user.sell');
+        });
     });
 });

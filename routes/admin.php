@@ -46,5 +46,12 @@ Route::group([
         Route::post('tambah', 'TradeModeController@tambah')->name('admin.trademode.tambah');
     });
 
+    Route::group([
+        'prefix' => 'order'
+    ], function ()
+    {
+        Route::get('list', 'OrderController@index')->name('admin.order');
+    });
+
 
 });
