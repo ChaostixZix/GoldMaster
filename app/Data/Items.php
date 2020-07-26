@@ -20,4 +20,14 @@ class Items extends Model
             ->leftJoin('t_pengiriman', 't_items.id_pengiriman', '=', 't_pengiriman.id_pengiriman')
             ->get();
     }
+
+    public function updateRaw($id, array $update)
+    {
+        return $this->db()->where('id_items', $id)->update($update);
+    }
+
+    public function insertRaw(array $insert)
+    {
+        return $this->db()->insert($insert);
+    }
 }

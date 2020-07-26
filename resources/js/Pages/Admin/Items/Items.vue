@@ -1,5 +1,5 @@
 <template>
-    <App topnav="List Order">
+    <App topnav="Managemen Items">
         <div class="row">
             <Messages></Messages>
             <div class="col-12">
@@ -21,22 +21,18 @@
                                                    :sortOrders="sortOrders" @sort="sortBy">
                                             <tbody>
                                             <tr v-for="p in paginated" role="row" class="odd">
-                                                <td>#{{ p.id_order }}</td>
+                                                <td>#{{ p.id_items }}</td>
                                                 <td>{{ p.server }}</td>
                                                 <td>{{ p.kategori }}</td>
-                                                <td>{{ p.quantity }}</td>
                                                 <td>{{ p.pengiriman }}</td>
-                                                <td>
-                                                    <div v-if="p.status_o === 'aktif'" class="badge badge-success">Active</div>
-                                                    <div v-if="p.status_o === 'pending'" class="badge badge-warning">Pending</div>
-                                                </td>
+                                                <td>${{ p.dollar }}/G</td>
                                                 <td>
                                                     <button v-on:click="update(p)"
                                                             class="btn btn-sm btn-primary">
                                                         <i class="fa fa-edit"></i>
                                                     </button>
                                                     <button
-                                                            class="btn btn-sm btn-danger">
+                                                        class="btn btn-sm btn-danger">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
                                                 </td>
@@ -57,10 +53,16 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary">
+                            <i class="fa fa-plus"></i>
+                            Tambah
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="col-12">
-                <OrderEdit v-if="edit" :data="dataedit"></OrderEdit>
+                <ItemsEdit v-if="edit" :game="game" :trademode="trademode" :server="server" :data="dataedit"></ItemsEdit>
             </div>
         </div>
     </App>
@@ -71,12 +73,15 @@
     import Pagination from "../../../Utils/Shared/Pagination";
     import App from "../../../Utils/Layout/App";
     import Messages from "../../../Utils/Shared/Messages";
-    import OrderEdit from "./OrderEdit";
+    import ItemsEdit from "./ItemsEdit";
 
     export default {
-        components: {OrderEdit, Messages, App, Pagination, Datatable},
+        components: {ItemsEdit, Messages, App, Pagination, Datatable},
         props: {
-            order: Array
+            items: Array,
+            server: Array,
+            game: Array,
+            trademode: Array,
         },
         mounted() {
             this.load();
@@ -87,9 +92,8 @@
                 {width: '10%', label: '#'},
                 {width: '10%', label: 'Server'},
                 {width: '33%', label: 'Game'},
-                {width: '10%', label: 'Quantity'},
                 {width: '10%', label: 'Trade Mode'},
-                {width: '10%', label: 'Status'},
+                {width: '25%', label: 'Harga'},
                 {width: '33%', label: 'Action'},
             ];
             columns.forEach((column) => {
@@ -127,7 +131,7 @@
                 this.pagination.total = this.data.length;
                 let i = 0;
                 let vm = this;
-                this.order.forEach(function (value, index) {
+                this.items.forEach(function (value, index) {
                     i++;
                     value.nomer = i;
                     vm.data.push(value);
