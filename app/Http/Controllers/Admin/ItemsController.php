@@ -37,4 +37,10 @@ class ItemsController extends Controller
         $do = (new Items())->updateRaw($req['id_items'], $req);
         return redirect(route('admin.items'));
     }
+    public function insert(Request $request)
+    {
+        $req = $request->all();
+        $do = (new Items())->insertRaw($req);
+        return redirect(route('admin.items'));
+    }
 }

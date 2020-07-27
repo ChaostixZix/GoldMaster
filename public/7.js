@@ -105,7 +105,9 @@ var render = function() {
           _vm._v(" "),
           _c("option", { attrs: { value: "aktif" } }, [_vm._v("Active")]),
           _vm._v(" "),
-          _c("option", { attrs: { value: "done" } }, [_vm._v("Done")])
+          _vm.data.file !== null
+            ? _c("option", { attrs: { value: "done" } }, [_vm._v("Done")])
+            : _vm._e()
         ]
       )
     ]),

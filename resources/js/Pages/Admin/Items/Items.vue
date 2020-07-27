@@ -25,6 +25,7 @@
                                                 <td>{{ p.server }}</td>
                                                 <td>{{ p.kategori }}</td>
                                                 <td>{{ p.pengiriman }}</td>
+                                                <td>{{ p.butuh }}G</td>
                                                 <td>${{ p.dollar }}/G</td>
                                                 <td>
                                                     <button v-on:click="update(p)"
@@ -54,7 +55,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-primary">
+                        <button @click="insert" class="btn btn-primary">
                             <i class="fa fa-plus"></i>
                             Tambah
                         </button>
@@ -62,7 +63,7 @@
                 </div>
             </div>
             <div class="col-12">
-                <ItemsEdit v-if="edit" :game="game" :trademode="trademode" :server="server" :data="dataedit"></ItemsEdit>
+                <ItemsEdit v-if="edit" :type="type" :game="game" :trademode="trademode" :server="server" :data="dataedit"></ItemsEdit>
             </div>
         </div>
     </App>
@@ -93,7 +94,8 @@
                 {width: '10%', label: 'Server'},
                 {width: '33%', label: 'Game'},
                 {width: '10%', label: 'Trade Mode'},
-                {width: '25%', label: 'Harga'},
+                {width: '15%', label: 'Needed Stock'},
+                {width: '10%', label: 'Harga'},
                 {width: '33%', label: 'Action'},
             ];
             columns.forEach((column) => {
@@ -101,6 +103,7 @@
             });
             return {
                 edit: false,
+                type: '',
                 dataedit: {},
                 columns: columns,
                 sortKey: 'deadline',
@@ -126,6 +129,13 @@
             {
                 this.edit = true;
                 this.dataedit = data;
+                this.type = 'edit';
+            },
+            insert()
+            {
+                this.edit = true;
+                this.dataedit = {};
+                this.type = 'baru';
             },
             load() {
                 this.pagination.total = this.data.length;

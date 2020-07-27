@@ -3,9 +3,9 @@
         <div class="row">
             <Messages></Messages>
             <div class="col-12">
-                    <div class="alert alert-warning">
-                        You need to wait for admin approval before you can continue
-                    </div>
+                <div class="alert alert-warning">
+                    You need to wait for admin approval before you can continue
+                </div>
             </div>
             <div>
                 <b-modal ok-only ref="details" title="Delivery Details">
@@ -36,7 +36,7 @@
                                             <address>
                                                 <strong>Trade Method:</strong><br>
                                                 {{datadetails.pengiriman}}<br>
-<!--                                                ujang@maman.com-->
+                                                <!--                                                ujang@maman.com-->
                                             </address>
                                         </div>
                                         <div class="col-md-6 text-md-right">
@@ -53,12 +53,12 @@
                                                 {{datadetails.quantity}}G<br>
                                             </address>
                                         </div>
-<!--                                        <div class="col-md-6 text-md-right">-->
-<!--                                            <address>-->
-<!--                                                <strong>Order Date:</strong><br>-->
-<!--                                                {{datadetails.tgl_pesan}}<br><br>-->
-<!--                                            </address>-->
-<!--                                        </div>-->
+                                        <!--                                        <div class="col-md-6 text-md-right">-->
+                                        <!--                                            <address>-->
+                                        <!--                                                <strong>Order Date:</strong><br>-->
+                                        <!--                                                {{datadetails.tgl_pesan}}<br><br>-->
+                                        <!--                                            </address>-->
+                                        <!--                                        </div>-->
                                     </div>
                                 </div>
                             </div>
@@ -66,10 +66,37 @@
                         <hr>
                         <div class="text-md-right">
                             <div class="float-lg-left mb-lg-0 mb-3">
-                                <button class="btn btn-primary btn-icon icon-left"><i class="fa fa-cloud"></i> Upload File</button>
-                                <button v-if="datadetails.file === null" @click="cancel(datadetails.id_order)" class="btn btn-danger btn-icon icon-left"><i class="fas fa-times"></i> Cancel</button>
+                                <button @click="$refs.fileUpload.show()" class="btn btn-primary btn-icon icon-left"><i
+                                    class="fa fa-cloud"></i> Upload File
+                                </button>
+                                <button v-if="datadetails.file === null" @click="cancel(datadetails.id_order)"
+                                        class="btn btn-danger btn-icon icon-left"><i class="fas fa-times"></i> Cancel
+                                </button>
                             </div>
-                            <button class="btn btn-warning btn-icon icon-left"><i class="fas fa-print"></i> Print</button>
+                            <!--                            <button class="btn btn-warning btn-icon icon-left"><i class="fas fa-print"></i> Print</button>-->
+                        </div>
+                    </div>
+                </b-modal>
+                <b-modal hide-footer ref="fileUpload" title="Upload File">
+                    <div class="invoice">
+                        <div class="invoice-print">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="invoice-title">
+                                        <div class="invoice-number">Order #{{datadetails.id_order}}</div>
+                                    </div>
+                                    <hr>
+                                    <input @change="selectFile" class="form-control-file" type="file">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="text-md-right">
+                            <div class="float-lg-left mb-lg-0 mb-3">
+                                <button @click="submitFile" class="btn btn-primary btn-icon icon-left"><i
+                                    class="fa fa-cloud"></i> Upload File
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </b-modal>
@@ -83,15 +110,22 @@
                         <ul class="list-unstyled list-unstyled-border list-unstyled-noborder">
                             <li v-for="p in paginated" class="media">
                                 <div class="media-body">
-                                    <div v-if="p.status_o === 'pending'" class="media-right"><div class="text-warning">Pending</div></div>
-                                    <div v-if="p.status_o === 'aktif'" class="media-right"><div class="text-primary">Active</div></div>
+                                    <div v-if="p.status_o === 'pending'" class="media-right">
+                                        <div class="text-warning">Pending</div>
+                                    </div>
+                                    <div v-if="p.status_o === 'aktif'" class="media-right">
+                                        <div class="text-primary">Active</div>
+                                    </div>
                                     <div class="media-title mb-1">Order #{{p.id_order}} (${{p.price}})</div>
                                     <div class="text-time">{{p.tgl_pesan}}</div>
-                                    <div class="media-description text-muted">Sell {{p.quantity}}G for (${{p.price}})</div>
+                                    <div class="media-description text-muted">Sell {{p.quantity}}G for (${{p.price}})
+                                    </div>
                                     <div v-if="p.status_o !== 'done'" class="media-links">
-                                        <a v-if="p.status_o === 'aktif'" @click="details(p)" class="btn btn-sm btn-info text-white" href="#">Delivery Details</a>
+                                        <a v-if="p.status_o === 'aktif'" @click="details(p)"
+                                           class="btn btn-sm btn-info text-white" href="#">Delivery Details</a>
                                         <div v-if="p.status_o === 'aktif'" class="bullet"></div>
-                                        <a v-if="p.file === null" @click="cancel(p.id_order)" class="btn btn-sm btn-danger text-white" href="#">Cancel</a>
+                                        <a v-if="p.file === null" @click="cancel(p.id_order)"
+                                           class="btn btn-sm btn-danger text-white" href="#">Cancel</a>
                                     </div>
                                 </div>
                             </li>
@@ -142,6 +176,7 @@
                 sortOrders[column.name] = -1;
             });
             return {
+                photo: null,
                 tambah: false,
                 datadetails: {},
                 columns: columns,
@@ -164,15 +199,39 @@
             }
         },
         methods: {
+            selectFile(e) {
+                let files = e.target.files || e.dataTransfer.files;
+                if (!files.length)
+                    return;
+                this.createImage(files[0]);
+            },
+            createImage(file){
+                let reader = new FileReader();
+                let vm = this;
+                reader.onload = (e) => {
+                    vm.photo = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            },
+            submitFile() {
+                let data = {
+                    id_order: this.datadetails.id_order,
+                    file: this.photo
+                };
+                this.$inertia.post(this.$route('user.history.uploadFoto'), data, {
+                    preserveState: false,
+                    preserveScroll: true,
+                    only: ['orders']
+                });
+            },
             cancel(id) {
                 this.$inertia.post(this.$route('user.history.cancel', {id: id}), {}, {
-                    replace: true,
                     preserveState: false,
+                    preserveScroll: true,
                     only: ['orders']
                 })
             },
-            details(data)
-            {
+            details(data) {
                 this.datadetails = data;
                 this.$refs['details'].show();
             },

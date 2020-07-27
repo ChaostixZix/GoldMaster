@@ -51,26 +51,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ItemsEdit",
   props: {
     data: Object,
     server: Array,
     game: Array,
-    trademode: Array
+    trademode: Array,
+    type: String
   },
   methods: {
     submit: function submit() {
-      this.$inertia.post(this.$route('admin.items.update'), {
-        id_items: this.data.id_items,
-        id_kategori: this.data.id_kategori,
-        id_item: this.data.id_item,
-        id_pengiriman: this.data.id_pengiriman,
-        dollar: this.data.dollar,
-        n_karakter: this.data.n_karakter
-      }, {
-        preserveState: false
-      });
+      if (this.type === 'edit') {
+        this.$inertia.post(this.$route('admin.items.update'), {
+          id_items: this.data.id_items,
+          id_kategori: this.data.id_kategori,
+          id_item: this.data.id_item,
+          id_pengiriman: this.data.id_pengiriman,
+          dollar: this.data.dollar,
+          butuh: this.data.butuh,
+          n_karakter: this.data.n_karakter
+        }, {
+          preserveState: false
+        });
+      } else if (this.type === 'baru') {
+        this.$inertia.post(this.$route('admin.items.insert'), {
+          id_items: this.data.id_items,
+          id_kategori: this.data.id_kategori,
+          id_item: this.data.id_item,
+          id_pengiriman: this.data.id_pengiriman,
+          dollar: this.data.dollar,
+          butuh: this.data.butuh,
+          n_karakter: this.data.n_karakter
+        }, {
+          preserveState: false
+        });
+      }
     }
   }
 });
@@ -181,6 +201,31 @@ var render = function() {
         }),
         0
       ),
+      _vm._v(" "),
+      _c("label", { staticClass: "form-control-label" }, [
+        _vm._v("\n            Needed Stock\n        ")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.data.butuh,
+            expression: "data.butuh"
+          }
+        ],
+        staticClass: "form-control",
+        domProps: { value: _vm.data.butuh },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.data, "butuh", $event.target.value)
+          }
+        }
+      }),
       _vm._v(" "),
       _c("label", { staticClass: "form-control-label" }, [
         _vm._v("\n            Harga(Dollar)\n        ")

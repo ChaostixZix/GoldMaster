@@ -164,37 +164,42 @@ var render = function() {
               _vm._v("Menu")
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "mt-4 text-center" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-primary btn-lg btn-icon icon-left",
-                  attrs: { href: _vm.$route("user.sell") }
-                },
-                [_c("i", { staticClass: "fa fa-cart-plus" }), _vm._v(" Sell")]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-primary btn-lg btn-icon icon-left",
-                  attrs: { href: _vm.$route("user.history") }
-                },
-                [
-                  _c("i", { staticClass: "fa fa-file-invoice" }),
-                  _vm._v(" History")
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-primary btn-lg btn-icon icon-left",
-                  attrs: { href: "#" }
-                },
-                [_c("i", { staticClass: "fa fa-box-open" }), _vm._v(" Stock")]
-              )
-            ])
+            _c(
+              "div",
+              { staticClass: "mt-4 text-center" },
+              [
+                _c(
+                  "inertia-link",
+                  {
+                    staticClass: "btn btn-primary btn-lg btn-icon icon-left",
+                    attrs: { href: _vm.$route("user.sell") }
+                  },
+                  [_c("i", { staticClass: "fa fa-cart-plus" }), _vm._v(" Sell")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "inertia-link",
+                  {
+                    staticClass: "btn btn-primary btn-lg btn-icon icon-left",
+                    attrs: { href: _vm.$route("user.history") }
+                  },
+                  [
+                    _c("i", { staticClass: "fa fa-file-invoice" }),
+                    _vm._v(" History")
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-primary btn-lg btn-icon icon-left",
+                    attrs: { href: "#" }
+                  },
+                  [_c("i", { staticClass: "fa fa-box-open" }), _vm._v(" Stock")]
+                )
+              ],
+              1
+            )
           ])
         ])
       ])

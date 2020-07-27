@@ -1,5 +1,5 @@
 <template>
-    <App>
+    <App topnav="List Order">
         <div class="row">
             <Messages></Messages>
             <div class="col-12">
@@ -13,30 +13,32 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div v-if="done">
+                        <div>
                             <div id="dataTableExample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <Datatable hide-header="false" :columns="columns" :sortKey="sortKey"
                                                    :sortOrders="sortOrders" @sort="sortBy">
                                             <tbody>
-                                            <tr v-for="p in paginated" role="row" class="odd">
+                                            <tr v-if="p.server !== null && p.kategori !== null && p.email !== null" v-for="p in paginated" role="row" class="odd">
+                                                <td>#{{ p.id_stock }}</td>
+                                                <td>{{ p.email }}</td>
                                                 <td>{{ p.server }}</td>
                                                 <td>{{ p.kategori }}</td>
                                                 <td>
-                                                    Rp. {{parseFloat($page.flash.idrrate)*parseFloat(p.dollar)}}/G
+                                                    <button @click="hapus(p.id_stock)" class="btn btn-sm btn-danger">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
                                                 </td>
+                                            </tr>
+                                            <tr v-if="p.server === null || p.kategori === null || p.email === null"e v-for="p in paginated" role="row" class="odd text-white bg-danger">
+                                                <td>#{{ p.id_stock }}</td>
+                                                <td>{{ p.email }}</td>
+                                                <td>{{ p.server }}</td>
+                                                <td>{{ p.kategori }}</td>
                                                 <td>
-                                                    $ {{ p.dollar }}/G
-                                                </td>
-                                                <td>
-                                                    {{ p.butuh }}G
-                                                </td>
-                                                <td>{{ p.pengiriman }}</td>
-                                                <td>
-                                                    <button @click="sell(p)"
-                                                        class="btn btn-sm btn-warning">
-                                                        <i class="fa fa-cart-plus"></i> Sell
+                                                    <button @click="hapus(p.id_stock)" class="btn btn-sm btn-white">
+                                                        <i class="fa fa-trash"></i>
                                                     </button>
                                                 </td>
                                             </tr>
@@ -58,9 +60,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12">
-                <SellNow :p="p" v-if="sellnow"></SellNow>
-            </div>
         </div>
     </App>
 </template>
@@ -70,14 +69,11 @@
     import Pagination from "../../../Utils/Shared/Pagination";
     import App from "../../../Utils/Layout/App";
     import Messages from "../../../Utils/Shared/Messages";
-    import MoneyFormat from 'vue-money-format';
-    import SellNow from "./SellNow";
 
     export default {
-        components: {SellNow, MoneyFormat, Messages, App, Pagination, Datatable},
+        components: {Messages, App, Pagination, Datatable},
         props: {
-            items: Array,
-
+            stocks: Array
         },
         mounted() {
             this.load();
@@ -85,21 +81,18 @@
         data() {
             let sortOrders = {};
             let columns = [
-                {width: '10%', label: 'Server'},
+                {width: '10%', label: '#'},
+                {width: '10%', label: 'Email'},
+                {width: '33%', label: 'Server'},
                 {width: '33%', label: 'Game'},
-                {width: '15%', label: 'IDR Price'},
-                {width: '15%', label: 'USD Price'},
-                {width: '15%', label: 'Stock Needed'},
-                {width: '33%', label: 'Trade Mode'},
                 {width: '33%', label: 'Action'},
             ];
             columns.forEach((column) => {
                 sortOrders[column.name] = -1;
             });
             return {
-                done: false,
-                p: {},
-                sellnow: false,
+                edit: false,
+                dataedit: {},
                 columns: columns,
                 sortKey: 'deadline',
                 sortOrders: sortOrders,
@@ -120,29 +113,23 @@
             }
         },
         methods: {
-            sell(p)
+            hapus(id)
             {
-                this.p = p;
-                this.sellnow = true;
-            },
-            hapus(id) {
-                this.$inertia.post(this.$route('admin.trademode.delete', {id: id}), {}, {
-                    replace: true,
+                this.$inertia.post(this.$route('admin.memberstock.delete', {id: id}), {}, {
                     preserveState: false,
-                    preserveScroll: false,
-                    only: ['trademode'],
+                    preserveScroll: true,
+                    only: ['stocks']
                 })
             },
             load() {
                 this.pagination.total = this.data.length;
                 let i = 0;
                 let vm = this;
-                this.items.forEach(function (value, index) {
+                this.stocks.forEach(function (value, index) {
                     i++;
                     value.nomer = i;
                     vm.data.push(value);
                 })
-                this.done = true;
             },
             paginate(array, length, pageNumber) {
                 this.pagination.from = array.length ? ((pageNumber - 1) * length) + 1 : ' ';

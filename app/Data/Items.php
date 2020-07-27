@@ -20,6 +20,15 @@ class Items extends Model
             ->leftJoin('t_pengiriman', 't_items.id_pengiriman', '=', 't_pengiriman.id_pengiriman')
             ->get();
     }
+    public function getById($id)
+    {
+        return $this->db()
+            ->where('id_items', $id)
+            ->leftJoin('t_server', 't_items.id_item', '=', 't_server.id_item')
+            ->leftJoin('t_kategori', 't_items.id_kategori', '=', 't_kategori.id_kategori')
+            ->leftJoin('t_pengiriman', 't_items.id_pengiriman', '=', 't_pengiriman.id_pengiriman')
+            ->get();
+    }
 
     public function updateRaw($id, array $update)
     {

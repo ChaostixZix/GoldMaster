@@ -60,6 +60,15 @@ Route::group([
     {
         Route::get('list', 'ItemsController@index')->name('admin.items');
         Route::post('update', 'ItemsController@update')->name('admin.items.update');
+        Route::post('insert', 'ItemsController@insert')->name('admin.items.insert');
+    });
+
+    Route::group([
+        'prefix' => 'memberstock'
+    ], function ()
+    {
+        Route::get('list', 'MemberStockController@index')->name('admin.memberstock');
+        Route::post('delete/{id}', 'MemberStockController@delete')->name('admin.memberstock.delete');
     });
 
 
