@@ -70,6 +70,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -342,7 +345,21 @@ var render = function() {
                   ],
                   1
                 )
-              ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "mt-5 text-muted text-center" },
+                [
+                  _vm._v("\n                        Don't have an account? "),
+                  _c(
+                    "inertia-link",
+                    { attrs: { href: _vm.$route("user.auth.registerPage") } },
+                    [_vm._v("Create One")]
+                  )
+                ],
+                1
+              )
             ],
             1
           )

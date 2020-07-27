@@ -56,10 +56,16 @@
         },
         methods: {
             submit(){
-                this.loading = true;
-                this.$inertia.post(this.$route('user.history.addorder'), this.data).then(() => {
-                    this.loading = false;
-                });
+
+                if(this.data.quantity > this.p.butuh)
+                {
+                    alert('Quantity must be lower than needed stock');
+                }else{
+                    this.loading = true;
+                    this.$inertia.post(this.$route('user.history.addorder'), this.data).then(() => {
+                        this.loading = false;
+                    });
+                }
             }
         }
     }

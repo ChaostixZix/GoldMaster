@@ -60517,6 +60517,14 @@ var map = {
 		"./resources/js/Pages/User/Auth/Login.vue",
 		3
 	],
+	"./User/Auth/Register": [
+		"./resources/js/Pages/User/Auth/Register.vue",
+		20
+	],
+	"./User/Auth/Register.vue": [
+		"./resources/js/Pages/User/Auth/Register.vue",
+		20
+	],
 	"./User/Dashboard/Depan": [
 		"./resources/js/Pages/User/Dashboard/Depan.vue",
 		4
@@ -60536,6 +60544,26 @@ var map = {
 		0,
 		5,
 		18
+	],
+	"./User/MemberStock/MemberStock": [
+		"./resources/js/Pages/User/MemberStock/MemberStock.vue",
+		0,
+		5,
+		23
+	],
+	"./User/MemberStock/MemberStock.vue": [
+		"./resources/js/Pages/User/MemberStock/MemberStock.vue",
+		0,
+		5,
+		23
+	],
+	"./User/MemberStock/MemberStockAdd": [
+		"./resources/js/Pages/User/MemberStock/MemberStockAdd.vue",
+		22
+	],
+	"./User/MemberStock/MemberStockAdd.vue": [
+		"./resources/js/Pages/User/MemberStock/MemberStockAdd.vue",
+		22
 	],
 	"./User/Sell/Sell": [
 		"./resources/js/Pages/User/Sell/Sell.vue",

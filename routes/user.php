@@ -7,6 +7,8 @@ Route::group([
 ], function ()
 {
     Route::get('loginPage', 'UserAuthController@loginPage')->name('user.auth.loginPage');
+    Route::get('registerPage', 'UserAuthController@registerPage')->name('user.auth.registerPage');
+    Route::post('register', 'UserAuthController@register')->name('user.auth.register');
     Route::post('login', 'UserAuthController@login')->name('user.auth.login');
     Route::get('logout', 'UserAuthController@logout')->name('user.auth.logout');
 });
@@ -38,6 +40,13 @@ Route::group([
         ], function ()
         {
             Route::get('', 'SellController@index')->name('user.sell');
+        });
+
+        Route::group([
+            'prefix' => 'memberstock'
+        ], function ()
+        {
+            Route::get('', 'MemberStockController@index')->name('user.memberstock');
         });
     });
 });

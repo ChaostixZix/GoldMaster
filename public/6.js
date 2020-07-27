@@ -316,10 +316,14 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this = this;
 
-      this.loading = true;
-      this.$inertia.post(this.$route('user.history.addorder'), this.data).then(function () {
-        _this.loading = false;
-      });
+      if (this.data.quantity > this.p.butuh) {
+        alert('Quantity must be lower than needed stock');
+      } else {
+        this.loading = true;
+        this.$inertia.post(this.$route('user.history.addorder'), this.data).then(function () {
+          _this.loading = false;
+        });
+      }
     }
   }
 });

@@ -12,6 +12,11 @@ class Users extends Model
         return DB::table('t_users');
     }
 
+    public function cekEmail($email)
+    {
+        return $this->db()->where('email', $email)->exists();
+    }
+
     public function getAll()
     {
         return $this->db()->get();
@@ -24,5 +29,9 @@ class Users extends Model
     public function updateRaw($id, array $update)
     {
         return $this->db()->where('id_user', $id)->update($update);
+    }
+    public function insertRaw(array $insert)
+    {
+        return $this->db()->insert($insert);
     }
 }
