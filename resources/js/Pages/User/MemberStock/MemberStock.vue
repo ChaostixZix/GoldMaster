@@ -1,5 +1,5 @@
 <template>
-    <App topnav="List Order">
+    <App topnav="Stocks">
         <div class="row">
             <Messages></Messages>
             <div class="col-12">
@@ -60,7 +60,16 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card-footer">
+                        <button @click="insert" class="btn btn-primary">
+                            <i class="fa fa-plus"></i>
+                            Tambah
+                        </button>
+                    </div>
                 </div>
+            </div>
+            <div class="col-12">
+                <MemberStockAdd v-if="edit" :server="server" :game="game" :p="p"></MemberStockAdd>
             </div>
         </div>
     </App>
@@ -71,11 +80,14 @@
     import Pagination from "../../../Utils/Shared/Pagination";
     import App from "../../../Utils/Layout/App";
     import Messages from "../../../Utils/Shared/Messages";
+    import MemberStockAdd from "./MemberStockAdd";
 
     export default {
-        components: {Messages, App, Pagination, Datatable},
+        components: {MemberStockAdd, Messages, App, Pagination, Datatable},
         props: {
-            stocks: Array
+            stocks: Array,
+            server: Array,
+            game: Array,
         },
         mounted() {
             this.load();
@@ -95,6 +107,7 @@
             });
             return {
                 edit: false,
+                type: '',
                 dataedit: {},
                 columns: columns,
                 sortKey: 'deadline',
@@ -116,6 +129,11 @@
             }
         },
         methods: {
+            insert()
+            {
+              this.type = 'baru';
+              this.edit = true;
+            },
             hapus(id)
             {
                 this.$inertia.post(this.$route('admin.memberstock.delete', {id: id}), {}, {

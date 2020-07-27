@@ -13,6 +13,7 @@
                     <li class="nav-item"><a href="{{route('user.index')}}" class="nav-link">Dashboard</a></li>
                     <li class="nav-item"><a href="{{route('user.history')}}" class="nav-link">History</a></li>
                     <li class="nav-item"><a href="{{ route('user.sell') }}" class="nav-link">Sell</a></li>
+                    <li class="nav-item"><a href="{{ route('user.memberstock') }}" class="nav-link">Stocks</a></li>
                 </ul>
             </li>
             @if(\Illuminate\Support\Facades\Session::has('admin'))

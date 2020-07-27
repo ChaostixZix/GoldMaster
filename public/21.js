@@ -79,6 +79,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -104,6 +106,9 @@ __webpack_require__.r(__webpack_exports__);
     }, {
       width: '10%',
       label: 'Email'
+    }, {
+      width: '15%',
+      label: 'Stock'
     }, {
       width: '33%',
       label: 'Server'
@@ -335,6 +340,8 @@ var render = function() {
                                             _vm._v(" "),
                                             _c("td", [_vm._v(_vm._s(p.email))]),
                                             _vm._v(" "),
+                                            _c("td", [_vm._v(_vm._s(p.stock))]),
+                                            _vm._v(" "),
                                             _c("td", [
                                               _vm._v(_vm._s(p.server))
                                             ]),
@@ -386,6 +393,8 @@ var render = function() {
                                             ]),
                                             _vm._v(" "),
                                             _c("td", [_vm._v(_vm._s(p.email))]),
+                                            _vm._v(" "),
+                                            _c("td", [_vm._v(_vm._s(p.stock))]),
                                             _vm._v(" "),
                                             _c("td", [
                                               _vm._v(_vm._s(p.server))
