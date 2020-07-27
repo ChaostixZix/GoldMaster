@@ -26,6 +26,7 @@
                         <li class="nav-item"><a href="{{route('admin.trademode')}}" class="nav-link">Trade Mode</a></li>
                         <li class="nav-item"><a href="{{route('admin.order')}}" class="nav-link">Order</a></li>
                         <li class="nav-item"><a href="{{route('admin.items')}}" class="nav-link">Cari Farmer</a></li>
+                        <li class="nav-item"><a href="{{route('admin.memberstock')}}" class="nav-link">Member Stock</a></li>
                     </ul>
                 </li>
             @endif

@@ -60427,6 +60427,18 @@ var map = {
 		"./resources/js/Pages/Admin/Items/ItemsEdit.vue",
 		12
 	],
+	"./Admin/MemberStock/MemberStock": [
+		"./resources/js/Pages/Admin/MemberStock/MemberStock.vue",
+		0,
+		5,
+		21
+	],
+	"./Admin/MemberStock/MemberStock.vue": [
+		"./resources/js/Pages/Admin/MemberStock/MemberStock.vue",
+		0,
+		5,
+		21
+	],
 	"./Admin/Order/Order": [
 		"./resources/js/Pages/Admin/Order/Order.vue",
 		0,

@@ -82,6 +82,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -398,7 +399,7 @@ var render = function() {
                                               "div",
                                               {
                                                 staticClass:
-                                                  "badge badge-success"
+                                                  "badge badge-primary"
                                               },
                                               [_vm._v("Active")]
                                             )
@@ -413,39 +414,55 @@ var render = function() {
                                               },
                                               [_vm._v("Pending")]
                                             )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        p.status_o === "done"
+                                          ? _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "badge badge-success"
+                                              },
+                                              [_vm._v("Done")]
+                                            )
                                           : _vm._e()
                                       ]),
                                       _vm._v(" "),
                                       _c("td", [
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass:
-                                              "btn btn-sm btn-primary",
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.update(p)
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _c("i", {
-                                              staticClass: "fa fa-edit"
-                                            })
-                                          ]
-                                        ),
+                                        p.status_o !== "done"
+                                          ? _c(
+                                              "button",
+                                              {
+                                                staticClass:
+                                                  "btn btn-sm btn-primary",
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.update(p)
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass: "fa fa-edit"
+                                                })
+                                              ]
+                                            )
+                                          : _vm._e(),
                                         _vm._v(" "),
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass: "btn btn-sm btn-danger"
-                                          },
-                                          [
-                                            _c("i", {
-                                              staticClass: "fa fa-trash"
-                                            })
-                                          ]
-                                        )
+                                        p.status_o !== "done"
+                                          ? _c(
+                                              "button",
+                                              {
+                                                staticClass:
+                                                  "btn btn-sm btn-danger"
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass: "fa fa-trash"
+                                                })
+                                              ]
+                                            )
+                                          : _vm._e()
                                       ])
                                     ]
                                   )
@@ -568,7 +585,9 @@ var render = function() {
           _vm._v(" "),
           _c("option", { attrs: { value: "aktif" } }, [_vm._v("Active")]),
           _vm._v(" "),
-          _c("option", { attrs: { value: "done" } }, [_vm._v("Done")])
+          _vm.data.file !== null
+            ? _c("option", { attrs: { value: "done" } }, [_vm._v("Done")])
+            : _vm._e()
         ]
       )
     ]),

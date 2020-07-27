@@ -129,6 +129,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -169,6 +203,7 @@ __webpack_require__.r(__webpack_exports__);
       sortOrders[column.name] = -1;
     });
     return {
+      photo: null,
       tambah: false,
       datadetails: {},
       columns: columns,
@@ -191,12 +226,38 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    selectFile: function selectFile(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+    },
+    createImage: function createImage(file) {
+      var reader = new FileReader();
+      var vm = this;
+
+      reader.onload = function (e) {
+        vm.photo = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
+    },
+    submitFile: function submitFile() {
+      var data = {
+        id_order: this.datadetails.id_order,
+        file: this.photo
+      };
+      this.$inertia.post(this.$route('user.history.uploadFoto'), data, {
+        preserveState: false,
+        preserveScroll: true,
+        only: ['orders']
+      });
+    },
     cancel: function cancel(id) {
       this.$inertia.post(this.$route('user.history.cancel', {
         id: id
       }), {}, {
-        replace: true,
         preserveState: false,
+        preserveScroll: true,
         only: ['orders']
       });
     },
@@ -354,7 +415,7 @@ var render = function() {
         _c("div", { staticClass: "col-12" }, [
           _c("div", { staticClass: "alert alert-warning" }, [
             _vm._v(
-              "\n                        You need to wait for admin approval before you can continue\n                    "
+              "\n                You need to wait for admin approval before you can continue\n            "
             )
           ])
         ]),
@@ -387,7 +448,7 @@ var render = function() {
                               _c("strong", [_vm._v("Send To:")]),
                               _c("br"),
                               _vm._v(
-                                "\n                                                " +
+                                "\n                                            " +
                                   _vm._s(_vm.datadetails.n_karakter)
                               ),
                               _c("br")
@@ -399,7 +460,7 @@ var render = function() {
                               _c("strong", [_vm._v("From:")]),
                               _c("br"),
                               _vm._v(
-                                "\n                                                " +
+                                "\n                                            " +
                                   _vm._s(_vm.datadetails.nama)
                               ),
                               _c("br")
@@ -413,7 +474,7 @@ var render = function() {
                               _c("strong", [_vm._v("Trade Method:")]),
                               _c("br"),
                               _vm._v(
-                                "\n                                                " +
+                                "\n                                            " +
                                   _vm._s(_vm.datadetails.pengiriman)
                               ),
                               _c("br")
@@ -425,7 +486,7 @@ var render = function() {
                               _c("strong", [_vm._v("Order Date:")]),
                               _c("br"),
                               _vm._v(
-                                "\n                                                " +
+                                "\n                                            " +
                                   _vm._s(_vm.datadetails.tgl_pesan)
                               ),
                               _c("br"),
@@ -440,7 +501,7 @@ var render = function() {
                               _c("strong", [_vm._v("Quantity:")]),
                               _c("br"),
                               _vm._v(
-                                "\n                                                " +
+                                "\n                                            " +
                                   _vm._s(_vm.datadetails.quantity) +
                                   "G"
                               ),
@@ -458,10 +519,17 @@ var render = function() {
                     _c("div", { staticClass: "float-lg-left mb-lg-0 mb-3" }, [
                       _c(
                         "button",
-                        { staticClass: "btn btn-primary btn-icon icon-left" },
+                        {
+                          staticClass: "btn btn-primary btn-icon icon-left",
+                          on: {
+                            click: function($event) {
+                              return _vm.$refs.fileUpload.show()
+                            }
+                          }
+                        },
                         [
                           _c("i", { staticClass: "fa fa-cloud" }),
-                          _vm._v(" Upload File")
+                          _vm._v(" Upload File\n                            ")
                         ]
                       ),
                       _vm._v(" "),
@@ -478,20 +546,60 @@ var render = function() {
                             },
                             [
                               _c("i", { staticClass: "fas fa-times" }),
-                              _vm._v(" Cancel")
+                              _vm._v(" Cancel\n                            ")
                             ]
                           )
                         : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      { staticClass: "btn btn-warning btn-icon icon-left" },
-                      [
-                        _c("i", { staticClass: "fas fa-print" }),
-                        _vm._v(" Print")
-                      ]
-                    )
+                    ])
+                  ])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "b-modal",
+              {
+                ref: "fileUpload",
+                attrs: { "hide-footer": "", title: "Upload File" }
+              },
+              [
+                _c("div", { staticClass: "invoice" }, [
+                  _c("div", { staticClass: "invoice-print" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-lg-12" }, [
+                        _c("div", { staticClass: "invoice-title" }, [
+                          _c("div", { staticClass: "invoice-number" }, [
+                            _vm._v("Order #" + _vm._s(_vm.datadetails.id_order))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("hr"),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control-file",
+                          attrs: { type: "file" },
+                          on: { change: _vm.selectFile }
+                        })
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("hr"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-md-right" }, [
+                    _c("div", { staticClass: "float-lg-left mb-lg-0 mb-3" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary btn-icon icon-left",
+                          on: { click: _vm.submitFile }
+                        },
+                        [
+                          _c("i", { staticClass: "fa fa-cloud" }),
+                          _vm._v(" Upload File\n                            ")
+                        ]
+                      )
+                    ])
                   ])
                 ])
               ]
@@ -555,7 +663,7 @@ var render = function() {
                               _vm._s(p.quantity) +
                               "G for ($" +
                               _vm._s(p.price) +
-                              ")"
+                              ")\n                                "
                           )
                         ]
                       ),

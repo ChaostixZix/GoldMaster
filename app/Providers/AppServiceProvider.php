@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Data\Users;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
@@ -28,7 +29,8 @@ class AppServiceProvider extends ServiceProvider
                 'user' => Session::get('user'),
                 'id_user' => Session::get('id_user'),
                 'error' => Session::get('error'),
-                'saldo' => $saldo
+                'saldo' => $saldo,
+                'idrrate' => DB::table('usdrate')->where('countryCode', 'idr')->get()[0]->price,
             ];
         });
     }

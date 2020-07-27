@@ -7,7 +7,7 @@
             <select class="form-control" v-model="data.status_o">
                 <option value="pending">Pending</option>
                 <option value="aktif">Active</option>
-                <option value="done">Done</option>
+                <option v-if="data.file !== null" value="done">Done</option>
             </select>
         </div>
         <div class="card-footer bg-info">

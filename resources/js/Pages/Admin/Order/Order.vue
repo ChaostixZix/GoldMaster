@@ -27,15 +27,16 @@
                                                 <td>{{ p.quantity }}</td>
                                                 <td>{{ p.pengiriman }}</td>
                                                 <td>
-                                                    <div v-if="p.status_o === 'aktif'" class="badge badge-success">Active</div>
+                                                    <div v-if="p.status_o === 'aktif'" class="badge badge-primary">Active</div>
                                                     <div v-if="p.status_o === 'pending'" class="badge badge-warning">Pending</div>
+                                                    <div v-if="p.status_o === 'done'" class="badge badge-success">Done</div>
                                                 </td>
                                                 <td>
-                                                    <button v-on:click="update(p)"
+                                                    <button v-if="p.status_o !== 'done'" v-on:click="update(p)"
                                                             class="btn btn-sm btn-primary">
                                                         <i class="fa fa-edit"></i>
                                                     </button>
-                                                    <button
+                                                    <button v-if="p.status_o !== 'done'"
                                                             class="btn btn-sm btn-danger">
                                                         <i class="fa fa-trash"></i>
                                                     </button>

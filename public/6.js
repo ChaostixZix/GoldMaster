@@ -79,6 +79,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -109,11 +112,14 @@ __webpack_require__.r(__webpack_exports__);
       width: '33%',
       label: 'Game'
     }, {
-      width: '40%',
+      width: '15%',
       label: 'IDR Price'
     }, {
-      width: '33%',
+      width: '15%',
       label: 'USD Price'
+    }, {
+      width: '15%',
+      label: 'Stock Needed'
     }, {
       width: '33%',
       label: 'Trade Mode'
@@ -454,7 +460,11 @@ var render = function() {
                                           _c("td", [
                                             _vm._v(
                                               "\n                                                Rp. " +
-                                                _vm._s(p.harga) +
+                                                _vm._s(
+                                                  parseFloat(
+                                                    _vm.$page.flash.idrrate
+                                                  ) * parseFloat(p.dollar)
+                                                ) +
                                                 "/G\n                                            "
                                             )
                                           ]),
@@ -464,6 +474,14 @@ var render = function() {
                                               "\n                                                $ " +
                                                 _vm._s(p.dollar) +
                                                 "/G\n                                            "
+                                            )
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _vm._v(
+                                              "\n                                                " +
+                                                _vm._s(p.butuh) +
+                                                "G\n                                            "
                                             )
                                           ]),
                                           _vm._v(" "),

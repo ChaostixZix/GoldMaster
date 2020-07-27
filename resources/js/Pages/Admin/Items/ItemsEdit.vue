@@ -17,6 +17,10 @@
                 <option v-for="s in server" :value="s.id_item">{{s.server}}</option>
             </select>
             <label class="form-control-label">
+                Needed Stock
+            </label>
+            <input class="form-control" v-model="data.butuh">
+            <label class="form-control-label">
                 Harga(Dollar)
             </label>
             <input class="form-control" v-model="data.dollar">
@@ -48,19 +52,37 @@
             server: Array,
             game: Array,
             trademode: Array,
+            type: String
         },
         methods: {
             submit() {
-                this.$inertia.post(this.$route('admin.items.update'), {
-                    id_items: this.data.id_items,
-                    id_kategori: this.data.id_kategori,
-                    id_item: this.data.id_item,
-                    id_pengiriman: this.data.id_pengiriman,
-                    dollar: this.data.dollar,
-                    n_karakter: this.data.n_karakter,
-                }, {
-                    preserveState: false
-                })
+                if(this.type === 'edit')
+                {
+                    this.$inertia.post(this.$route('admin.items.update'), {
+                        id_items: this.data.id_items,
+                        id_kategori: this.data.id_kategori,
+                        id_item: this.data.id_item,
+                        id_pengiriman: this.data.id_pengiriman,
+                        dollar: this.data.dollar,
+                        butuh: this.data.butuh,
+                        n_karakter: this.data.n_karakter,
+                    }, {
+                        preserveState: false
+                    })
+                }else if(this.type === 'baru')
+                {
+                    this.$inertia.post(this.$route('admin.items.insert'), {
+                        id_items: this.data.id_items,
+                        id_kategori: this.data.id_kategori,
+                        id_item: this.data.id_item,
+                        id_pengiriman: this.data.id_pengiriman,
+                        dollar: this.data.dollar,
+                        butuh: this.data.butuh,
+                        n_karakter: this.data.n_karakter,
+                    }, {
+                        preserveState: false
+                    })
+                }
             }
         }
     }

@@ -21,4 +21,8 @@ class Users extends Model
     {
         return $this->db()->where('id_user', $id)->get();
     }
+    public function updateRaw($id, array $update)
+    {
+        return $this->db()->where('id_user', $id)->update($update);
+    }
 }

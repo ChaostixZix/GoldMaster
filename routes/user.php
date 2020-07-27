@@ -30,6 +30,7 @@ Route::group([
            Route::get('', 'HistoryController@index')->name('user.history');
            Route::post('cancel/{id}', 'HistoryController@cancel')->name('user.history.cancel');
            Route::post('add', 'HistoryController@addOrder')->name('user.history.addorder');
+           Route::post('uploadFoto', 'HistoryController@uploadFoto')->name('user.history.uploadFoto');
        });
 
         Route::group([

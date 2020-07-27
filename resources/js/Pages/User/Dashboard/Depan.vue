@@ -27,8 +27,8 @@
                     <div class="card-footer text-center">
                         <div class="font-weight-bold mb-2">Menu</div>
                         <div class="mt-4 text-center">
-                            <a :href="$route('user.sell')" class="btn btn-primary btn-lg btn-icon icon-left"><i class="fa fa-cart-plus"></i> Sell</a>
-                            <a :href="$route('user.history')" class="btn btn-primary btn-lg btn-icon icon-left"><i class="fa fa-file-invoice"></i> History</a>
+                            <inertia-link :href="$route('user.sell')" class="btn btn-primary btn-lg btn-icon icon-left"><i class="fa fa-cart-plus"></i> Sell</inertia-link>
+                            <inertia-link :href="$route('user.history')" class="btn btn-primary btn-lg btn-icon icon-left"><i class="fa fa-file-invoice"></i> History</inertia-link>
                             <a href="#" class="btn btn-primary btn-lg btn-icon icon-left"><i class="fa fa-box-open"></i> Stock</a>
                         </div>
                     </div>
