@@ -1,4 +1,5 @@
 <template>
+
     <App topnav="Stocks">
         <div class="row">
             <Messages></Messages>
@@ -27,6 +28,9 @@
                                                 <td>{{ p.server }}</td>
                                                 <td>{{ p.kategori }}</td>
                                                 <td>
+                                                    <button @click="ubah(p)" class="btn btn-sm btn-white">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
                                                     <button @click="hapus(p.id_stock)" class="btn btn-sm btn-danger">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
@@ -39,7 +43,10 @@
                                                 <td>{{ p.server }}</td>
                                                 <td>{{ p.kategori }}</td>
                                                 <td>
-                                                    <button @click="hapus(p.id_stock)" class="btn btn-sm btn-white">
+                                                    <button @click="ubah(p)" class="btn btn-sm btn-primary">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                    <button @click="hapus(p.id_stock)" class="btn btn-sm btn-danger">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
                                                 </td>
@@ -69,7 +76,7 @@
                 </div>
             </div>
             <div class="col-12">
-                <MemberStockAdd v-if="edit" :server="server" :game="game" :p="p"></MemberStockAdd>
+                <MemberStockAdd v-if="edit" :type="type" :server="server" :game="game" :p="dataedit"></MemberStockAdd>
             </div>
         </div>
     </App>
@@ -98,7 +105,7 @@
                 {width: '10%', label: '#'},
                 {width: '10%', label: 'Email'},
                 {width: '15%', label: 'Stock'},
-                {width: '33%', label: 'Server'},
+                {width: '15%', label: 'Server'},
                 {width: '33%', label: 'Game'},
                 {width: '33%', label: 'Action'},
             ];
@@ -133,6 +140,12 @@
             {
               this.type = 'baru';
               this.edit = true;
+            },
+            ubah(p)
+            {
+                this.type = 'edit';
+                this.dataedit = p;
+                this.edit = true;
             },
             hapus(id)
             {

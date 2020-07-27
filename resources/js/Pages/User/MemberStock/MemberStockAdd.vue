@@ -34,9 +34,6 @@
     export default {
         name: "MemberStockAdd",
         components: {Spinner},
-        mounted() {
-            
-        },
         props: {
             p: Object,
             server: Array,
@@ -46,21 +43,40 @@
         data() {
             return {
                 data: {
-                    quantity: '',
                     id_kategori: this.p.id_kategori,
                     id_item: this.p.id_item,
                     id_user: this.$page.flash.id_user,
-                    stock: 0,
+                    stock: this.p.stock,
                 },
                 loading: false
             }
+            //
         },
         methods: {
             submit() {
                 this.loading = true;
-                this.$inertia.post(this.$route('user.history.addorder'), this.data).then(() => {
-                    this.loading = false;
-                });
+                if(this.type === 'baru')
+                {
+                    this.$inertia.post(this.$route('user.memberstock.insert'), this.data,
+                        {
+                            preserveState: false,
+                            preserveScroll: true,
+                            only: ['stocks']
+                        }
+                    ).then(() => {
+                        this.loading = false;
+                    });
+                }else if(this.type === 'edit'){
+                    this.$inertia.post(this.$route('user.memberstock.update', {id: this.p.id_stock}), this.data,
+                        {
+                            preserveState: false,
+                            preserveScroll: true,
+                            only: ['stocks']
+                        }
+                    ).then(() => {
+                        this.loading = false;
+                    });
+                }
             }
         }
     }
