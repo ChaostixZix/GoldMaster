@@ -28,4 +28,16 @@ class MemberStockController extends Controller
                 },
             ]);
     }
+
+    public function edit($id, Request $request)
+    {
+        $do = (new MemberStok())->ubah($id, $request->all());
+        return redirect()->back();
+    }
+
+    public function insert( Request $request)
+    {
+        $do = (new MemberStok())->insertRaw($request->all());
+        return redirect()->back();
+    }
 }

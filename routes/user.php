@@ -47,6 +47,8 @@ Route::group([
         ], function ()
         {
             Route::get('', 'MemberStockController@index')->name('user.memberstock');
+            Route::post('update/{id}', 'MemberStockController@edit')->name('user.memberstock.update');
+            Route::post('insert', 'MemberStockController@insert')->name('user.memberstock.insert');
         });
     });
 });

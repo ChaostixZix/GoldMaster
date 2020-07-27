@@ -60373,217 +60373,217 @@ module.exports = g;
 var map = {
 	"./Admin/Auth/Login": [
 		"./resources/js/Pages/Admin/Auth/Login.vue",
-		1
+		3
 	],
 	"./Admin/Auth/Login.vue": [
 		"./resources/js/Pages/Admin/Auth/Login.vue",
-		1
+		3
 	],
 	"./Admin/Dashboard/Depan": [
 		"./resources/js/Pages/Admin/Dashboard/Depan.vue",
-		2
+		5
 	],
 	"./Admin/Dashboard/Depan.vue": [
 		"./resources/js/Pages/Admin/Dashboard/Depan.vue",
-		2
+		5
 	],
 	"./Admin/Game/Game": [
 		"./resources/js/Pages/Admin/Game/Game.vue",
 		0,
-		5,
-		15
+		8,
+		25
 	],
 	"./Admin/Game/Game.vue": [
 		"./resources/js/Pages/Admin/Game/Game.vue",
 		0,
-		5,
-		15
+		8,
+		25
 	],
 	"./Admin/Game/TambahGame": [
 		"./resources/js/Pages/Admin/Game/TambahGame.vue",
-		8
+		16
 	],
 	"./Admin/Game/TambahGame.vue": [
 		"./resources/js/Pages/Admin/Game/TambahGame.vue",
-		8
+		16
 	],
 	"./Admin/Items/Items": [
 		"./resources/js/Pages/Admin/Items/Items.vue",
 		0,
-		5,
-		13
+		8,
+		21
 	],
 	"./Admin/Items/Items.vue": [
 		"./resources/js/Pages/Admin/Items/Items.vue",
 		0,
-		5,
-		13
+		8,
+		21
 	],
 	"./Admin/Items/ItemsEdit": [
 		"./resources/js/Pages/Admin/Items/ItemsEdit.vue",
-		12
+		2
 	],
 	"./Admin/Items/ItemsEdit.vue": [
 		"./resources/js/Pages/Admin/Items/ItemsEdit.vue",
-		12
+		2
 	],
 	"./Admin/MemberStock/MemberStock": [
 		"./resources/js/Pages/Admin/MemberStock/MemberStock.vue",
 		0,
-		5,
-		21
+		8,
+		30
 	],
 	"./Admin/MemberStock/MemberStock.vue": [
 		"./resources/js/Pages/Admin/MemberStock/MemberStock.vue",
 		0,
-		5,
-		21
+		8,
+		30
 	],
 	"./Admin/Order/Order": [
 		"./resources/js/Pages/Admin/Order/Order.vue",
 		0,
-		5,
-		11
+		8,
+		26
 	],
 	"./Admin/Order/Order.vue": [
 		"./resources/js/Pages/Admin/Order/Order.vue",
 		0,
-		5,
-		11
+		8,
+		26
 	],
 	"./Admin/Order/OrderEdit": [
 		"./resources/js/Pages/Admin/Order/OrderEdit.vue",
-		7
+		18
 	],
 	"./Admin/Order/OrderEdit.vue": [
 		"./resources/js/Pages/Admin/Order/OrderEdit.vue",
-		7
+		18
 	],
 	"./Admin/Server/Server": [
 		"./resources/js/Pages/Admin/Server/Server.vue",
 		0,
-		5,
-		16
+		8,
+		27
 	],
 	"./Admin/Server/Server.vue": [
 		"./resources/js/Pages/Admin/Server/Server.vue",
 		0,
-		5,
-		16
+		8,
+		27
 	],
 	"./Admin/Server/TambahServer": [
 		"./resources/js/Pages/Admin/Server/TambahServer.vue",
-		9
+		19
 	],
 	"./Admin/Server/TambahServer.vue": [
 		"./resources/js/Pages/Admin/Server/TambahServer.vue",
-		9
+		19
 	],
 	"./Admin/TradeMode/TambahTradeMode": [
 		"./resources/js/Pages/Admin/TradeMode/TambahTradeMode.vue",
-		10
+		20
 	],
 	"./Admin/TradeMode/TambahTradeMode.vue": [
 		"./resources/js/Pages/Admin/TradeMode/TambahTradeMode.vue",
-		10
+		20
 	],
 	"./Admin/TradeMode/TradeMode": [
 		"./resources/js/Pages/Admin/TradeMode/TradeMode.vue",
 		0,
-		5,
-		17
+		8,
+		28
 	],
 	"./Admin/TradeMode/TradeMode.vue": [
 		"./resources/js/Pages/Admin/TradeMode/TradeMode.vue",
 		0,
-		5,
-		17
+		8,
+		28
 	],
 	"./Depan/Depan": [
 		"./resources/js/Pages/Depan/Depan.vue",
 		0,
-		14
+		24
 	],
 	"./Depan/Depan.vue": [
 		"./resources/js/Pages/Depan/Depan.vue",
 		0,
-		14
+		24
 	],
 	"./User/Auth/Login": [
 		"./resources/js/Pages/User/Auth/Login.vue",
-		3
+		4
 	],
 	"./User/Auth/Login.vue": [
 		"./resources/js/Pages/User/Auth/Login.vue",
-		3
+		4
 	],
 	"./User/Auth/Register": [
 		"./resources/js/Pages/User/Auth/Register.vue",
-		20
+		12
 	],
 	"./User/Auth/Register.vue": [
 		"./resources/js/Pages/User/Auth/Register.vue",
-		20
+		12
 	],
 	"./User/Dashboard/Depan": [
 		"./resources/js/Pages/User/Dashboard/Depan.vue",
-		4
+		13
 	],
 	"./User/Dashboard/Depan.vue": [
 		"./resources/js/Pages/User/Dashboard/Depan.vue",
-		4
+		13
 	],
 	"./User/History/History": [
 		"./resources/js/Pages/User/History/History.vue",
 		0,
-		5,
-		18
+		8,
+		29
 	],
 	"./User/History/History.vue": [
 		"./resources/js/Pages/User/History/History.vue",
 		0,
-		5,
-		18
+		8,
+		29
 	],
 	"./User/MemberStock/MemberStock": [
 		"./resources/js/Pages/User/MemberStock/MemberStock.vue",
 		0,
-		5,
-		23
+		8,
+		22
 	],
 	"./User/MemberStock/MemberStock.vue": [
 		"./resources/js/Pages/User/MemberStock/MemberStock.vue",
 		0,
-		5,
-		23
+		8,
+		22
 	],
 	"./User/MemberStock/MemberStockAdd": [
 		"./resources/js/Pages/User/MemberStock/MemberStockAdd.vue",
-		22
+		1
 	],
 	"./User/MemberStock/MemberStockAdd.vue": [
 		"./resources/js/Pages/User/MemberStock/MemberStockAdd.vue",
-		22
+		1
 	],
 	"./User/Sell/Sell": [
 		"./resources/js/Pages/User/Sell/Sell.vue",
 		0,
-		5,
+		8,
 		6
 	],
 	"./User/Sell/Sell.vue": [
 		"./resources/js/Pages/User/Sell/Sell.vue",
 		0,
-		5,
+		8,
 		6
 	],
 	"./User/Sell/SellNow": [
 		"./resources/js/Pages/User/Sell/SellNow.vue",
-		19
+		14
 	],
 	"./User/Sell/SellNow.vue": [
 		"./resources/js/Pages/User/Sell/SellNow.vue",
-		19
+		14
 	]
 };
 function webpackAsyncContext(req) {
@@ -60667,8 +60667,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.prototype.$route = function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/bintangputra/Documents/Project/CBT/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/bintangputra/Documents/Project/CBT/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/chaostix/Documents/Project/GoldMaster/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/chaostix/Documents/Project/GoldMaster/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
