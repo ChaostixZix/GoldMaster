@@ -28,6 +28,7 @@
                         <li class="nav-item"><a href="{{route('admin.order')}}" class="nav-link">Order</a></li>
                         <li class="nav-item"><a href="{{route('admin.items')}}" class="nav-link">Cari Farmer</a></li>
                         <li class="nav-item"><a href="{{route('admin.memberstock')}}" class="nav-link">Member Stock</a></li>
+                        <li class="nav-item"><a href="{{route('admin.withdraw')}}" class="nav-link">Withdraw</a></li>
                     </ul>
                 </li>
             @endif

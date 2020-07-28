@@ -60391,33 +60391,33 @@ var map = {
 		"./resources/js/Pages/Admin/Game/Game.vue",
 		0,
 		8,
-		25
+		26
 	],
 	"./Admin/Game/Game.vue": [
 		"./resources/js/Pages/Admin/Game/Game.vue",
 		0,
 		8,
-		25
+		26
 	],
 	"./Admin/Game/TambahGame": [
 		"./resources/js/Pages/Admin/Game/TambahGame.vue",
-		16
+		17
 	],
 	"./Admin/Game/TambahGame.vue": [
 		"./resources/js/Pages/Admin/Game/TambahGame.vue",
-		16
+		17
 	],
 	"./Admin/Items/Items": [
 		"./resources/js/Pages/Admin/Items/Items.vue",
 		0,
 		8,
-		21
+		22
 	],
 	"./Admin/Items/Items.vue": [
 		"./resources/js/Pages/Admin/Items/Items.vue",
 		0,
 		8,
-		21
+		22
 	],
 	"./Admin/Items/ItemsEdit": [
 		"./resources/js/Pages/Admin/Items/ItemsEdit.vue",
@@ -60431,83 +60431,95 @@ var map = {
 		"./resources/js/Pages/Admin/MemberStock/MemberStock.vue",
 		0,
 		8,
-		30
+		31
 	],
 	"./Admin/MemberStock/MemberStock.vue": [
 		"./resources/js/Pages/Admin/MemberStock/MemberStock.vue",
 		0,
 		8,
-		30
+		31
 	],
 	"./Admin/Order/Order": [
 		"./resources/js/Pages/Admin/Order/Order.vue",
 		0,
 		8,
-		26
+		27
 	],
 	"./Admin/Order/Order.vue": [
 		"./resources/js/Pages/Admin/Order/Order.vue",
 		0,
 		8,
-		26
+		27
 	],
 	"./Admin/Order/OrderEdit": [
 		"./resources/js/Pages/Admin/Order/OrderEdit.vue",
-		18
+		19
 	],
 	"./Admin/Order/OrderEdit.vue": [
 		"./resources/js/Pages/Admin/Order/OrderEdit.vue",
-		18
+		19
 	],
 	"./Admin/Server/Server": [
 		"./resources/js/Pages/Admin/Server/Server.vue",
 		0,
 		8,
-		27
+		28
 	],
 	"./Admin/Server/Server.vue": [
 		"./resources/js/Pages/Admin/Server/Server.vue",
 		0,
 		8,
-		27
+		28
 	],
 	"./Admin/Server/TambahServer": [
 		"./resources/js/Pages/Admin/Server/TambahServer.vue",
-		19
+		20
 	],
 	"./Admin/Server/TambahServer.vue": [
 		"./resources/js/Pages/Admin/Server/TambahServer.vue",
-		19
+		20
 	],
 	"./Admin/TradeMode/TambahTradeMode": [
 		"./resources/js/Pages/Admin/TradeMode/TambahTradeMode.vue",
-		20
+		21
 	],
 	"./Admin/TradeMode/TambahTradeMode.vue": [
 		"./resources/js/Pages/Admin/TradeMode/TambahTradeMode.vue",
-		20
+		21
 	],
 	"./Admin/TradeMode/TradeMode": [
 		"./resources/js/Pages/Admin/TradeMode/TradeMode.vue",
 		0,
 		8,
-		28
+		29
 	],
 	"./Admin/TradeMode/TradeMode.vue": [
 		"./resources/js/Pages/Admin/TradeMode/TradeMode.vue",
 		0,
 		8,
-		28
+		29
+	],
+	"./Admin/Withdraw/Withdraw": [
+		"./resources/js/Pages/Admin/Withdraw/Withdraw.vue",
+		0,
+		8,
+		7
+	],
+	"./Admin/Withdraw/Withdraw.vue": [
+		"./resources/js/Pages/Admin/Withdraw/Withdraw.vue",
+		0,
+		8,
+		7
 	],
 	"./Depan/Depan": [
 		"./resources/js/Pages/Depan/Depan.vue",
 		0,
-		24
+		25
 	],
 	"./Depan/Depan.vue": [
 		"./resources/js/Pages/Depan/Depan.vue",
 		0,
-		24
+		25
 	],
 	"./User/Auth/Login": [
 		"./resources/js/Pages/User/Auth/Login.vue",
@@ -60537,25 +60549,25 @@ var map = {
 		"./resources/js/Pages/User/History/History.vue",
 		0,
 		8,
-		29
+		30
 	],
 	"./User/History/History.vue": [
 		"./resources/js/Pages/User/History/History.vue",
 		0,
 		8,
-		29
+		30
 	],
 	"./User/MemberStock/MemberStock": [
 		"./resources/js/Pages/User/MemberStock/MemberStock.vue",
 		0,
 		8,
-		22
+		23
 	],
 	"./User/MemberStock/MemberStock.vue": [
 		"./resources/js/Pages/User/MemberStock/MemberStock.vue",
 		0,
 		8,
-		22
+		23
 	],
 	"./User/MemberStock/MemberStockAdd": [
 		"./resources/js/Pages/User/MemberStock/MemberStockAdd.vue",
@@ -60587,11 +60599,11 @@ var map = {
 	],
 	"./User/Withdraw/Withdraw": [
 		"./resources/js/Pages/User/Withdraw/Withdraw.vue",
-		7
+		15
 	],
 	"./User/Withdraw/Withdraw.vue": [
 		"./resources/js/Pages/User/Withdraw/Withdraw.vue",
-		7
+		15
 	]
 };
 function webpackAsyncContext(req) {
@@ -60675,8 +60687,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.prototype.$route = function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/bintangputra/Documents/Project/CBT/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/bintangputra/Documents/Project/CBT/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/chaostix/Documents/Project/GoldMaster/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/chaostix/Documents/Project/GoldMaster/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -48,6 +48,17 @@ class HistoryController extends Controller
         return redirect()->back();
     }
 
+    public function uploadFoto1(Request $request)
+    {
+        $data = $request->all();
+        $file = $request->file('photo');
+        $tujuan_upload = 'data_file/' . Session::get('id_user');
+        $name = $file->getClientOriginalName();
+        $file->move($tujuan_upload,$file->getClientOriginalName());
+        $do = (new Order())->updateRaw($data['id_order'], ['file' => $tujuan_upload . '/' . $file->getClientOriginalName()]);
+        return redirect()->back();
+    }
+
     public function cancel($id)
     {
         $do = (new Order())->cancel($id);

@@ -52,6 +52,7 @@ Route::group([
     {
         Route::get('list', 'OrderController@index')->name('admin.order');
         Route::post('update', 'OrderController@update')->name('admin.order.update');
+        Route::post('delete/{id}', 'OrderController@delete')->name('admin.order.delete');
     });
 
     Route::group([
@@ -69,6 +70,13 @@ Route::group([
     {
         Route::get('list', 'MemberStockController@index')->name('admin.memberstock');
         Route::post('delete/{id}', 'MemberStockController@delete')->name('admin.memberstock.delete');
+    });
+
+    Route::group([
+        'prefix' => 'withdraw'
+    ], function ()
+    {
+        Route::get('list', 'WithdrawController@index')->name('admin.withdraw');
     });
 
 
