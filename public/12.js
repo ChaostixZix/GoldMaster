@@ -307,7 +307,7 @@ var render = function() {
                         _vm._v(" "),
                         _c("div", { staticClass: "invalid-feedback" })
                       ]),
-                      _vm._v(" "),
+                      _vm._v("\n                    p            "),
                       _c("div", { staticClass: "form-group" }, [
                         _c("label", { attrs: { for: "email" } }, [
                           _vm._v("Email")

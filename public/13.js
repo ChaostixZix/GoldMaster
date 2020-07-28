@@ -190,10 +190,10 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c(
-                  "a",
+                  "inertia-link",
                   {
                     staticClass: "btn btn-primary btn-lg btn-icon icon-left",
-                    attrs: { href: "#" }
+                    attrs: { href: _vm.$route("user.memberstock") }
                   },
                   [_c("i", { staticClass: "fa fa-box-open" }), _vm._v(" Stock")]
                 )

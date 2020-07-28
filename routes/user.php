@@ -41,6 +41,12 @@ Route::group([
         {
             Route::get('', 'SellController@index')->name('user.sell');
         });
+        Route::group([
+            'prefix' => 'withdraw'
+        ], function ()
+        {
+            Route::get('', 'WithdrawController@index')->name('user.withdraw');
+        });
 
         Route::group([
             'prefix' => 'memberstock'

@@ -1,5 +1,4 @@
 <template>
-
     <App topnav="Stocks">
         <div class="row">
             <Messages></Messages>
