@@ -110,6 +110,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Register",
@@ -326,34 +338,87 @@ var render = function() {
                         _c("div", { staticClass: "invalid-feedback" })
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", { attrs: { for: "telp" } }, [
-                          _vm._v("Phone Number (Whatsapp)")
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "form-group col-6" }, [
+                          _c("label", { attrs: { for: "contacttype" } }, [
+                            _vm._v("Contact Type")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.input.contacttype,
+                                  expression: "input.contacttype"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { id: "contacttype" },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.input,
+                                    "contacttype",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c("option", [_vm._v("Skype")]),
+                              _vm._v(" "),
+                              _c("option", [_vm._v("Discord")]),
+                              _vm._v(" "),
+                              _c("option", [_vm._v("Telegram")]),
+                              _vm._v(" "),
+                              _c("option", [_vm._v("WhatSapp")]),
+                              _vm._v(" "),
+                              _c("option", [_vm._v("Facebook")])
+                            ]
+                          )
                         ]),
                         _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.input.telp,
-                              expression: "input.telp"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { id: "telp", type: "number" },
-                          domProps: { value: _vm.input.telp },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                        _c("div", { staticClass: "form-group col-6" }, [
+                          _c("label", { attrs: { for: "telp" } }, [
+                            _vm._v("Contact")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.input.telp,
+                                expression: "input.telp"
                               }
-                              _vm.$set(_vm.input, "telp", $event.target.value)
+                            ],
+                            staticClass: "form-control",
+                            attrs: { id: "telp", type: "text" },
+                            domProps: { value: _vm.input.telp },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(_vm.input, "telp", $event.target.value)
+                              }
                             }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "invalid-feedback" })
+                          })
+                        ])
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "row" }, [

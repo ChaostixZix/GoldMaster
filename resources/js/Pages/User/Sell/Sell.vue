@@ -21,18 +21,18 @@
                                                    :sortOrders="sortOrders" @sort="sortBy">
                                             <tbody>
                                             <tr v-for="p in paginated" role="row" class="odd">
-                                                <td>{{ p.server }}</td>
                                                 <td>{{ p.kategori }}</td>
+                                                <td>{{ p.server }}</td>
+                                                <td>{{ p.pengiriman }}</td>
                                                 <td>
-                                                    Rp. {{parseFloat($page.flash.idrrate)*parseFloat(p.dollar)}}/G
+                                                    {{ p.butuh }}G
                                                 </td>
                                                 <td>
                                                     $ {{ p.dollar }}/G
                                                 </td>
                                                 <td>
-                                                    {{ p.butuh }}G
+                                                    Rp. {{parseFloat($page.flash.idrrate)*parseFloat(p.dollar)}}/G
                                                 </td>
-                                                <td>{{ p.pengiriman }}</td>
                                                 <td>
                                                     <button @click="sell(p)"
                                                         class="btn btn-sm btn-warning">
@@ -85,12 +85,12 @@
         data() {
             let sortOrders = {};
             let columns = [
-                {width: '10%', label: 'Server'},
-                {width: '33%', label: 'Game'},
-                {width: '15%', label: 'IDR Price'},
-                {width: '15%', label: 'USD Price'},
+                {width: '25%', label: 'Game'},
+                {width: '20%', label: 'Server'},
+                {width: '15%', label: 'Trade Method'},
                 {width: '15%', label: 'Stock Needed'},
-                {width: '33%', label: 'Trade Mode'},
+                {width: '10%', label: 'USD Price'},
+                {width: '15%', label: 'IDR Price'},
                 {width: '33%', label: 'Action'},
             ];
             columns.forEach((column) => {

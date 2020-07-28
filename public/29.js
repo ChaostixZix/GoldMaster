@@ -163,6 +163,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -624,15 +627,19 @@ var render = function() {
                 _vm._l(_vm.paginated, function(p) {
                   return _c("li", { staticClass: "media" }, [
                     _c("div", { staticClass: "media-body" }, [
-                      p.status_o === "pending"
+                      p.file !== null
+                        ? _c("div", { staticClass: "media-right" }, [
+                            _c("div", { staticClass: "text-info" }, [
+                              _vm._v("Pending Approval")
+                            ])
+                          ])
+                        : p.status_o === "pending"
                         ? _c("div", { staticClass: "media-right" }, [
                             _c("div", { staticClass: "text-warning" }, [
                               _vm._v("Pending")
                             ])
                           ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      p.status_o === "aktif"
+                        : p.status_o === "aktif"
                         ? _c("div", { staticClass: "media-right" }, [
                             _c("div", { staticClass: "text-primary" }, [
                               _vm._v("Active")
