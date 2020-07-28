@@ -110,10 +110,13 @@
                         <ul class="list-unstyled list-unstyled-border list-unstyled-noborder">
                             <li v-for="p in paginated" class="media">
                                 <div class="media-body">
-                                    <div v-if="p.status_o === 'pending'" class="media-right">
+                                    <div v-if="p.file !== null" class="media-right">
+                                        <div class="text-info">Pending Approval</div>
+                                    </div>
+                                    <div v-else-if="p.status_o === 'pending'" class="media-right">
                                         <div class="text-warning">Pending</div>
                                     </div>
-                                    <div v-if="p.status_o === 'aktif'" class="media-right">
+                                    <div v-else-if="p.status_o === 'aktif'" class="media-right">
                                         <div class="text-primary">Active</div>
                                     </div>
                                     <div class="media-title mb-1">Order #{{p.id_order}} (${{p.price}})</div>

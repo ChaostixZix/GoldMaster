@@ -33,10 +33,20 @@
                                         <div class="invalid-feedback">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="telp">Phone Number (Whatsapp)</label>
-                                        <input id="telp" type="number" class="form-control" v-model="input.telp">
-                                        <div class="invalid-feedback">
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                            <label for="contacttype">Contact Type</label>
+                                            <select id="contacttype" class="form-control" v-model="input.contacttype">
+                                                <option>Skype</option>
+                                                <option>Discord</option>
+                                                <option>Telegram</option>
+                                                <option>WhatSapp</option>
+                                                <option>Facebook</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="telp">Contact</label>
+                                            <input id="telp" type="text" class="form-control" v-model="input.telp">
                                         </div>
                                     </div>
 
@@ -64,7 +74,8 @@
                                         <label>Country</label>
                                         <div class="selectric-wrapper selectric-form-control selectric-selectric">
                                             <div class="selectric-hide-select">
-                                                <select v-model="input.negara" class="form-control selectric" tabindex="-1">
+                                                <select v-model="input.negara" class="form-control selectric"
+                                                        tabindex="-1">
                                                     <option>Indonesia</option>
                                                     <option>Palestine</option>
                                                     <option>Syria</option>
@@ -84,7 +95,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button @click="register" type="button" class="btn btn-primary btn-lg btn-block">
+                                        <button @click="register" type="button"
+                                                class="btn btn-primary btn-lg btn-block">
                                             Register
                                         </button>
                                     </div>
@@ -104,26 +116,22 @@
     export default {
         name: "Register",
         components: {App},
-        data(){
-            return{
+        data() {
+            return {
                 passwordconfirm: '',
-                input: {
-
-                }
+                input: {}
             }
         },
         methods: {
-            register()
-            {
-                if(this.input.password === this.passwordconfirm)
-                {
+            register() {
+                if (this.input.password === this.passwordconfirm) {
                     this.$inertia.post(this.$route('user.auth.register'), this.input, {
                         preserveState: false,
                         preserveScroll: true,
                         replace: true
                     })
                     // this.$refs['form'].submit()
-                }else{
+                } else {
                     alert('Password does not match')
                 }
             }
