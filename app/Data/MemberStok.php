@@ -44,6 +44,16 @@ class MemberStok extends Model
         ])->get();
     }
 
+    public function ubah($id, array $update)
+    {
+        return $this->db()->where('id_stock', $id)->update($update);
+    }
+
+    public function insertRaw(array $insert)
+    {
+        return $this->db()->insert($insert);
+    }
+
     public function hapus($id)
     {
         return $this->db()->where('id_stock', $id)->delete();
