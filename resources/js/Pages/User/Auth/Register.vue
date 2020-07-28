@@ -27,7 +27,7 @@
                                         <div class="invalid-feedback">
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                        p            <div class="form-group">
                                         <label for="email">Email</label>
                                         <input id="email" type="email" class="form-control" v-model="input.email">
                                         <div class="invalid-feedback">

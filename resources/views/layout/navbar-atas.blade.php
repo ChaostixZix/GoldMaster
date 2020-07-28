@@ -246,9 +246,9 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                                     <div class="dropdown-title">Balance: ${{\Illuminate\Support\Facades\Session::get('saldo')}}</div>
-                    {{--                <a href="features-profile.html" class="dropdown-item has-icon">--}}
-                    {{--                    <i class="far fa-user"></i> Profile--}}
-                    {{--                </a>--}}
+                                    <a href="{{route('user.withdraw')}}" class="dropdown-item has-icon">
+                                        <i class="fa fa-dollar-sign"></i> Withdraw
+                                    </a>
                     {{--                <a href="features-activities.html" class="dropdown-item has-icon">--}}
                     {{--                    <i class="fas fa-bolt"></i> Activities--}}
                     {{--                </a>--}}

@@ -60584,6 +60584,14 @@ var map = {
 	"./User/Sell/SellNow.vue": [
 		"./resources/js/Pages/User/Sell/SellNow.vue",
 		14
+	],
+	"./User/Withdraw/Withdraw": [
+		"./resources/js/Pages/User/Withdraw/Withdraw.vue",
+		7
+	],
+	"./User/Withdraw/Withdraw.vue": [
+		"./resources/js/Pages/User/Withdraw/Withdraw.vue",
+		7
 	]
 };
 function webpackAsyncContext(req) {
