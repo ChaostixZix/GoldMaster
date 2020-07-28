@@ -32,11 +32,15 @@
                                                     <div v-if="p.status_o === 'done'" class="badge badge-success">Done</div>
                                                 </td>
                                                 <td>
+                                                    <a download="" :href="$route('depan.index') + p.file" v-if="p.status_o !== 'done'"
+                                                            class="btn btn-sm btn-primary">
+                                                        <i class="fa fa-download"></i>
+                                                    </a>
                                                     <button v-if="p.status_o !== 'done'" v-on:click="update(p)"
                                                             class="btn btn-sm btn-primary">
                                                         <i class="fa fa-edit"></i>
                                                     </button>
-                                                    <button v-if="p.status_o !== 'done'"
+                                                    <button @click="hapus(p.id_order)" v-if="p.status_o !== 'done'"
                                                             class="btn btn-sm btn-danger">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
@@ -119,6 +123,16 @@
             }
         },
         methods: {
+            hapus(id)
+            {
+                this.$inertia.post(this.$route('admin.order.delete', {id: id})).then(() => {
+                    this.$inertia.reload({
+                        preserveScroll: true,
+                        preserveState: false,
+                        only: ['order']
+                    })
+                })
+            },
             update(data)
             {
                 this.edit = true;

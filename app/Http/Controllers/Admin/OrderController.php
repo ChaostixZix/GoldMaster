@@ -36,4 +36,10 @@ class OrderController extends Controller
         return redirect()->back();
     }
 
+    public function delete($id)
+    {
+        $do = (new Order())->cancel($id);
+        return redirect()->back();
+    }
+
 }

@@ -32,7 +32,7 @@ Route::group([
            Route::get('', 'HistoryController@index')->name('user.history');
            Route::post('cancel/{id}', 'HistoryController@cancel')->name('user.history.cancel');
            Route::post('add', 'HistoryController@addOrder')->name('user.history.addorder');
-           Route::post('uploadFoto', 'HistoryController@uploadFoto')->name('user.history.uploadFoto');
+           Route::post('uploadFoto', 'HistoryController@uploadFoto1')->name('user.history.uploadFoto');
        });
 
         Route::group([
@@ -46,6 +46,7 @@ Route::group([
         ], function ()
         {
             Route::get('', 'WithdrawController@index')->name('user.withdraw');
+            Route::post('request', 'WithdrawController@request')->name('user.withdraw.request');
         });
 
         Route::group([

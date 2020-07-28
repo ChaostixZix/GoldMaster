@@ -14,7 +14,9 @@ class Withdraw extends Model
 
     public function getAll()
     {
-        return $this->db()->get();
+        return $this->db()
+            ->leftJoin('t_users', 't_users.id_user', '=', 'withdraw.id_user')
+            ->get();
     }
 
     public function getByIdUser($id_user)

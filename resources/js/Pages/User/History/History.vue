@@ -78,7 +78,10 @@
                     </div>
                 </b-modal>
                 <b-modal hide-footer ref="fileUpload" title="Upload File">
-                    <div class="invoice">
+                    <div v-if="uploading">
+                        Uploading... Dont close!!
+                    </div>
+                    <div v-else class="invoice">
                         <div class="invoice-print">
                             <div class="row">
                                 <div class="col-lg-12">
@@ -179,6 +182,7 @@
                 sortOrders[column.name] = -1;
             });
             return {
+                uploading: false,
                 photo: null,
                 tambah: false,
                 datadetails: {},
@@ -202,29 +206,39 @@
             }
         },
         methods: {
-            selectFile(e) {
-                let files = e.target.files || e.dataTransfer.files;
-                if (!files.length)
-                    return;
-                this.createImage(files[0]);
+            selectFile(event) {
+                // `files` is always an array because the file input may be in multiple mode
+                this.photo = event.target.files[0];
             },
-            createImage(file){
-                let reader = new FileReader();
-                let vm = this;
-                reader.onload = (e) => {
-                    vm.photo = e.target.result;
-                }
-                reader.readAsDataURL(file);
-            },
+            // selectFile(e) {
+            //     let files = e.target.files || e.dataTransfer.files;
+            //     if (!files.length)
+            //         return;
+            //     this.createImage(files[0]);
+            // },
+            // createImage(file){
+            //     let reader = new FileReader();
+            //     let vm = this;
+            //     reader.onload = (e) => {
+            //         vm.photo = e.target.result;
+            //     }
+            //     reader.readAsDataURL(file);
+            // },
             submitFile() {
-                let data = {
-                    id_order: this.datadetails.id_order,
-                    file: this.photo
-                };
+                // let data = {
+                //     id_order: this.datadetails.id_order,
+                //     file: this.photo
+                // };
+                const data = new FormData();
+                data.append('photo', this.photo);
+                data.append('id_order', this.datadetails.id_order);
+                this.uploading = true;
                 this.$inertia.post(this.$route('user.history.uploadFoto'), data, {
                     preserveState: false,
                     preserveScroll: true,
                     only: ['orders']
+                }).then(() => {
+                    this.uploading = false;
                 });
             },
             cancel(id) {
