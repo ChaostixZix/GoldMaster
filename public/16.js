@@ -166,6 +166,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -206,6 +209,7 @@ __webpack_require__.r(__webpack_exports__);
       sortOrders[column.name] = -1;
     });
     return {
+      uploading: false,
       photo: null,
       tambah: false,
       datadetails: {},
@@ -229,30 +233,41 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    selectFile: function selectFile(e) {
-      var files = e.target.files || e.dataTransfer.files;
-      if (!files.length) return;
-      this.createImage(files[0]);
+    selectFile: function selectFile(event) {
+      // `files` is always an array because the file input may be in multiple mode
+      this.photo = event.target.files[0];
     },
-    createImage: function createImage(file) {
-      var reader = new FileReader();
-      var vm = this;
-
-      reader.onload = function (e) {
-        vm.photo = e.target.result;
-      };
-
-      reader.readAsDataURL(file);
-    },
+    // selectFile(e) {
+    //     let files = e.target.files || e.dataTransfer.files;
+    //     if (!files.length)
+    //         return;
+    //     this.createImage(files[0]);
+    // },
+    // createImage(file){
+    //     let reader = new FileReader();
+    //     let vm = this;
+    //     reader.onload = (e) => {
+    //         vm.photo = e.target.result;
+    //     }
+    //     reader.readAsDataURL(file);
+    // },
     submitFile: function submitFile() {
-      var data = {
-        id_order: this.datadetails.id_order,
-        file: this.photo
-      };
+      var _this = this;
+
+      // let data = {
+      //     id_order: this.datadetails.id_order,
+      //     file: this.photo
+      // };
+      var data = new FormData();
+      data.append('photo', this.photo);
+      data.append('id_order', this.datadetails.id_order);
+      this.uploading = true;
       this.$inertia.post(this.$route('user.history.uploadFoto'), data, {
         preserveState: false,
         preserveScroll: true,
         only: ['orders']
+      }).then(function () {
+        _this.uploading = false;
       });
     },
     cancel: function cancel(id) {
@@ -303,14 +318,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     filteredProjects: function filteredProjects() {
-      var _this = this;
+      var _this2 = this;
 
       var data = this.data;
 
       if (this.search) {
         data = data.filter(function (row) {
           return Object.keys(row).some(function (key) {
-            return String(row[key]).toLowerCase().indexOf(_this.search.toLowerCase()) > -1;
+            return String(row[key]).toLowerCase().indexOf(_this2.search.toLowerCase()) > -1;
           });
         });
       }
@@ -320,13 +335,13 @@ __webpack_require__.r(__webpack_exports__);
 
       if (sortKey) {
         data = data.slice().sort(function (a, b) {
-          var index = _this.getIndex(_this.columns, 'name', sortKey) + 1;
+          var index = _this2.getIndex(_this2.columns, 'name', sortKey) + 1;
           a = String(a[sortKey]).toLowerCase();
           b = String(b[sortKey]).toLowerCase();
 
-          if (_this.columns[index].type && _this.columns[index].type === 'date') {
+          if (_this2.columns[index].type && _this2.columns[index].type === 'date') {
             return (a === b ? 0 : new Date(a).getTime() > new Date(b).getTime() ? 1 : -1) * order;
-          } else if (_this.columns[index].type && _this.columns[index].type === 'number') {
+          } else if (_this2.columns[index].type && _this2.columns[index].type === 'number') {
             return (+a === +b ? 0 : +a > +b ? 1 : -1) * order;
           } else {
             return (a === b ? 0 : a > b ? 1 : -1) * order;
@@ -566,45 +581,60 @@ var render = function() {
                 attrs: { "hide-footer": "", title: "Upload File" }
               },
               [
-                _c("div", { staticClass: "invoice" }, [
-                  _c("div", { staticClass: "invoice-print" }, [
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-lg-12" }, [
-                        _c("div", { staticClass: "invoice-title" }, [
-                          _c("div", { staticClass: "invoice-number" }, [
-                            _vm._v("Order #" + _vm._s(_vm.datadetails.id_order))
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("hr"),
-                        _vm._v(" "),
-                        _c("input", {
-                          staticClass: "form-control-file",
-                          attrs: { type: "file" },
-                          on: { change: _vm.selectFile }
-                        })
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("hr"),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "text-md-right" }, [
-                    _c("div", { staticClass: "float-lg-left mb-lg-0 mb-3" }, [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-primary btn-icon icon-left",
-                          on: { click: _vm.submitFile }
-                        },
-                        [
-                          _c("i", { staticClass: "fa fa-cloud" }),
-                          _vm._v(" Upload File\n                            ")
-                        ]
+                _vm.uploading
+                  ? _c("div", [
+                      _vm._v(
+                        "\n                    Uploading... Dont close!!\n                "
                       )
                     ])
-                  ])
-                ])
+                  : _c("div", { staticClass: "invoice" }, [
+                      _c("div", { staticClass: "invoice-print" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-lg-12" }, [
+                            _c("div", { staticClass: "invoice-title" }, [
+                              _c("div", { staticClass: "invoice-number" }, [
+                                _vm._v(
+                                  "Order #" + _vm._s(_vm.datadetails.id_order)
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("hr"),
+                            _vm._v(" "),
+                            _c("input", {
+                              staticClass: "form-control-file",
+                              attrs: { type: "file" },
+                              on: { change: _vm.selectFile }
+                            })
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("hr"),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "text-md-right" }, [
+                        _c(
+                          "div",
+                          { staticClass: "float-lg-left mb-lg-0 mb-3" },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "btn btn-primary btn-icon icon-left",
+                                on: { click: _vm.submitFile }
+                              },
+                              [
+                                _c("i", { staticClass: "fa fa-cloud" }),
+                                _vm._v(
+                                  " Upload File\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ])
+                    ])
               ]
             )
           ],

@@ -60391,13 +60391,13 @@ var map = {
 		"./resources/js/Pages/Admin/Game/Game.vue",
 		0,
 		8,
-		26
+		27
 	],
 	"./Admin/Game/Game.vue": [
 		"./resources/js/Pages/Admin/Game/Game.vue",
 		0,
 		8,
-		26
+		27
 	],
 	"./Admin/Game/TambahGame": [
 		"./resources/js/Pages/Admin/Game/TambahGame.vue",
@@ -60411,13 +60411,13 @@ var map = {
 		"./resources/js/Pages/Admin/Items/Items.vue",
 		0,
 		8,
-		22
+		23
 	],
 	"./Admin/Items/Items.vue": [
 		"./resources/js/Pages/Admin/Items/Items.vue",
 		0,
 		8,
-		22
+		23
 	],
 	"./Admin/Items/ItemsEdit": [
 		"./resources/js/Pages/Admin/Items/ItemsEdit.vue",
@@ -60431,25 +60431,25 @@ var map = {
 		"./resources/js/Pages/Admin/MemberStock/MemberStock.vue",
 		0,
 		8,
-		31
+		32
 	],
 	"./Admin/MemberStock/MemberStock.vue": [
 		"./resources/js/Pages/Admin/MemberStock/MemberStock.vue",
 		0,
 		8,
-		31
+		32
 	],
 	"./Admin/Order/Order": [
 		"./resources/js/Pages/Admin/Order/Order.vue",
 		0,
 		8,
-		27
+		28
 	],
 	"./Admin/Order/Order.vue": [
 		"./resources/js/Pages/Admin/Order/Order.vue",
 		0,
 		8,
-		27
+		28
 	],
 	"./Admin/Order/OrderEdit": [
 		"./resources/js/Pages/Admin/Order/OrderEdit.vue",
@@ -60463,13 +60463,13 @@ var map = {
 		"./resources/js/Pages/Admin/Server/Server.vue",
 		0,
 		8,
-		28
+		29
 	],
 	"./Admin/Server/Server.vue": [
 		"./resources/js/Pages/Admin/Server/Server.vue",
 		0,
 		8,
-		28
+		29
 	],
 	"./Admin/Server/TambahServer": [
 		"./resources/js/Pages/Admin/Server/TambahServer.vue",
@@ -60491,35 +60491,35 @@ var map = {
 		"./resources/js/Pages/Admin/TradeMode/TradeMode.vue",
 		0,
 		8,
-		29
+		30
 	],
 	"./Admin/TradeMode/TradeMode.vue": [
 		"./resources/js/Pages/Admin/TradeMode/TradeMode.vue",
 		0,
 		8,
-		29
+		30
 	],
 	"./Admin/Withdraw/Withdraw": [
 		"./resources/js/Pages/Admin/Withdraw/Withdraw.vue",
 		0,
 		8,
-		7
+		33
 	],
 	"./Admin/Withdraw/Withdraw.vue": [
 		"./resources/js/Pages/Admin/Withdraw/Withdraw.vue",
 		0,
 		8,
-		7
+		33
 	],
 	"./Depan/Depan": [
 		"./resources/js/Pages/Depan/Depan.vue",
 		0,
-		25
+		26
 	],
 	"./Depan/Depan.vue": [
 		"./resources/js/Pages/Depan/Depan.vue",
 		0,
-		25
+		26
 	],
 	"./User/Auth/Login": [
 		"./resources/js/Pages/User/Auth/Login.vue",
@@ -60549,25 +60549,25 @@ var map = {
 		"./resources/js/Pages/User/History/History.vue",
 		0,
 		8,
-		30
+		31
 	],
 	"./User/History/History.vue": [
 		"./resources/js/Pages/User/History/History.vue",
 		0,
 		8,
-		30
+		31
 	],
 	"./User/MemberStock/MemberStock": [
 		"./resources/js/Pages/User/MemberStock/MemberStock.vue",
 		0,
 		8,
-		23
+		24
 	],
 	"./User/MemberStock/MemberStock.vue": [
 		"./resources/js/Pages/User/MemberStock/MemberStock.vue",
 		0,
 		8,
-		23
+		24
 	],
 	"./User/MemberStock/MemberStockAdd": [
 		"./resources/js/Pages/User/MemberStock/MemberStockAdd.vue",
