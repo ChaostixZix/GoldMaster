@@ -9,6 +9,7 @@
                     <div class="card-header">
                         <h4>Welcome</h4>
                     </div>
+                    
                     <div class="card-body">
                         <p>Welcome to GoldMaster Website.. We provide place to sell online games gold</p>
                     </div>

@@ -32,10 +32,10 @@
                                                     <div v-if="p.status_o === 'done'" class="badge badge-success">Done</div>
                                                 </td>
                                                 <td>
-                                                    <a download="" :href="$route('depan.index') + p.file" v-if="p.status_o !== 'done'"
+                                                    <button v-if="p.status_o !== 'done'" @click="download(p)"
                                                             class="btn btn-sm btn-primary">
                                                         <i class="fa fa-download"></i>
-                                                    </a>
+                                                    </button>
                                                     <button v-if="p.status_o !== 'done'" v-on:click="update(p)"
                                                             class="btn btn-sm btn-primary">
                                                         <i class="fa fa-edit"></i>
@@ -68,9 +68,36 @@
                 <OrderEdit v-if="edit" :data="dataedit"></OrderEdit>
             </div>
         </div>
+        <b-modal hide-footer ref="downloadFile" title="Download File">
+            <div class="invoice">
+                <div class="invoice-print">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="invoice-title">
+                                <div class="invoice-number">Order #{{order_num}}</div>
+                            </div>
+                            <hr>
+                            <p v-for="p in photo"><a download="" :href="$route('depan.index') + p">{{p}}</a></p>
+<!--                            <input @change="selectFile" class="form-control-file" type="file">-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </b-modal>
     </App>
 </template>
-
+<style>
+    .modal-backdrop {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1040;
+        background-color: #000;
+        opacity: 0.3;
+    }
+</style>
 <script>
     import Datatable from "../../../Utils/Shared/Datatable";
     import Pagination from "../../../Utils/Shared/Pagination";
@@ -103,6 +130,8 @@
             return {
                 edit: false,
                 dataedit: {},
+                photo: [],
+                order_num: '',
                 columns: columns,
                 sortKey: 'deadline',
                 sortOrders: sortOrders,
@@ -123,6 +152,12 @@
             }
         },
         methods: {
+            download(data)
+            {
+                this.photo = JSON.parse(data.file)
+                this.order_num = data.id_order;
+                this.$refs.downloadFile.show();
+            },
             hapus(id)
             {
                 this.$inertia.post(this.$route('admin.order.delete', {id: id})).then(() => {

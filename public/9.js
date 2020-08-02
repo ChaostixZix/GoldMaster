@@ -83,6 +83,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -152,6 +156,19 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    hapus: function hapus(id) {
+      var _this = this;
+
+      this.$inertia.post(this.$route('admin.order.delete', {
+        id: id
+      })).then(function () {
+        _this.$inertia.reload({
+          preserveScroll: true,
+          preserveState: false,
+          only: ['order']
+        });
+      });
+    },
     update: function update(data) {
       this.edit = true;
       this.dataedit = data;
@@ -191,14 +208,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     filteredProjects: function filteredProjects() {
-      var _this = this;
+      var _this2 = this;
 
       var data = this.data;
 
       if (this.search) {
         data = data.filter(function (row) {
           return Object.keys(row).some(function (key) {
-            return String(row[key]).toLowerCase().indexOf(_this.search.toLowerCase()) > -1;
+            return String(row[key]).toLowerCase().indexOf(_this2.search.toLowerCase()) > -1;
           });
         });
       }
@@ -208,13 +225,13 @@ __webpack_require__.r(__webpack_exports__);
 
       if (sortKey) {
         data = data.slice().sort(function (a, b) {
-          var index = _this.getIndex(_this.columns, 'name', sortKey) + 1;
+          var index = _this2.getIndex(_this2.columns, 'name', sortKey) + 1;
           a = String(a[sortKey]).toLowerCase();
           b = String(b[sortKey]).toLowerCase();
 
-          if (_this.columns[index].type && _this.columns[index].type === 'date') {
+          if (_this2.columns[index].type && _this2.columns[index].type === 'date') {
             return (a === b ? 0 : new Date(a).getTime() > new Date(b).getTime() ? 1 : -1) * order;
-          } else if (_this.columns[index].type && _this.columns[index].type === 'number') {
+          } else if (_this2.columns[index].type && _this2.columns[index].type === 'number') {
             return (+a === +b ? 0 : +a > +b ? 1 : -1) * order;
           } else {
             return (a === b ? 0 : a > b ? 1 : -1) * order;
@@ -431,6 +448,27 @@ var render = function() {
                                       _c("td", [
                                         p.status_o !== "done"
                                           ? _c(
+                                              "a",
+                                              {
+                                                staticClass:
+                                                  "btn btn-sm btn-primary",
+                                                attrs: {
+                                                  download: "",
+                                                  href:
+                                                    _vm.$route("depan.index") +
+                                                    p.file
+                                                }
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass: "fa fa-download"
+                                                })
+                                              ]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        p.status_o !== "done"
+                                          ? _c(
                                               "button",
                                               {
                                                 staticClass:
@@ -454,7 +492,12 @@ var render = function() {
                                               "button",
                                               {
                                                 staticClass:
-                                                  "btn btn-sm btn-danger"
+                                                  "btn btn-sm btn-danger",
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.hapus(p.id_order)
+                                                  }
+                                                }
                                               },
                                               [
                                                 _c("i", {

@@ -53,12 +53,12 @@
                                                 {{datadetails.quantity}}G<br>
                                             </address>
                                         </div>
-                                        <!--                                        <div class="col-md-6 text-md-right">-->
-                                        <!--                                            <address>-->
-                                        <!--                                                <strong>Order Date:</strong><br>-->
-                                        <!--                                                {{datadetails.tgl_pesan}}<br><br>-->
-                                        <!--                                            </address>-->
-                                        <!--                                        </div>-->
+                                        <div class="col-md-6 text-md-right">
+                                            <address>
+                                                <strong>Price:</strong><br>
+                                                ${{datadetails.price}}<br><br>
+                                            </address>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +73,6 @@
                                         class="btn btn-danger btn-icon icon-left"><i class="fas fa-times"></i> Cancel
                                 </button>
                             </div>
-                            <!--                            <button class="btn btn-warning btn-icon icon-left"><i class="fas fa-print"></i> Print</button>-->
                         </div>
                     </div>
                 </b-modal>
@@ -89,6 +88,7 @@
                                         <div class="invoice-number">Order #{{datadetails.id_order}}</div>
                                     </div>
                                     <hr>
+                                    <p v-for="p in photo">{{p.name}}</p>
                                     <input @change="selectFile" class="form-control-file" type="file">
                                 </div>
                             </div>
@@ -183,7 +183,7 @@
             });
             return {
                 uploading: false,
-                photo: null,
+                photo: [],
                 tambah: false,
                 datadetails: {},
                 columns: columns,
@@ -207,8 +207,7 @@
         },
         methods: {
             selectFile(event) {
-                // `files` is always an array because the file input may be in multiple mode
-                this.photo = event.target.files[0];
+                this.photo.push(event.target.files[0]);
             },
             // selectFile(e) {
             //     let files = e.target.files || e.dataTransfer.files;
@@ -225,12 +224,10 @@
             //     reader.readAsDataURL(file);
             // },
             submitFile() {
-                // let data = {
-                //     id_order: this.datadetails.id_order,
-                //     file: this.photo
-                // };
                 const data = new FormData();
-                data.append('photo', this.photo);
+                this.photo.forEach(function (value, index) {
+                    data.append('photo[]', value);
+                })
                 data.append('id_order', this.datadetails.id_order);
                 this.uploading = true;
                 this.$inertia.post(this.$route('user.history.uploadFoto'), data, {

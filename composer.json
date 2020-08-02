@@ -18,7 +18,8 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
         "protoqol/prequel": "^1.22",
-        "tightenco/ziggy": "^0.9.4"
+        "tightenco/ziggy": "^0.9.4",
+      "ext-json": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

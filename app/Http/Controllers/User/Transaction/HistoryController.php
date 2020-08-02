@@ -15,8 +15,7 @@ class HistoryController extends Controller
     public function index()
     {
         return Inertia::render('User/History/History', [
-            'orders' => function()
-            {
+            'orders' => function () {
                 return (new Order())->getByUser(Session::get('id_user'));
             }
         ]);
@@ -35,15 +34,19 @@ class HistoryController extends Controller
     {
         $data = $request->all();
         $oldmask = umask(0);
-        $file = $data['file'];
-        $name = time().'.' . explode('/', explode(':', substr($file, 0, strpos($file, ';')))[1])[1];
-        $tujuan_upload = 'data_file/uploadfoto/' . $data['id_order'];
-        if (!file_exists($tujuan_upload)) {
-            mkdir($tujuan_upload, 0777, true);
-            umask($oldmask);
+        $files = $data['file'];
+
+        foreach ($files as $file) {
+            $name = time() . '.' . explode('/', explode(':', substr($file, 0, strpos($file, ';')))[1])[1];
+            $tujuan_upload = 'data_file/uploadfoto/' . $data['id_order'];
+            if (!file_exists($tujuan_upload)) {
+                mkdir($tujuan_upload, 0777, true);
+                umask($oldmask);
+            }
+            Image::make($file)->save($tujuan_upload . '/' . $name);
+            $data['file'][] = $tujuan_upload . '/' . $name;
         }
-        Image::make($file)->save($tujuan_upload . '/' . $name);
-        $data['file'] = $tujuan_upload . '/' . $name;
+        $data['file'] = json_decode($data['file']);
         $do = (new Order())->updateRaw($data['id_order'], $data);
         return redirect()->back();
     }
@@ -51,11 +54,16 @@ class HistoryController extends Controller
     public function uploadFoto1(Request $request)
     {
         $data = $request->all();
-        $file = $request->file('photo');
-        $tujuan_upload = 'data_file/' . Session::get('id_user');
-        $name = $file->getClientOriginalName();
-        $file->move($tujuan_upload,$file->getClientOriginalName());
-        $do = (new Order())->updateRaw($data['id_order'], ['file' => $tujuan_upload . '/' . $file->getClientOriginalName()]);
+
+        foreach($data['photo'] as $file)
+        {
+            $tujuan_upload = 'data_file/' . Session::get('id_user');
+            $name = $file->getClientOriginalName();
+            $file->move($tujuan_upload, $file->getClientOriginalName());
+            $datafile[] = $tujuan_upload . '/' . $file->getClientOriginalName();
+        }
+        $datafile = json_encode($datafile);
+        $do = (new Order())->updateRaw($data['id_order'], ['file' => $datafile]);
         return redirect()->back();
     }
 
