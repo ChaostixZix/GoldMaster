@@ -281,7 +281,15 @@ var render = function() {
                 "col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2"
             },
             [
-              _c("div", { staticClass: "login-brand" }),
+              _c("div", { staticClass: "login-brand" }, [
+                _c("img", {
+                  attrs: {
+                    src: this.$route("depan.index") + "logo.png",
+                    alt: "logo",
+                    width: "100"
+                  }
+                })
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "card card-primary" }, [
                 _c("div", { staticClass: "card-header" }, [
