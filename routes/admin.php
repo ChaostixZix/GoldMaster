@@ -79,5 +79,14 @@ Route::group([
         Route::get('list', 'WithdrawController@index')->name('admin.withdraw');
     });
 
+    Route::group([
+        'prefix' => 'usdrate'
+    ], function ()
+    {
+        Route::get('', 'USDRateController@index')->name('admin.usdrate');
+        Route::post('changeIdr', 'USDRateController@changeIdr')->name('admin.usdrate.changeIdr');
+    });
+
+
 
 });

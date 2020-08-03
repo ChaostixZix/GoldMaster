@@ -29,6 +29,7 @@
                         <li class="nav-item"><a href="{{route('admin.items')}}" class="nav-link">Cari Farmer</a></li>
                         <li class="nav-item"><a href="{{route('admin.memberstock')}}" class="nav-link">Member Stock</a></li>
                         <li class="nav-item"><a href="{{route('admin.withdraw')}}" class="nav-link">Withdraw</a></li>
+                        <li class="nav-item"><a href="{{route('admin.usdrate')}}" class="nav-link">USD Rate</a></li>
                     </ul>
                 </li>
             @endif
