@@ -8,6 +8,7 @@
                     <span>Home</span>
                 </a>
             </li>
+            @if(!\Illuminate\Support\Facades\Session::has('admin'))
             <li class="nav-item dropdown">
                 <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i
                         class="fa fa-cart-plus"></i><span>Transaction</span></a>
@@ -18,6 +19,7 @@
                     <li class="nav-item"><a href="{{ route('user.memberstock') }}" class="nav-link">Stocks</a></li>
                 </ul>
             </li>
+            @endif
             @if(\Illuminate\Support\Facades\Session::has('admin'))
                 <li class="nav-item dropdown">
                     <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i
@@ -29,7 +31,8 @@
                         <li class="nav-item"><a href="{{route('admin.trademode')}}" class="nav-link">Trade Mode</a></li>
                         <li class="nav-item"><a href="{{route('admin.order')}}" class="nav-link">Order</a></li>
                         <li class="nav-item"><a href="{{route('admin.items')}}" class="nav-link">Cari Farmer</a></li>
-                        <li class="nav-item"><a href="{{route('admin.memberstock')}}" class="nav-link">Member Stock</a></li>
+                        <li class="nav-item"><a href="{{route('admin.memberstock')}}" class="nav-link">Member Stock</a>
+                        </li>
                         <li class="nav-item"><a href="{{route('admin.withdraw')}}" class="nav-link">Withdraw</a></li>
                         <li class="nav-item"><a href="{{route('admin.usdrate')}}" class="nav-link">USD Rate</a></li>
                     </ul>
@@ -175,17 +178,6 @@
                     <div class="d-sm-none text-secondary d-lg-inline-block">Hi, Admin</div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    {{--                <div class="dropdown-title">Logged in 5 min ago</div>--}}
-                    {{--                <a href="features-profile.html" class="dropdown-item has-icon">--}}
-                    {{--                    <i class="far fa-user"></i> Profile--}}
-                    {{--                </a>--}}
-                    {{--                <a href="features-activities.html" class="dropdown-item has-icon">--}}
-                    {{--                    <i class="fas fa-bolt"></i> Activities--}}
-                    {{--                </a>--}}
-                    {{--                <a href="features-settings.html" class="dropdown-item has-icon">--}}
-                    {{--                    <i class="fas fa-cog"></i> Settings--}}
-                    {{--                </a>--}}
-                    {{--                <div class="dropdown-divider"></div>--}}
                     <a href="{{route('admin.auth.logout')}}" class="dropdown-item has-icon text-danger">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
@@ -205,21 +197,16 @@
                     <a href="{{route('user.withdraw')}}" class="dropdown-item has-icon">
                         <i class="fa fa-dollar-sign"></i> Withdraw
                     </a>
-                    {{--                <a href="features-activities.html" class="dropdown-item has-icon">--}}
-                    {{--                    <i class="fas fa-bolt"></i> Activities--}}
-                    {{--                </a>--}}
-                    {{--                <a href="features-settings.html" class="dropdown-item has-icon">--}}
-                    {{--                    <i class="fas fa-cog"></i> Settings--}}
-                    {{--                </a>--}}
-                    {{--                <div class="dropdown-divider"></div>--}}
                     <a href="{{route('user.auth.logout')}}" class="dropdown-item has-icon text-danger">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
                 </div>
             </li>
         @else
-            <a href="{{route('user.auth.loginPage')}}" class="btn btn-primary mr-2">Login</a>
-            <a href="{{route('user.auth.registerPage')}}" class="btn btn-primary mr-2">Sign Up</a>
+            @if(!\Illuminate\Support\Facades\Session::has('admin'))
+                <a href="{{route('user.auth.loginPage')}}" class="btn btn-primary mr-2">Login</a>
+                <a href="{{route('user.auth.registerPage')}}" class="btn btn-primary mr-2">Sign Up</a>
+            @endif
         @endif
     </ul>
 </nav>
