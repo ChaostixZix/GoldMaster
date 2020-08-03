@@ -73,7 +73,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       data: {
-        dollar: 0
+        dollar: 1
       }
     };
   },
@@ -81,6 +81,10 @@ __webpack_require__.r(__webpack_exports__);
     'data.dollar': function dataDollar() {
       if (this.data.dollar > this.$page.flash.saldo) {
         this.data.dollar = this.$page.flash.saldo;
+      }
+
+      if (this.data.dollar < 1) {
+        this.data.dollar = 1;
       }
     }
   },
@@ -237,19 +241,19 @@ var render = function() {
                     _c("td", [_vm._v("$" + _vm._s(r.dollar))]),
                     _vm._v(" "),
                     _c("td", [
-                      r.status === "pending"
+                      r.status_wd === "pending"
                         ? _c("div", { staticClass: "badge badge-warning" }, [
                             _vm._v("Pending")
                           ])
                         : _vm._e(),
                       _vm._v(" "),
-                      r.status === "proccess"
+                      r.status_wd === "process"
                         ? _c("div", { staticClass: "badge badge-primary" }, [
                             _vm._v("Process")
                           ])
                         : _vm._e(),
                       _vm._v(" "),
-                      r.status === "done"
+                      r.status_wd === "done"
                         ? _c("div", { staticClass: "badge badge-success" }, [
                             _vm._v("Done")
                           ])

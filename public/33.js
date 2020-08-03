@@ -245,7 +245,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("App", { attrs: { topnav: "List Order" } }, [
+  return _c("App", { attrs: { topnav: "List Member Stok" } }, [
     _c(
       "div",
       { staticClass: "row" },

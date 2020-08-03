@@ -25,6 +25,10 @@ class Withdraw extends Model
             ->leftJoin('t_users', 't_users.id_user', '=', 'withdraw.id_user')
             ->get();
     }
+    public function hapus($id)
+    {
+        return $this->db()->where('id', $id)->delete();
+    }
     public function updateRaw($id, array $update)
     {
         return $this->db()->where('id', $id)->update($update);

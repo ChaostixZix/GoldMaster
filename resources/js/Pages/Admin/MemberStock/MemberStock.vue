@@ -1,5 +1,5 @@
 <template>
-    <App topnav="List Order">
+    <App topnav="List Member Stok">
         <div class="row">
             <Messages></Messages>
             <div class="col-12">

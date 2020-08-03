@@ -78,6 +78,8 @@ Route::group([
     ], function ()
     {
         Route::get('list', 'WithdrawController@index')->name('admin.withdraw');
+        Route::post('update', 'WithdrawController@update')->name('admin.withdraw.update');
+        Route::post('delete/{id}', 'WithdrawController@delete')->name('admin.withdraw.delete');
     });
 
     Route::group([
