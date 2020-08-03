@@ -40,7 +40,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Depan",
@@ -164,7 +163,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "col-lg-9 col-12" }, [
         _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
+          _c("div", { staticClass: "card-header text-white bg-primary" }, [
             _c("h4", [_vm._v("Welcome")])
           ]),
           _vm._v(" "),
@@ -181,7 +180,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-lg-3 col-12" }, [
-        _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card card-primary" }, [
           _c("div", { staticClass: "card-body" }, [
             _c("img", {
               staticClass: "img-fluid",

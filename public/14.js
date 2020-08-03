@@ -175,7 +175,7 @@ var render = function() {
                   },
                   [
                     _c("i", { staticClass: "fa fa-file-invoice" }),
-                    _vm._v(" History")
+                    _vm._v(" My Order")
                   ]
                 ),
                 _vm._v(" "),
@@ -185,7 +185,10 @@ var render = function() {
                     staticClass: "btn btn-primary btn-lg btn-icon icon-left",
                     attrs: { href: _vm.$route("user.memberstock") }
                   },
-                  [_c("i", { staticClass: "fa fa-box-open" }), _vm._v(" Stock")]
+                  [
+                    _c("i", { staticClass: "fa fa-box-open" }),
+                    _vm._v(" My Stock")
+                  ]
                 )
               ],
               1

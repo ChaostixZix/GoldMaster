@@ -83,6 +83,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -103,20 +104,23 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     var sortOrders = {};
     var columns = [{
-      width: '10%',
+      width: '5%',
       label: '#'
     }, {
       width: '25%',
       label: 'Email'
     }, {
-      width: '25%',
-      label: 'Method'
+      width: '15%',
+      label: 'Bank Name'
     }, {
       width: '10%',
-      label: 'Amount'
+      label: 'Issued Name'
     }, {
       width: '10%',
       label: 'Address'
+    }, {
+      width: '10%',
+      label: 'Amount'
     }, {
       width: '10%',
       label: 'Status'
@@ -334,16 +338,18 @@ var render = function() {
                                       _vm._v(" "),
                                       _c("td", [_vm._v(_vm._s(p.email))]),
                                       _vm._v(" "),
-                                      _c("td", [_vm._v(_vm._s(p.pembayaran))]),
+                                      _c("td", [_vm._v(_vm._s(p.n_bank))]),
                                       _vm._v(" "),
-                                      _c("td", [_vm._v(_vm._s(p.dollar))]),
+                                      _c("td", [_vm._v(_vm._s(p.a_nama))]),
+                                      _vm._v(" "),
+                                      _c("td", [_vm._v(_vm._s(p.n_rekening))]),
                                       _vm._v(" "),
                                       _c("td", [
-                                        _vm._v(_vm._s(p.ket_pembayaran))
+                                        _vm._v("$" + _vm._s(p.dollar))
                                       ]),
                                       _vm._v(" "),
                                       _c("td", [
-                                        p.status === "pending"
+                                        p.status_wd === "pending"
                                           ? _c(
                                               "div",
                                               {
@@ -354,7 +360,7 @@ var render = function() {
                                             )
                                           : _vm._e(),
                                         _vm._v(" "),
-                                        p.status === "proccess"
+                                        p.status_wd === "proccess"
                                           ? _c(
                                               "div",
                                               {
@@ -365,7 +371,7 @@ var render = function() {
                                             )
                                           : _vm._e(),
                                         _vm._v(" "),
-                                        p.status === "done"
+                                        p.status_wd === "done"
                                           ? _c(
                                               "div",
                                               {
