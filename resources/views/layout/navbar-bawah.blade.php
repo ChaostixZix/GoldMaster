@@ -14,9 +14,9 @@
                         class="fa fa-cart-plus"></i><span>Transaction</span></a>
                 <ul class="dropdown-menu">
                     <li class="nav-item"><a href="{{route('user.index')}}" class="nav-link">Dashboard</a></li>
-                    <li class="nav-item"><a href="{{route('user.history')}}" class="nav-link">History</a></li>
+                    <li class="nav-item"><a href="{{route('user.history')}}" class="nav-link">My Order</a></li>
+                    <li class="nav-item"><a href="{{ route('user.memberstock') }}" class="nav-link">My Stock</a></li>
                     <li class="nav-item"><a href="{{ route('user.sell') }}" class="nav-link">Sell</a></li>
-                    <li class="nav-item"><a href="{{ route('user.memberstock') }}" class="nav-link">Stocks</a></li>
                 </ul>
             </li>
             @endif
