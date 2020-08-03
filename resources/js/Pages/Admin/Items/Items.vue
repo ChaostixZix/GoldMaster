@@ -2,6 +2,7 @@
     <App topnav="Managemen Items">
         <div class="row">
             <Messages></Messages>
+
             <div class="col-12">
                 <div class="card card-primary">
                     <div class="card-header bg-primary">
@@ -24,6 +25,7 @@
                                                 <td>#{{ p.id_items }}</td>
                                                 <td>{{ p.server }}</td>
                                                 <td>{{ p.kategori }}</td>
+                                                <td>{{ p.n_karakter }}</td>
                                                 <td>{{ p.pengiriman }}</td>
                                                 <td>{{ p.butuh }}G</td>
                                                 <td>${{ p.dollar }}/G</td>
@@ -93,6 +95,7 @@
                 {width: '10%', label: '#'},
                 {width: '10%', label: 'Server'},
                 {width: '33%', label: 'Game'},
+                {width: '33%', label: 'Character Name'},
                 {width: '10%', label: 'Trade Mode'},
                 {width: '15%', label: 'Needed Stock'},
                 {width: '10%', label: 'Harga'},

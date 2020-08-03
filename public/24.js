@@ -85,6 +85,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -118,6 +120,9 @@ __webpack_require__.r(__webpack_exports__);
     }, {
       width: '33%',
       label: 'Game'
+    }, {
+      width: '33%',
+      label: 'Character Name'
     }, {
       width: '10%',
       label: 'Trade Mode'
@@ -448,6 +453,8 @@ var render = function() {
                                       _c("td", [_vm._v(_vm._s(p.server))]),
                                       _vm._v(" "),
                                       _c("td", [_vm._v(_vm._s(p.kategori))]),
+                                      _vm._v(" "),
+                                      _c("td", [_vm._v(_vm._s(p.n_karakter))]),
                                       _vm._v(" "),
                                       _c("td", [_vm._v(_vm._s(p.pengiriman))]),
                                       _vm._v(" "),
