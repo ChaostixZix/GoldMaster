@@ -24,13 +24,14 @@
                                             <tr v-for="p in paginated" role="row" class="odd">
                                                 <td>#{{ p.id }}</td>
                                                 <td>{{ p.email }}</td>
-                                                <td>{{ p.pembayaran }}</td>
-                                                <td>{{ p.dollar }}</td>
-                                                <td>{{ p.ket_pembayaran }}</td>
+                                                <td>{{ p.n_bank }}</td>
+                                                <td>{{ p.a_nama }}</td>
+                                                <td>{{ p.n_rekening }}</td>
+                                                <td>${{ p.dollar }}</td>
                                                 <td>
-                                                    <div v-if="p.status === 'pending'" class="badge badge-warning">Pending</div>
-                                                    <div v-if="p.status === 'proccess'" class="badge badge-primary">Proccess</div>
-                                                    <div v-if="p.status === 'done'" class="badge badge-success">Done</div>
+                                                    <div v-if="p.status_wd === 'pending'" class="badge badge-warning">Pending</div>
+                                                    <div v-if="p.status_wd === 'proccess'" class="badge badge-primary">Proccess</div>
+                                                    <div v-if="p.status_wd === 'done'" class="badge badge-success">Done</div>
                                                 </td>
                                                 <td>
                                                     <button v-on:click="update(p)"
@@ -85,11 +86,12 @@
         data() {
             let sortOrders = {};
             let columns = [
-                {width: '10%', label: '#'},
+                {width: '5%', label: '#'},
                 {width: '25%', label: 'Email'},
-                {width: '25%', label: 'Method'},
-                {width: '10%', label: 'Amount'},
+                {width: '15%', label: 'Bank Name'},
+                {width: '10%', label: 'Issued Name'},
                 {width: '10%', label: 'Address'},
+                {width: '10%', label: 'Amount'},
                 {width: '10%', label: 'Status'},
                 {width: '33%', label: 'Action'},
             ];

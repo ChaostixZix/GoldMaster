@@ -6,7 +6,8 @@
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('stisla/assets') }}/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('stisla/assets') }}/modules/fontawesome/css/all.min.css">
-
+    <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer>
+    </script>
     <!-- CSS Libraries -->
 
     <!-- Template CSS -->
