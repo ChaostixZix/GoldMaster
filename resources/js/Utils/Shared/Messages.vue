@@ -1,5 +1,5 @@
 <template>
-    <div class="col-12">
+    <div v-if="alert" class="col-12">
         <div v-if="$page.flash.success" class="alert alert-success">
             {{$page.flash.success}}
         </div>
@@ -11,7 +11,16 @@
 
 <script>
     export default {
-        name: "Messages"
+        name: "Messages",
+        data()
+        {
+            return{
+                alert: true
+            }
+        },
+        mounted() {
+            setTimeout(() => this.alert = false, 1000);
+        }
     }
 </script>
 
