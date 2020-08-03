@@ -6,7 +6,7 @@
             </div>
             <div class="col-lg-9 col-12">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header text-white bg-primary">
                         <h4>Welcome</h4>
                     </div>
                     <div class="card-body">
@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-12">
-                <div class="card">
+                <div class="card card-primary">
                     <div class="card-body">
                         <img :src="$route('depan.index') + 'img/wow.png'"
                             class="img-fluid">

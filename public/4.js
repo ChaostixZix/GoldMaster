@@ -73,6 +73,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -222,9 +223,8 @@ var render = function() {
             [
               _c("div", { staticClass: "login-brand" }, [
                 _c("img", {
-                  staticClass: "shadow-light rounded-circle",
                   attrs: {
-                    src: "assets/img/stisla-fill.svg",
+                    src: this.$route("depan.index") + "logo.png",
                     alt: "logo",
                     width: "100"
                   }

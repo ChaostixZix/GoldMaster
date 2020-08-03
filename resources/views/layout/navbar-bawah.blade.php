@@ -1,4 +1,6 @@
 <nav class="navbar navbar-secondary navbar-expand-lg">
+    <img class="img-fluid" src="{{asset('logo.png')}}" alt="logo"
+         width="70">
     <div class="container">
         <ul class="navbar-nav">
             <li class="nav-item">

@@ -5,8 +5,8 @@
 <body class="layout-3">
 <div>
     <div class="main-wrapper container">
-        <div class="navbar-bg"></div>
-        @include('layout.navbar-atas')
+{{--        <div class="navbar-bg"></div>--}}
+{{--        @include('layout.navbar-atas')--}}
         @include('layout.navbar-bawah')
         @routes
         @inertia
