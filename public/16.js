@@ -210,7 +210,7 @@ __webpack_require__.r(__webpack_exports__);
     });
     return {
       uploading: false,
-      photo: null,
+      photo: [],
       tambah: false,
       datadetails: {},
       columns: columns,
@@ -234,8 +234,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     selectFile: function selectFile(event) {
-      // `files` is always an array because the file input may be in multiple mode
-      this.photo = event.target.files[0];
+      this.photo.push(event.target.files[0]);
     },
     // selectFile(e) {
     //     let files = e.target.files || e.dataTransfer.files;
@@ -254,12 +253,10 @@ __webpack_require__.r(__webpack_exports__);
     submitFile: function submitFile() {
       var _this = this;
 
-      // let data = {
-      //     id_order: this.datadetails.id_order,
-      //     file: this.photo
-      // };
       var data = new FormData();
-      data.append('photo', this.photo);
+      this.photo.forEach(function (value, index) {
+        data.append('photo[]', value);
+      });
       data.append('id_order', this.datadetails.id_order);
       this.uploading = true;
       this.$inertia.post(this.$route('user.history.uploadFoto'), data, {
@@ -525,6 +522,19 @@ var render = function() {
                               ),
                               _c("br")
                             ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-6 text-md-right" }, [
+                            _c("address", [
+                              _c("strong", [_vm._v("Price:")]),
+                              _c("br"),
+                              _vm._v(
+                                "\n                                            $" +
+                                  _vm._s(_vm.datadetails.price)
+                              ),
+                              _c("br"),
+                              _c("br")
+                            ])
                           ])
                         ])
                       ])
@@ -590,23 +600,32 @@ var render = function() {
                   : _c("div", { staticClass: "invoice" }, [
                       _c("div", { staticClass: "invoice-print" }, [
                         _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-lg-12" }, [
-                            _c("div", { staticClass: "invoice-title" }, [
-                              _c("div", { staticClass: "invoice-number" }, [
-                                _vm._v(
-                                  "Order #" + _vm._s(_vm.datadetails.id_order)
-                                )
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("hr"),
-                            _vm._v(" "),
-                            _c("input", {
-                              staticClass: "form-control-file",
-                              attrs: { type: "file" },
-                              on: { change: _vm.selectFile }
-                            })
-                          ])
+                          _c(
+                            "div",
+                            { staticClass: "col-lg-12" },
+                            [
+                              _c("div", { staticClass: "invoice-title" }, [
+                                _c("div", { staticClass: "invoice-number" }, [
+                                  _vm._v(
+                                    "Order #" + _vm._s(_vm.datadetails.id_order)
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("hr"),
+                              _vm._v(" "),
+                              _vm._l(_vm.photo, function(p) {
+                                return _c("p", [_vm._v(_vm._s(p.name))])
+                              }),
+                              _vm._v(" "),
+                              _c("input", {
+                                staticClass: "form-control-file",
+                                attrs: { type: "file" },
+                                on: { change: _vm.selectFile }
+                              })
+                            ],
+                            2
+                          )
                         ])
                       ]),
                       _vm._v(" "),

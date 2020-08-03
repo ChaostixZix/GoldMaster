@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User\Transaction;
 
 use App\Data\Category;
+use App\Data\Items;
 use App\Data\MemberStok;
 use App\Data\Server;
 use App\Http\Controllers\Controller;
@@ -14,11 +15,24 @@ class MemberStockController extends Controller
 {
     public function index()
     {
+        $userstocks = (new MemberStok())->getByUser(Session::get('id_user'));
+        $neededstocks = [];
+        foreach ($userstocks as $us)
+        {
+            if($get = (new Items())->getMathcing($us->id_item, $us->id_kategori))
+            {
+                $neededstocks[] = $get;
+            }
+        }
         return Inertia::render(
             'User/MemberStock/MemberStock',
             [
-                'stocks' => function () {
-                    return (new MemberStok())->getByUser(Session::get('id_user'));
+                'stocks' => function () use ($userstocks) {
+                    return $userstocks;
+                },
+                'neededstocks' => function () use ($neededstocks)
+                {
+                  return $neededstocks;
                 },
                 'server' => function () {
                     return (new Server())->getAll();
