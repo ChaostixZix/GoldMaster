@@ -1,7 +1,6 @@
 <template>
-    <App topnav="List Order">
+    <App topnav="List Withdraw">
         <div class="row">
-
             <Messages></Messages>
             <div class="col-12">
                 <div class="card card-primary">
@@ -29,16 +28,22 @@
                                                 <td>{{ p.n_rekening }}</td>
                                                 <td>${{ p.dollar }}</td>
                                                 <td>
-                                                    <div v-if="p.status_wd === 'pending'" class="badge badge-warning">Pending</div>
-                                                    <div v-if="p.status_wd === 'proccess'" class="badge badge-primary">Proccess</div>
-                                                    <div v-if="p.status_wd === 'done'" class="badge badge-success">Done</div>
+                                                    <div v-if="p.status_wd === 'pending'" class="badge badge-warning">
+                                                        Pending
+                                                    </div>
+                                                    <div v-if="p.status_wd === 'process'" class="badge badge-primary">
+                                                        Process
+                                                    </div>
+                                                    <div v-if="p.status_wd === 'done'" class="badge badge-success">
+                                                        Done
+                                                    </div>
                                                 </td>
                                                 <td>
                                                     <button v-on:click="update(p)"
                                                             class="btn btn-sm btn-primary">
                                                         <i class="fa fa-edit"></i>
                                                     </button>
-                                                    <button v-if="p.status_o !== 'done'"
+                                                    <button @click="hapus(p.id)" v-if="p.status_o !== 'done'"
                                                             class="btn btn-sm btn-danger">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
@@ -63,7 +68,7 @@
                 </div>
             </div>
             <div class="col-12">
-<!--                <OrderEdit v-if="edit" :data="dataedit"></OrderEdit>-->
+                <WithdrawEdit v-if="edit" :data="dataedit"></WithdrawEdit>
             </div>
         </div>
     </App>
@@ -74,9 +79,10 @@
     import Pagination from "../../../Utils/Shared/Pagination";
     import App from "../../../Utils/Layout/App";
     import Messages from "../../../Utils/Shared/Messages";
+    import WithdrawEdit from "./WithdrawEdit";
 
     export default {
-        components: {Messages, App, Pagination, Datatable},
+        components: {WithdrawEdit, Messages, App, Pagination, Datatable},
         props: {
             requests: Array
         },
@@ -121,8 +127,16 @@
             }
         },
         methods: {
-            update(data)
-            {
+            hapus(id) {
+                this.$inertia.post(this.$route('admin.withdraw.delete', {id: id}), {},
+                    {
+                        preserveState: false,
+                        preserveScroll: true,
+                        only: ['requests']
+                    }
+                )
+            },
+            update(data) {
                 this.edit = true;
                 this.dataedit = data;
             },

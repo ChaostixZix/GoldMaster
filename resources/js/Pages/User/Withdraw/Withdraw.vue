@@ -35,9 +35,9 @@
                                 <th scope="row">{{r.id}}</th>
                                 <td>${{r.dollar}}</td>
                                 <td>
-                                    <div v-if="r.status === 'pending'" class="badge badge-warning">Pending</div>
-                                    <div v-if="r.status === 'proccess'" class="badge badge-primary">Process</div>
-                                    <div v-if="r.status === 'done'" class="badge badge-success">Done</div>
+                                    <div v-if="r.status_wd === 'pending'" class="badge badge-warning">Pending</div>
+                                    <div v-if="r.status_wd === 'process'" class="badge badge-primary">Process</div>
+                                    <div v-if="r.status_wd === 'done'" class="badge badge-success">Done</div>
                                 </td>
                             </tr>
                             </tbody>
@@ -61,7 +61,7 @@
         {
             return {
                 data: {
-                    dollar: 0,
+                    dollar: 1,
                 }
             }
         },
@@ -70,6 +70,10 @@
                 if(this.data.dollar > this.$page.flash.saldo)
                 {
                     this.data.dollar = this.$page.flash.saldo
+                }
+                if(this.data.dollar < 1)
+                {
+                    this.data.dollar = 1;
                 }
             }
         },
