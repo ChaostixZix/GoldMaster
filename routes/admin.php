@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => 'auth',
+    'middleware' => 'UserHide'
 ], function ()
 {
     Route::get('loginPage', 'AdminAuthController@loginPage')->name('admin.auth.loginPage');
@@ -13,7 +14,7 @@ Route::group([
 
 Route::group([
     'prefix' => 'dashboard',
-    'middleware' => 'cekAdmin'
+    'middleware' => ['UserHide', 'cekAdmin']
 ], function ()
 {
    Route::get('', 'DashboardController@index')->name('admin.index');

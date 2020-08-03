@@ -1,14 +1,14 @@
 <nav class="navbar navbar-secondary navbar-expand-lg">
-    <img class="img-fluid" src="{{asset('logo.png')}}" alt="logo"
+    <img href="{{route('depan.index')}}" class="img-fluid" src="{{asset('logo.png')}}" alt="logo"
          width="70">
     <div class="container">
         <ul class="navbar-nav">
+            @if(\Illuminate\Support\Facades\Session::get('usershow'))
             <li class="nav-item">
                 <a href="{{ route('depan.index') }}" class="nav-link"><i class="fa fa-home"></i>
                     <span>Home</span>
                 </a>
             </li>
-            @if(!\Illuminate\Support\Facades\Session::has('admin'))
             <li class="nav-item dropdown">
                 <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i
                         class="fa fa-cart-plus"></i><span>Transaction</span></a>
@@ -203,7 +203,7 @@
                 </div>
             </li>
         @else
-            @if(!\Illuminate\Support\Facades\Session::has('admin'))
+            @if(\Illuminate\Support\Facades\Session::get('usershow'))
                 <a href="{{route('user.auth.loginPage')}}" class="btn btn-primary mr-2">Login</a>
                 <a href="{{route('user.auth.registerPage')}}" class="btn btn-primary mr-2">Sign Up</a>
             @endif

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => ''], function (){
+Route::group(['prefix' => '', 'middleware' => 'UserShow'], function (){
     Route::get('', [\App\Http\Controllers\InertiaController::class, 'index'])->name('depan.index');
 
 });

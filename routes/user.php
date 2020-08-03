@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => 'auth',
+    'middleware' => 'UserShow'
 ], function ()
 {
     Route::get('loginPage', 'UserAuthController@loginPage')->name('user.auth.loginPage');
@@ -14,7 +15,7 @@ Route::group([
 });
 Route::group([
     'prefix' => 'dashboard',
-    'middleware' => 'cekUser'
+    'middleware' => ['UserShow', 'cekUser']
 ], function ()
 {
     Route::get('', 'DashboardController@index')->name('user.index');
