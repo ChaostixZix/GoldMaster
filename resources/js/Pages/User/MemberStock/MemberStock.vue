@@ -3,6 +3,8 @@
         <div class="row">
             <Messages></Messages>
             <div class="col-12">
+                <div class="alert alert-info" v-for="ns in neededstocks">Admin needed {{ns.butuh}} in {{ns.kategori}} - {{ns.server}}</div>
+
                 <div class="card card-primary">
                     <div class="card-header bg-primary">
                         <div id="dataTableExample_filter" class="dataTables_filter">
@@ -94,6 +96,7 @@
             stocks: Array,
             server: Array,
             game: Array,
+            neededstocks: Array
         },
         mounted() {
             this.load();
@@ -151,7 +154,7 @@
                 this.$inertia.post(this.$route('admin.memberstock.delete', {id: id}), {}, {
                     preserveState: false,
                     preserveScroll: true,
-                    only: ['stocks']
+                    only: ['stocks', 'neededstocks']
                 })
             },
             load() {

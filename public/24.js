@@ -97,6 +97,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -113,7 +115,8 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     stocks: Array,
     server: Array,
-    game: Array
+    game: Array,
+    neededstocks: Array
   },
   mounted: function mounted() {
     this.load();
@@ -181,7 +184,7 @@ __webpack_require__.r(__webpack_exports__);
       }), {}, {
         preserveState: false,
         preserveScroll: true,
-        only: ['stocks']
+        only: ['stocks', 'neededstocks']
       });
     },
     load: function load() {
@@ -399,272 +402,298 @@ var render = function() {
       [
         _c("Messages"),
         _vm._v(" "),
-        _c("div", { staticClass: "col-12" }, [
-          _c("div", { staticClass: "card card-primary" }, [
-            _c("div", { staticClass: "card-header bg-primary" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "dataTables_filter",
-                  attrs: { id: "dataTableExample_filter" }
-                },
-                [
-                  _c("label", [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.search,
-                          expression: "search"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { type: "search", placeholder: "Search" },
-                      domProps: { value: _vm.search },
-                      on: {
-                        input: [
-                          function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.search = $event.target.value
-                          },
-                          function($event) {
-                            return _vm.resetPagination()
-                          }
-                        ]
-                      }
-                    })
-                  ])
-                ]
-              )
-            ]),
+        _c(
+          "div",
+          { staticClass: "col-12" },
+          [
+            _vm._l(_vm.neededstocks, function(ns) {
+              return _c("div", { staticClass: "alert alert-info" }, [
+                _vm._v(
+                  "Admin needed " +
+                    _vm._s(ns.butuh) +
+                    " in " +
+                    _vm._s(ns.kategori) +
+                    " - " +
+                    _vm._s(ns.server)
+                )
+              ])
+            }),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", [
+            _c("div", { staticClass: "card card-primary" }, [
+              _c("div", { staticClass: "card-header bg-primary" }, [
                 _c(
                   "div",
                   {
-                    staticClass: "dataTables_wrapper dt-bootstrap4 no-footer",
-                    attrs: { id: "dataTableExample_wrapper" }
+                    staticClass: "dataTables_filter",
+                    attrs: { id: "dataTableExample_filter" }
                   },
                   [
-                    _c("div", { staticClass: "row" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.search,
+                            expression: "search"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "search", placeholder: "Search" },
+                        domProps: { value: _vm.search },
+                        on: {
+                          input: [
+                            function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.search = $event.target.value
+                            },
+                            function($event) {
+                              return _vm.resetPagination()
+                            }
+                          ]
+                        }
+                      })
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "dataTables_wrapper dt-bootstrap4 no-footer",
+                      attrs: { id: "dataTableExample_wrapper" }
+                    },
+                    [
+                      _c("div", { staticClass: "row" }, [
+                        _c(
+                          "div",
+                          { staticClass: "col-sm-12" },
+                          [
+                            _c(
+                              "Datatable",
+                              {
+                                attrs: {
+                                  "hide-header": "false",
+                                  columns: _vm.columns,
+                                  sortKey: _vm.sortKey,
+                                  sortOrders: _vm.sortOrders
+                                },
+                                on: { sort: _vm.sortBy }
+                              },
+                              [
+                                _c(
+                                  "tbody",
+                                  [
+                                    _vm._l(_vm.paginated, function(p) {
+                                      return p.server !== null &&
+                                        p.kategori !== null &&
+                                        p.email !== null
+                                        ? _c(
+                                            "tr",
+                                            {
+                                              staticClass: "odd",
+                                              attrs: { role: "row" }
+                                            },
+                                            [
+                                              _c("td", [
+                                                _vm._v("#" + _vm._s(p.id_stock))
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(_vm._s(p.email))
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(_vm._s(p.stock))
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(_vm._s(p.server))
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(_vm._s(p.kategori))
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _c(
+                                                  "button",
+                                                  {
+                                                    staticClass:
+                                                      "btn btn-sm btn-white",
+                                                    on: {
+                                                      click: function($event) {
+                                                        return _vm.ubah(p)
+                                                      }
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("i", {
+                                                      staticClass: "fa fa-edit"
+                                                    })
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "button",
+                                                  {
+                                                    staticClass:
+                                                      "btn btn-sm btn-danger",
+                                                    on: {
+                                                      click: function($event) {
+                                                        return _vm.hapus(
+                                                          p.id_stock
+                                                        )
+                                                      }
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("i", {
+                                                      staticClass: "fa fa-trash"
+                                                    })
+                                                  ]
+                                                )
+                                              ])
+                                            ]
+                                          )
+                                        : _vm._e()
+                                    }),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.paginated, function(p) {
+                                      return p.server === null ||
+                                        p.kategori === null ||
+                                        p.email === null
+                                        ? _c(
+                                            "tr",
+                                            {
+                                              staticClass:
+                                                "odd text-white bg-danger",
+                                              attrs: { e: "", role: "row" }
+                                            },
+                                            [
+                                              _c("td", [
+                                                _vm._v("#" + _vm._s(p.id_stock))
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(_vm._s(p.email))
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(_vm._s(p.stock))
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(_vm._s(p.server))
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(_vm._s(p.kategori))
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _c(
+                                                  "button",
+                                                  {
+                                                    staticClass:
+                                                      "btn btn-sm btn-primary",
+                                                    on: {
+                                                      click: function($event) {
+                                                        return _vm.ubah(p)
+                                                      }
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("i", {
+                                                      staticClass: "fa fa-edit"
+                                                    })
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "button",
+                                                  {
+                                                    staticClass:
+                                                      "btn btn-sm btn-danger",
+                                                    on: {
+                                                      click: function($event) {
+                                                        return _vm.hapus(
+                                                          p.id_stock
+                                                        )
+                                                      }
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("i", {
+                                                      staticClass: "fa fa-trash"
+                                                    })
+                                                  ]
+                                                )
+                                              ])
+                                            ]
+                                          )
+                                        : _vm._e()
+                                    })
+                                  ],
+                                  2
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
                       _c(
                         "div",
-                        { staticClass: "col-sm-12" },
+                        { staticClass: "row" },
                         [
-                          _c(
-                            "Datatable",
-                            {
-                              attrs: {
-                                "hide-header": "false",
-                                columns: _vm.columns,
-                                sortKey: _vm.sortKey,
-                                sortOrders: _vm.sortOrders
-                              },
-                              on: { sort: _vm.sortBy }
+                          _c("div", { staticClass: "col-sm-12 col-md-5" }),
+                          _vm._v(" "),
+                          _c("Pagination", {
+                            attrs: {
+                              pagination: _vm.pagination,
+                              client: true,
+                              filtered: _vm.filteredProjects
                             },
-                            [
-                              _c(
-                                "tbody",
-                                [
-                                  _vm._l(_vm.paginated, function(p) {
-                                    return p.server !== null &&
-                                      p.kategori !== null &&
-                                      p.email !== null
-                                      ? _c(
-                                          "tr",
-                                          {
-                                            staticClass: "odd",
-                                            attrs: { role: "row" }
-                                          },
-                                          [
-                                            _c("td", [
-                                              _vm._v("#" + _vm._s(p.id_stock))
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("td", [_vm._v(_vm._s(p.email))]),
-                                            _vm._v(" "),
-                                            _c("td", [_vm._v(_vm._s(p.stock))]),
-                                            _vm._v(" "),
-                                            _c("td", [
-                                              _vm._v(_vm._s(p.server))
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("td", [
-                                              _vm._v(_vm._s(p.kategori))
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("td", [
-                                              _c(
-                                                "button",
-                                                {
-                                                  staticClass:
-                                                    "btn btn-sm btn-white",
-                                                  on: {
-                                                    click: function($event) {
-                                                      return _vm.ubah(p)
-                                                    }
-                                                  }
-                                                },
-                                                [
-                                                  _c("i", {
-                                                    staticClass: "fa fa-edit"
-                                                  })
-                                                ]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "button",
-                                                {
-                                                  staticClass:
-                                                    "btn btn-sm btn-danger",
-                                                  on: {
-                                                    click: function($event) {
-                                                      return _vm.hapus(
-                                                        p.id_stock
-                                                      )
-                                                    }
-                                                  }
-                                                },
-                                                [
-                                                  _c("i", {
-                                                    staticClass: "fa fa-trash"
-                                                  })
-                                                ]
-                                              )
-                                            ])
-                                          ]
-                                        )
-                                      : _vm._e()
-                                  }),
-                                  _vm._v(" "),
-                                  _vm._l(_vm.paginated, function(p) {
-                                    return p.server === null ||
-                                      p.kategori === null ||
-                                      p.email === null
-                                      ? _c(
-                                          "tr",
-                                          {
-                                            staticClass:
-                                              "odd text-white bg-danger",
-                                            attrs: { e: "", role: "row" }
-                                          },
-                                          [
-                                            _c("td", [
-                                              _vm._v("#" + _vm._s(p.id_stock))
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("td", [_vm._v(_vm._s(p.email))]),
-                                            _vm._v(" "),
-                                            _c("td", [_vm._v(_vm._s(p.stock))]),
-                                            _vm._v(" "),
-                                            _c("td", [
-                                              _vm._v(_vm._s(p.server))
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("td", [
-                                              _vm._v(_vm._s(p.kategori))
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("td", [
-                                              _c(
-                                                "button",
-                                                {
-                                                  staticClass:
-                                                    "btn btn-sm btn-primary",
-                                                  on: {
-                                                    click: function($event) {
-                                                      return _vm.ubah(p)
-                                                    }
-                                                  }
-                                                },
-                                                [
-                                                  _c("i", {
-                                                    staticClass: "fa fa-edit"
-                                                  })
-                                                ]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "button",
-                                                {
-                                                  staticClass:
-                                                    "btn btn-sm btn-danger",
-                                                  on: {
-                                                    click: function($event) {
-                                                      return _vm.hapus(
-                                                        p.id_stock
-                                                      )
-                                                    }
-                                                  }
-                                                },
-                                                [
-                                                  _c("i", {
-                                                    staticClass: "fa fa-trash"
-                                                  })
-                                                ]
-                                              )
-                                            ])
-                                          ]
-                                        )
-                                      : _vm._e()
-                                  })
-                                ],
-                                2
-                              )
-                            ]
-                          )
+                            on: {
+                              prev: function($event) {
+                                --_vm.pagination.currentPage
+                              },
+                              next: function($event) {
+                                ++_vm.pagination.currentPage
+                              }
+                            }
+                          })
                         ],
                         1
                       )
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "row" },
-                      [
-                        _c("div", { staticClass: "col-sm-12 col-md-5" }),
-                        _vm._v(" "),
-                        _c("Pagination", {
-                          attrs: {
-                            pagination: _vm.pagination,
-                            client: true,
-                            filtered: _vm.filteredProjects
-                          },
-                          on: {
-                            prev: function($event) {
-                              --_vm.pagination.currentPage
-                            },
-                            next: function($event) {
-                              ++_vm.pagination.currentPage
-                            }
-                          }
-                        })
-                      ],
-                      1
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" }, [
+                _c(
+                  "button",
+                  { staticClass: "btn btn-primary", on: { click: _vm.insert } },
+                  [
+                    _c("i", { staticClass: "fa fa-plus" }),
+                    _vm._v(
+                      "\n                        Tambah\n                    "
                     )
                   ]
                 )
               ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-footer" }, [
-              _c(
-                "button",
-                { staticClass: "btn btn-primary", on: { click: _vm.insert } },
-                [
-                  _c("i", { staticClass: "fa fa-plus" }),
-                  _vm._v(
-                    "\n                        Tambah\n                    "
-                  )
-                ]
-              )
             ])
-          ])
-        ]),
+          ],
+          2
+        ),
         _vm._v(" "),
         _c(
           "div",

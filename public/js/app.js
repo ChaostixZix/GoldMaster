@@ -60390,14 +60390,14 @@ var map = {
 	"./Admin/Game/Game": [
 		"./resources/js/Pages/Admin/Game/Game.vue",
 		0,
-		8,
-		27
+		9,
+		28
 	],
 	"./Admin/Game/Game.vue": [
 		"./resources/js/Pages/Admin/Game/Game.vue",
 		0,
-		8,
-		27
+		9,
+		28
 	],
 	"./Admin/Game/TambahGame": [
 		"./resources/js/Pages/Admin/Game/TambahGame.vue",
@@ -60410,13 +60410,13 @@ var map = {
 	"./Admin/Items/Items": [
 		"./resources/js/Pages/Admin/Items/Items.vue",
 		0,
-		8,
+		9,
 		23
 	],
 	"./Admin/Items/Items.vue": [
 		"./resources/js/Pages/Admin/Items/Items.vue",
 		0,
-		8,
+		9,
 		23
 	],
 	"./Admin/Items/ItemsEdit": [
@@ -60430,26 +60430,26 @@ var map = {
 	"./Admin/MemberStock/MemberStock": [
 		"./resources/js/Pages/Admin/MemberStock/MemberStock.vue",
 		0,
-		8,
+		9,
 		32
 	],
 	"./Admin/MemberStock/MemberStock.vue": [
 		"./resources/js/Pages/Admin/MemberStock/MemberStock.vue",
 		0,
-		8,
+		9,
 		32
 	],
 	"./Admin/Order/Order": [
 		"./resources/js/Pages/Admin/Order/Order.vue",
 		0,
-		8,
-		28
+		9,
+		26
 	],
 	"./Admin/Order/Order.vue": [
 		"./resources/js/Pages/Admin/Order/Order.vue",
 		0,
-		8,
-		28
+		9,
+		26
 	],
 	"./Admin/Order/OrderEdit": [
 		"./resources/js/Pages/Admin/Order/OrderEdit.vue",
@@ -60462,13 +60462,13 @@ var map = {
 	"./Admin/Server/Server": [
 		"./resources/js/Pages/Admin/Server/Server.vue",
 		0,
-		8,
+		9,
 		29
 	],
 	"./Admin/Server/Server.vue": [
 		"./resources/js/Pages/Admin/Server/Server.vue",
 		0,
-		8,
+		9,
 		29
 	],
 	"./Admin/Server/TambahServer": [
@@ -60490,36 +60490,36 @@ var map = {
 	"./Admin/TradeMode/TradeMode": [
 		"./resources/js/Pages/Admin/TradeMode/TradeMode.vue",
 		0,
-		8,
+		9,
 		30
 	],
 	"./Admin/TradeMode/TradeMode.vue": [
 		"./resources/js/Pages/Admin/TradeMode/TradeMode.vue",
 		0,
-		8,
+		9,
 		30
 	],
 	"./Admin/Withdraw/Withdraw": [
 		"./resources/js/Pages/Admin/Withdraw/Withdraw.vue",
 		0,
-		8,
+		9,
 		33
 	],
 	"./Admin/Withdraw/Withdraw.vue": [
 		"./resources/js/Pages/Admin/Withdraw/Withdraw.vue",
 		0,
-		8,
+		9,
 		33
 	],
 	"./Depan/Depan": [
 		"./resources/js/Pages/Depan/Depan.vue",
 		0,
-		26
+		27
 	],
 	"./Depan/Depan.vue": [
 		"./resources/js/Pages/Depan/Depan.vue",
 		0,
-		26
+		27
 	],
 	"./User/Auth/Login": [
 		"./resources/js/Pages/User/Auth/Login.vue",
@@ -60548,25 +60548,25 @@ var map = {
 	"./User/History/History": [
 		"./resources/js/Pages/User/History/History.vue",
 		0,
-		8,
+		9,
 		31
 	],
 	"./User/History/History.vue": [
 		"./resources/js/Pages/User/History/History.vue",
 		0,
-		8,
+		9,
 		31
 	],
 	"./User/MemberStock/MemberStock": [
 		"./resources/js/Pages/User/MemberStock/MemberStock.vue",
 		0,
-		8,
+		9,
 		24
 	],
 	"./User/MemberStock/MemberStock.vue": [
 		"./resources/js/Pages/User/MemberStock/MemberStock.vue",
 		0,
-		8,
+		9,
 		24
 	],
 	"./User/MemberStock/MemberStockAdd": [
@@ -60580,13 +60580,13 @@ var map = {
 	"./User/Sell/Sell": [
 		"./resources/js/Pages/User/Sell/Sell.vue",
 		0,
-		8,
+		9,
 		6
 	],
 	"./User/Sell/Sell.vue": [
 		"./resources/js/Pages/User/Sell/Sell.vue",
 		0,
-		8,
+		9,
 		6
 	],
 	"./User/Sell/SellNow": [
