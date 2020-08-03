@@ -14,11 +14,19 @@ class UserAuthController extends Controller
 {
     public function loginPage()
     {
+        if(Session::has('user'))
+        {
+            return redirect(route('user.index'));
+        }
         return Inertia::render('User/Auth/Login');
     }
 
     public function registerPage()
     {
+        if(Session::has('user'))
+        {
+            return redirect(route('user.index'));
+        }
         return Inertia::render('User/Auth/Register');
     }
 
