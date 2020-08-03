@@ -4,6 +4,8 @@ namespace App\Http;
 
 use App\Http\Middleware\CekAdmin;
 use App\Http\Middleware\cekUser;
+use App\Http\Middleware\UserHide;
+use App\Http\Middleware\UserShow;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -67,5 +69,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'cekAdmin' => CekAdmin::class,
         'cekUser' => cekUser::class,
+        'UserShow' => UserShow::class,
+        'UserHide' => UserHide::class,
     ];
 }
