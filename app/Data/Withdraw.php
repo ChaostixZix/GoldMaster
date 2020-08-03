@@ -21,7 +21,9 @@ class Withdraw extends Model
 
     public function getByIdUser($id_user)
     {
-        return $this->db()->where('id_user', $id_user)->get();
+        return $this->db()->where('id_user', $id_user)
+            ->leftJoin('t_users', 't_users.id_user', '=', 'withdraw.id_user')
+            ->get();
     }
     public function updateRaw($id, array $update)
     {

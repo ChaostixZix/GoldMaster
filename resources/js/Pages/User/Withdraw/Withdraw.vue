@@ -9,19 +9,6 @@
                             Withdraw Amount
                         </label>
                         <input v-model="data.dollar" type="number" class="form-control">
-                        <label class="form-control-label">
-                            Payment Method
-                        </label>
-                        <select v-model="data.pembayaran" class="form-control">
-                            <option>Bitcoin</option>
-                            <option>Etherum</option>
-                            <option>Paypal</option>
-                            <option>Webmoney</option>
-                        </select>
-                        <label v-if="data.pembayaran !== ''" class="form-control-label">
-                            {{data.pembayaran}} Address
-                        </label>
-                        <input v-if="data.pembayaran !== ''" v-model="data.ket_pembayaran" type="text" class="form-control">
                     </div>
                     <div v-if="$page.flash.saldo > 0" class="card-footer">
                         <button class="btn btn-primary" @click="request">Submit</button>
@@ -40,8 +27,6 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Amount</th>
-                                <th scope="col">Method</th>
-                                <th scope="col">Address</th>
                                 <th scope="col">Status</th>
                             </tr>
                             </thead>
@@ -49,8 +34,6 @@
                             <tr v-for="r in requests">
                                 <th scope="row">{{r.id}}</th>
                                 <td>${{r.dollar}}</td>
-                                <td>{{r.pembayaran}}</td>
-                                <td>{{r.ket_pembayaran}}</td>
                                 <td>
                                     <div v-if="r.status === 'pending'" class="badge badge-warning">Pending</div>
                                     <div v-if="r.status === 'proccess'" class="badge badge-primary">Process</div>
@@ -79,8 +62,6 @@
             return {
                 data: {
                     dollar: 0,
-                    pembayaran: '',
-                    ket_pembayaran: ''
                 }
             }
         },

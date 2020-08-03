@@ -10,14 +10,6 @@
                                 <div class="profile-widget-item-label">Balance</div>
                                 <div class="profile-widget-item-value">${{$page.flash.saldo}}</div>
                             </div>
-<!--                            <div class="profile-widget-item">-->
-<!--                                <div class="profile-widget-item-label">Followers</div>-->
-<!--                                <div class="profile-widget-item-value">6,8K</div>-->
-<!--                            </div>-->
-<!--                            <div class="profile-widget-item">-->
-<!--                                <div class="profile-widget-item-label">Following</div>-->
-<!--                                <div class="profile-widget-item-value">2,1K</div>-->
-<!--                            </div>-->
                         </div>
                     </div>
                     <div class="profile-widget-description">
