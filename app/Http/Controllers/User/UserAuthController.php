@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Admin\AdminAuth;
 use App\Data\Users;
 use App\Http\Controllers\Controller;
+use App\User;
 use App\User\UserAuth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -39,6 +40,7 @@ class UserAuthController extends Controller
             ($register)
         ) {
             Session::put('user', $data['email']);
+            Session::put('username', $data['username']);
             Session::put('id_user', (new UserAuth())->get($data['email'])->id_user);
             return redirect(route('user.index'));
         }
@@ -50,6 +52,8 @@ class UserAuthController extends Controller
         $data = $request->all();
         if ((new UserAuth())->tryLogin($data['email'], $data['password'])) {
             Session::put('user', $data['email']);
+            $username = (new Users())->getByEmail($data['email'])[0]->username;
+            Session::put('username', $username);
             Session::put('id_user', (new UserAuth())->get($data['email'])->id_user);
             return redirect(route('user.index'));
         }

@@ -190,7 +190,7 @@
                     <img alt="image" src="{{ asset('stisla/assets') }}/img/avatar/avatar-1.png"
                          class="rounded-circle mr-1">
                     <div class="d-sm-none text-secondary d-lg-inline-block">
-                        Hi, {{\Illuminate\Support\Facades\Session::get('user')}}</div>
+                        Hi, {{\Illuminate\Support\Facades\Session::get('username')}}</div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <div class="dropdown-title">Balance: ${{\Illuminate\Support\Facades\Session::get('saldo')}}</div>

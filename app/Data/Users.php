@@ -26,6 +26,10 @@ class Users extends Model
     {
         return $this->db()->where('id_user', $id)->get();
     }
+    public function getByEmail($email)
+    {
+        return $this->db()->where('email', $email)->get();
+    }
     public function updateRaw($id, array $update)
     {
         return $this->db()->where('id_user', $id)->update($update);
