@@ -40,7 +40,7 @@ Route::group([
             'prefix' => 'sell'
         ], function ()
         {
-            Route::get('', 'SellController@index')->name('user.sell');
+            Route::get('{game?}', 'SellController@index')->name('user.sell');
         });
         Route::group([
             'prefix' => 'withdraw'

@@ -3,6 +3,14 @@
         <div class="row">
             <Messages></Messages>
             <div class="col-12">
+                <div v-if="perCategory && items.length > 0" class="alert alert-info show fade">
+                    <div class="alert-body">
+                        <inertia-link :href="$route('user.sell')" class="close">
+                            <span>×</span>
+                        </inertia-link>
+                        Game Filter : {{items[0].kategori}}.
+                    </div>
+                </div>
                 <div class="card card-primary">
                     <div class="card-header bg-primary">
                         <div id="dataTableExample_filter" class="dataTables_filter">
@@ -12,7 +20,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div v-if="items.length > 0" class="card-body">
                         <div v-if="done">
                             <div id="dataTableExample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                                 <div class="row">
@@ -27,10 +35,10 @@
                                                 <td>
                                                     {{ p.butuh }}G
                                                 </td>
-                                                <td>
+                                                <td v-if="$page.flash.currency === 'usd'">
                                                     $ {{ p.dollar }}/G
                                                 </td>
-                                                <td>
+                                                <td v-else>
                                                     Rp. {{parseFloat($page.flash.idrrate)*parseFloat(p.dollar)}}/G
                                                 </td>
                                                 <td>
@@ -56,6 +64,9 @@
                             </div>
                         </div>
                     </div>
+                    <div v-else class="card-body text-center">
+                        No Data
+                    </div>
                 </div>
             </div>
             <div class="col-12">
@@ -77,7 +88,7 @@
         components: {SellNow, MoneyFormat, Messages, App, Pagination, Datatable},
         props: {
             items: Array,
-
+            perCategory: Boolean
         },
         mounted() {
             this.load();
@@ -87,10 +98,9 @@
             let columns = [
                 {width: '25%', label: 'Game'},
                 {width: '20%', label: 'Server'},
-                {width: '15%', label: 'Trade Method'},
-                {width: '15%', label: 'Stock Needed'},
-                {width: '10%', label: 'USD Price'},
-                {width: '15%', label: 'IDR Price'},
+                {width: '20%', label: 'Trade Method'},
+                {width: '20%', label: 'Stock Needed'},
+                {width: '20%', label: 'Price'},
                 {width: '33%', label: 'Action'},
             ];
             columns.forEach((column) => {

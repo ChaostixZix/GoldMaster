@@ -56,7 +56,8 @@ __webpack_require__.r(__webpack_exports__);
         nama: '',
         status_o: 'pending'
       },
-      loading: false
+      loading: false,
+      idr: 0
     };
   },
   props: {
@@ -65,6 +66,7 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     'data.quantity': function dataQuantity() {
       this.data.price = parseInt(this.data.quantity) * this.p.dollar;
+      this.idr = this.data.price * this.$page.flash.idrrate;
     }
   },
   methods: {
@@ -143,11 +145,18 @@ var render = function() {
             _c("p", [_vm._v(_vm._s(_vm.p.kategori))]),
             _vm._v(" "),
             _c("label", { staticClass: "form-control-label" }, [
-              _vm._v(
-                "\n            Quantity ($" +
-                  _vm._s(_vm.data.price) +
-                  ")\n        "
-              )
+              _vm._v("\n            Quantity "),
+              _c("span", [
+                _vm._v(
+                  " (" +
+                    _vm._s(
+                      this.$page.flash.currency === "usd"
+                        ? "$" + _vm.data.price
+                        : "Rp. " + _vm.idr
+                    ) +
+                    ") "
+                )
+              ])
             ]),
             _vm._v(" "),
             _c("input", {

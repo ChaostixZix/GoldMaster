@@ -31,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
                 'error' => Session::get('error'),
                 'saldo' => $saldo,
                 'idrrate' => DB::table('usdrate')->where('countryCode', 'idr')->get()[0]->price,
+                'currency' => Session::get('currency'),
             ];
         });
     }

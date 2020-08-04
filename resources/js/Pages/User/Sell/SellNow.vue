@@ -11,7 +11,7 @@
             </label>
             <p>{{p.kategori}}</p>
             <label class="form-control-label">
-                Quantity (${{data.price}})
+                Quantity <span> ({{this.$page.flash.currency === 'usd' ? '$'+data.price : 'Rp. '+idr}}) </span>
             </label>
             <input v-model="data.quantity" class="form-control" type="number">
             <label class="form-control-label">
@@ -43,7 +43,8 @@
                     nama: '',
                     status_o: 'pending',
                 },
-                loading: false
+                loading: false,
+                idr: 0
             }
         },
         props: {
@@ -52,6 +53,7 @@
         watch: {
             'data.quantity': function () {
                 this.data.price = parseInt(this.data.quantity)*this.p.dollar;
+                this.idr = this.data.price * this.$page.flash.idrrate;
             }
         },
         methods: {
