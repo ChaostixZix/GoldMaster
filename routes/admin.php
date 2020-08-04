@@ -63,6 +63,7 @@ Route::group([
         Route::get('list', 'ItemsController@index')->name('admin.items');
         Route::post('update', 'ItemsController@update')->name('admin.items.update');
         Route::post('insert', 'ItemsController@insert')->name('admin.items.insert');
+        Route::post('delete/{id}', 'ItemsController@delete')->name('admin.items.delete');
     });
 
     Route::group([

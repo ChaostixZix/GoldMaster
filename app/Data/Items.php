@@ -49,6 +49,11 @@ class Items extends Model
         return $this->db()->where('id_items', $id)->update($update);
     }
 
+    public function hapus($id)
+    {
+        return $this->db()->where('id_items', $id)->delete();
+    }
+
     public function insertRaw(array $insert)
     {
         return $this->db()->insert($insert);
