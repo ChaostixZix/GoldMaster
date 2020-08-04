@@ -4,21 +4,22 @@
     <div class="container">
         <ul class="navbar-nav">
             @if(\Illuminate\Support\Facades\Session::get('usershow'))
-            <li class="nav-item">
-                <a href="{{ route('depan.index') }}" class="nav-link"><i class="fa fa-home"></i>
-                    <span>Home</span>
-                </a>
-            </li>
-            <li class="nav-item dropdown">
-                <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i
-                        class="fa fa-cart-plus"></i><span>Transaction</span></a>
-                <ul class="dropdown-menu">
-                    <li class="nav-item"><a href="{{route('user.index')}}" class="nav-link">Dashboard</a></li>
-                    <li class="nav-item"><a href="{{route('user.history')}}" class="nav-link">My Order</a></li>
-                    <li class="nav-item"><a href="{{ route('user.memberstock') }}" class="nav-link">My Stock</a></li>
-                    <li class="nav-item"><a href="{{ route('user.sell') }}" class="nav-link">Sell</a></li>
-                </ul>
-            </li>
+                <li class="nav-item">
+                    <a href="{{ route('depan.index') }}" class="nav-link"><i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i
+                            class="fa fa-cart-plus"></i><span>Transaction</span></a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-item"><a href="{{route('user.index')}}" class="nav-link">Dashboard</a></li>
+                        <li class="nav-item"><a href="{{route('user.history')}}" class="nav-link">My Order</a></li>
+                        <li class="nav-item"><a href="{{ route('user.memberstock') }}" class="nav-link">My Stock</a>
+                        </li>
+                        <li class="nav-item"><a href="{{ route('user.sell') }}" class="nav-link">Sell</a></li>
+                    </ul>
+                </li>
             @endif
             @if(\Illuminate\Support\Facades\Session::has('admin'))
                 <li class="nav-item dropdown">
@@ -41,136 +42,24 @@
         </ul>
     </div>
     <ul class="navbar-nav navbar-right">
-        {{--        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"--}}
-        {{--                                                     class="nav-link nav-link-lg message-toggle beep"><i--}}
-        {{--                    class="far fa-envelope"></i></a>--}}
-        {{--            <div class="dropdown-menu dropdown-list dropdown-menu-right">--}}
-        {{--                <div class="dropdown-header">Messages--}}
-        {{--                    <div class="float-right">--}}
-        {{--                        <a href="#">Mark All As Read</a>--}}
-        {{--                    </div>--}}
-        {{--                </div>--}}
-        {{--                <div class="dropdown-list-content dropdown-list-message">--}}
-        {{--                    <a href="#" class="dropdown-item dropdown-item-unread">--}}
-        {{--                        <div class="dropdown-item-avatar">--}}
-        {{--                            <img alt="image" src="{{ asset('stisla/assets') }}/img/avatar/avatar-1.png" class="rounded-circle">--}}
-        {{--                            <div class="is-online"></div>--}}
-        {{--                        </div>--}}
-        {{--                        <div class="dropdown-item-desc">--}}
-        {{--                            <b>Kusnaedi</b>--}}
-        {{--                            <p>Hello, Bro!</p>--}}
-        {{--                            <div class="time">10 Hours Ago</div>--}}
-        {{--                        </div>--}}
-        {{--                    </a>--}}
-        {{--                    <a href="#" class="dropdown-item dropdown-item-unread">--}}
-        {{--                        <div class="dropdown-item-avatar">--}}
-        {{--                            <img alt="image" src="{{ asset('stisla/assets') }}/img/avatar/avatar-2.png" class="rounded-circle">--}}
-        {{--                        </div>--}}
-        {{--                        <div class="dropdown-item-desc">--}}
-        {{--                            <b>Dedik Sugiharto</b>--}}
-        {{--                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>--}}
-        {{--                            <div class="time">12 Hours Ago</div>--}}
-        {{--                        </div>--}}
-        {{--                    </a>--}}
-        {{--                    <a href="#" class="dropdown-item dropdown-item-unread">--}}
-        {{--                        <div class="dropdown-item-avatar">--}}
-        {{--                            <img alt="image" src="{{ asset('stisla/assets') }}/img/avatar/avatar-3.png" class="rounded-circle">--}}
-        {{--                            <div class="is-online"></div>--}}
-        {{--                        </div>--}}
-        {{--                        <div class="dropdown-item-desc">--}}
-        {{--                            <b>Agung Ardiansyah</b>--}}
-        {{--                            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum.</p>--}}
-        {{--                            <div class="time">12 Hours Ago</div>--}}
-        {{--                        </div>--}}
-        {{--                    </a>--}}
-        {{--                    <a href="#" class="dropdown-item">--}}
-        {{--                        <div class="dropdown-item-avatar">--}}
-        {{--                            <img alt="image" src="{{ asset('stisla/assets') }}/img/avatar/avatar-4.png" class="rounded-circle">--}}
-        {{--                        </div>--}}
-        {{--                        <div class="dropdown-item-desc">--}}
-        {{--                            <b>Ardian Rahardiansyah</b>--}}
-        {{--                            <p>Duis aute irure dolor in reprehenderit in voluptate velit ess</p>--}}
-        {{--                            <div class="time">16 Hours Ago</div>--}}
-        {{--                        </div>--}}
-        {{--                    </a>--}}
-        {{--                    <a href="#" class="dropdown-item">--}}
-        {{--                        <div class="dropdown-item-avatar">--}}
-        {{--                            <img alt="image" src="{{ asset('stisla/assets') }}/img/avatar/avatar-5.png" class="rounded-circle">--}}
-        {{--                        </div>--}}
-        {{--                        <div class="dropdown-item-desc">--}}
-        {{--                            <b>Alfa Zulkarnain</b>--}}
-        {{--                            <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>--}}
-        {{--                            <div class="time">Yesterday</div>--}}
-        {{--                        </div>--}}
-        {{--                    </a>--}}
-        {{--                </div>--}}
-        {{--                <div class="dropdown-footer text-center">--}}
-        {{--                    <a href="#">View All <i class="fas fa-chevron-right"></i></a>--}}
-        {{--                </div>--}}
-        {{--            </div>--}}
-        {{--        </li>--}}
-        {{--        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"--}}
-        {{--                                                     class="nav-link notification-toggle nav-link-lg beep"><i--}}
-        {{--                    class="far fa-bell"></i></a>--}}
-        {{--            <div class="dropdown-menu dropdown-list dropdown-menu-right">--}}
-        {{--                <div class="dropdown-header">Notifications--}}
-        {{--                    <div class="float-right">--}}
-        {{--                        <a href="#">Mark All As Read</a>--}}
-        {{--                    </div>--}}
-        {{--                </div>--}}
-        {{--                <div class="dropdown-list-content dropdown-list-icons">--}}
-        {{--                    <a href="#" class="dropdown-item dropdown-item-unread">--}}
-        {{--                        <div class="dropdown-item-icon bg-primary text-white">--}}
-        {{--                            <i class="fas fa-code"></i>--}}
-        {{--                        </div>--}}
-        {{--                        <div class="dropdown-item-desc">--}}
-        {{--                            Template update is available now!--}}
-        {{--                            <div class="time text-primary">2 Min Ago</div>--}}
-        {{--                        </div>--}}
-        {{--                    </a>--}}
-        {{--                    <a href="#" class="dropdown-item">--}}
-        {{--                        <div class="dropdown-item-icon bg-info text-white">--}}
-        {{--                            <i class="far fa-user"></i>--}}
-        {{--                        </div>--}}
-        {{--                        <div class="dropdown-item-desc">--}}
-        {{--                            <b>You</b> and <b>Dedik Sugiharto</b> are now friends--}}
-        {{--                            <div class="time">10 Hours Ago</div>--}}
-        {{--                        </div>--}}
-        {{--                    </a>--}}
-        {{--                    <a href="#" class="dropdown-item">--}}
-        {{--                        <div class="dropdown-item-icon bg-success text-white">--}}
-        {{--                            <i class="fas fa-check"></i>--}}
-        {{--                        </div>--}}
-        {{--                        <div class="dropdown-item-desc">--}}
-        {{--                            <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>--}}
-        {{--                            <div class="time">12 Hours Ago</div>--}}
-        {{--                        </div>--}}
-        {{--                    </a>--}}
-        {{--                    <a href="#" class="dropdown-item">--}}
-        {{--                        <div class="dropdown-item-icon bg-danger text-white">--}}
-        {{--                            <i class="fas fa-exclamation-triangle"></i>--}}
-        {{--                        </div>--}}
-        {{--                        <div class="dropdown-item-desc">--}}
-        {{--                            Low disk space. Let's clean it!--}}
-        {{--                            <div class="time">17 Hours Ago</div>--}}
-        {{--                        </div>--}}
-        {{--                    </a>--}}
-        {{--                    <a href="#" class="dropdown-item">--}}
-        {{--                        <div class="dropdown-item-icon bg-info text-white">--}}
-        {{--                            <i class="fas fa-bell"></i>--}}
-        {{--                        </div>--}}
-        {{--                        <div class="dropdown-item-desc">--}}
-        {{--                            Welcome to Stisla template!--}}
-        {{--                            <div class="time">Yesterday</div>--}}
-        {{--                        </div>--}}
-        {{--                    </a>--}}
-        {{--                </div>--}}
-        {{--                <div class="dropdown-footer text-center">--}}
-        {{--                    <a href="#">View All <i class="fas fa-chevron-right"></i></a>--}}
-        {{--                </div>--}}
-        {{--            </div>--}}
-        {{--        </li>--}}
-        @if(\Illuminate\Support\Facades\Session::has('admin'))
+        @if(\Illuminate\Support\Facades\Session::get('usershow'))
+            @if(\Illuminate\Support\Facades\Session::get('currency') === 'usd' || !\Illuminate\Support\Facades\Session::get('currency'))
+                <a href="{{route('depan.changeCurrency', ['currency' => 'idr'])}}"
+                   class="nav-link nav-link-lg mt-1" style="color: #0f0505;">IDR</a>
+                <font class="mt-1">/</font>
+                <a href="{{route('depan.changeCurrency', ['currency' => 'usd'])}}"
+                   class="nav-link nav-link-lg beep mt-1"
+                   style="color: #0f0505;">USD</a>
+                @elseif(\Illuminate\Support\Facades\Session::get('currency') === 'idr')
+                <a href="{{route('depan.changeCurrency', ['currency' => 'idr'])}}"
+                   class="nav-link nav-link-lg beep mt-1" style="color: #0f0505;">IDR</a>
+                <font class="mt-1">/</font>
+                <a href="{{route('depan.changeCurrency', ['currency' => 'usd'])}}"
+                   class="nav-link nav-link-lg mt-1"
+                   style="color: #0f0505;">USD</a>
+            @endif
+        @endif
+        @if(\Illuminate\Support\Facades\Session::has('admin') && !\Illuminate\Support\Facades\Session::get('usershow'))
             <li class="dropdown"><a href="#" data-toggle="dropdown"
                                     class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                     <img alt="image" src="{{ asset('stisla/assets') }}/img/avatar/avatar-1.png"
@@ -184,7 +73,7 @@
                 </div>
             </li>
         @endif
-        @if(\Illuminate\Support\Facades\Session::has('user'))
+        @if(\Illuminate\Support\Facades\Session::has('user') && \Illuminate\Support\Facades\Session::get('usershow'))
             <li class="dropdown"><a href="#" data-toggle="dropdown"
                                     class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                     <img alt="image" src="{{ asset('stisla/assets') }}/img/avatar/avatar-1.png"

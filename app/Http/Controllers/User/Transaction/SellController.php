@@ -11,13 +11,25 @@ use Inertia\Inertia;
 
 class SellController extends Controller
 {
-    public function index()
+    public function index($game = null)
     {
         return Inertia::render('User/Sell/Sell',
             [
-                'items' => function () {
+                'items' => function () use ($game) {
+                    if($game !== null)
+                    {
+                        return (new Items())->getMathcingGame($game);
+                    }
                     return (new Items())->getAll();
                 },
+                'perCategory' => function() use($game)
+                {
+                    if($game !== null)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
             ]);
     }
 }

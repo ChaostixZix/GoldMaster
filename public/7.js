@@ -82,6 +82,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -98,7 +109,8 @@ __webpack_require__.r(__webpack_exports__);
     Datatable: _Utils_Shared_Datatable__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    items: Array
+    items: Array,
+    perCategory: Boolean
   },
   mounted: function mounted() {
     this.load();
@@ -112,17 +124,14 @@ __webpack_require__.r(__webpack_exports__);
       width: '20%',
       label: 'Server'
     }, {
-      width: '15%',
+      width: '20%',
       label: 'Trade Method'
     }, {
-      width: '15%',
+      width: '20%',
       label: 'Stock Needed'
     }, {
-      width: '10%',
-      label: 'USD Price'
-    }, {
-      width: '15%',
-      label: 'IDR Price'
+      width: '20%',
+      label: 'Price'
     }, {
       width: '33%',
       label: 'Action'
@@ -301,7 +310,8 @@ __webpack_require__.r(__webpack_exports__);
         nama: '',
         status_o: 'pending'
       },
-      loading: false
+      loading: false,
+      idr: 0
     };
   },
   props: {
@@ -310,6 +320,7 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     'data.quantity': function dataQuantity() {
       this.data.price = parseInt(this.data.quantity) * this.p.dollar;
+      this.idr = this.data.price * this.$page.flash.idrrate;
     }
   },
   methods: {
@@ -376,6 +387,31 @@ var render = function() {
         _c("Messages"),
         _vm._v(" "),
         _c("div", { staticClass: "col-12" }, [
+          _vm.perCategory && _vm.items.length > 0
+            ? _c("div", { staticClass: "alert alert-info show fade" }, [
+                _c(
+                  "div",
+                  { staticClass: "alert-body" },
+                  [
+                    _c(
+                      "inertia-link",
+                      {
+                        staticClass: "close",
+                        attrs: { href: _vm.$route("user.sell") }
+                      },
+                      [_c("span", [_vm._v("×")])]
+                    ),
+                    _vm._v(
+                      "\n                    Game Filter : " +
+                        _vm._s(_vm.items[0].kategori) +
+                        ".\n                "
+                    )
+                  ],
+                  1
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
           _c("div", { staticClass: "card card-primary" }, [
             _c("div", { staticClass: "card-header bg-primary" }, [
               _c(
@@ -417,145 +453,156 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm.done
-                ? _c("div", [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "dataTables_wrapper dt-bootstrap4 no-footer",
-                        attrs: { id: "dataTableExample_wrapper" }
-                      },
-                      [
-                        _c("div", { staticClass: "row" }, [
-                          _c(
-                            "div",
-                            { staticClass: "col-sm-12" },
-                            [
-                              _c(
-                                "Datatable",
-                                {
-                                  attrs: {
-                                    "hide-header": "false",
-                                    columns: _vm.columns,
-                                    sortKey: _vm.sortKey,
-                                    sortOrders: _vm.sortOrders
-                                  },
-                                  on: { sort: _vm.sortBy }
-                                },
-                                [
-                                  _c(
-                                    "tbody",
-                                    _vm._l(_vm.paginated, function(p) {
-                                      return _c(
-                                        "tr",
-                                        {
-                                          staticClass: "odd",
-                                          attrs: { role: "row" }
-                                        },
-                                        [
-                                          _c("td", [
-                                            _vm._v(_vm._s(p.kategori))
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("td", [_vm._v(_vm._s(p.server))]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(_vm._s(p.pengiriman))
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(
-                                              "\n                                                " +
-                                                _vm._s(p.butuh) +
-                                                "G\n                                            "
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(
-                                              "\n                                                $ " +
-                                                _vm._s(p.dollar) +
-                                                "/G\n                                            "
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(
-                                              "\n                                                Rp. " +
-                                                _vm._s(
-                                                  parseFloat(
-                                                    _vm.$page.flash.idrrate
-                                                  ) * parseFloat(p.dollar)
-                                                ) +
-                                                "/G\n                                            "
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _c(
-                                              "button",
-                                              {
-                                                staticClass:
-                                                  "btn btn-sm btn-warning",
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.sell(p)
-                                                  }
-                                                }
-                                              },
-                                              [
-                                                _c("i", {
-                                                  staticClass: "fa fa-cart-plus"
-                                                }),
-                                                _vm._v(
-                                                  " Sell\n                                                "
-                                                )
-                                              ]
-                                            )
-                                          ])
-                                        ]
-                                      )
-                                    }),
-                                    0
-                                  )
-                                ]
-                              )
-                            ],
-                            1
-                          )
-                        ]),
-                        _vm._v(" "),
+            _vm.items.length > 0
+              ? _c("div", { staticClass: "card-body" }, [
+                  _vm.done
+                    ? _c("div", [
                         _c(
                           "div",
-                          { staticClass: "row" },
+                          {
+                            staticClass:
+                              "dataTables_wrapper dt-bootstrap4 no-footer",
+                            attrs: { id: "dataTableExample_wrapper" }
+                          },
                           [
-                            _c("div", { staticClass: "col-sm-12 col-md-5" }),
+                            _c("div", { staticClass: "row" }, [
+                              _c(
+                                "div",
+                                { staticClass: "col-sm-12" },
+                                [
+                                  _c(
+                                    "Datatable",
+                                    {
+                                      attrs: {
+                                        "hide-header": "false",
+                                        columns: _vm.columns,
+                                        sortKey: _vm.sortKey,
+                                        sortOrders: _vm.sortOrders
+                                      },
+                                      on: { sort: _vm.sortBy }
+                                    },
+                                    [
+                                      _c(
+                                        "tbody",
+                                        _vm._l(_vm.paginated, function(p) {
+                                          return _c(
+                                            "tr",
+                                            {
+                                              staticClass: "odd",
+                                              attrs: { role: "row" }
+                                            },
+                                            [
+                                              _c("td", [
+                                                _vm._v(_vm._s(p.kategori))
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(_vm._s(p.server))
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(_vm._s(p.pengiriman))
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(
+                                                  "\n                                                " +
+                                                    _vm._s(p.butuh) +
+                                                    "G\n                                            "
+                                                )
+                                              ]),
+                                              _vm._v(" "),
+                                              _vm.$page.flash.currency === "usd"
+                                                ? _c("td", [
+                                                    _vm._v(
+                                                      "\n                                                $ " +
+                                                        _vm._s(p.dollar) +
+                                                        "/G\n                                            "
+                                                    )
+                                                  ])
+                                                : _c("td", [
+                                                    _vm._v(
+                                                      "\n                                                Rp. " +
+                                                        _vm._s(
+                                                          parseFloat(
+                                                            _vm.$page.flash
+                                                              .idrrate
+                                                          ) *
+                                                            parseFloat(p.dollar)
+                                                        ) +
+                                                        "/G\n                                            "
+                                                    )
+                                                  ]),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _c(
+                                                  "button",
+                                                  {
+                                                    staticClass:
+                                                      "btn btn-sm btn-warning",
+                                                    on: {
+                                                      click: function($event) {
+                                                        return _vm.sell(p)
+                                                      }
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("i", {
+                                                      staticClass:
+                                                        "fa fa-cart-plus"
+                                                    }),
+                                                    _vm._v(
+                                                      " Sell\n                                                "
+                                                    )
+                                                  ]
+                                                )
+                                              ])
+                                            ]
+                                          )
+                                        }),
+                                        0
+                                      )
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            ]),
                             _vm._v(" "),
-                            _c("Pagination", {
-                              attrs: {
-                                pagination: _vm.pagination,
-                                client: true,
-                                filtered: _vm.filteredProjects
-                              },
-                              on: {
-                                prev: function($event) {
-                                  --_vm.pagination.currentPage
-                                },
-                                next: function($event) {
-                                  ++_vm.pagination.currentPage
-                                }
-                              }
-                            })
-                          ],
-                          1
+                            _c(
+                              "div",
+                              { staticClass: "row" },
+                              [
+                                _c("div", {
+                                  staticClass: "col-sm-12 col-md-5"
+                                }),
+                                _vm._v(" "),
+                                _c("Pagination", {
+                                  attrs: {
+                                    pagination: _vm.pagination,
+                                    client: true,
+                                    filtered: _vm.filteredProjects
+                                  },
+                                  on: {
+                                    prev: function($event) {
+                                      --_vm.pagination.currentPage
+                                    },
+                                    next: function($event) {
+                                      ++_vm.pagination.currentPage
+                                    }
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ]
                         )
-                      ]
-                    )
-                  ])
-                : _vm._e()
-            ])
+                      ])
+                    : _vm._e()
+                ])
+              : _c("div", { staticClass: "card-body text-center" }, [
+                  _vm._v("\n                    No Data\n                ")
+                ])
           ])
         ]),
         _vm._v(" "),
@@ -612,11 +659,18 @@ var render = function() {
             _c("p", [_vm._v(_vm._s(_vm.p.kategori))]),
             _vm._v(" "),
             _c("label", { staticClass: "form-control-label" }, [
-              _vm._v(
-                "\n            Quantity ($" +
-                  _vm._s(_vm.data.price) +
-                  ")\n        "
-              )
+              _vm._v("\n            Quantity "),
+              _c("span", [
+                _vm._v(
+                  " (" +
+                    _vm._s(
+                      this.$page.flash.currency === "usd"
+                        ? "$" + _vm.data.price
+                        : "Rp. " + _vm.idr
+                    ) +
+                    ") "
+                )
+              ])
             ]),
             _vm._v(" "),
             _c("input", {

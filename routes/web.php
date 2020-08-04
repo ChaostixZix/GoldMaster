@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => '', 'middleware' => 'UserShow'], function (){
     Route::get('', [\App\Http\Controllers\InertiaController::class, 'index'])->name('depan.index');
-
+    Route::get('changeCurrency/{currency}', [\App\Http\Controllers\CurrencyController::class, 'change'])->name('depan.changeCurrency');
 });
 

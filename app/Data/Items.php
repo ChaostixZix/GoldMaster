@@ -38,10 +38,18 @@ class Items extends Model
             ->leftJoin('t_kategori', 't_items.id_kategori', '=', 't_kategori.id_kategori')
             ->leftJoin('t_pengiriman', 't_items.id_pengiriman', '=', 't_pengiriman.id_pengiriman')
             ->get();
-        if (count($get) > 0) {
-            return $get[0];
-        }
-        return false;
+        return $get;
+
+    }
+
+    public function getMathcingGame($game)
+    {
+        $get = $this->db()->where('t_items.id_kategori', (int)$game)
+            ->leftJoin('t_server', 't_items.id_item', '=', 't_server.id_item')
+            ->leftJoin('t_kategori', 't_items.id_kategori', '=', 't_kategori.id_kategori')
+            ->leftJoin('t_pengiriman', 't_items.id_pengiriman', '=', 't_pengiriman.id_pengiriman')
+            ->get();
+        return $get;
     }
 
     public function updateRaw($id, array $update)

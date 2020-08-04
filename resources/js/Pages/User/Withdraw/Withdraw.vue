@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-6">
                 <div class="card card primary">
-                    <div class="card-header">Balance left : ${{$page.flash.saldo}}</div>
+                    <div class="card-header">Balance left : ({{$page.flash.currency === 'usd' ? '$'+$page.flash.saldo : 'Rp. '+$page.flash.saldo*$page.flash.idrrate}})</div>
                     <div v-if="$page.flash.saldo > 0" class="card-body">
                         <label class="form-control-label">
                             Withdraw Amount
@@ -33,7 +33,7 @@
                             <tbody>
                             <tr v-for="r in requests">
                                 <th scope="row">{{r.id}}</th>
-                                <td>${{r.dollar}}</td>
+                                <td>{{$page.flash.currency === 'usd' ? '$'+r.dollar : 'Rp. '+r.dollar*$page.flash.idrrate}}</td>
                                 <td>
                                     <div v-if="r.status_wd === 'pending'" class="badge badge-warning">Pending</div>
                                     <div v-if="r.status_wd === 'process'" class="badge badge-primary">Process</div>

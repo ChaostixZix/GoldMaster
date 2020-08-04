@@ -40,9 +40,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Depan",
+  props: {
+    games: Array
+  },
   data: function data() {
     return {
       breadcumb: ['Dashboard']
@@ -157,35 +180,73 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("App", [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "jumbotron jumb" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-9 col-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header text-white bg-primary" }, [
-            _c("h4", [_vm._v("Welcome")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("p", [
-              _vm._v(
-                "Welcome to GoldMaster Website.. We provide place to sell online games gold"
-              )
+      _c("div", { staticClass: "col-lg-4 col-12" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "card card-primary" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c("img", {
+                  staticClass: "img-fluid",
+                  attrs: { src: _vm.$route("depan.index") + "img/wow.png" }
+                })
+              ])
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-footer bg-whitesmoke" })
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c(
+                  "ul",
+                  _vm._l(_vm.games, function(g) {
+                    return _c(
+                      "li",
+                      [
+                        _c(
+                          "inertia-link",
+                          {
+                            attrs: {
+                              href: _vm.$route("user.sell", {
+                                game: g.id_kategori
+                              })
+                            }
+                          },
+                          [_vm._v(_vm._s(g.kategori))]
+                        )
+                      ],
+                      1
+                    )
+                  }),
+                  0
+                )
+              ])
+            ])
+          ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-lg-3 col-12" }, [
-        _c("div", { staticClass: "card card-primary" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("img", {
-              staticClass: "img-fluid",
-              attrs: { src: _vm.$route("depan.index") + "img/wow.png" }
-            })
+      _c("div", { staticClass: "col-lg-8 col-12" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "jumbotron jumb" })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-12 col-12" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header text-white bg-primary" }, [
+                _c("h4", [_vm._v("Welcome")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("p", [
+                  _vm._v(
+                    "Welcome to GoldMaster Website.. We provide place to sell online games gold"
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer bg-whitesmoke" })
+            ])
           ])
         ])
       ])

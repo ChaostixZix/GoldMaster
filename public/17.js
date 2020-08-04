@@ -162,7 +162,15 @@ var render = function() {
       _c("div", { staticClass: "col-6" }, [
         _c("div", { staticClass: "card card primary" }, [
           _c("div", { staticClass: "card-header" }, [
-            _vm._v("Balance left : $" + _vm._s(_vm.$page.flash.saldo))
+            _vm._v(
+              "Balance left : (" +
+                _vm._s(
+                  _vm.$page.flash.currency === "usd"
+                    ? "$" + _vm.$page.flash.saldo
+                    : "Rp. " + _vm.$page.flash.saldo * _vm.$page.flash.idrrate
+                ) +
+                ")"
+            )
           ]),
           _vm._v(" "),
           _vm.$page.flash.saldo > 0
@@ -238,7 +246,15 @@ var render = function() {
                       _vm._v(_vm._s(r.id))
                     ]),
                     _vm._v(" "),
-                    _c("td", [_vm._v("$" + _vm._s(r.dollar))]),
+                    _c("td", [
+                      _vm._v(
+                        _vm._s(
+                          _vm.$page.flash.currency === "usd"
+                            ? "$" + r.dollar
+                            : "Rp. " + r.dollar * _vm.$page.flash.idrrate
+                        )
+                      )
+                    ]),
                     _vm._v(" "),
                     _c("td", [
                       r.status_wd === "pending"

@@ -1,26 +1,46 @@
 <template>
     <App>
         <div class="row">
-            <div class="col-12">
-                <div class="jumbotron jumb"></div>
-            </div>
-            <div class="col-lg-9 col-12">
-                <div class="card">
-                    <div class="card-header text-white bg-primary">
-                        <h4>Welcome</h4>
+            <div class="col-lg-4 col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card card-primary">
+                            <div class="card-body">
+                                <img :src="$route('depan.index') + 'img/wow.png'"
+                                     class="img-fluid">
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p>Welcome to GoldMaster Website.. We provide place to sell online games gold</p>
-                    </div>
-                    <div class="card-footer bg-whitesmoke">
+                    <div class="col-12">
+                        <div class="card">
+
+                            <div class="card-body">
+                                <ul>
+                                    <li v-for="g in games">
+                                        <inertia-link :href="$route('user.sell', {game: g.id_kategori})">{{g.kategori}}</inertia-link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-12">
-                <div class="card card-primary">
-                    <div class="card-body">
-                        <img :src="$route('depan.index') + 'img/wow.png'"
-                            class="img-fluid">
+            <div class="col-lg-8 col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="jumbotron jumb"></div>
+                    </div>
+                    <div class="col-lg-12 col-12">
+                        <div class="card">
+                            <div class="card-header text-white bg-primary">
+                                <h4>Welcome</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>Welcome to GoldMaster Website.. We provide place to sell online games gold</p>
+                            </div>
+                            <div class="card-footer bg-whitesmoke">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -33,6 +53,9 @@
 
     export default {
         name: "Depan",
+        props: {
+            games: Array
+        },
         data() {
             return {
                 breadcumb: [
