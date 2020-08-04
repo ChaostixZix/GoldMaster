@@ -17,7 +17,8 @@
                             <div class="card-body">
                                 <ul>
                                     <li v-for="g in games">
-                                        <inertia-link :href="$route('user.sell', {game: g.id_kategori})">{{g.kategori}}</inertia-link>
+<!--                                        <inertia-link :href="$route('user.sell', {game: g.id_kategori})">{{g.kategori}}</inertia-link>-->
+                                        <a @click="showCategory(g.id_kategori)" href="#">{{g.kategori}}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -30,6 +31,9 @@
                     <div class="col-12">
                         <div class="jumbotron jumb"></div>
                     </div>
+                </div>
+                <SellDepan :items="items" :category="category" v-if="show"></SellDepan>
+                <div v-else class="row">
                     <div class="col-lg-12 col-12">
                         <div class="card">
                             <div class="card-header text-white bg-primary">
@@ -50,20 +54,31 @@
 
 <script>
     import App from "../../Utils/Layout/App";
+    import SellDepan from "./SellDepan";
 
     export default {
         name: "Depan",
         props: {
-            games: Array
+            games: Array,
+            items: Array
         },
         data() {
             return {
                 breadcumb: [
                     'Dashboard'
-                ]
+                ],
+                category: '',
+                show: false
             }
         },
-        components: {App}
+        methods: {
+            showCategory(id)
+            {
+                this.category = id;
+                this.show = true;
+            }
+        },
+        components: {SellDepan, App}
     }
 </script>
 

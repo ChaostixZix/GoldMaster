@@ -60530,12 +60530,28 @@ var map = {
 	"./Depan/Depan": [
 		"./resources/js/Pages/Depan/Depan.vue",
 		0,
-		29
+		11,
+		9,
+		12
 	],
 	"./Depan/Depan.vue": [
 		"./resources/js/Pages/Depan/Depan.vue",
 		0,
-		29
+		11,
+		9,
+		12
+	],
+	"./Depan/SellDepan": [
+		"./resources/js/Pages/Depan/SellDepan.vue",
+		0,
+		11,
+		9
+	],
+	"./Depan/SellDepan.vue": [
+		"./resources/js/Pages/Depan/SellDepan.vue",
+		0,
+		11,
+		9
 	],
 	"./User/Auth/Login": [
 		"./resources/js/Pages/User/Auth/Login.vue",

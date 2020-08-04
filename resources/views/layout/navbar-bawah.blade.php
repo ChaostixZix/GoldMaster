@@ -43,17 +43,18 @@
     </div>
     <ul class="navbar-nav navbar-right">
         @if(\Illuminate\Support\Facades\Session::get('usershow'))
+            <span class="mt-1">Currency: </span>
             @if(\Illuminate\Support\Facades\Session::get('currency') === 'usd' || !\Illuminate\Support\Facades\Session::get('currency'))
                 <a href="{{route('depan.changeCurrency', ['currency' => 'idr'])}}"
                    class="nav-link nav-link-lg mt-1" style="color: #0f0505;">IDR</a>
-                <font class="mt-1">/</font>
+                <font class="mt-1">|</font>
                 <a href="{{route('depan.changeCurrency', ['currency' => 'usd'])}}"
                    class="nav-link nav-link-lg beep mt-1"
                    style="color: #0f0505;">USD</a>
                 @elseif(\Illuminate\Support\Facades\Session::get('currency') === 'idr')
                 <a href="{{route('depan.changeCurrency', ['currency' => 'idr'])}}"
                    class="nav-link nav-link-lg beep mt-1" style="color: #0f0505;">IDR</a>
-                <font class="mt-1">/</font>
+                <font class="mt-1">|</font>
                 <a href="{{route('depan.changeCurrency', ['currency' => 'usd'])}}"
                    class="nav-link nav-link-lg mt-1"
                    style="color: #0f0505;">USD</a>
