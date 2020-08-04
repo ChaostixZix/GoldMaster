@@ -43,4 +43,9 @@ class ItemsController extends Controller
         $do = (new Items())->insertRaw($req);
         return redirect(route('admin.items'));
     }
+    public function delete($id)
+    {
+        $do = (new Items())->hapus($id);
+        return redirect(route('admin.items'));
+    }
 }

@@ -34,7 +34,7 @@
                                                             class="btn btn-sm btn-primary">
                                                         <i class="fa fa-edit"></i>
                                                     </button>
-                                                    <button
+                                                    <button @click="hapus(p.id_items)"
                                                         class="btn btn-sm btn-danger">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
@@ -94,8 +94,8 @@
             let columns = [
                 {width: '10%', label: '#'},
                 {width: '10%', label: 'Server'},
-                {width: '33%', label: 'Game'},
-                {width: '33%', label: 'Character Name'},
+                {width: '25%', label: 'Game'},
+                {width: '10%', label: 'Character Name'},
                 {width: '10%', label: 'Trade Mode'},
                 {width: '15%', label: 'Needed Stock'},
                 {width: '10%', label: 'Harga'},
@@ -128,6 +128,14 @@
             }
         },
         methods: {
+            hapus(id)
+            {
+                this.$inertia.post(this.$route('admin.items.delete', {id: id}), {}, {
+                    preserveState: false,
+                    preserverScroll: true,
+                    only: ['items']
+                })
+            },
             update(data)
             {
                 this.edit = true;
