@@ -34,14 +34,20 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
-                                            <label class="custom-control-label" for="remember-me">Remember Me</label>
-                                        </div>
-                                    </div>
+<!--                                    <div class="form-group">-->
+<!--                                        <div class="custom-control custom-checkbox">-->
+<!--                                            <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">-->
+<!--                                            <label class="custom-control-label" for="remember-me">Remember Me</label>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 
                                     <div class="form-group">
+                                        <label class="form-control-label">Capthca</label>
+                                        <VueRecaptcha ref="recaptcha" sitekey="6LfUq7kZAAAAANr2AHfnAZ_v67nkLEDUJC_wHiiU"
+                                                      @verify="onVerify"></VueRecaptcha>
+                                    </div>
+
+                                    <div v-if="robot" class="form-group">
                                         <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
                                             Login
                                         </button>
@@ -64,9 +70,10 @@
     import App from "../../../Utils/Layout/App";
     import Messages from "../../../Utils/Shared/Messages";
     import Spinner from "../../../Utils/Shared/Spinner";
+    import VueRecaptcha from 'vue-recaptcha';
     export default {
         name: "Login",
-        components: {Spinner, Messages, App},
+        components: {Spinner, Messages, App, VueRecaptcha},
         data()
         {
             return{
@@ -74,10 +81,14 @@
                     email: '',
                     password: ''
                 },
-                loading: false
+                loading: false,
+                robot: false
             }
         },
         methods: {
+            onVerify: function (response) {
+                if (response) this.robot = true;
+            },
         }
     }
 </script>
