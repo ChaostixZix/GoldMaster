@@ -13,7 +13,6 @@
                     </div>
                     <div class="col-12">
                         <div class="card">
-
                             <div class="card-body">
                                 <ul>
                                     <li v-for="g in games">
