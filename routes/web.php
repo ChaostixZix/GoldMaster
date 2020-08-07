@@ -18,3 +18,7 @@ Route::group(['prefix' => '', 'middleware' => 'UserShow'], function (){
     Route::get('changeCurrency/{currency}', [\App\Http\Controllers\CurrencyController::class, 'change'])->name('depan.changeCurrency');
 });
 
+Route::get('email', function ()
+{
+    return view('email');
+});

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Data\Users;
+use App\User\EmailCode;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
@@ -23,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
             {
                 $saldo = (new Users())->getById(Session::get('id_user'))[0]->saldo;
                 Session::put('saldo', $saldo);
+                Session::put('code', (new EmailCode())->getCode(Session::get('id_user')));
             }
             return [
                 'success' => Session::get('success'),
@@ -32,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
                 'saldo' => $saldo,
                 'idrrate' => DB::table('usdrate')->where('countryCode', 'idr')->get()[0]->price,
                 'currency' => Session::get('currency'),
+                'code' => Session::get('code')
             ];
         });
     }

@@ -54,4 +54,10 @@ class MemberStockController extends Controller
         $do = (new MemberStok())->insertRaw($request->all());
         return redirect()->back();
     }
+
+    public function delete($id)
+    {
+        $do = (new MemberStok())->hapus($id);
+        return redirect()->back();
+    }
 }

@@ -179,7 +179,7 @@ __webpack_require__.r(__webpack_exports__);
       this.edit = true;
     },
     hapus: function hapus(id) {
-      this.$inertia.post(this.$route('admin.memberstock.delete', {
+      this.$inertia.post(this.$route('user.memberstock.delete', {
         id: id
       }), {}, {
         preserveState: false,
@@ -366,6 +366,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Shared_Messages__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Shared/Messages */ "./resources/js/Utils/Shared/Messages.vue");
 //
 //
 //
@@ -383,8 +384,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
+  components: {
+    Messages: _Shared_Messages__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   props: {
     topnav: String,
     breadcumb: Array
@@ -930,26 +935,34 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "main-content" }, [
-    _c("section", { staticClass: "section" }, [
-      typeof _vm.topnav !== "undefined" || typeof _vm.breadcumb !== "undefined"
-        ? _c("div", { staticClass: "section-header" }, [
-            _c("h1", [_vm._v(_vm._s(_vm.topnav))]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "section-header-breadcrumb" },
-              _vm._l(_vm.breadcumb, function(bc) {
-                return _c("div", { staticClass: "breadcrumb-item" }, [
-                  _vm._v(_vm._s(bc))
-                ])
-              }),
-              0
-            )
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _c("div", { staticClass: "section-body" }, [_vm._t("default")], 2)
-    ])
+    _c(
+      "section",
+      { staticClass: "section" },
+      [
+        typeof _vm.topnav !== "undefined" ||
+        typeof _vm.breadcumb !== "undefined"
+          ? _c("div", { staticClass: "section-header" }, [
+              _c("h1", [_vm._v(_vm._s(_vm.topnav))]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "section-header-breadcrumb" },
+                _vm._l(_vm.breadcumb, function(bc) {
+                  return _c("div", { staticClass: "breadcrumb-item" }, [
+                    _vm._v(_vm._s(bc))
+                  ])
+                }),
+                0
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("Messages"),
+        _vm._v(" "),
+        _c("div", { staticClass: "section-body" }, [_vm._t("default")], 2)
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = []
