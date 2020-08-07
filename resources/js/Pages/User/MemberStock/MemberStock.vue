@@ -151,7 +151,7 @@
             },
             hapus(id)
             {
-                this.$inertia.post(this.$route('admin.memberstock.delete', {id: id}), {}, {
+                this.$inertia.post(this.$route('user.memberstock.delete', {id: id}), {}, {
                     preserveState: false,
                     preserveScroll: true,
                     only: ['stocks', 'neededstocks']

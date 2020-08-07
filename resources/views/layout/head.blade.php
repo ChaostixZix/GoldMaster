@@ -22,6 +22,8 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- General CSS Files -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
+
     <link rel="stylesheet" href="{{ asset('stisla/assets') }}/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('stisla/assets') }}/modules/fontawesome/css/all.min.css">
     <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer>
@@ -32,7 +34,6 @@
     <link rel="stylesheet" href="{{ asset('stisla/assets') }}/css/style.css">
     <link rel="stylesheet" href="{{ asset('stisla/assets') }}/css/components.css">
 {{--    <link href="{{ mix('css/app.css') }}" rel="stylesheet"></link>--}}
-    <script src="{{ mix('js/app.js') }}" defer></script>
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script>

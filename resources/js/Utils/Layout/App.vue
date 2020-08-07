@@ -7,7 +7,7 @@
                     <div v-for="bc in breadcumb" class="breadcrumb-item">{{ bc}}</div>
                 </div>
             </div>
-
+            <Messages></Messages>
             <div class="section-body">
                 <slot/>
             </div>
@@ -16,8 +16,10 @@
 </template>
 
 <script>
+    import Messages from "../Shared/Messages";
     export default {
         name: "App",
+        components: {Messages},
         props: {
             topnav: String,
             breadcumb: Array

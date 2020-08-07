@@ -20,6 +20,14 @@ Route::group([
 {
     Route::get('', 'DashboardController@index')->name('user.index');
 
+    Route::group([
+        'prefix' => 'profile'
+    ], function ()
+    {
+        Route::get('', 'ProfileController@index')->name('user.profile');
+        Route::post('update', 'ProfileController@update')->name('user.profile.update');
+        Route::get('getCode', 'ProfileController@getCode')->name('user.profile.getcode');
+    });
 
     Route::group([
         'prefix' => 'transaction',
@@ -57,6 +65,8 @@ Route::group([
             Route::get('', 'MemberStockController@index')->name('user.memberstock');
             Route::post('update/{id}', 'MemberStockController@edit')->name('user.memberstock.update');
             Route::post('insert', 'MemberStockController@insert')->name('user.memberstock.insert');
+            Route::post('delete/{id}', 'MemberStockController@delete')->name('user.memberstock.delete');
         });
+
     });
 });
