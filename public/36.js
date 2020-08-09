@@ -82,6 +82,11 @@ __webpack_require__.r(__webpack_exports__);
       currentIndex: 0
     };
   },
+  created: function created() {
+    Echo.channel('Web').listen('SellEvent', function (e) {
+      console.log(e);
+    });
+  },
   mounted: function mounted() {
     this.startSlide();
   },

@@ -79,6 +79,12 @@
                 currentIndex: 0
             }
         },
+        created() {
+            Echo.channel('Web')
+                .listen('SellEvent', (e) => {
+                    console.log(e);
+                });
+        },
         mounted: function () {
             this.startSlide();
         },
