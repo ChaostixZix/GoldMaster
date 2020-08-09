@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Data\Category;
 use App\Data\Items;
+use App\Events\SellEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
