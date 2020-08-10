@@ -66,6 +66,8 @@
                     this.loading = true;
                     this.$inertia.post(this.$route('user.history.addorder'), this.data).then(() => {
                         this.loading = false;
+                    }).then(() => {
+                        this.$parent.reload()
                     });
                 }
             }

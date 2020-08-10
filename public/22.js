@@ -121,10 +121,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     Echo.channel('Item').listen('ItemEvents', function (e) {
-      _this.$inertia.reload({
-        preserveState: false,
-        preserveScroll: true
-      });
+      _this.reload();
     });
   },
   mounted: function mounted() {
@@ -178,6 +175,13 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    reload: function reload() {
+      this.$inertia.reload({
+        preserveState: false,
+        preserveScroll: true,
+        only: ['neededstocks']
+      });
+    },
     insert: function insert() {
       this.type = 'baru';
       this.edit = true;
@@ -188,12 +192,16 @@ __webpack_require__.r(__webpack_exports__);
       this.edit = true;
     },
     hapus: function hapus(id) {
+      var _this2 = this;
+
       this.$inertia.post(this.$route('user.memberstock.delete', {
         id: id
       }), {}, {
         preserveState: false,
         preserveScroll: true,
         only: ['stocks', 'neededstocks']
+      }).then(function () {
+        _this2.reload();
       });
     },
     load: function load() {
@@ -231,14 +239,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     filteredProjects: function filteredProjects() {
-      var _this2 = this;
+      var _this3 = this;
 
       var data = this.data;
 
       if (this.search) {
         data = data.filter(function (row) {
           return Object.keys(row).some(function (key) {
-            return String(row[key]).toLowerCase().indexOf(_this2.search.toLowerCase()) > -1;
+            return String(row[key]).toLowerCase().indexOf(_this3.search.toLowerCase()) > -1;
           });
         });
       }
@@ -248,13 +256,13 @@ __webpack_require__.r(__webpack_exports__);
 
       if (sortKey) {
         data = data.slice().sort(function (a, b) {
-          var index = _this2.getIndex(_this2.columns, 'name', sortKey) + 1;
+          var index = _this3.getIndex(_this3.columns, 'name', sortKey) + 1;
           a = String(a[sortKey]).toLowerCase();
           b = String(b[sortKey]).toLowerCase();
 
-          if (_this2.columns[index].type && _this2.columns[index].type === 'date') {
+          if (_this3.columns[index].type && _this3.columns[index].type === 'date') {
             return (a === b ? 0 : new Date(a).getTime() > new Date(b).getTime() ? 1 : -1) * order;
-          } else if (_this2.columns[index].type && _this2.columns[index].type === 'number') {
+          } else if (_this3.columns[index].type && _this3.columns[index].type === 'number') {
             return (+a === +b ? 0 : +a > +b ? 1 : -1) * order;
           } else {
             return (a === b ? 0 : a > b ? 1 : -1) * order;
