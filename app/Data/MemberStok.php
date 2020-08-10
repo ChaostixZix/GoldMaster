@@ -21,6 +21,19 @@ class MemberStok extends Model
             ->get();
     }
 
+    public function getMatching($server, $kategori)
+    {
+        return $this->db()
+            ->where([
+                't_stok.id_item' => $server,
+                't_stok.id_kategori' => $kategori
+            ])
+            ->leftJoin('t_users', 't_stok.id_user', '=', 't_users.id_user')
+            ->leftJoin('t_server', 't_stok.id_item', '=', 't_server.id_item')
+            ->leftJoin('t_kategori', 't_stok.id_kategori', '=', 't_kategori.id_kategori')
+            ->get();
+    }
+
     public function getByUser($id)
     {
         return $this->db()

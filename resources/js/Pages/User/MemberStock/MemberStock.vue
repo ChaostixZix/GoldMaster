@@ -3,8 +3,7 @@
         <div class="row">
             <Messages></Messages>
             <div class="col-12">
-                <div class="alert alert-info" v-for="ns in neededstocks">Admin needed  {{ns.butuh}} in {{ns.kategori}} - {{ns.server}}</div>
-
+                <div class="alert alert-info" v-for="ns in neededstocks[0]">Admin needed  {{ns.butuh}} in {{ns.kategori}} - {{ns.server}}</div>
                 <div class="card card-primary">
                     <div class="card-header bg-primary">
                         <div id="dataTableExample_filter" class="dataTables_filter">
@@ -97,6 +96,15 @@
             server: Array,
             game: Array,
             neededstocks: Array
+        },
+        created() {
+            Echo.channel('Item')
+                .listen('ItemEvents', (e) => {
+                    this.$inertia.reload({
+                        preserveState: false,
+                        preserveScroll: true
+                    })
+                });
         },
         mounted() {
             this.load();

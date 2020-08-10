@@ -336,9 +336,14 @@ __webpack_require__.r(__webpack_exports__);
     Messages: _Shared_Messages__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   created: function created() {
+    var _this = this;
+
     if (this.$page.flash.id_user !== null) {
       Echo.channel('Web.' + this.$page.flash.id_user).listen('Message', function (e) {
-        console.log(e);
+        _this.$bvToast.toast('Test', {
+          title: 'BootstrapVue Toast',
+          autoHideDelay: 5000
+        });
       });
     }
   },
