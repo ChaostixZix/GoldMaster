@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg  main-navbar">
+<nav class="navbar navbar-expand-lg main-navbar">
 {{--    <a href="index.html" class="navbar-brand sidebar-gone-hide">GoldMaster</a>--}}
-    <img class="img-fluid" src="{{asset('logo.png')}}" alt="logo"
-         width="70">
+{{--    <img class="img-fluid" src="{{asset('logo.png')}}" alt="logo"--}}
+{{--         width="70">--}}
     <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
     <div class="nav-collapse">
         <a class="sidebar-gone-show nav-collapse-toggle nav-link" href="#">
@@ -213,6 +213,24 @@
         {{--                </div>--}}
         {{--            </div>--}}
         {{--        </li>--}}
+        @if(\Illuminate\Support\Facades\Session::get('usershow'))
+            <span class="mt-1 text-white">Currency: </span>
+            @if(\Illuminate\Support\Facades\Session::get('currency') === 'usd' || !\Illuminate\Support\Facades\Session::get('currency'))
+                <a href="{{route('depan.changeCurrency', ['currency' => 'idr'])}}"
+                   class="nav-link nav-link-lg mt-1 text-white" style="color: #0f0505;">IDR</a>
+                <font class="mt-1 text-white">|</font>
+                <a href="{{route('depan.changeCurrency', ['currency' => 'usd'])}}"
+                   class="nav-link nav-link-lg beep mt-1 text-white"
+                   style="color: #0f0505;">USD</a>
+            @elseif(\Illuminate\Support\Facades\Session::get('currency') === 'idr')
+                <a href="{{route('depan.changeCurrency', ['currency' => 'idr'])}}"
+                   class="nav-link nav-link-lg beep mt-1" style="color: #0f0505;">IDR</a>
+                <font class="mt-1 text-white">|</font>
+                <a href="{{route('depan.changeCurrency', ['currency' => 'usd'])}}"
+                   class="nav-link nav-link-lg mt-1"
+                   style="color: #0f0505;">USD</a>
+            @endif
+        @endif
         @if(\Illuminate\Support\Facades\Session::has('admin'))
             <li class="dropdown"><a href="#" data-toggle="dropdown"
                                     class="nav-link dropdown-toggle nav-link-lg nav-link-user">
@@ -238,31 +256,32 @@
                 </div>
             </li>
         @endif
-        @if(\Illuminate\Support\Facades\Session::has('user'))
+        @if(\Illuminate\Support\Facades\Session::has('user') && \Illuminate\Support\Facades\Session::get('usershow'))
             <li class="dropdown"><a href="#" data-toggle="dropdown"
                                     class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                     <img alt="image" src="{{ asset('stisla/assets') }}/img/avatar/avatar-1.png"
                          class="rounded-circle mr-1">
-                    <div class="d-sm-none d-lg-inline-block">
-                        Hi, {{\Illuminate\Support\Facades\Session::get('user')}}</div>
+                    <div class="d-sm-none text-secondary d-lg-inline-block text-white">
+                        Hi, {{\Illuminate\Support\Facades\Session::get('username')}}</div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                                    <div class="dropdown-title">Balance: ${{\Illuminate\Support\Facades\Session::get('saldo')}}</div>
-                                    <a href="{{route('user.withdraw')}}" class="dropdown-item has-icon">
-                                        <i class="fa fa-dollar-sign"></i> Withdraw
-                                    </a>
-                    {{--                <a href="features-activities.html" class="dropdown-item has-icon">--}}
-                    {{--                    <i class="fas fa-bolt"></i> Activities--}}
-                    {{--                </a>--}}
-                    {{--                <a href="features-settings.html" class="dropdown-item has-icon">--}}
-                    {{--                    <i class="fas fa-cog"></i> Settings--}}
-                    {{--                </a>--}}
-                    {{--                <div class="dropdown-divider"></div>--}}
+                    <div class="dropdown-title">Balance: ${{\Illuminate\Support\Facades\Session::get('saldo')}}</div>
+                    <a href="{{route('user.profile')}}" class="dropdown-item has-icon">
+                        <i class="fa fa-user"></i> Profile
+                    </a>
+                    <a href="{{route('user.withdraw')}}" class="dropdown-item has-icon">
+                        <i class="fa fa-dollar-sign"></i> Withdraw
+                    </a>
                     <a href="{{route('user.auth.logout')}}" class="dropdown-item has-icon text-danger">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
                 </div>
             </li>
+        @else
+            @if(\Illuminate\Support\Facades\Session::get('usershow'))
+                <a href="{{route('user.auth.loginPage')}}" class="btn btn-primary mr-2">Login</a>
+                <a href="{{route('user.auth.registerPage')}}" class="btn btn-primary mr-2">Sign Up</a>
+            @endif
         @endif
     </ul>
 </nav>

@@ -3,7 +3,7 @@
         <div class="row">
             <Messages></Messages>
             <div class="col-12">
-                <div class="alert alert-info" v-for="ns in neededstocks">Admin needed {{ns.butuh}} in {{ns.kategori}} - {{ns.server}}</div>
+                <div class="alert alert-info" v-for="ns in neededstocks">Admin needed  {{ns.butuh}} in {{ns.kategori}} - {{ns.server}}</div>
 
                 <div class="card card-primary">
                     <div class="card-header bg-primary">

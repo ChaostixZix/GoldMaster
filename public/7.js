@@ -283,6 +283,13 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Messages: _Shared_Messages__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  created: function created() {
+    if (this.$page.flash.id_user !== null) {
+      Echo.channel('Web.' + this.$page.flash.id_user).listen('Message', function (e) {
+        console.log(e);
+      });
+    }
+  },
   props: {
     topnav: String,
     breadcumb: Array

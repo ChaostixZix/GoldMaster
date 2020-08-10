@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-secondary navbar-expand-lg">
     <img href="{{route('depan.index')}}" class="img-fluid" src="{{asset('logo.png')}}" alt="logo"
          width="70">
@@ -42,24 +43,7 @@
         </ul>
     </div>
     <ul class="navbar-nav navbar-right">
-        @if(\Illuminate\Support\Facades\Session::get('usershow'))
-            <span class="mt-1">Currency: </span>
-            @if(\Illuminate\Support\Facades\Session::get('currency') === 'usd' || !\Illuminate\Support\Facades\Session::get('currency'))
-                <a href="{{route('depan.changeCurrency', ['currency' => 'idr'])}}"
-                   class="nav-link nav-link-lg mt-1" style="color: #0f0505;">IDR</a>
-                <font class="mt-1">|</font>
-                <a href="{{route('depan.changeCurrency', ['currency' => 'usd'])}}"
-                   class="nav-link nav-link-lg beep mt-1"
-                   style="color: #0f0505;">USD</a>
-                @elseif(\Illuminate\Support\Facades\Session::get('currency') === 'idr')
-                <a href="{{route('depan.changeCurrency', ['currency' => 'idr'])}}"
-                   class="nav-link nav-link-lg beep mt-1" style="color: #0f0505;">IDR</a>
-                <font class="mt-1">|</font>
-                <a href="{{route('depan.changeCurrency', ['currency' => 'usd'])}}"
-                   class="nav-link nav-link-lg mt-1"
-                   style="color: #0f0505;">USD</a>
-            @endif
-        @endif
+
         @if(\Illuminate\Support\Facades\Session::has('admin') && !\Illuminate\Support\Facades\Session::get('usershow'))
             <li class="dropdown"><a href="#" data-toggle="dropdown"
                                     class="nav-link dropdown-toggle nav-link-lg nav-link-user">
@@ -73,33 +57,6 @@
                     </a>
                 </div>
             </li>
-        @endif
-        @if(\Illuminate\Support\Facades\Session::has('user') && \Illuminate\Support\Facades\Session::get('usershow'))
-            <li class="dropdown"><a href="#" data-toggle="dropdown"
-                                    class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                    <img alt="image" src="{{ asset('stisla/assets') }}/img/avatar/avatar-1.png"
-                         class="rounded-circle mr-1">
-                    <div class="d-sm-none text-secondary d-lg-inline-block">
-                        Hi, {{\Illuminate\Support\Facades\Session::get('username')}}</div>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <div class="dropdown-title">Balance: ${{\Illuminate\Support\Facades\Session::get('saldo')}}</div>
-                    <a href="{{route('user.profile')}}" class="dropdown-item has-icon">
-                        <i class="fa fa-user"></i> Profile
-                    </a>
-                    <a href="{{route('user.withdraw')}}" class="dropdown-item has-icon">
-                        <i class="fa fa-dollar-sign"></i> Withdraw
-                    </a>
-                    <a href="{{route('user.auth.logout')}}" class="dropdown-item has-icon text-danger">
-                        <i class="fas fa-sign-out-alt"></i> Logout
-                    </a>
-                </div>
-            </li>
-        @else
-            @if(\Illuminate\Support\Facades\Session::get('usershow'))
-                <a href="{{route('user.auth.loginPage')}}" class="btn btn-primary mr-2">Login</a>
-                <a href="{{route('user.auth.registerPage')}}" class="btn btn-primary mr-2">Sign Up</a>
-            @endif
         @endif
     </ul>
 </nav>

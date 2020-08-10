@@ -1,5 +1,5 @@
 <template>
-    <App>
+    <App topnav="Sell">
         <div class="row">
             <Messages></Messages>
             <div class="col-12">
@@ -89,6 +89,15 @@
         props: {
             items: Array,
             perCategory: Boolean
+        },
+        created() {
+            Echo.channel('Item')
+                .listen('ItemEvents', (e) => {
+                    this.$inertia.reload({
+                        preserveState: false,
+                        preserveScroll: true
+                    })
+                });
         },
         mounted() {
             this.load();

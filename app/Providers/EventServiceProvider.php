@@ -19,8 +19,11 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
 
-        'App\Events\SellEvent' => [
+        'App\Events\Message' => [
             'App\Listeners\SellListener'
+        ],
+        'App\Events\ItemEvents' => [
+            'App\Listeners\ItemListener'
         ]
         ,
     ];

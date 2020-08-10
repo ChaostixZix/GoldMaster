@@ -1,5 +1,6 @@
 <template>
-    <div class="card">
+    <Spinner v-if="loading"></Spinner>
+    <div v-else class="card">
         <div class="card-header text-white bg-info">
             Edit Item #{{data.id_items}}
         </div>
@@ -45,17 +46,21 @@
 </template>
 
 <script>
+    import Spinner from "../../../Utils/Shared/Spinner";
     export default {
         name: "ItemsEdit",
+        components: {Spinner},
         props: {
             data: Object,
             server: Array,
             game: Array,
             trademode: Array,
-            type: String
+            type: String,
+            loading: false
         },
         methods: {
             submit() {
+                this.loading = true;
                 if(this.type === 'edit')
                 {
                     this.$inertia.post(this.$route('admin.items.update'), {

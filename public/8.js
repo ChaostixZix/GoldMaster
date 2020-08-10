@@ -112,6 +112,16 @@ __webpack_require__.r(__webpack_exports__);
     items: Array,
     perCategory: Boolean
   },
+  created: function created() {
+    var _this = this;
+
+    Echo.channel('Item').listen('ItemEvents', function (e) {
+      _this.$inertia.reload({
+        preserveState: false,
+        preserveScroll: true
+      });
+    });
+  },
   mounted: function mounted() {
     this.load();
   },
@@ -213,14 +223,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     filteredProjects: function filteredProjects() {
-      var _this = this;
+      var _this2 = this;
 
       var data = this.data;
 
       if (this.search) {
         data = data.filter(function (row) {
           return Object.keys(row).some(function (key) {
-            return String(row[key]).toLowerCase().indexOf(_this.search.toLowerCase()) > -1;
+            return String(row[key]).toLowerCase().indexOf(_this2.search.toLowerCase()) > -1;
           });
         });
       }
@@ -230,13 +240,13 @@ __webpack_require__.r(__webpack_exports__);
 
       if (sortKey) {
         data = data.slice().sort(function (a, b) {
-          var index = _this.getIndex(_this.columns, 'name', sortKey) + 1;
+          var index = _this2.getIndex(_this2.columns, 'name', sortKey) + 1;
           a = String(a[sortKey]).toLowerCase();
           b = String(b[sortKey]).toLowerCase();
 
-          if (_this.columns[index].type && _this.columns[index].type === 'date') {
+          if (_this2.columns[index].type && _this2.columns[index].type === 'date') {
             return (a === b ? 0 : new Date(a).getTime() > new Date(b).getTime() ? 1 : -1) * order;
-          } else if (_this.columns[index].type && _this.columns[index].type === 'number') {
+          } else if (_this2.columns[index].type && _this2.columns[index].type === 'number') {
             return (+a === +b ? 0 : +a > +b ? 1 : -1) * order;
           } else {
             return (a === b ? 0 : a > b ? 1 : -1) * order;
@@ -374,6 +384,13 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Messages: _Shared_Messages__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  created: function created() {
+    if (this.$page.flash.id_user !== null) {
+      Echo.channel('Web.' + this.$page.flash.id_user).listen('Message', function (e) {
+        console.log(e);
+      });
+    }
+  },
   props: {
     topnav: String,
     breadcumb: Array
@@ -420,7 +437,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("App", [
+  return _c("App", { attrs: { topnav: "Sell" } }, [
     _c(
       "div",
       { staticClass: "row" },
