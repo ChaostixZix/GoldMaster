@@ -1,13 +1,16 @@
 require('./bootstrap');
 import { InertiaApp } from '@inertiajs/inertia-vue'
 import Vue from 'vue'
-import BootstrapVue from 'bootstrap-vue'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
+// Install BootstrapVue
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
 
 
 Vue.use(InertiaApp)
-Vue.use(BootstrapVue)
-
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 const app = document.getElementById('app')
 
 new Vue({

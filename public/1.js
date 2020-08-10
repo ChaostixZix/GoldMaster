@@ -27,16 +27,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
   components: {
     Messages: _Shared_Messages__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  data: function data() {
+    return {
+      message: ''
+    };
+  },
   created: function created() {
+    var _this = this;
+
     if (this.$page.flash.id_user !== null) {
       Echo.channel('Web.' + this.$page.flash.id_user).listen('Message', function (e) {
-        console.log(e);
+        _this.message = e.message;
+
+        _this.$bvToast.show('toast');
       });
     }
   },
@@ -101,36 +119,80 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "main-content" }, [
-    _c(
-      "section",
-      { staticClass: "section" },
-      [
-        typeof _vm.topnav !== "undefined" ||
-        typeof _vm.breadcumb !== "undefined"
-          ? _c("div", { staticClass: "section-header" }, [
-              _c("h1", [_vm._v(_vm._s(_vm.topnav))]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "section-header-breadcrumb" },
-                _vm._l(_vm.breadcumb, function(bc) {
-                  return _c("div", { staticClass: "breadcrumb-item" }, [
-                    _vm._v(_vm._s(bc))
-                  ])
-                }),
-                0
-              )
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _c("Messages"),
-        _vm._v(" "),
-        _c("div", { staticClass: "section-body" }, [_vm._t("default")], 2)
-      ],
-      1
-    )
-  ])
+  return _c(
+    "div",
+    { staticClass: "main-content" },
+    [
+      _c(
+        "b-toast",
+        {
+          staticClass: "card card-primary",
+          attrs: { id: "toast", variant: "warning", solid: "" },
+          scopedSlots: _vm._u([
+            {
+              key: "toast-title",
+              fn: function() {
+                return [
+                  _c(
+                    "div",
+                    { staticClass: "d-flex flex-grow-1 align-items-baseline" },
+                    [
+                      _c("b-img", {
+                        staticClass: "mr-2",
+                        attrs: {
+                          blank: "",
+                          "blank-color": "#ff5555",
+                          width: "12",
+                          height: "12"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("strong", { staticClass: "mr-auto" }, [
+                        _vm._v("Notice!")
+                      ])
+                    ],
+                    1
+                  )
+                ]
+              },
+              proxy: true
+            }
+          ])
+        },
+        [_vm._v("\n        " + _vm._s(_vm.message) + "\n    ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "section",
+        { staticClass: "section" },
+        [
+          typeof _vm.topnav !== "undefined" ||
+          typeof _vm.breadcumb !== "undefined"
+            ? _c("div", { staticClass: "section-header" }, [
+                _c("h1", [_vm._v(_vm._s(_vm.topnav))]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "section-header-breadcrumb" },
+                  _vm._l(_vm.breadcumb, function(bc) {
+                    return _c("div", { staticClass: "breadcrumb-item" }, [
+                      _vm._v(_vm._s(bc))
+                    ])
+                  }),
+                  0
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("Messages"),
+          _vm._v(" "),
+          _c("div", { staticClass: "section-body" }, [_vm._t("default")], 2)
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

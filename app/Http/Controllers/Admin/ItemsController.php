@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Data\Category;
 use App\Data\Items;
+use App\Data\MemberStok;
 use App\Data\Server;
 use App\Data\TradeMode;
 use App\Events\ItemEvents;
@@ -32,9 +33,14 @@ class ItemsController extends Controller
         ]);
     }
 
-    public function notify()
+    public function notify($server, $kategori)
     {
         event(new ItemEvents('Test'));
+        $get = (new MemberStok())->getMatching($server, $kategori);
+        if($get !== false)
+        {
+            event(new Message($get[0]->id_user, 'Need stock'));
+        }
     }
 
     public function update(Request $request)
@@ -42,7 +48,7 @@ class ItemsController extends Controller
         $req = $request->all();
 
         $do = (new Items())->updateRaw($req['id_items'], $req);
-        $this->notify();
+        $this->notify($req['id_item'], $req['id_kategori']);
         return redirect(route('admin.items'));
     }
 
@@ -50,14 +56,14 @@ class ItemsController extends Controller
     {
         $req = $request->all();
         $do = (new Items())->insertRaw($req);
-        $this->notify();
+        $this->notify($req['id_item'], $req['id_kategori']);
         return redirect(route('admin.items'));
     }
 
     public function delete($id)
     {
         $do = (new Items())->hapus($id);
-        $this->notify();
+        event(new ItemEvents('Test'));
         return redirect(route('admin.items'));
     }
 }

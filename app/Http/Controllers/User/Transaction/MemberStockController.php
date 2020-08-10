@@ -16,24 +16,24 @@ class MemberStockController extends Controller
     public function index()
     {
         $userstocks = (new MemberStok())->getByUser(Session::get('id_user'));
-        $neededstocks = [];
-        foreach ($userstocks as $us)
-        {
-            if($get = (new Items())->getMathcing($us->id_item, $us->id_kategori)) {
-                if ($get !== false)
-                {
-                    $neededstocks[] = $get;
-                }
-            }
-        }
         return Inertia::render(
             'User/MemberStock/MemberStock',
             [
                 'stocks' => function () use ($userstocks) {
                     return $userstocks;
                 },
-                'neededstocks' => function () use ($neededstocks)
+                'neededstocks' => function () use ($userstocks)
                 {
+                    $neededstocks = [];
+                    foreach ($userstocks as $us)
+                    {
+                        if($get = (new Items())->getMathcing($us->id_item, $us->id_kategori)) {
+                            if ($get !== false)
+                            {
+                                $neededstocks[] = $get;
+                            }
+                        }
+                    }
                   return $neededstocks;
                 },
                 'server' => function () {
