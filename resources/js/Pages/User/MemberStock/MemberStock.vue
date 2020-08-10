@@ -100,10 +100,7 @@
         created() {
             Echo.channel('Item')
                 .listen('ItemEvents', (e) => {
-                    this.$inertia.reload({
-                        preserveState: false,
-                        preserveScroll: true
-                    })
+                    this.reload()
                 });
         },
         mounted() {
@@ -146,6 +143,14 @@
             }
         },
         methods: {
+            reload()
+            {
+                this.$inertia.reload({
+                    preserveState: false,
+                    preserveScroll: true,
+                    only: ['neededstocks']
+                })
+            },
             insert()
             {
               this.type = 'baru';
@@ -163,6 +168,8 @@
                     preserveState: false,
                     preserveScroll: true,
                     only: ['stocks', 'neededstocks']
+                }).then(() => {
+                    this.reload()
                 })
             },
             load() {
