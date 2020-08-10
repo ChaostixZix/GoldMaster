@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Admin\AdminAuth;
 use App\Data\Users;
-use App\Events\SellEvent;
+use App\Events\Message;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\User\UserAuth;
@@ -16,8 +16,6 @@ class UserAuthController extends Controller
 {
     public function loginPage()
     {
-        event(new SellEvent('Test'));
-
         if(Session::has('user'))
         {
             return redirect(route('user.index'));

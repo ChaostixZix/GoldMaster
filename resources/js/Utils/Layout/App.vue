@@ -20,6 +20,15 @@
     export default {
         name: "App",
         components: {Messages},
+        created() {
+            if(this.$page.flash.id_user !== null)
+            {
+                Echo.channel('Web.'+this.$page.flash.id_user)
+                    .listen('Message', (e) => {
+                        console.log(e);
+                    });
+            }
+        },
         props: {
             topnav: String,
             breadcumb: Array

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Events\Message;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 
 class DashboardController extends Controller

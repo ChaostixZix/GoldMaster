@@ -6,9 +6,11 @@
 <div>
     <div class="main-wrapper {{\Illuminate\Support\Facades\Session::get('usershow') ? 'container' : 'main-wrapper-1
 '}}">
-        {{--        <div class="navbar-bg"></div>--}}
         {{--        @include('layout.navbar-atas')--}}
         @if(\Illuminate\Support\Facades\Session::get('usershow'))
+            <div class="navbar-bg"></div>
+
+            @include('layout.navbar-atas')
             @include('layout.navbar-bawah')
         @else
             @include('layout.navbar-admin')
@@ -37,11 +39,15 @@
                 <div class="col-lg-4 col-md-12">
                     <div class="single-footer-widget f_social_wd">
                         <h6 class="footer_title">Sosial Media</h6>
-                        <a href="https://web.facebook.com/GoldMasterASLI/" target="_blank" class="btn"><i class="fab fa-facebook"></i></a>
-                        <a href="skype:live:.cid.94dd815f707e8705?add" target="_blank" class="btn"><i class="fab fa-skype"></i></a>
+                        <a href="https://web.facebook.com/GoldMasterASLI/" target="_blank" class="btn"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="skype:live:.cid.94dd815f707e8705?add" target="_blank" class="btn"><i
+                                class="fab fa-skype"></i></a>
                         <a href="https://wa.me/6281330355613" target="_blank" class="btn"><i class="fab fa-discord"></i></a>
-                        <a href="https://t.me/GoldMasterAdmin" target="_blank" class="btn"><i class="fab fa-telegram"></i></a>
-                        <a href="https://wa.me/6281330355613" target="_blank" class="btn"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://t.me/GoldMasterAdmin" target="_blank" class="btn"><i
+                                class="fab fa-telegram"></i></a>
+                        <a href="https://wa.me/6281330355613" target="_blank" class="btn"><i
+                                class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>

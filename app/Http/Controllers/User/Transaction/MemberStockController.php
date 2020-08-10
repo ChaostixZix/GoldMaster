@@ -19,9 +19,11 @@ class MemberStockController extends Controller
         $neededstocks = [];
         foreach ($userstocks as $us)
         {
-            if($get = (new Items())->getMathcing($us->id_item, $us->id_kategori))
-            {
-                $neededstocks[] = $get;
+            if($get = (new Items())->getMathcing($us->id_item, $us->id_kategori)) {
+                if ($get !== false)
+                {
+                    $neededstocks[] = $get;
+                }
             }
         }
         return Inertia::render(

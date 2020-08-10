@@ -38,8 +38,11 @@ class Items extends Model
             ->leftJoin('t_kategori', 't_items.id_kategori', '=', 't_kategori.id_kategori')
             ->leftJoin('t_pengiriman', 't_items.id_pengiriman', '=', 't_pengiriman.id_pengiriman')
             ->get();
-        return $get;
+        if (count($get) > 0) {
+            return $get;
 
+        }
+        return false;
     }
 
     public function getMathcingGame($game)

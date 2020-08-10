@@ -390,6 +390,13 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Messages: _Shared_Messages__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  created: function created() {
+    if (this.$page.flash.id_user !== null) {
+      Echo.channel('Web.' + this.$page.flash.id_user).listen('Message', function (e) {
+        console.log(e);
+      });
+    }
+  },
   props: {
     topnav: String,
     breadcumb: Array
@@ -450,7 +457,7 @@ var render = function() {
             _vm._l(_vm.neededstocks, function(ns) {
               return _c("div", { staticClass: "alert alert-info" }, [
                 _vm._v(
-                  "Admin needed " +
+                  "Admin needed  " +
                     _vm._s(ns.butuh) +
                     " in " +
                     _vm._s(ns.kategori) +

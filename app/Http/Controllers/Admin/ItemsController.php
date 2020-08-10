@@ -6,6 +6,8 @@ use App\Data\Category;
 use App\Data\Items;
 use App\Data\Server;
 use App\Data\TradeMode;
+use App\Events\ItemEvents;
+use App\Events\Message;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -30,22 +32,32 @@ class ItemsController extends Controller
         ]);
     }
 
+    public function notify()
+    {
+        event(new ItemEvents('Test'));
+    }
+
     public function update(Request $request)
     {
         $req = $request->all();
 
         $do = (new Items())->updateRaw($req['id_items'], $req);
+        $this->notify();
         return redirect(route('admin.items'));
     }
+
     public function insert(Request $request)
     {
         $req = $request->all();
         $do = (new Items())->insertRaw($req);
+        $this->notify();
         return redirect(route('admin.items'));
     }
+
     public function delete($id)
     {
         $do = (new Items())->hapus($id);
+        $this->notify();
         return redirect(route('admin.items'));
     }
 }

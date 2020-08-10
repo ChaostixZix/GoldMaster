@@ -9,8 +9,9 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Session;
 
-class SellEvent implements ShouldBroadcast
+class Message implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -20,10 +21,13 @@ class SellEvent implements ShouldBroadcast
      * @return void
      */
 
-    public $test;
-    public function __construct($test)
+    public $message;
+    public $id_user;
+
+    public function __construct($id_user, $message)
     {
-        $this->test = $test;
+        $this->id_user = $id_user;
+        $this->message = $message;
     }
 
     /**
@@ -33,11 +37,8 @@ class SellEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['Web'];
+        return new Channel('Web.' . $this->id_user);
     }
 
-    public function broadcastAs()
-    {
-        return 'SellEvent';
-    }
+
 }

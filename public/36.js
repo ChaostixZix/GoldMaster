@@ -82,11 +82,6 @@ __webpack_require__.r(__webpack_exports__);
       currentIndex: 0
     };
   },
-  created: function created() {
-    Echo.channel('Web').listen('SellEvent', function (e) {
-      console.log(e);
-    });
-  },
   mounted: function mounted() {
     this.startSlide();
   },
@@ -148,6 +143,13 @@ __webpack_require__.r(__webpack_exports__);
   name: "App",
   components: {
     Messages: _Shared_Messages__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  created: function created() {
+    if (this.$page.flash.id_user !== null) {
+      Echo.channel('Web.' + this.$page.flash.id_user).listen('Message', function (e) {
+        console.log(e);
+      });
+    }
   },
   props: {
     topnav: String,
