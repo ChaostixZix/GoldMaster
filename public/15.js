@@ -41,7 +41,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Depan",
@@ -207,14 +206,7 @@ var render = function() {
                 { staticClass: "text-muted d-inline font-weight-normal" },
                 [_c("div", { staticClass: "slash" }), _vm._v(" User")]
               )
-            ]),
-            _vm._v("\n                    Ujang maman is a superhero name in "),
-            _c("b", [_vm._v("Indonesia")]),
-            _vm._v(
-              ", especially in my family. He is not a fictional character but an original hero in my family, a hero for his children and for his wife. So, I use the name as a user in this template. Not a tribute, I'm just bored with "
-            ),
-            _c("b", [_vm._v("'John Doe'")]),
-            _vm._v(".\n                ")
+            ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer text-center" }, [

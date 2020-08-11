@@ -14,7 +14,6 @@
                     </div>
                     <div class="profile-widget-description">
                         <div class="profile-widget-name">{{$page.flash.user}} <div class="text-muted d-inline font-weight-normal"><div class="slash"></div> User</div></div>
-                        Ujang maman is a superhero name in <b>Indonesia</b>, especially in my family. He is not a fictional character but an original hero in my family, a hero for his children and for his wife. So, I use the name as a user in this template. Not a tribute, I'm just bored with <b>'John Doe'</b>.
                     </div>
                     <div class="card-footer text-center">
                         <div class="font-weight-bold mb-2">Menu</div>

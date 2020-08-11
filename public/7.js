@@ -172,19 +172,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -405,39 +392,7 @@ var render = function() {
                   _vm.$route("depan.index") +
                   "stisla/assets/img/avatar/avatar-1.png"
               }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "profile-widget-items" }, [
-              _c("div", { staticClass: "profile-widget-item" }, [
-                _c("div", { staticClass: "profile-widget-item-label" }, [
-                  _vm._v("Posts")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "profile-widget-item-value" }, [
-                  _vm._v("187")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "profile-widget-item" }, [
-                _c("div", { staticClass: "profile-widget-item-label" }, [
-                  _vm._v("Followers")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "profile-widget-item-value" }, [
-                  _vm._v("6,8K")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "profile-widget-item" }, [
-                _c("div", { staticClass: "profile-widget-item-label" }, [
-                  _vm._v("Following")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "profile-widget-item-value" }, [
-                  _vm._v("2,1K")
-                ])
-              ])
-            ])
+            })
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "profile-widget-description" }, [

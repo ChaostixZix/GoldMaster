@@ -114,6 +114,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -139,17 +141,23 @@ __webpack_require__.r(__webpack_exports__);
       width: '10%',
       label: '#'
     }, {
+      width: '33%',
+      label: 'Game'
+    }, {
       width: '10%',
       label: 'Server'
     }, {
-      width: '33%',
-      label: 'Game'
+      width: '10%',
+      label: 'Trade Mode'
     }, {
       width: '10%',
       label: 'Quantity'
     }, {
       width: '10%',
-      label: 'Trade Mode'
+      label: 'Character Name'
+    }, {
+      width: '10%',
+      label: 'Contact'
     }, {
       width: '10%',
       label: 'Status'
@@ -554,14 +562,27 @@ var render = function() {
                                           _vm._v("#" + _vm._s(p.id_order))
                                         ]),
                                         _vm._v(" "),
+                                        _c("td", [_vm._v(_vm._s(p.kategori))]),
+                                        _vm._v(" "),
                                         _c("td", [_vm._v(_vm._s(p.server))]),
                                         _vm._v(" "),
-                                        _c("td", [_vm._v(_vm._s(p.kategori))]),
+                                        _c("td", [
+                                          _vm._v(_vm._s(p.pengiriman))
+                                        ]),
                                         _vm._v(" "),
                                         _c("td", [_vm._v(_vm._s(p.quantity))]),
                                         _vm._v(" "),
                                         _c("td", [
-                                          _vm._v(_vm._s(p.pengiriman))
+                                          _vm._v(_vm._s(p.n_karakter))
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(
+                                            _vm._s(p.telp) +
+                                              " (" +
+                                              _vm._s(p.contacttype) +
+                                              ")"
+                                          )
                                         ]),
                                         _vm._v(" "),
                                         _c("td", [

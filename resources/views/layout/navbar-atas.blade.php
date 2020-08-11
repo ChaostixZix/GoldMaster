@@ -8,8 +8,8 @@
             <i class="fas fa-ellipsis-v"></i>
         </a>
         <ul class="navbar-nav">
-            <li class="nav-item active"><a href="{{route('admin.index')}}" class="nav-link">Admin</a></li>
-            <li class="nav-item active"><a href="{{route('user.index')}}" class="nav-link">User</a></li>
+{{--            <li class="nav-item active"><a href="{{route('admin.index')}}" class="nav-link">Admin</a></li>--}}
+{{--            <li class="nav-item active"><a href="{{route('user.index')}}" class="nav-link">User</a></li>--}}
             {{--            <li class="nav-item"><a href="#" class="nav-link">Report Something</a></li>--}}
             {{--            <li class="nav-item"><a href="#" class="nav-link">Server Status</a></li>--}}
         </ul>
