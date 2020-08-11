@@ -22,11 +22,14 @@
                                             <tbody>
                                             <tr v-if="p.server !== null && p.kategori !== null && p.email !== null" v-for="p in paginated" role="row" class="odd">
                                                 <td>#{{ p.id_stock }}</td>
-                                                <td>{{ p.email }}</td>
+                                                <td>{{ p.username }}</td>
                                                 <td>{{ p.stock }}</td>
                                                 <td>{{ p.server }}</td>
                                                 <td>{{ p.kategori }}</td>
                                                 <td>
+                                                    <button @click="ubah(p)" class="btn btn-sm btn-primary">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
                                                     <button @click="hapus(p.id_stock)" class="btn btn-sm btn-danger">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
@@ -34,11 +37,14 @@
                                             </tr>
                                             <tr v-if="p.server === null || p.kategori === null || p.email === null"e v-for="p in paginated" role="row" class="odd text-white bg-danger">
                                                 <td>#{{ p.id_stock }}</td>
-                                                <td>{{ p.email }}</td>
+                                                <td>{{ p.username }}</td>
                                                 <td>{{ p.stock }}</td>
                                                 <td>{{ p.server }}</td>
                                                 <td>{{ p.kategori }}</td>
                                                 <td>
+                                                    <button @click="ubah(p)" class="btn btn-sm btn-primary">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
                                                     <button @click="hapus(p.id_stock)" class="btn btn-sm btn-white">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
@@ -62,6 +68,9 @@
                     </div>
                 </div>
             </div>
+            <div class="col-12">
+                <MemberStockAdd v-if="edit" :type="type" :server="server" :game="game" :p="dataedit"></MemberStockAdd>
+            </div>
         </div>
     </App>
 </template>
@@ -71,10 +80,13 @@
     import Pagination from "../../../Utils/Shared/Pagination";
     import App from "../../../Utils/Layout/App";
     import Messages from "../../../Utils/Shared/Messages";
+    import MemberStockAdd from "../../Admin/MemberStock/MemberStockAdd";
 
     export default {
-        components: {Messages, App, Pagination, Datatable},
+        components: {MemberStockAdd, Messages, App, Pagination, Datatable},
         props: {
+            server: Array,
+            game: Array,
             stocks: Array
         },
         mounted() {
@@ -116,6 +128,12 @@
             }
         },
         methods: {
+            ubah(p)
+            {
+                this.type = 'edit';
+                this.dataedit = p;
+                this.edit = true;
+            },
             hapus(id)
             {
                 this.$inertia.post(this.$route('admin.memberstock.delete', {id: id}), {}, {

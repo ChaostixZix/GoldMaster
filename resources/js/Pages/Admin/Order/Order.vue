@@ -22,10 +22,12 @@
                                             <tbody>
                                             <tr v-for="p in paginated" role="row" class="odd">
                                                 <td>#{{ p.id_order }}</td>
-                                                <td>{{ p.server }}</td>
                                                 <td>{{ p.kategori }}</td>
-                                                <td>{{ p.quantity }}</td>
+                                                <td>{{ p.server }}</td>
                                                 <td>{{ p.pengiriman }}</td>
+                                                <td>{{ p.quantity }}</td>
+                                                <td>{{ p.n_karakter }}</td>
+                                                <td>{{ p.telp }} ({{p.contacttype}})</td>
                                                 <td>
                                                     <div v-if="p.status_o === 'aktif'" class="badge badge-primary">Active</div>
                                                     <div v-if="p.status_o === 'pending'" class="badge badge-warning">Pending</div>
@@ -117,10 +119,12 @@
             let sortOrders = {};
             let columns = [
                 {width: '10%', label: '#'},
-                {width: '10%', label: 'Server'},
                 {width: '33%', label: 'Game'},
-                {width: '10%', label: 'Quantity'},
+                {width: '10%', label: 'Server'},
                 {width: '10%', label: 'Trade Mode'},
+                {width: '10%', label: 'Quantity'},
+                {width: '10%', label: 'Character Name'},
+                {width: '10%', label: 'Contact'},
                 {width: '10%', label: 'Status'},
                 {width: '33%', label: 'Action'},
             ];

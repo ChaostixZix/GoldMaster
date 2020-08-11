@@ -84339,11 +84339,21 @@ var map = {
 	"./Admin/MemberStock/MemberStock": [
 		"./resources/js/Pages/Admin/MemberStock/MemberStock.vue",
 		0,
-		18
+		18,
+		31
 	],
 	"./Admin/MemberStock/MemberStock.vue": [
 		"./resources/js/Pages/Admin/MemberStock/MemberStock.vue",
 		0,
+		18,
+		31
+	],
+	"./Admin/MemberStock/MemberStockAdd": [
+		"./resources/js/Pages/Admin/MemberStock/MemberStockAdd.vue",
+		18
+	],
+	"./Admin/MemberStock/MemberStockAdd.vue": [
+		"./resources/js/Pages/Admin/MemberStock/MemberStockAdd.vue",
 		18
 	],
 	"./Admin/Order/Order": [

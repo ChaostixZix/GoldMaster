@@ -71,6 +71,7 @@ Route::group([
     ], function ()
     {
         Route::get('list', 'MemberStockController@index')->name('admin.memberstock');
+        Route::post('update/{id}', 'MemberStockController@edit')->name('admin.memberstock.update');
         Route::post('delete/{id}', 'MemberStockController@delete')->name('admin.memberstock.delete');
     });
 

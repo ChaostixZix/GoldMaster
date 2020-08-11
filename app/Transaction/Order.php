@@ -15,6 +15,7 @@ class Order extends Model
     public function getAll()
     {
         return $this->db()
+            ->leftJoin('t_users', 't_users.id_user', '=', 't_order.id_user')
             ->leftJoin('t_items', 't_items.id_items', '=', 't_order.id_items')
             ->leftJoin('t_server', 't_items.id_item', '=', 't_server.id_item')
             ->leftJoin('t_kategori', 't_items.id_kategori', '=', 't_kategori.id_kategori')
