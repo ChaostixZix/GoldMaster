@@ -53,7 +53,7 @@
         watch: {
             'data.quantity': function () {
                 this.data.price = parseInt(this.data.quantity)*this.p.dollar;
-                this.idr = this.data.price * this.$page.flash.idrrate;
+                this.idr = parseInt(this.data.price * this.$page.flash.idrrate);
             }
         },
         methods: {
