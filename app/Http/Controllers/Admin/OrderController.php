@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Data\Items;
 use App\Data\Users;
+use App\Events\ItemEvents;
 use App\Http\Controllers\Controller;
 use App\Transaction\Order;
 use App\User;
@@ -33,12 +34,14 @@ class OrderController extends Controller
             (new Items())->updateRaw($order->id_items, ['butuh' => $items->butuh - $order->quantity]);
         }
         $do = (new Order())->updateRaw($req['id_order'], $req);
+        event(new ItemEvents('Test'));
         return redirect()->back();
     }
 
     public function delete($id)
     {
         $do = (new Order())->cancel($id);
+        event(new ItemEvents('Test'));
         return redirect()->back();
     }
 

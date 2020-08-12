@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Data\Category;
 use App\Data\MemberStok;
 use App\Data\Server;
+use App\Events\ItemEvents;
+use App\Events\Message;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -29,12 +31,14 @@ class MemberStockController extends Controller
     public function edit($id, Request $request)
     {
         $do = (new MemberStok())->ubah($id, $request->all());
+        event(new ItemEvents('Test'));
         return redirect()->back();
     }
 
     public function delete($id)
     {
         $do = (new MemberStok())->hapus($id);
+        event(new ItemEvents('Test'));
         return redirect()->back();
     }
 }

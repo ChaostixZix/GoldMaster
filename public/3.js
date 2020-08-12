@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[3],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/User/MemberStock/MemberStockAdd.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/User/MemberStock/MemberStockAdd.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Admin/MemberStock/MemberStockAdd.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/Admin/MemberStock/MemberStockAdd.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -57,7 +57,6 @@ __webpack_require__.r(__webpack_exports__);
       data: {
         id_kategori: this.p.id_kategori,
         id_item: this.p.id_item,
-        id_user: this.$page.flash.id_user,
         stock: this.p.stock
       },
       loading: false
@@ -70,7 +69,7 @@ __webpack_require__.r(__webpack_exports__);
       this.loading = true;
 
       if (this.type === 'baru') {
-        this.$inertia.post(this.$route('user.memberstock.insert'), this.data, {
+        this.$inertia.post(this.$route('admin.memberstock.insert'), this.data, {
           preserveState: false,
           preserveScroll: true,
           only: ['stocks']
@@ -78,7 +77,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.loading = false;
         });
       } else if (this.type === 'edit') {
-        this.$inertia.post(this.$route('user.memberstock.update', {
+        this.$inertia.post(this.$route('admin.memberstock.update', {
           id: this.p.id_stock
         }), this.data, {
           preserveState: false,
@@ -117,10 +116,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/User/MemberStock/MemberStockAdd.vue?vue&type=template&id=78deaea3&scoped=true&":
-/*!*****************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/User/MemberStock/MemberStockAdd.vue?vue&type=template&id=78deaea3&scoped=true& ***!
-  \*****************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Admin/MemberStock/MemberStockAdd.vue?vue&type=template&id=0934eee1&scoped=true&":
+/*!******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/Admin/MemberStock/MemberStockAdd.vue?vue&type=template&id=0934eee1&scoped=true& ***!
+  \******************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -409,17 +408,17 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ "./resources/js/Pages/User/MemberStock/MemberStockAdd.vue":
-/*!****************************************************************!*\
-  !*** ./resources/js/Pages/User/MemberStock/MemberStockAdd.vue ***!
-  \****************************************************************/
+/***/ "./resources/js/Pages/Admin/MemberStock/MemberStockAdd.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/Pages/Admin/MemberStock/MemberStockAdd.vue ***!
+  \*****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _MemberStockAdd_vue_vue_type_template_id_78deaea3_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MemberStockAdd.vue?vue&type=template&id=78deaea3&scoped=true& */ "./resources/js/Pages/User/MemberStock/MemberStockAdd.vue?vue&type=template&id=78deaea3&scoped=true&");
-/* harmony import */ var _MemberStockAdd_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MemberStockAdd.vue?vue&type=script&lang=js& */ "./resources/js/Pages/User/MemberStock/MemberStockAdd.vue?vue&type=script&lang=js&");
+/* harmony import */ var _MemberStockAdd_vue_vue_type_template_id_0934eee1_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MemberStockAdd.vue?vue&type=template&id=0934eee1&scoped=true& */ "./resources/js/Pages/Admin/MemberStock/MemberStockAdd.vue?vue&type=template&id=0934eee1&scoped=true&");
+/* harmony import */ var _MemberStockAdd_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MemberStockAdd.vue?vue&type=script&lang=js& */ "./resources/js/Pages/Admin/MemberStock/MemberStockAdd.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -430,49 +429,49 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _MemberStockAdd_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _MemberStockAdd_vue_vue_type_template_id_78deaea3_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _MemberStockAdd_vue_vue_type_template_id_78deaea3_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _MemberStockAdd_vue_vue_type_template_id_0934eee1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _MemberStockAdd_vue_vue_type_template_id_0934eee1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "78deaea3",
+  "0934eee1",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/Pages/User/MemberStock/MemberStockAdd.vue"
+component.options.__file = "resources/js/Pages/Admin/MemberStock/MemberStockAdd.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/User/MemberStock/MemberStockAdd.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************!*\
-  !*** ./resources/js/Pages/User/MemberStock/MemberStockAdd.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************/
+/***/ "./resources/js/Pages/Admin/MemberStock/MemberStockAdd.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/Pages/Admin/MemberStock/MemberStockAdd.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberStockAdd_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./MemberStockAdd.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/User/MemberStock/MemberStockAdd.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberStockAdd_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./MemberStockAdd.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Admin/MemberStock/MemberStockAdd.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberStockAdd_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/Pages/User/MemberStock/MemberStockAdd.vue?vue&type=template&id=78deaea3&scoped=true&":
-/*!***********************************************************************************************************!*\
-  !*** ./resources/js/Pages/User/MemberStock/MemberStockAdd.vue?vue&type=template&id=78deaea3&scoped=true& ***!
-  \***********************************************************************************************************/
+/***/ "./resources/js/Pages/Admin/MemberStock/MemberStockAdd.vue?vue&type=template&id=0934eee1&scoped=true&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/Pages/Admin/MemberStock/MemberStockAdd.vue?vue&type=template&id=0934eee1&scoped=true& ***!
+  \************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberStockAdd_vue_vue_type_template_id_78deaea3_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./MemberStockAdd.vue?vue&type=template&id=78deaea3&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/User/MemberStock/MemberStockAdd.vue?vue&type=template&id=78deaea3&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberStockAdd_vue_vue_type_template_id_78deaea3_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberStockAdd_vue_vue_type_template_id_0934eee1_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./MemberStockAdd.vue?vue&type=template&id=0934eee1&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Admin/MemberStock/MemberStockAdd.vue?vue&type=template&id=0934eee1&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberStockAdd_vue_vue_type_template_id_0934eee1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberStockAdd_vue_vue_type_template_id_78deaea3_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberStockAdd_vue_vue_type_template_id_0934eee1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

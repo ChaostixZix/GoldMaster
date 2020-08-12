@@ -98,7 +98,7 @@
                 {width: '10%', label: '#'},
                 {width: '10%', label: 'Email'},
                 {width: '15%', label: 'Stock'},
-                {width: '33%', label: 'Server'},
+                {width: '25%', label: 'Server'},
                 {width: '33%', label: 'Game'},
                 {width: '33%', label: 'Action'},
             ];

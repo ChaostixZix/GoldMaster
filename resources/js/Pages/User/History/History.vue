@@ -168,6 +168,15 @@
         mounted() {
             this.load();
         },
+        created() {
+            Echo.channel('Item')
+                .listen('ItemEvents', (e) => {
+                    this.$inertia.reload({
+                        preserveState: false,
+                        preserveScroll: true
+                    })
+                });
+        },
         data() {
             //
             let sortOrders = {};

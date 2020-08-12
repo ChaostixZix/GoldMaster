@@ -1,8 +1,8 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[24],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Admin/Order/OrderEdit.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Admin/Game/TambahGame.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/Admin/Order/OrderEdit.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/Admin/Game/TambahGame.vue?vue&type=script&lang=js& ***!
   \***************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -25,23 +25,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "OrderEdit",
-  props: {
-    data: Object
+  name: "TambahGame",
+  data: function data() {
+    return {
+      data: {
+        kategori: ''
+      }
+    };
   },
   methods: {
-    submit: function submit() {
-      this.$inertia.post(this.$route('admin.order.update'), {
-        id_order: this.data.id_order,
-        status_o: this.data.status_o
-      }, {
-        preserveState: false
+    tambah: function tambah() {
+      var _this = this;
+
+      this.$inertia.post(this.$route('admin.game.tambah'), this.data, {
+        replace: true,
+        preserveState: false,
+        preserveScroll: false,
+        only: ['game']
+      }).then(function () {
+        _this.$parent.tambah = false;
       });
     }
   }
@@ -49,9 +52,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Admin/Order/OrderEdit.vue?vue&type=template&id=c00846c4&scoped=true&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Admin/Game/TambahGame.vue?vue&type=template&id=2bc5519f&scoped=true&":
 /*!*******************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/Admin/Order/OrderEdit.vue?vue&type=template&id=c00846c4&scoped=true& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/Admin/Game/TambahGame.vue?vue&type=template&id=2bc5519f&scoped=true& ***!
   \*******************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -66,54 +69,34 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card" }, [
     _c("div", { staticClass: "card-header text-white bg-info" }, [
-      _vm._v("\n        Edit Order #" + _vm._s(_vm.data.id_order) + "\n    ")
+      _vm._v("\n        Tambah Game\n    ")
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
-      _c(
-        "select",
-        {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.data.status_o,
-              expression: "data.status_o"
-            }
-          ],
-          staticClass: "form-control",
-          on: {
-            change: function($event) {
-              var $$selectedVal = Array.prototype.filter
-                .call($event.target.options, function(o) {
-                  return o.selected
-                })
-                .map(function(o) {
-                  var val = "_value" in o ? o._value : o.value
-                  return val
-                })
-              _vm.$set(
-                _vm.data,
-                "status_o",
-                $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-              )
-            }
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.data.kategori,
+            expression: "data.kategori"
           }
-        },
-        [
-          _c("option", { attrs: { value: "pending" } }, [_vm._v("Pending")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "aktif" } }, [_vm._v("Active")]),
-          _vm._v(" "),
-          _vm.data.file !== null
-            ? _c("option", { attrs: { value: "done" } }, [_vm._v("Done")])
-            : _vm._e()
-        ]
-      )
+        ],
+        staticClass: "form-control",
+        domProps: { value: _vm.data.kategori },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.data, "kategori", $event.target.value)
+          }
+        }
+      })
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-footer bg-info" }, [
-      _c("button", { staticClass: "btn", on: { click: _vm.submit } }, [
+      _c("button", { staticClass: "btn", on: { click: _vm.tambah } }, [
         _vm._v("\n            Submit\n        ")
       ])
     ])
@@ -238,17 +221,17 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Admin/Order/OrderEdit.vue":
+/***/ "./resources/js/Pages/Admin/Game/TambahGame.vue":
 /*!******************************************************!*\
-  !*** ./resources/js/Pages/Admin/Order/OrderEdit.vue ***!
+  !*** ./resources/js/Pages/Admin/Game/TambahGame.vue ***!
   \******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _OrderEdit_vue_vue_type_template_id_c00846c4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OrderEdit.vue?vue&type=template&id=c00846c4&scoped=true& */ "./resources/js/Pages/Admin/Order/OrderEdit.vue?vue&type=template&id=c00846c4&scoped=true&");
-/* harmony import */ var _OrderEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OrderEdit.vue?vue&type=script&lang=js& */ "./resources/js/Pages/Admin/Order/OrderEdit.vue?vue&type=script&lang=js&");
+/* harmony import */ var _TambahGame_vue_vue_type_template_id_2bc5519f_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TambahGame.vue?vue&type=template&id=2bc5519f&scoped=true& */ "./resources/js/Pages/Admin/Game/TambahGame.vue?vue&type=template&id=2bc5519f&scoped=true&");
+/* harmony import */ var _TambahGame_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TambahGame.vue?vue&type=script&lang=js& */ "./resources/js/Pages/Admin/Game/TambahGame.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -258,50 +241,50 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _OrderEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _OrderEdit_vue_vue_type_template_id_c00846c4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _OrderEdit_vue_vue_type_template_id_c00846c4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _TambahGame_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TambahGame_vue_vue_type_template_id_2bc5519f_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TambahGame_vue_vue_type_template_id_2bc5519f_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "c00846c4",
+  "2bc5519f",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/Pages/Admin/Order/OrderEdit.vue"
+component.options.__file = "resources/js/Pages/Admin/Game/TambahGame.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Admin/Order/OrderEdit.vue?vue&type=script&lang=js&":
+/***/ "./resources/js/Pages/Admin/Game/TambahGame.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************!*\
-  !*** ./resources/js/Pages/Admin/Order/OrderEdit.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/Pages/Admin/Game/TambahGame.vue?vue&type=script&lang=js& ***!
   \*******************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./OrderEdit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Admin/Order/OrderEdit.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TambahGame_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./TambahGame.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Admin/Game/TambahGame.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TambahGame_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Admin/Order/OrderEdit.vue?vue&type=template&id=c00846c4&scoped=true&":
+/***/ "./resources/js/Pages/Admin/Game/TambahGame.vue?vue&type=template&id=2bc5519f&scoped=true&":
 /*!*************************************************************************************************!*\
-  !*** ./resources/js/Pages/Admin/Order/OrderEdit.vue?vue&type=template&id=c00846c4&scoped=true& ***!
+  !*** ./resources/js/Pages/Admin/Game/TambahGame.vue?vue&type=template&id=2bc5519f&scoped=true& ***!
   \*************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderEdit_vue_vue_type_template_id_c00846c4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./OrderEdit.vue?vue&type=template&id=c00846c4&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Admin/Order/OrderEdit.vue?vue&type=template&id=c00846c4&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderEdit_vue_vue_type_template_id_c00846c4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TambahGame_vue_vue_type_template_id_2bc5519f_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./TambahGame.vue?vue&type=template&id=2bc5519f&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Admin/Game/TambahGame.vue?vue&type=template&id=2bc5519f&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TambahGame_vue_vue_type_template_id_2bc5519f_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderEdit_vue_vue_type_template_id_c00846c4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TambahGame_vue_vue_type_template_id_2bc5519f_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -81,6 +81,15 @@
                 this.load();
             }
         },
+        created() {
+            Echo.channel('Item')
+                .listen('ItemEvents', (e) => {
+                    this.$inertia.reload({
+                        preserveState: false,
+                        preserveScroll: true
+                    })
+                });
+        },
         mounted() {
             this.load();
         },
