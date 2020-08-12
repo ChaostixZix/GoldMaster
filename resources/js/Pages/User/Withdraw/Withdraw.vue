@@ -79,6 +79,15 @@
                 this.show = false
             }
         },
+        created() {
+            Echo.channel('Item')
+                .listen('ItemEvents', (e) => {
+                    this.$inertia.reload({
+                        preserveState: false,
+                        preserveScroll: true
+                    })
+                });
+        },
         data() {
             return {
                 data: {
