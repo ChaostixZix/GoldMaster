@@ -330,7 +330,7 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     'data.quantity': function dataQuantity() {
       this.data.price = parseInt(this.data.quantity) * this.p.dollar;
-      this.idr = this.data.price * this.$page.flash.idrrate;
+      this.idr = parseInt(this.data.price * this.$page.flash.idrrate);
     }
   },
   methods: {
@@ -602,7 +602,7 @@ var render = function() {
                                                     _vm._v(
                                                       "\n                                                Rp. " +
                                                         _vm._s(
-                                                          parseFloat(
+                                                          parseInt(
                                                             _vm.$page.flash
                                                               .idrrate
                                                           ) *

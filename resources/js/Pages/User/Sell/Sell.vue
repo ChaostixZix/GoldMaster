@@ -39,7 +39,7 @@
                                                     $ {{ p.dollar }}/G
                                                 </td>
                                                 <td v-else>
-                                                    Rp. {{parseFloat($page.flash.idrrate)*parseFloat(p.dollar)}}/G
+                                                    Rp. {{parseInt($page.flash.idrrate)*parseFloat(p.dollar)}}/G
                                                 </td>
                                                 <td>
                                                     <button @click="sell(p)"
