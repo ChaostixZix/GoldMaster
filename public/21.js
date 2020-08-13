@@ -91,6 +91,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -119,7 +123,10 @@ __webpack_require__.r(__webpack_exports__);
       label: '#'
     }, {
       width: '10%',
-      label: 'Email'
+      label: 'Username'
+    }, {
+      width: '10%',
+      label: 'Contact'
     }, {
       width: '15%',
       label: 'Stock'
@@ -127,8 +134,11 @@ __webpack_require__.r(__webpack_exports__);
       width: '25%',
       label: 'Server'
     }, {
-      width: '33%',
+      width: '20%',
       label: 'Game'
+    }, {
+      width: '33%',
+      label: 'Date'
     }, {
       width: '33%',
       label: 'Action'
@@ -427,6 +437,8 @@ var render = function() {
                                               _vm._v(_vm._s(p.username))
                                             ]),
                                             _vm._v(" "),
+                                            _c("td", [_vm._v(_vm._s(p.telp))]),
+                                            _vm._v(" "),
                                             _c("td", [_vm._v(_vm._s(p.stock))]),
                                             _vm._v(" "),
                                             _c("td", [
@@ -435,6 +447,10 @@ var render = function() {
                                             _vm._v(" "),
                                             _c("td", [
                                               _vm._v(_vm._s(p.kategori))
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _vm._v(_vm._s(p.updated_at))
                                             ]),
                                             _vm._v(" "),
                                             _c("td", [
@@ -501,6 +517,8 @@ var render = function() {
                                               _vm._v(_vm._s(p.username))
                                             ]),
                                             _vm._v(" "),
+                                            _c("td", [_vm._v(_vm._s(p.telp))]),
+                                            _vm._v(" "),
                                             _c("td", [_vm._v(_vm._s(p.stock))]),
                                             _vm._v(" "),
                                             _c("td", [
@@ -509,6 +527,10 @@ var render = function() {
                                             _vm._v(" "),
                                             _c("td", [
                                               _vm._v(_vm._s(p.kategori))
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _vm._v(_vm._s(p.updated_at))
                                             ]),
                                             _vm._v(" "),
                                             _c("td", [
