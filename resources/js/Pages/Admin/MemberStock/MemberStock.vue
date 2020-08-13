@@ -23,9 +23,11 @@
                                             <tr v-if="p.server !== null && p.kategori !== null && p.email !== null" v-for="p in paginated" role="row" class="odd">
                                                 <td>#{{ p.id_stock }}</td>
                                                 <td>{{ p.username }}</td>
+                                                <td>{{ p.telp }}</td>
                                                 <td>{{ p.stock }}</td>
                                                 <td>{{ p.server }}</td>
                                                 <td>{{ p.kategori }}</td>
+                                                <td>{{ p.updated_at }}</td>
                                                 <td>
                                                     <button @click="ubah(p)" class="btn btn-sm btn-primary">
                                                         <i class="fa fa-edit"></i>
@@ -38,9 +40,11 @@
                                             <tr v-if="p.server === null || p.kategori === null || p.email === null"e v-for="p in paginated" role="row" class="odd text-white bg-danger">
                                                 <td>#{{ p.id_stock }}</td>
                                                 <td>{{ p.username }}</td>
+                                                <td>{{ p.telp }}</td>
                                                 <td>{{ p.stock }}</td>
                                                 <td>{{ p.server }}</td>
                                                 <td>{{ p.kategori }}</td>
+                                                <td>{{ p.updated_at }}</td>
                                                 <td>
                                                     <button @click="ubah(p)" class="btn btn-sm btn-primary">
                                                         <i class="fa fa-edit"></i>
@@ -96,10 +100,12 @@
             let sortOrders = {};
             let columns = [
                 {width: '10%', label: '#'},
-                {width: '10%', label: 'Email'},
+                {width: '10%', label: 'Username'},
+                {width: '10%', label: 'Contact'},
                 {width: '15%', label: 'Stock'},
                 {width: '25%', label: 'Server'},
-                {width: '33%', label: 'Game'},
+                {width: '20%', label: 'Game'},
+                {width: '33%', label: 'Date'},
                 {width: '33%', label: 'Action'},
             ];
             columns.forEach((column) => {

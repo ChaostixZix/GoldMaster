@@ -59,11 +59,13 @@ class MemberStok extends Model
 
     public function ubah($id, array $update)
     {
+        $update['updated_at'] = date('Y-m-d');
         return $this->db()->where('id_stock', $id)->update($update);
     }
 
     public function insertRaw(array $insert)
     {
+        $insert['updated_at'] = date('Y-m-d');
         return $this->db()->insert($insert);
     }
 
