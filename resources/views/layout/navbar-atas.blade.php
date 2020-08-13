@@ -4,9 +4,9 @@
 {{--         width="70">--}}
     <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
     <div class="nav-collapse">
-        <a class="sidebar-gone-show nav-collapse-toggle nav-link" href="#">
-            <i class="fas fa-ellipsis-v"></i>
-        </a>
+{{--        <a class="sidebar-gone-show nav-collapse-toggle nav-link" href="#">--}}
+{{--            <i class="fas fa-ellipsis-v"></i>--}}
+{{--        </a>--}}
         <ul class="navbar-nav">
 {{--            <li class="nav-item active"><a href="{{route('admin.index')}}" class="nav-link">Admin</a></li>--}}
 {{--            <li class="nav-item active"><a href="{{route('user.index')}}" class="nav-link">User</a></li>--}}
@@ -213,24 +213,7 @@
         {{--                </div>--}}
         {{--            </div>--}}
         {{--        </li>--}}
-        @if(\Illuminate\Support\Facades\Session::get('usershow'))
-            <span class="mt-1 text-white">Currency: </span>
-            @if(\Illuminate\Support\Facades\Session::get('currency') === 'usd' || !\Illuminate\Support\Facades\Session::get('currency'))
-                <a href="{{route('depan.changeCurrency', ['currency' => 'idr'])}}"
-                   class="nav-link nav-link-lg mt-1 text-white" style="color: #0f0505;">IDR</a>
-                <font class="mt-1 text-white">|</font>
-                <a href="{{route('depan.changeCurrency', ['currency' => 'usd'])}}"
-                   class="nav-link nav-link-lg beep mt-1 text-white"
-                   style="color: #0f0505;">USD</a>
-            @elseif(\Illuminate\Support\Facades\Session::get('currency') === 'idr')
-                <a href="{{route('depan.changeCurrency', ['currency' => 'idr'])}}"
-                   class="nav-link nav-link-lg beep mt-1" style="color: #0f0505;">IDR</a>
-                <font class="mt-1 text-white">|</font>
-                <a href="{{route('depan.changeCurrency', ['currency' => 'usd'])}}"
-                   class="nav-link nav-link-lg mt-1"
-                   style="color: #0f0505;">USD</a>
-            @endif
-        @endif
+
         @if(\Illuminate\Support\Facades\Session::has('admin'))
             <li class="dropdown"><a href="#" data-toggle="dropdown"
                                     class="nav-link dropdown-toggle nav-link-lg nav-link-user">
@@ -239,17 +222,17 @@
                     <div class="d-sm-none d-lg-inline-block">Hi, Admin</div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    {{--                <div class="dropdown-title">Logged in 5 min ago</div>--}}
-                    {{--                <a href="features-profile.html" class="dropdown-item has-icon">--}}
-                    {{--                    <i class="far fa-user"></i> Profile--}}
-                    {{--                </a>--}}
-                    {{--                <a href="features-activities.html" class="dropdown-item has-icon">--}}
-                    {{--                    <i class="fas fa-bolt"></i> Activities--}}
-                    {{--                </a>--}}
-                    {{--                <a href="features-settings.html" class="dropdown-item has-icon">--}}
-                    {{--                    <i class="fas fa-cog"></i> Settings--}}
-                    {{--                </a>--}}
-                    {{--                <div class="dropdown-divider"></div>--}}
+                                    <div class="dropdown-title">Logged in 5 min ago</div>
+                                    <a href="features-profile.html" class="dropdown-item has-icon">
+                                        <i class="far fa-user"></i> Profile
+                                    </a>
+                                    <a href="features-activities.html" class="dropdown-item has-icon">
+                                        <i class="fas fa-bolt"></i> Activities
+                                    </a>
+                                    <a href="features-settings.html" class="dropdown-item has-icon">
+                                        <i class="fas fa-cog"></i> Settings
+                                    </a>
+                                    <div class="dropdown-divider"></div>
                     <a href="{{route('admin.auth.logout')}}" class="dropdown-item has-icon text-danger">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>

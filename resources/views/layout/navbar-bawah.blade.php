@@ -21,6 +21,23 @@
                         <li class="nav-item"><a href="{{ route('user.sell') }}" class="nav-link">Sell</a></li>
                     </ul>
                 </li>
+                @if(\Illuminate\Support\Facades\Session::get('usershow'))
+                    <li class="nav-item dropdown">
+                        <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><span>Currency</span></a>
+                    @if(\Illuminate\Support\Facades\Session::get('currency') === 'usd' || !\Illuminate\Support\Facades\Session::get('currency'))
+                        <ul class="dropdown-menu">
+                            <li class="nav-item"><a href="{{route('depan.changeCurrency', ['currency' => 'idr'])}}" class="nav-link">IDR</a></li>
+                            <li class="nav-item active"><a href="{{route('depan.changeCurrency', ['currency' => 'usd'])}}" class="nav-link">USD</a></li>
+                        </ul>
+                    @elseif(\Illuminate\Support\Facades\Session::get('currency') === 'idr')
+                        <ul class="dropdown-menu">
+                            <li class="nav-item active"><a href="{{route('depan.changeCurrency', ['currency' => 'idr'])}}" class="nav-link">IDR</a></li>
+                            <li class="nav-item"><a href="{{route('depan.changeCurrency', ['currency' => 'usd'])}}" class="nav-link">USD</a></li>
+                        </ul>
+                    @endif
+                    </li>
+
+                @endif
             @endif
             @if(\Illuminate\Support\Facades\Session::has('admin'))
                 <li class="nav-item dropdown">
@@ -43,7 +60,6 @@
         </ul>
     </div>
     <ul class="navbar-nav navbar-right">
-
         @if(\Illuminate\Support\Facades\Session::has('admin') && !\Illuminate\Support\Facades\Session::get('usershow'))
             <li class="dropdown"><a href="#" data-toggle="dropdown"
                                     class="nav-link dropdown-toggle nav-link-lg nav-link-user">
