@@ -92,7 +92,11 @@
         created() {
             Echo.channel('Item')
                 .listen('ItemEvents', (e) => {
-                    this.reload()
+                    this.$inertia.reload({
+                        preserveState: false,
+                        preserveScroll: true,
+                        only: ['requests']
+                    })
                 });
         },
         data() {

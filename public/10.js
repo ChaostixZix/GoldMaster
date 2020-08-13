@@ -139,7 +139,11 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     Echo.channel('Item').listen('ItemEvents', function (e) {
-      _this.reload();
+      _this.$inertia.reload({
+        preserveState: false,
+        preserveScroll: true,
+        only: ['order']
+      });
     });
   },
   data: function data() {
