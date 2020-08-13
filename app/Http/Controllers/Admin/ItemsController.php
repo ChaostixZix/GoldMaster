@@ -33,22 +33,12 @@ class ItemsController extends Controller
         ]);
     }
 
-    public function notify($server, $kategori)
-    {
-
-        $get = (new MemberStok())->getMatching($server, $kategori);
-        if($get !== false)
-        {
-            event(new Message($get[0]->id_user, 'Need stock'));
-        }
-    }
 
     public function update(Request $request)
     {
         $req = $request->all();
 
         $do = (new Items())->updateRaw($req['id_items'], $req);
-        $this->notify($req['id_item'], $req['id_kategori']);
         return redirect(route('admin.items'));
     }
 
@@ -56,7 +46,6 @@ class ItemsController extends Controller
     {
         $req = $request->all();
         $do = (new Items())->insertRaw($req);
-        $this->notify($req['id_item'], $req['id_kategori']);
         return redirect(route('admin.items'));
     }
 
