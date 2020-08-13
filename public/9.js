@@ -345,6 +345,8 @@ __webpack_require__.r(__webpack_exports__);
           _this.loading = false;
         }).then(function () {
           _this.$parent.reload();
+
+          _this.$inertia.visit(_this.$route('user.history'));
         });
       }
     }
