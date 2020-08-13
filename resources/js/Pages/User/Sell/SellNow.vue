@@ -68,6 +68,7 @@
                         this.loading = false;
                     }).then(() => {
                         this.$parent.reload()
+                        this.$inertia.visit(this.$route('user.history'))
                     });
                 }
             }
