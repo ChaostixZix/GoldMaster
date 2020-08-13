@@ -31,14 +31,14 @@ class MemberStockController extends Controller
     public function edit($id, Request $request)
     {
         $do = (new MemberStok())->ubah($id, $request->all());
-        event(new ItemEvents('Test'));
+
         return redirect()->back();
     }
 
     public function delete($id)
     {
         $do = (new MemberStok())->hapus($id);
-        event(new ItemEvents('Test'));
+
         return redirect()->back();
     }
 }

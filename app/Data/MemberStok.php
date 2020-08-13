@@ -2,6 +2,7 @@
 
 namespace App\Data;
 
+use App\Events\ItemEvents;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -60,18 +61,24 @@ class MemberStok extends Model
     public function ubah($id, array $update)
     {
         $update['updated_at'] = date('Y-m-d');
-        return $this->db()->where('id_stock', $id)->update($update);
+         $this->db()->where('id_stock', $id)->update($update);
+        event(new ItemEvents('test'));
+        return true;
     }
 
     public function insertRaw(array $insert)
     {
         $insert['updated_at'] = date('Y-m-d');
-        return $this->db()->insert($insert);
+         $this->db()->insert($insert);
+        event(new ItemEvents('test'));
+        return true;
     }
 
     public function hapus($id)
     {
-        return $this->db()->where('id_stock', $id)->delete();
+         $this->db()->where('id_stock', $id)->delete();
+        event(new ItemEvents('test'));
+        return true;
     }
 
     public function getByUserId($id_user)

@@ -2,6 +2,7 @@
 
 namespace App\Data;
 
+use App\Events\ItemEvents;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -19,13 +20,18 @@ class TradeMode extends Model
 
     public function hapus($id)
     {
-        return $this->db()->where('id_pengiriman', $id)->delete();
+         $this->db()->where('id_pengiriman', $id)->delete();
+        event(new ItemEvents('test'));
+        return true;
     }
 
     public function tambah($kategori)
     {
-        return $this->db()->insert([
+         $this->db()->insert([
             'pengiriman' => $kategori
         ]);
+        event(new ItemEvents('test'));
+        return true;
+
     }
 }

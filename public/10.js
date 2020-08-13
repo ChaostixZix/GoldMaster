@@ -135,6 +135,13 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.load();
   },
+  created: function created() {
+    var _this = this;
+
+    Echo.channel('Item').listen('ItemEvents', function (e) {
+      _this.reload();
+    });
+  },
   data: function data() {
     var sortOrders = {};
     var columns = [{
@@ -199,12 +206,12 @@ __webpack_require__.r(__webpack_exports__);
       this.$refs.downloadFile.show();
     },
     hapus: function hapus(id) {
-      var _this = this;
+      var _this2 = this;
 
       this.$inertia.post(this.$route('admin.order.delete', {
         id: id
       })).then(function () {
-        _this.$inertia.reload({
+        _this2.$inertia.reload({
           preserveScroll: true,
           preserveState: false,
           only: ['order']
@@ -250,14 +257,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     filteredProjects: function filteredProjects() {
-      var _this2 = this;
+      var _this3 = this;
 
       var data = this.data;
 
       if (this.search) {
         data = data.filter(function (row) {
           return Object.keys(row).some(function (key) {
-            return String(row[key]).toLowerCase().indexOf(_this2.search.toLowerCase()) > -1;
+            return String(row[key]).toLowerCase().indexOf(_this3.search.toLowerCase()) > -1;
           });
         });
       }
@@ -267,13 +274,13 @@ __webpack_require__.r(__webpack_exports__);
 
       if (sortKey) {
         data = data.slice().sort(function (a, b) {
-          var index = _this2.getIndex(_this2.columns, 'name', sortKey) + 1;
+          var index = _this3.getIndex(_this3.columns, 'name', sortKey) + 1;
           a = String(a[sortKey]).toLowerCase();
           b = String(b[sortKey]).toLowerCase();
 
-          if (_this2.columns[index].type && _this2.columns[index].type === 'date') {
+          if (_this3.columns[index].type && _this3.columns[index].type === 'date') {
             return (a === b ? 0 : new Date(a).getTime() > new Date(b).getTime() ? 1 : -1) * order;
-          } else if (_this2.columns[index].type && _this2.columns[index].type === 'number') {
+          } else if (_this3.columns[index].type && _this3.columns[index].type === 'number') {
             return (+a === +b ? 0 : +a > +b ? 1 : -1) * order;
           } else {
             return (a === b ? 0 : a > b ? 1 : -1) * order;
