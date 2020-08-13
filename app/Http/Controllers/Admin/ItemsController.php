@@ -35,7 +35,7 @@ class ItemsController extends Controller
 
     public function notify($server, $kategori)
     {
-        event(new ItemEvents('Test'));
+
         $get = (new MemberStok())->getMatching($server, $kategori);
         if($get !== false)
         {
@@ -63,7 +63,7 @@ class ItemsController extends Controller
     public function delete($id)
     {
         $do = (new Items())->hapus($id);
-        event(new ItemEvents('Test'));
+
         return redirect(route('admin.items'));
     }
 }

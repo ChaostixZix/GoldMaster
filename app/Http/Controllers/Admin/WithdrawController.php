@@ -26,13 +26,13 @@ class WithdrawController extends Controller
         $req = $request->all();
         $id = $req['id'];
         $do = (new Withdraw())->updateRaw($id, $req);
-        event(new ItemEvents('Test'));
+
         return redirect()->back();
     }
     public function delete($id)
     {
         $do = (new Withdraw())->hapus($id);
-        event(new ItemEvents('Test'));
+
         return redirect()->back();
     }
 }

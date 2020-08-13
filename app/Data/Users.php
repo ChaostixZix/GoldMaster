@@ -2,6 +2,7 @@
 
 namespace App\Data;
 
+use App\Events\ItemEvents;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -32,10 +33,14 @@ class Users extends Model
     }
     public function updateRaw($id, array $update)
     {
-        return $this->db()->where('id_user', $id)->update($update);
+         $this->db()->where('id_user', $id)->update($update);
+        event(new ItemEvents('test'));
+        return true;
     }
     public function insertRaw(array $insert)
     {
-        return $this->db()->insert($insert);
+         $this->db()->insert($insert);
+        event(new ItemEvents('test'));
+        return true;
     }
 }

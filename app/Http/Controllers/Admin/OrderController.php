@@ -34,14 +34,14 @@ class OrderController extends Controller
             (new Items())->updateRaw($order->id_items, ['butuh' => $items->butuh - $order->quantity]);
         }
         $do = (new Order())->updateRaw($req['id_order'], $req);
-        event(new ItemEvents('Test'));
+
         return redirect()->back();
     }
 
     public function delete($id)
     {
         $do = (new Order())->cancel($id);
-        event(new ItemEvents('Test'));
+
         return redirect()->back();
     }
 

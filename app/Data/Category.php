@@ -2,6 +2,7 @@
 
 namespace App\Data;
 
+use App\Events\ItemEvents;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -19,13 +20,17 @@ class Category extends Model
 
     public function hapus($id)
     {
-        return $this->db()->where('id_kategori', $id)->delete();
+        $this->db()->where('id_kategori', $id)->delete();
+        event(new ItemEvents('Test'));
+        return true;
     }
 
     public function tambah($kategori)
     {
-        return $this->db()->insert([
+        $this->db()->insert([
             'kategori' => $kategori
         ]);
+        event(new ItemEvents('Test'));
+        return true;
     }
 }
