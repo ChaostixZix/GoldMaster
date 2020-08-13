@@ -2,6 +2,7 @@
 
 namespace App\Transaction;
 
+use App\Events\ItemEvents;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -46,17 +47,23 @@ class Order extends Model
 
     public function cancel($id)
     {
-        return $this->db()->where('id_order', $id)->delete();
+         $this->db()->where('id_order', $id)->delete();
+        event(new ItemEvents('test'));
+        return true;
     }
 
     public function insertRaw(array $insert)
     {
-        return $this->db()->insert($insert);
+         $this->db()->insert($insert);
+        event(new ItemEvents('test'));
+        return true;
     }
 
     public function updateRaw($id, array $update)
     {
-        return $this->db()->where('id_order', $id)->update($update);
+         $this->db()->where('id_order', $id)->update($update);
+        event(new ItemEvents('test'));
+        return true;
     }
 
 }
