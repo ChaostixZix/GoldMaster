@@ -129,7 +129,7 @@
                                     <div class="text-time">{{p.tgl_pesan}} ({{60 - p.diff}} Minutes Left)</div>
                                     <div class="media-description text-muted">Sell {{p.quantity}}G for (${{p.price}})
                                     </div>
-                                    <div v-if="p.diff < 60">
+                                    <div v-if="p.diff < 60 || p.file !== null">
                                         <div v-if="p.status_o !== 'done'" class="media-links">
                                             <a v-if="p.status_o === 'aktif'" @click="details(p)"
                                                class="btn btn-sm btn-info text-white" href="#">Delivery Details</a>
