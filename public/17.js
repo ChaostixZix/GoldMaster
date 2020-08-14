@@ -867,12 +867,14 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "text-time" }, [
-                        _vm._v(
-                          _vm._s(p.tgl_pesan) +
-                            " (" +
-                            _vm._s(60 - p.diff) +
-                            " Minutes Left)"
-                        )
+                        _vm._v(_vm._s(p.tgl_pesan) + " "),
+                        p.file === null && p.diff < 61
+                          ? _c("span", [
+                              _vm._v(
+                                "(" + _vm._s(60 - p.diff) + " Minutes Left)"
+                              )
+                            ])
+                          : _vm._e()
                       ]),
                       _vm._v(" "),
                       _c(
