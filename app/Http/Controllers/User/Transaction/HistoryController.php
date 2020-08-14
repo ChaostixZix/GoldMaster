@@ -16,7 +16,19 @@ class HistoryController extends Controller
     {
         return Inertia::render('User/History/History', [
             'orders' => function () {
-                return (new Order())->getByUser(Session::get('id_user'));
+                $get = (new Order())->getByUser(Session::get('id_user'));
+                $get2 = [];
+                foreach ($get as $g)
+                {
+                    $to = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', date('Y-m-d H:s:i'));
+                    $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $g->created_at);
+                    $diff = $to->diffInMinutes($from);
+                    $g->diff = $diff;
+                    $get2[] = $g;
+                }
+
+
+                return $get2;
             }
         ]);
     }
@@ -26,6 +38,7 @@ class HistoryController extends Controller
         $req = $request->all();
         $req['tgl_pesan'] = date("Y-m-d");
         $req['id_order'] = rand(100000000, 9999999);
+        $req['status_o'] = 'aktif';
         $do = (new Order())->insertRaw($req);
         return redirect(route('user.history'));
     }
@@ -55,8 +68,7 @@ class HistoryController extends Controller
     {
         $data = $request->all();
 
-        foreach($data['photo'] as $file)
-        {
+        foreach ($data['photo'] as $file) {
             $tujuan_upload = 'data_file/' . Session::get('id_user');
             $name = $file->getClientOriginalName();
             $file->move($tujuan_upload, $file->getClientOriginalName());
