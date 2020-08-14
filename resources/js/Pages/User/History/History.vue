@@ -3,6 +3,34 @@
         <div class="row">
             <Messages></Messages>
             <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <p>
+                            • The order will be cancelled automatically if it isn’t delivered in 1 hour from the moment it’s
+                            made. Please don’t deliver when the order is status of cancelled. And it is absolutely necessary
+                            to contact us if there is any problem.
+                        </p>
+                        <p>
+                            • Cancel: Press the button if you are not able to fulfill the order.
+                        </p>
+                        <p>
+                            • <span class="text-primary">Active</span>: You can start uploading the delivery screenshots after completed delivery by
+                            clicking the button. And we will process the payment for you once the images are confirmed.
+                        </p>
+                        <p>
+                            • <span class="text-info">Delivery Details</span>: You will know everything needed for delivery here, especially the in game character
+                            of the client or the auction details for buyout, World of Warcraft Classic - US for instance.
+                        </p>
+                        <p class="text-danger">
+                            • Notice: Please deliver the order and upload the delivery screenshots within 1 hour, or the
+                            order will be cancelled automatically. You might have to reset the order or it might be taken by
+                            someone else. So please do make it as fast as you could. Feel free to contact the Live Chat for
+                            help if you get any problems.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
                 <div class="alert alert-warning">
                     You need to wait for admin approval before you can continue
                 </div>
