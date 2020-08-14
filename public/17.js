@@ -859,8 +859,11 @@ var render = function() {
                             _vm._s(p.id_order) +
                             " ($" +
                             _vm._s(p.price) +
-                            ")"
-                        )
+                            ") "
+                        ),
+                        _c("div", { staticClass: "badge badge-secondary" }, [
+                          _vm._v(_vm._s(p.kategori) + " " + _vm._s(p.server))
+                        ])
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "text-time" }, [
