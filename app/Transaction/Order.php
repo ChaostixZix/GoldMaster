@@ -54,6 +54,7 @@ class Order extends Model
 
     public function insertRaw(array $insert)
     {
+        $insert['created_at'] = date('Y-m-d H:s:i');
          $this->db()->insert($insert);
         event(new ItemEvents('test'));
         return true;

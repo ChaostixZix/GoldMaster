@@ -113,7 +113,10 @@
                         <ul class="list-unstyled list-unstyled-border list-unstyled-noborder">
                             <li v-for="p in paginated" class="media">
                                 <div class="media-body">
-                                    <div v-if="p.file !== null" class="media-right">
+                                    <div v-if="p.diff > 60" class="media-right">
+                                        <div class="text-danger">Canceled</div>
+                                    </div>
+                                    <div v-else-if="p.file !== null" class="media-right">
                                         <div class="text-info">Pending Approval</div>
                                     </div>
                                     <div v-else-if="p.status_o === 'pending'" class="media-right">
@@ -123,15 +126,17 @@
                                         <div class="text-primary">Active</div>
                                     </div>
                                     <div class="media-title mb-1">Order #{{p.id_order}} (${{p.price}})</div>
-                                    <div class="text-time">{{p.tgl_pesan}}</div>
+                                    <div class="text-time">{{p.tgl_pesan}} ({{60 - p.diff}} Minutes Left)</div>
                                     <div class="media-description text-muted">Sell {{p.quantity}}G for (${{p.price}})
                                     </div>
-                                    <div v-if="p.status_o !== 'done'" class="media-links">
-                                        <a v-if="p.status_o === 'aktif'" @click="details(p)"
-                                           class="btn btn-sm btn-info text-white" href="#">Delivery Details</a>
-                                        <div v-if="p.status_o === 'aktif'" class="bullet"></div>
-                                        <a v-if="p.file === null" @click="cancel(p.id_order)"
-                                           class="btn btn-sm btn-danger text-white" href="#">Cancel</a>
+                                    <div v-if="p.diff < 60">
+                                        <div v-if="p.status_o !== 'done'" class="media-links">
+                                            <a v-if="p.status_o === 'aktif'" @click="details(p)"
+                                               class="btn btn-sm btn-info text-white" href="#">Delivery Details</a>
+                                            <div v-if="p.status_o === 'aktif'" class="bullet"></div>
+                                            <a v-if="p.file === null" @click="cancel(p.id_order)"
+                                               class="btn btn-sm btn-danger text-white" href="#">Cancel</a>
+                                        </div>
                                     </div>
                                 </div>
                             </li>

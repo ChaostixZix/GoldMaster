@@ -84320,13 +84320,13 @@ var map = {
 		"./resources/js/Pages/Admin/Items/Items.vue",
 		0,
 		2,
-		20
+		19
 	],
 	"./Admin/Items/Items.vue": [
 		"./resources/js/Pages/Admin/Items/Items.vue",
 		0,
 		2,
-		20
+		19
 	],
 	"./Admin/Items/ItemsEdit": [
 		"./resources/js/Pages/Admin/Items/ItemsEdit.vue",
@@ -84340,13 +84340,13 @@ var map = {
 		"./resources/js/Pages/Admin/MemberStock/MemberStock.vue",
 		0,
 		3,
-		21
+		20
 	],
 	"./Admin/MemberStock/MemberStock.vue": [
 		"./resources/js/Pages/Admin/MemberStock/MemberStock.vue",
 		0,
 		3,
-		21
+		20
 	],
 	"./Admin/MemberStock/MemberStockAdd": [
 		"./resources/js/Pages/Admin/MemberStock/MemberStockAdd.vue",
@@ -84440,13 +84440,13 @@ var map = {
 		"./resources/js/Pages/Depan/Depan.vue",
 		0,
 		5,
-		18
+		17
 	],
 	"./Depan/Depan.vue": [
 		"./resources/js/Pages/Depan/Depan.vue",
 		0,
 		5,
-		18
+		17
 	],
 	"./Depan/SellDepan": [
 		"./resources/js/Pages/Depan/SellDepan.vue",
@@ -84461,12 +84461,12 @@ var map = {
 	"./User/Auth/Login": [
 		"./resources/js/Pages/User/Auth/Login.vue",
 		1,
-		22
+		21
 	],
 	"./User/Auth/Login.vue": [
 		"./resources/js/Pages/User/Auth/Login.vue",
 		1,
-		22
+		21
 	],
 	"./User/Auth/Register": [
 		"./resources/js/Pages/User/Auth/Register.vue",
@@ -84489,24 +84489,24 @@ var map = {
 	"./User/History/History": [
 		"./resources/js/Pages/User/History/History.vue",
 		0,
-		17
+		32
 	],
 	"./User/History/History.vue": [
 		"./resources/js/Pages/User/History/History.vue",
 		0,
-		17
+		32
 	],
 	"./User/MemberStock/MemberStock": [
 		"./resources/js/Pages/User/MemberStock/MemberStock.vue",
 		0,
 		4,
-		23
+		22
 	],
 	"./User/MemberStock/MemberStock.vue": [
 		"./resources/js/Pages/User/MemberStock/MemberStock.vue",
 		0,
 		4,
-		23
+		22
 	],
 	"./User/MemberStock/MemberStockAdd": [
 		"./resources/js/Pages/User/MemberStock/MemberStockAdd.vue",
@@ -84538,11 +84538,11 @@ var map = {
 	],
 	"./User/Sell/SellNow": [
 		"./resources/js/Pages/User/Sell/SellNow.vue",
-		19
+		18
 	],
 	"./User/Sell/SellNow.vue": [
 		"./resources/js/Pages/User/Sell/SellNow.vue",
-		19
+		18
 	],
 	"./User/Withdraw/Withdraw": [
 		"./resources/js/Pages/User/Withdraw/Withdraw.vue",
