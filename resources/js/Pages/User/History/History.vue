@@ -153,7 +153,7 @@
                                     <div v-else-if="p.status_o === 'aktif'" class="media-right">
                                         <div class="text-primary">Active</div>
                                     </div>
-                                    <div class="media-title mb-1">Order #{{p.id_order}} (${{p.price}})</div>
+                                    <div class="media-title mb-1">Order #{{p.id_order}} (${{p.price}}) <div class="badge badge-secondary">{{p.kategori}} {{p.server}}</div></div>
                                     <div class="text-time">{{p.tgl_pesan}} ({{60 - p.diff}} Minutes Left)</div>
                                     <div class="media-description text-muted">Sell {{p.quantity}}G for (${{p.price}})
                                     </div>
