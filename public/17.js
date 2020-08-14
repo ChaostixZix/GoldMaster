@@ -174,6 +174,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -507,6 +535,48 @@ var render = function() {
       { staticClass: "row" },
       [
         _c("Messages"),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c("p", [
+                _vm._v(
+                  "\n                        • The order will be cancelled automatically if it isn’t delivered in 1 hour from the moment it’s\n                        made. Please don’t deliver when the order is status of cancelled. And it is absolutely necessary\n                        to contact us if there is any problem.\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "\n                        • Cancel: Press the button if you are not able to fulfill the order.\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v("\n                        • "),
+                _c("span", { staticClass: "text-primary" }, [_vm._v("Active")]),
+                _vm._v(
+                  ": You can start uploading the delivery screenshots after completed delivery by\n                        clicking the button. And we will process the payment for you once the images are confirmed.\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v("\n                        • "),
+                _c("span", { staticClass: "text-info" }, [
+                  _vm._v("Delivery Details")
+                ]),
+                _vm._v(
+                  ": You will know everything needed for delivery here, especially the in game character\n                        of the client or the auction details for buyout, World of Warcraft Classic - US for instance.\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "text-danger" }, [
+                _vm._v(
+                  "\n                        • Notice: Please deliver the order and upload the delivery screenshots within 1 hour, or the\n                        order will be cancelled automatically. You might have to reset the order or it might be taken by\n                        someone else. So please do make it as fast as you could. Feel free to contact the Live Chat for\n                        help if you get any problems.\n                    "
+                )
+              ])
+            ])
+          ])
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-12" }, [
           _c("div", { staticClass: "alert alert-warning" }, [
