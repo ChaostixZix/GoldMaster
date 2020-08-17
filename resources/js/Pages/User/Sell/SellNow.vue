@@ -64,11 +64,12 @@
                     alert('Quantity must be lower than needed stock');
                 }else{
                     this.loading = true;
-                    this.$inertia.post(this.$route('user.history.addorder'), this.data).then(() => {
-                        console.log('tes')
-                        this.loading = false;
-                        this.$inertia.visit(this.$route('user.history'));
-                    });
+                    this.$inertia.post(this.$route('user.history.addorder'), this.data)
+                    //     .then(() => {
+                    //     console.log('tes')
+                    //     this.loading = false;
+                    //     this.$inertia.visit(this.$route('user.history'));
+                    // });
                 }
             }
         }
