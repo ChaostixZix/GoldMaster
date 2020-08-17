@@ -75,6 +75,7 @@ __webpack_require__.r(__webpack_exports__);
         alert('Quantity must be lower than needed stock');
       } else {
         this.loading = true;
+        console.log('tes');
         this.$inertia.visit(this.$route('user.history.addorder'), {
           method: 'post',
           data: this.data,
