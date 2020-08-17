@@ -81,11 +81,9 @@ __webpack_require__.r(__webpack_exports__);
         this.$inertia.post(this.$route('user.history.addorder'), this.data, {
           replace: true
         }).then(function () {
-          console.log('tes');
+          // console.log('tes')
+          _this.$inertia.visit(_this.$route('user.history')); // this.loading = false;
 
-          _this.$inertia.visit(_this.$route('user.history'));
-
-          _this.loading = false;
         });
       }
     }
