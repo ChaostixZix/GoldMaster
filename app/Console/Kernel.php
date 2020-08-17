@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Transaction\Order;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,7 +25,20 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->call(function ()
+        {
+            $get = (new Order())->getAllNotCancelled();
+            foreach ($get as $g)
+            {
+                $to = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', date('Y-m-d H:s:i'));
+                $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $g->created_at);
+                $diff = $to->diffInMinutes($from);
+                if($diff > 59)
+                {
+                    $do = (new Order())->cancel($g->id_order);
+                }
+            }
+        })->everyMinute();
     }
 
     /**
