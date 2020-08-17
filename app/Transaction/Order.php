@@ -2,6 +2,7 @@
 
 namespace App\Transaction;
 
+use App\Data\Items;
 use App\Events\ItemEvents;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -11,6 +12,13 @@ class Order extends Model
     private function db()
     {
         return DB::table('t_order');
+    }
+
+    public function getAllNotCancelled()
+    {
+        return $this->db()
+            ->where('status_o', '=', 'aktif')
+            ->get();
     }
 
     public function getAll()
@@ -47,6 +55,9 @@ class Order extends Model
 
     public function cancel($id)
     {
+        $get = $this->getById($id)[0];
+        $butuh = (new Items())->getById($get->id_items)[0]->butuh;
+        (new Items())->updateRaw($get->id_items, ['butuh' => $butuh + $get->quantity]);
          $this->db()->where('id_order', $id)->delete();
         event(new ItemEvents('test'));
         return true;

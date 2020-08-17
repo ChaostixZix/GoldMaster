@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User\Transaction;
 
+use App\Data\Items;
 use App\Http\Controllers\Controller;
 use App\Transaction\Order;
 use Illuminate\Http\Request;
@@ -39,6 +40,8 @@ class HistoryController extends Controller
         $req['tgl_pesan'] = date("Y-m-d");
         $req['id_order'] = rand(100000000, 9999999);
 //        $req['status_o'] = 'aktif';
+        $butuh = (new Items())->getById($req['id_items'])[0]->butuh;
+        $do = (new Items())->updateRaw($req['id_items'], ['butuh' => $butuh - $req['quantity']]);
         $do = (new Order())->insertRaw($req);
         return redirect(route('user.history'));
     }
