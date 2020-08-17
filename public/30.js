@@ -140,6 +140,10 @@ __webpack_require__.r(__webpack_exports__);
     request: function request() {
       var _this2 = this;
 
+      if (this.$page.flash.currency === 'idr') {
+        this.data.dollar = this.$page.flash.saldo / this.$page.flash.idrrate;
+      }
+
       this.$inertia.post(this.$route('user.withdraw.request'), this.data).then(function () {
         _this2.$inertia.reload({
           reload: true,
@@ -298,7 +302,8 @@ var render = function() {
                         _vm._s(
                           _vm.$page.flash.currency === "usd"
                             ? "$" + r.dollar
-                            : "Rp." + r.dollar * _vm.$page.flash.idrrate
+                            : "Rp." +
+                                parseInt(r.dollar * _vm.$page.flash.idrrate)
                         ) + "\n                            "
                       )
                     ]),

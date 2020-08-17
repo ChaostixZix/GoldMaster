@@ -607,9 +607,9 @@ var render = function() {
                                                         _vm._s(
                                                           parseInt(
                                                             _vm.$page.flash
-                                                              .idrrate
-                                                          ) *
-                                                            parseFloat(p.dollar)
+                                                              .idrrate *
+                                                              p.dollar
+                                                          )
                                                         ) +
                                                         "/G\n                                            "
                                                     )
