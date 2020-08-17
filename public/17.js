@@ -202,6 +202,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -833,10 +836,16 @@ var render = function() {
                               _vm._v("Canceled")
                             ])
                           ])
-                        : p.file !== null
+                        : p.file !== null && p.status_o !== "done"
                         ? _c("div", { staticClass: "media-right" }, [
                             _c("div", { staticClass: "text-info" }, [
                               _vm._v("Pending Approval")
+                            ])
+                          ])
+                        : p.file !== null && p.status_o == "done"
+                        ? _c("div", { staticClass: "media-right" }, [
+                            _c("div", { staticClass: "text-success" }, [
+                              _vm._v("Done")
                             ])
                           ])
                         : p.status_o === "pending"
