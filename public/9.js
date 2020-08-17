@@ -346,9 +346,10 @@ __webpack_require__.r(__webpack_exports__);
           replace: true
         }).then(function () {
           console.log('tes');
-          _this.loading = false;
 
           _this.$inertia.visit(_this.$route('user.history'));
+
+          _this.loading = false;
         });
       }
     }

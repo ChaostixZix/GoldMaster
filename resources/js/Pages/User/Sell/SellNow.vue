@@ -30,11 +30,12 @@
 
 <script>
     import Spinner from "../../../Utils/Shared/Spinner";
+
     export default {
         name: "SellNow",
         components: {Spinner},
         data() {
-            return{
+            return {
                 data: {
                     quantity: '',
                     id_items: this.p.id_items,
@@ -52,27 +53,26 @@
         },
         watch: {
             'data.quantity': function () {
-                this.data.price = parseInt(this.data.quantity)*this.p.dollar;
+                this.data.price = parseInt(this.data.quantity) * this.p.dollar;
                 this.idr = parseInt(this.data.price * this.$page.flash.idrrate);
             }
         },
         methods: {
-            submit(){
+            submit() {
 
-                if(this.data.quantity > this.p.butuh)
-                {
+                if (this.data.quantity > this.p.butuh) {
                     alert('Quantity must be lower than needed stock');
-                }else{
-
+                } else {
                     this.loading = true;
                     console.log('tes')
                     this.$inertia.post(this.$route('user.history.addorder'), this.data, {
                         replace: true
                     })
                         .then(() => {
-                        console.log('tes')
-                        this.loading = false;
+                            console.log('tes')
                             this.$inertia.visit(this.$route('user.history'));
+
+                            this.loading = false;
 
                         });
 
