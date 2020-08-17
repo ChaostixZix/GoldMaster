@@ -65,7 +65,7 @@
                 }else{
 
                     this.loading = true;
-
+                    console.log('tes')
                     this.$inertia.visit(this.$route('user.history.addorder'), {
                         method: 'post',
                         data: this.data,
