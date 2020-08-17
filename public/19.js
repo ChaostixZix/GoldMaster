@@ -75,7 +75,15 @@ __webpack_require__.r(__webpack_exports__);
         alert('Quantity must be lower than needed stock');
       } else {
         this.loading = true;
-        this.$inertia.post(this.$route('user.history.addorder'), this.data); //     .then(() => {
+        this.$inertia.visit(this.$route('user.history.addorder'), {
+          method: 'post',
+          data: this.data,
+          replace: false,
+          preserveState: false,
+          preserveScroll: true,
+          only: []
+        }); // this.$inertia.post(this.$route('user.history.addorder'), this.data)
+        //     .then(() => {
         //     console.log('tes')
         //     this.loading = false;
         //     this.$inertia.visit(this.$route('user.history'));
