@@ -845,7 +845,7 @@ var render = function() {
                         : p.file !== null && p.status_o == "done"
                         ? _c("div", { staticClass: "media-right" }, [
                             _c("div", { staticClass: "text-success" }, [
-                              _vm._v("Done")
+                              _vm._v("Confirmed")
                             ])
                           ])
                         : p.status_o === "pending"

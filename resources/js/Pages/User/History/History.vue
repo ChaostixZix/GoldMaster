@@ -148,7 +148,7 @@
                                         <div class="text-info">Pending Approval</div>
                                     </div>
                                     <div v-else-if="p.file !== null && p.status_o == 'done'" class="media-right">
-                                        <div class="text-success">Done</div>
+                                        <div class="text-success">Confirmed</div>
                                     </div>
                                     <div v-else-if="p.status_o === 'pending'" class="media-right">
                                         <div class="text-warning">Pending</div>
