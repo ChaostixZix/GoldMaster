@@ -69,10 +69,10 @@
                         replace: true
                     })
                         .then(() => {
-                            console.log('tes')
+                            // console.log('tes')
                             this.$inertia.visit(this.$route('user.history'));
 
-                            this.loading = false;
+                            // this.loading = false;
 
                         });
 
