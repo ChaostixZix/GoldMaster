@@ -38,7 +38,7 @@ class HistoryController extends Controller
         $req = $request->all();
         $req['tgl_pesan'] = date("Y-m-d");
         $req['id_order'] = rand(100000000, 9999999);
-        $req['status_o'] = 'aktif';
+//        $req['status_o'] = 'aktif';
         $do = (new Order())->insertRaw($req);
         return redirect(route('user.history'));
     }
