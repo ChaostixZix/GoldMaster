@@ -84647,8 +84647,8 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "",
-  cluster: "mt1",
+  key: "bd17ab327430665daddf",
+  cluster: "ap1",
   forceTLS: false
 }); // try {
 //     window.Popper = require('popper.js').default;
@@ -84692,8 +84692,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/bintangputra/Documents/Project/GoldMaster/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/bintangputra/Documents/Project/GoldMaster/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/chaostix/Documents/Project/GoldMaster/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/chaostix/Documents/Project/GoldMaster/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
