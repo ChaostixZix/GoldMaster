@@ -45,7 +45,7 @@
                             <tbody>
                             <tr v-for="r in requests">
                                 <th scope="row">{{r.id}}</th>
-                                <td>{{$page.flash.currency === 'usd' ? '$'+r.dollar : 'Rp.'+r.dollar*$page.flash.idrrate}}
+                                <td>{{$page.flash.currency === 'usd' ? '$'+r.dollar : 'Rp.'+parseInt(r.dollar*$page.flash.idrrate)}}
                                 </td>
                                 <td>
                                     <div v-if="r.status_wd === 'pending'" class="badge badge-warning">Pending</div>
@@ -118,6 +118,10 @@
                 if (response) this.robot = true;
             },
             request() {
+                if(this.$page.flash.currency === 'idr')
+                {
+                    this.data.dollar = this.$page.flash.saldo / this.$page.flash.idrrate
+                }
                 this.$inertia.post(this.$route('user.withdraw.request'), this.data).then(() => {
                     this.$inertia.reload({
                         reload: true,

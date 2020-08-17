@@ -84635,7 +84635,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.prototype.$route = function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -84647,8 +84647,8 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "bd17ab327430665daddf",
-  cluster: "ap1",
+  key: process.env.MIX_PUSHER_APP_KEY,
+  cluster: process.env.MIX_PUSHER_APP_CLUSTER,
   forceTLS: false
 }); // try {
 //     window.Popper = require('popper.js').default;
@@ -84671,6 +84671,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.
  */
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -84692,8 +84693,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/chaostix/Documents/Project/GoldMaster/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/chaostix/Documents/Project/GoldMaster/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/bintangputra/Documents/Project/GoldMaster/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/bintangputra/Documents/Project/GoldMaster/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
