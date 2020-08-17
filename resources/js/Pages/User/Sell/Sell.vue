@@ -93,10 +93,13 @@
         created() {
             Echo.channel('Item')
                 .listen('ItemEvents', (e) => {
-                    this.$inertia.reload({
-                        preserveState: false,
-                        preserveScroll: true
-                    })
+                    if(this.sellnow === false)
+                    {
+                        this.$inertia.reload({
+                            preserveState: false,
+                            preserveScroll: true
+                        })
+                    }
                 });
         },
         mounted() {

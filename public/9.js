@@ -116,10 +116,12 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     Echo.channel('Item').listen('ItemEvents', function (e) {
-      _this.$inertia.reload({
-        preserveState: false,
-        preserveScroll: true
-      });
+      if (_this.sellnow === false) {
+        _this.$inertia.reload({
+          preserveState: false,
+          preserveScroll: true
+        });
+      }
     });
   },
   mounted: function mounted() {
@@ -342,9 +344,7 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.loading = true;
         console.log('tes');
-        this.$inertia.post(this.$route('user.history.addorder'), this.data, {
-          replace: true
-        }).then(function () {
+        this.$inertia.post(this.$route('user.history.addorder'), this.data).then(function () {
           // console.log('tes')
           _this.$inertia.visit(_this.$route('user.history')); // this.loading = false;
 
