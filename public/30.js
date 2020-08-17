@@ -192,9 +192,7 @@ var render = function() {
               "Balance left : (" +
                 _vm._s(
                   _vm.$page.flash.currency === "usd"
-                    ? _vm.$page.flash.saldo > 0
-                      ? "$" + _vm.$page.flash.saldo
-                      : 0
+                    ? "$" + _vm.$page.flash.saldo
                     : "Rp. " +
                         parseInt(
                           _vm.$page.flash.saldo * _vm.$page.flash.idrrate
