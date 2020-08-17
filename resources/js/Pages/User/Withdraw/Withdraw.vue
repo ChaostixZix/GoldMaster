@@ -7,7 +7,7 @@
             </div>
             <div class="col-6">
                 <div class="card card primary">
-                    <div class="card-header">Balance left : ({{$page.flash.currency === 'usd' ? '$'+$page.flash.saldo : 'Rp. '+parseInt($page.flash.saldo*$page.flash.idrrate)}})
+                    <div class="card-header">Balance left : ({{$page.flash.currency === 'usd' ? $page.flash.saldo > 0 ? '$'+$page.flash.saldo : 0 : 'Rp. '+parseInt($page.flash.saldo*$page.flash.idrrate)}})
                     </div>
                     <div v-if="$page.flash.saldo > 0 && show" class="card-body">
                         <div class="form-group">
