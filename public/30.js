@@ -193,7 +193,10 @@ var render = function() {
                 _vm._s(
                   _vm.$page.flash.currency === "usd"
                     ? "$" + _vm.$page.flash.saldo
-                    : "Rp. " + _vm.$page.flash.saldo * _vm.$page.flash.idrrate
+                    : "Rp. " +
+                        parseInt(
+                          _vm.$page.flash.saldo * _vm.$page.flash.idrrate
+                        )
                 ) +
                 ")\n                "
             )
