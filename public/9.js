@@ -341,22 +341,15 @@ __webpack_require__.r(__webpack_exports__);
         alert('Quantity must be lower than needed stock');
       } else {
         this.loading = true;
-        console.log('tes'); // this.$inertia.visit(this.$route('user.history.addorder'), {
-        //     method: 'post',
-        //     data: this.data,
-        //     replace: false,
-        //     preserveState: false,
-        //     preserveScroll: true,
-        //     only: [],
-        // })
-
+        console.log('tes');
         this.$inertia.post(this.$route('user.history.addorder'), this.data, {
           replace: true
         }).then(function () {
           console.log('tes');
           _this.loading = false;
+
+          _this.$inertia.visit(_this.$route('user.history'));
         });
-        this.$inertia.visit(this.$route('user.history'));
       }
     }
   }
