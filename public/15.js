@@ -90,6 +90,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -151,6 +154,7 @@ __webpack_require__.r(__webpack_exports__);
       sortOrders[column.name] = -1;
     });
     return {
+      bankIndo: ['Mandiri', 'BRI', 'BCA', 'BNI', 'BTPN', 'Bank Lain'],
       edit: false,
       dataedit: {},
       columns: columns,
@@ -490,7 +494,18 @@ var render = function() {
                                       _c("td", [_vm._v(_vm._s(p.n_rekening))]),
                                       _vm._v(" "),
                                       _c("td", [
-                                        _vm._v("$" + _vm._s(p.dollar))
+                                        _vm._v(
+                                          "\n                                                    " +
+                                            _vm._s(
+                                              _vm.bankIndo.indexOf(p.n_bank) !==
+                                                -1
+                                                ? "Rp." +
+                                                    p.dollar *
+                                                      _vm.$page.flash.idrrate
+                                                : "$" + p.dollar
+                                            ) +
+                                            "\n                                                "
+                                        )
                                       ]),
                                       _vm._v(" "),
                                       _c("td", [
@@ -503,7 +518,7 @@ var render = function() {
                                               },
                                               [
                                                 _vm._v(
-                                                  "\n                                                    Pending\n                                                "
+                                                  "\n                                                        Pending\n                                                    "
                                                 )
                                               ]
                                             )
@@ -518,7 +533,7 @@ var render = function() {
                                               },
                                               [
                                                 _vm._v(
-                                                  "\n                                                    Process\n                                                "
+                                                  "\n                                                        Process\n                                                    "
                                                 )
                                               ]
                                             )
@@ -533,7 +548,7 @@ var render = function() {
                                               },
                                               [
                                                 _vm._v(
-                                                  "\n                                                    Done\n                                                "
+                                                  "\n                                                        Done\n                                                    "
                                                 )
                                               ]
                                             )
