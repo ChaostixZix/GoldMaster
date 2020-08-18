@@ -248,7 +248,7 @@
                         Hi, {{\Illuminate\Support\Facades\Session::get('username')}}</div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <div class="dropdown-title">Balance: ${{\Illuminate\Support\Facades\Session::get('saldo')}}</div>
+{{--                    <div class="dropdown-title">Balance: ${{\Illuminate\Support\Facades\Session::get('saldo')}}</div>--}}
                     <a href="{{route('user.profile')}}" class="dropdown-item has-icon">
                         <i class="fa fa-user"></i> Profile
                     </a>
