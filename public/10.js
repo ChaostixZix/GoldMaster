@@ -116,6 +116,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -169,6 +170,9 @@ __webpack_require__.r(__webpack_exports__);
     }, {
       width: '10%',
       label: 'Contact'
+    }, {
+      width: '10%',
+      label: 'Date'
     }, {
       width: '10%',
       label: 'Status'
@@ -594,6 +598,10 @@ var render = function() {
                                               _vm._s(p.contacttype) +
                                               ")"
                                           )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(_vm._s(p.created_at))
                                         ]),
                                         _vm._v(" "),
                                         _c("td", [
