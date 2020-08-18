@@ -17,6 +17,7 @@ class Withdraw extends Model
     {
         return $this->db()
             ->leftJoin('t_users', 't_users.id_user', '=', 'withdraw.id_user')
+            ->orderBy('withdraw.id', 'desc')
             ->get();
     }
 
@@ -24,6 +25,7 @@ class Withdraw extends Model
     {
         return $this->db()->where('withdraw.id_user', $id_user)
             ->leftJoin('t_users', 't_users.id_user', '=', 'withdraw.id_user')
+            ->orderBy('withdraw.id', 'desc')
             ->get();
     }
     public function hapus($id)
