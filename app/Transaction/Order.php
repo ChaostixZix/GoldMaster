@@ -29,7 +29,7 @@ class Order extends Model
             ->leftJoin('t_server', 't_items.id_item', '=', 't_server.id_item')
             ->leftJoin('t_kategori', 't_items.id_kategori', '=', 't_kategori.id_kategori')
             ->leftJoin('t_pengiriman', 't_items.id_pengiriman', '=', 't_pengiriman.id_pengiriman')
-            ->orderBy('t_order.created_at', 'asc')
+            ->orderBy('t_order.created_at', 'desc')
             ->get();
     }
 
@@ -41,7 +41,8 @@ class Order extends Model
                 ->leftJoin('t_server', 't_items.id_item', '=', 't_server.id_item')
                 ->leftJoin('t_kategori', 't_items.id_kategori', '=', 't_kategori.id_kategori')
                 ->leftJoin('t_pengiriman', 't_items.id_pengiriman', '=', 't_pengiriman.id_pengiriman')
-            ->get();
+                ->orderBy('t_order.created_at', 'desc')
+                ->get();
     }
     public function getById($id)
     {
