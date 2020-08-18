@@ -26,7 +26,10 @@
                                                 <td>{{ p.n_bank }}</td>
                                                 <td>{{ p.a_nama }}</td>
                                                 <td>{{ p.n_rekening }}</td>
-                                                <td>${{ p.dollar }}</td>
+                                                <td>
+<!--                                                    ${{ p.dollar }}-->
+                                                    {{bankIndo.indexOf(p.n_bank) !== -1 ? 'Rp.'+p.dollar*$page.flash.idrrate : '$'+p.dollar}}
+                                                </td>
                                                 <td>
                                                     <div v-if="p.status_wd === 'pending'" class="badge badge-warning">
                                                         Pending
@@ -115,6 +118,14 @@
                 sortOrders[column.name] = -1;
             });
             return {
+                bankIndo: [
+                    'Mandiri',
+                    'BRI',
+                    'BCA',
+                    'BNI',
+                    'BTPN',
+                    'Bank Lain'
+                ],
                 edit: false,
                 dataedit: {},
                 columns: columns,
