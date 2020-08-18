@@ -106,11 +106,14 @@
                 console.log(this.$page.flash.currency);
                 if (this.$page.flash.currency === 'idr' && this.dollar > this.$page.flash.idrrate * this.$page.flash.saldo) {
                     this.dollar = parseInt(this.$page.flash.saldo * this.$page.flash.idrrate)
+                    this.data.dollar = this.dollar / this.$page.flash.idrrate;
+                }else{
+                    this.data.dollar = this.dollar;
                 }
                 if (this.dollar < 1) {
                     this.dollar = 1;
                 }
-                this.data.dollar = this.dollar / this.$page.flash.idrrate;
+
             }
         },
         methods: {

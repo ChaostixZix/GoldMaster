@@ -28,6 +28,7 @@
                                                 <td>{{ p.quantity }}</td>
                                                 <td>{{ p.n_karakter }}</td>
                                                 <td>{{ p.telp }} ({{p.contacttype}})</td>
+                                                <td>{{ p.created_at }}</td>
                                                 <td>
                                                     <div v-if="p.status_o === 'aktif'" class="badge badge-primary">Active</div>
                                                     <div v-if="p.status_o === 'pending'" class="badge badge-warning">Pending</div>
@@ -135,6 +136,7 @@
                 {width: '10%', label: 'Quantity'},
                 {width: '10%', label: 'Character Name'},
                 {width: '10%', label: 'Contact'},
+                {width: '10%', label: 'Date'},
                 {width: '10%', label: 'Status'},
                 {width: '33%', label: 'Action'},
             ];
