@@ -96,6 +96,12 @@
         mounted() {
             this.load();
         },
+        created() {
+            Echo.channel('Item')
+                .listen('ItemEvents', (e) => {
+                    this.reload()
+                });
+        },
         data() {
             let sortOrders = {};
             let columns = [
@@ -134,6 +140,14 @@
             }
         },
         methods: {
+            reload()
+            {
+                this.$inertia.reload({
+                    preserveState: false,
+                    preserveScroll: true,
+                    only: ['stocks']
+                })
+            },
             ubah(p)
             {
                 this.type = 'edit';
