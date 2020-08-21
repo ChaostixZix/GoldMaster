@@ -179,7 +179,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$inertia.reload({
         preserveState: false,
         preserveScroll: true,
-        only: ['neededstocks']
+        only: ['neededstocks', 'stocks']
       });
     },
     insert: function insert() {
