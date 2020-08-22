@@ -140,10 +140,37 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     Echo.channel('Item').listen('ItemEvents', function (e) {
+      console.log(e);
+
       _this.$inertia.reload({
         preserveState: false,
         preserveScroll: true,
         only: ['order']
+      }).then(function () {
+        var type = 'success';
+        var title = 'Notifikasi';
+
+        if (e.type === 'order_cancel') {
+          var _type = 'error';
+          var _title = 'Cancelled';
+        }
+
+        if (e.type === 'order_baru') {
+          var _type2 = 'success';
+          var _title2 = 'New Order';
+        }
+
+        if (e.type === 'order_update') {
+          var _type3 = 'warn';
+          var _title3 = 'Order Update';
+        }
+
+        _this.$notify({
+          type: type,
+          group: 'foo',
+          title: title,
+          text: 'ID Order : ' + e.id + '!'
+        });
       });
     });
   },
@@ -365,6 +392,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Shared_Messages__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Shared/Messages */ "./resources/js/Utils/Shared/Messages.vue");
+//
+//
+//
 //
 //
 //
@@ -911,6 +941,11 @@ var render = function() {
     "div",
     { staticClass: "main-content" },
     [
+      _c("notifications", {
+        staticStyle: { "margin-top": "5rem" },
+        attrs: { group: "foo" }
+      }),
+      _vm._v(" "),
       _c(
         "b-toast",
         {

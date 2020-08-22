@@ -44,6 +44,7 @@ class Order extends Model
                 ->orderBy('t_order.created_at', 'desc')
                 ->get();
     }
+
     public function getById($id)
     {
         return
@@ -60,23 +61,24 @@ class Order extends Model
         $get = $this->getById($id)[0];
         $butuh = (new Items())->getById($get->id_items)[0]->butuh;
         (new Items())->updateRaw($get->id_items, ['butuh' => $butuh + $get->quantity]);
-         $this->db()->where('id_order', $id)->delete();
-        event(new ItemEvents('test'));
+        $this->db()->where('id_order', $id)->delete();
+        event(new ItemEvents(['type' => 'order_cancel', 'id' => $id]));
         return true;
     }
 
     public function insertRaw(array $insert)
     {
         $insert['created_at'] = date('Y-m-d H:s:i');
-         $this->db()->insert($insert);
-        event(new ItemEvents('test'));
+        $id = $this->db()->insertGetId($insert);
+        event(new ItemEvents(['type' => 'order_baru', 'id' => $id]));
+
         return true;
     }
 
     public function updateRaw($id, array $update)
     {
-         $this->db()->where('id_order', $id)->update($update);
-        event(new ItemEvents('test'));
+        $this->db()->where('id_order', $id)->update($update);
+        event(new ItemEvents(['type' => 'order_update', 'id' => $id]));
         return true;
     }
 

@@ -119,12 +119,39 @@
         created() {
             Echo.channel('Item')
                 .listen('ItemEvents', (e) => {
+                    console.log(e)
                     this.$inertia.reload({
                         preserveState: false,
                         preserveScroll: true,
                         only: ['order']
+                    }).then(() => {
+                        let type = 'success';
+                        let title = 'Notifikasi';
+                        if(e.type === 'order_cancel')
+                        {
+                            let type = 'error';
+                            let title = 'Cancelled';
+                        }
+                        if(e.type === 'order_baru')
+                        {
+                            let type = 'success';
+                            let title = 'New Order';
+                        }
+                        if(e.type === 'order_update')
+                        {
+                            let type = 'warn';
+                            let title = 'Order Update';
+                        }
+                        this.$notify({
+                            type: type,
+                            group: 'foo',
+                            title: title,
+                            text: 'ID Order : ' + e.id + '!'
+                        });
                     })
+
                 });
+
         },
         data() {
             let sortOrders = {};

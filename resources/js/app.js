@@ -2,10 +2,11 @@ require('./bootstrap');
 import { InertiaApp } from '@inertiajs/inertia-vue'
 import Vue from 'vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import Notifications from 'vue-notification'
 
-// Install BootstrapVue
+
+Vue.use(Notifications)
 Vue.use(BootstrapVue)
-// Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
 
