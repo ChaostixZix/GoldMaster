@@ -126,29 +126,33 @@
                         preserveScroll: true,
                         only: ['order']
                     }).then(() => {
-                        let type = 'success';
-                        let title = 'Notifikasi';
                         if(e.type === 'order_cancel')
                         {
-                            let type = 'error';
-                            let title = 'Cancelled';
+                            this.$notify({
+                                type: 'error',
+                                group: 'foo',
+                                title: 'Cancelled',
+                                text: 'ID Order : ' + e.id + '!'
+                            });
                         }
                         if(e.type === 'order_baru')
                         {
-                            let type = 'success';
-                            let title = 'New Order';
+                            this.$notify({
+                                type: 'success',
+                                group: 'foo',
+                                title: 'New Order',
+                                text: 'ID Order : ' + e.id + '!'
+                            });
                         }
                         if(e.type === 'order_update')
                         {
-                            let type = 'warn';
-                            let title = 'Order Update';
+                            this.$notify({
+                                type: 'warn',
+                                group: 'foo',
+                                title: 'Order Update',
+                                text: 'ID Order : ' + e.id + '!'
+                            });
                         }
-                        this.$notify({
-                            type: type,
-                            group: 'foo',
-                            title: title,
-                            text: 'ID Order : ' + e.id + '!'
-                        });
                     })
 
                 });

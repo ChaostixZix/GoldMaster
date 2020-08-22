@@ -148,30 +148,32 @@ __webpack_require__.r(__webpack_exports__);
         preserveScroll: true,
         only: ['order']
       }).then(function () {
-        var type = 'success';
-        var title = 'Notifikasi';
-
         if (e.type === 'order_cancel') {
-          var _type = 'error';
-          var _title = 'Cancelled';
+          _this.$notify({
+            type: 'error',
+            group: 'foo',
+            title: 'Cancelled',
+            text: 'ID Order : ' + e.id + '!'
+          });
         }
 
         if (e.type === 'order_baru') {
-          var _type2 = 'success';
-          var _title2 = 'New Order';
+          _this.$notify({
+            type: 'success',
+            group: 'foo',
+            title: 'New Order',
+            text: 'ID Order : ' + e.id + '!'
+          });
         }
 
         if (e.type === 'order_update') {
-          var _type3 = 'warn';
-          var _title3 = 'Order Update';
+          _this.$notify({
+            type: 'warn',
+            group: 'foo',
+            title: 'Order Update',
+            text: 'ID Order : ' + e.id + '!'
+          });
         }
-
-        _this.$notify({
-          type: type,
-          group: 'foo',
-          title: title,
-          text: 'ID Order : ' + e.id + '!'
-        });
       });
     });
   },
