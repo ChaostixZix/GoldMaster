@@ -139,8 +139,9 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    Echo.channel('Item').listen('ItemEvents', function (e) {
+    Echo.channel('Item').listen('ItemEvents', function (r) {
       console.log(e);
+      var e = r.message;
 
       _this.$inertia.reload({
         preserveState: false,

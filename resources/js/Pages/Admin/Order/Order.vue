@@ -118,8 +118,9 @@
         },
         created() {
             Echo.channel('Item')
-                .listen('ItemEvents', (e) => {
+                .listen('ItemEvents', (r) => {
                     console.log(e)
+                    let e = r.message;
                     this.$inertia.reload({
                         preserveState: false,
                         preserveScroll: true,
