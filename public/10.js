@@ -140,8 +140,8 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     Echo.channel('Item').listen('ItemEvents', function (r) {
-      console.log(e);
       var e = r.message;
+      console.log(e);
 
       _this.$inertia.reload({
         preserveState: false,
