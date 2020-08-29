@@ -113,17 +113,14 @@
                 }else{
                     this.data.dollar = this.dollar;
                 }
-<<<<<<< HEAD
                 // if (this.dollar < 1) {
                 //     this.dollar = 1;
                 // }
                 // this.data.dollar = this.dollar;
-=======
                 if (this.dollar < 1) {
                     this.dollar = 1;
                 }
 
->>>>>>> 9164d773f17cd47faf0deb5a6c1516d74e2e61f6
             }
         },
         methods: {
