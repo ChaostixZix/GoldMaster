@@ -124,13 +124,11 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.$page.flash.currency === 'idr' && this.dollar > this.$page.flash.idrrate * this.$page.flash.saldo) {
         this.dollar = this.$page.flash.saldo * this.$page.flash.idrrate;
-      }
+      } // if (this.dollar < 1) {
+      //     this.dollar = 1;
+      // }
+      // this.data.dollar = this.dollar;
 
-      if (this.dollar < 1) {
-        this.dollar = 1;
-      }
-
-      this.data.dollar = this.dollar;
     }
   },
   methods: {
@@ -139,10 +137,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     request: function request() {
       var _this2 = this;
-
-      if (this.$page.flash.currency === 'idr') {
-        this.data.dollar = this.$page.flash.saldo / this.$page.flash.idrrate;
-      }
 
       this.$inertia.post(this.$route('user.withdraw.request'), this.data).then(function () {
         _this2.$inertia.reload({
