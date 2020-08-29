@@ -1,5 +1,7 @@
 <template>
     <div class="main-content">
+        <notifications style="margin-top: 5rem" group="foo" />
+
         <b-toast class="card card-primary" id="toast" variant="warning" solid>
             <template v-slot:toast-title class="card-header">
                 <div class="d-flex flex-grow-1 align-items-baseline">
@@ -18,6 +20,7 @@
             </div>
             <Messages></Messages>
             <div class="section-body">
+
                 <slot/>
             </div>
         </section>

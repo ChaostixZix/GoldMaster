@@ -28,6 +28,7 @@
                                                 <td>{{ p.quantity }}</td>
                                                 <td>{{ p.n_karakter }}</td>
                                                 <td>{{ p.telp }} ({{p.contacttype}})</td>
+                                                <td>{{ p.created_at }}</td>
                                                 <td>
                                                     <div v-if="p.status_o === 'aktif'" class="badge badge-primary">Active</div>
                                                     <div v-if="p.status_o === 'pending'" class="badge badge-warning">Pending</div>
@@ -117,13 +118,45 @@
         },
         created() {
             Echo.channel('Item')
-                .listen('ItemEvents', (e) => {
+                .listen('ItemEvents', (r) => {
+                    let e = r.message;
+                    console.log(e)
                     this.$inertia.reload({
                         preserveState: false,
                         preserveScroll: true,
                         only: ['order']
+                    }).then(() => {
+                        if(e.type === 'order_cancel')
+                        {
+                            this.$notify({
+                                type: 'error',
+                                group: 'foo',
+                                title: 'Cancelled',
+                                text: 'ID Order : ' + e.id + '!'
+                            });
+                        }
+                        if(e.type === 'order_baru')
+                        {
+                            this.$notify({
+                                type: 'success',
+                                group: 'foo',
+                                title: 'New Order',
+                                text: 'ID Order : ' + e.id + '!'
+                            });
+                        }
+                        if(e.type === 'order_update')
+                        {
+                            this.$notify({
+                                type: 'warn',
+                                group: 'foo',
+                                title: 'Order Update',
+                                text: 'ID Order : ' + e.id + '!'
+                            });
+                        }
                     })
+
                 });
+
         },
         data() {
             let sortOrders = {};
@@ -135,6 +168,7 @@
                 {width: '10%', label: 'Quantity'},
                 {width: '10%', label: 'Character Name'},
                 {width: '10%', label: 'Contact'},
+                {width: '10%', label: 'Date'},
                 {width: '10%', label: 'Status'},
                 {width: '33%', label: 'Action'},
             ];

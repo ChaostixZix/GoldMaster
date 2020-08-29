@@ -7,7 +7,7 @@
             </div>
             <div class="col-6">
                 <div class="card card primary">
-                    <div class="card-header">Balance left : ({{$page.flash.currency === 'usd' ? '$'+$page.flash.saldo : 'Rp. '+$page.flash.saldo*$page.flash.idrrate}})
+                    <div class="card-header">Balance left : ({{$page.flash.currency === 'usd' ? '$'+$page.flash.saldo : 'Rp. '+parseInt($page.flash.saldo*$page.flash.idrrate)}})
                     </div>
                     <div v-if="$page.flash.saldo > 0 && show" class="card-body">
                         <div class="form-group">
@@ -105,12 +105,25 @@
                 }
                 console.log(this.$page.flash.currency);
                 if (this.$page.flash.currency === 'idr' && this.dollar > this.$page.flash.idrrate * this.$page.flash.saldo) {
-                    this.dollar = this.$page.flash.saldo * this.$page.flash.idrrate
+                    this.dollar = parseInt(this.$page.flash.saldo * this.$page.flash.idrrate)
                 }
+                if(this.$page.flash.currency === 'idr')
+                {
+                    this.data.dollar = this.dollar / this.$page.flash.idrrate;
+                }else{
+                    this.data.dollar = this.dollar;
+                }
+<<<<<<< HEAD
                 // if (this.dollar < 1) {
                 //     this.dollar = 1;
                 // }
                 // this.data.dollar = this.dollar;
+=======
+                if (this.dollar < 1) {
+                    this.dollar = 1;
+                }
+
+>>>>>>> 9164d773f17cd47faf0deb5a6c1516d74e2e61f6
             }
         },
         methods: {

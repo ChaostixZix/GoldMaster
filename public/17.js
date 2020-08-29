@@ -438,6 +438,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
@@ -984,6 +987,11 @@ var render = function() {
     "div",
     { staticClass: "main-content" },
     [
+      _c("notifications", {
+        staticStyle: { "margin-top": "5rem" },
+        attrs: { group: "foo" }
+      }),
+      _vm._v(" "),
       _c(
         "b-toast",
         {

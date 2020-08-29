@@ -41,9 +41,13 @@ class HistoryController extends Controller
         $req['id_order'] = rand(100000000, 9999999);
         $req['status_o'] = 'aktif';
         $butuh = (new Items())->getById($req['id_items'])[0]->butuh;
-        $do = (new Items())->updateRaw($req['id_items'], ['butuh' => $butuh - $req['quantity']]);
-        $do = (new Order())->insertRaw($req);
-        return redirect(route('user.history'));
+        if($butuh >= $req['quantity'])
+        {
+            $do = (new Items())->updateRaw($req['id_items'], ['butuh' => $butuh - $req['quantity']]);
+            $do = (new Order())->insertRaw($req);
+            return redirect(route('user.history'));
+        }
+        return redirect(route('user.sell'))->with('errorr', 'Needed stock is higher than quantity');
     }
 
     public function uploadFoto(Request $request)
