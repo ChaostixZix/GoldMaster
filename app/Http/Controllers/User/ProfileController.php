@@ -46,7 +46,7 @@ class ProfileController extends Controller
             ], function ($message) {
                 $message->subject('GoldMaster - Confirmation Code');
                 $message->to((new Users())->getById(Session::get('id_user'))[0]->email);
-                $message->from('goldmasterid@gmail.com', 'GoldMaster ID');
+                $message->from('postmaster@mail.goldmastergm.com', 'GoldMaster ID');
             });
             return response(['status' => true]);
         } catch (\Exception $e) {
