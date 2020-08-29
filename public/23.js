@@ -179,7 +179,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$inertia.reload({
         preserveState: false,
         preserveScroll: true,
-        only: ['neededstocks']
+        only: ['neededstocks', 'stocks']
       });
     },
     insert: function insert() {
@@ -290,6 +290,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Shared_Messages__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Shared/Messages */ "./resources/js/Utils/Shared/Messages.vue");
+//
+//
+//
 //
 //
 //
@@ -709,6 +712,11 @@ var render = function() {
     "div",
     { staticClass: "main-content" },
     [
+      _c("notifications", {
+        staticStyle: { "margin-top": "5rem" },
+        attrs: { group: "foo" }
+      }),
+      _vm._v(" "),
       _c(
         "b-toast",
         {

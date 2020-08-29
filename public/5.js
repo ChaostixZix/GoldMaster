@@ -371,10 +371,10 @@ var render = function() {
                                                   _vm._v(
                                                     "\n                                            Rp. " +
                                                       _vm._s(
-                                                        parseFloat(
+                                                        parseInt(
                                                           _vm.$page.flash
-                                                            .idrrate
-                                                        ) * parseFloat(p.dollar)
+                                                            .idrrate * p.dollar
+                                                        )
                                                       ) +
                                                       "/G\n                                        "
                                                   )

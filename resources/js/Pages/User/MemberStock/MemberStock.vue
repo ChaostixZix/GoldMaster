@@ -148,7 +148,7 @@
                 this.$inertia.reload({
                     preserveState: false,
                     preserveScroll: true,
-                    only: ['neededstocks']
+                    only: ['neededstocks', 'stocks']
                 })
             },
             insert()

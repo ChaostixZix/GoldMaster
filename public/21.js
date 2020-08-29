@@ -116,6 +116,13 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.load();
   },
+  created: function created() {
+    var _this = this;
+
+    Echo.channel('Item').listen('ItemEvents', function (e) {
+      _this.reload();
+    });
+  },
   data: function data() {
     var sortOrders = {};
     var columns = [{
@@ -169,6 +176,13 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    reload: function reload() {
+      this.$inertia.reload({
+        preserveState: false,
+        preserveScroll: true,
+        only: ['stocks']
+      });
+    },
     ubah: function ubah(p) {
       this.type = 'edit';
       this.dataedit = p;
@@ -218,14 +232,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     filteredProjects: function filteredProjects() {
-      var _this = this;
+      var _this2 = this;
 
       var data = this.data;
 
       if (this.search) {
         data = data.filter(function (row) {
           return Object.keys(row).some(function (key) {
-            return String(row[key]).toLowerCase().indexOf(_this.search.toLowerCase()) > -1;
+            return String(row[key]).toLowerCase().indexOf(_this2.search.toLowerCase()) > -1;
           });
         });
       }
@@ -235,13 +249,13 @@ __webpack_require__.r(__webpack_exports__);
 
       if (sortKey) {
         data = data.slice().sort(function (a, b) {
-          var index = _this.getIndex(_this.columns, 'name', sortKey) + 1;
+          var index = _this2.getIndex(_this2.columns, 'name', sortKey) + 1;
           a = String(a[sortKey]).toLowerCase();
           b = String(b[sortKey]).toLowerCase();
 
-          if (_this.columns[index].type && _this.columns[index].type === 'date') {
+          if (_this2.columns[index].type && _this2.columns[index].type === 'date') {
             return (a === b ? 0 : new Date(a).getTime() > new Date(b).getTime() ? 1 : -1) * order;
-          } else if (_this.columns[index].type && _this.columns[index].type === 'number') {
+          } else if (_this2.columns[index].type && _this2.columns[index].type === 'number') {
             return (+a === +b ? 0 : +a > +b ? 1 : -1) * order;
           } else {
             return (a === b ? 0 : a > b ? 1 : -1) * order;
@@ -269,6 +283,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Shared_Messages__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Shared/Messages */ "./resources/js/Utils/Shared/Messages.vue");
+//
+//
+//
 //
 //
 //
@@ -665,6 +682,11 @@ var render = function() {
     "div",
     { staticClass: "main-content" },
     [
+      _c("notifications", {
+        staticStyle: { "margin-top": "5rem" },
+        attrs: { group: "foo" }
+      }),
+      _vm._v(" "),
       _c(
         "b-toast",
         {

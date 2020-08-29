@@ -123,12 +123,27 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.$page.flash.currency);
 
       if (this.$page.flash.currency === 'idr' && this.dollar > this.$page.flash.idrrate * this.$page.flash.saldo) {
+<<<<<<< HEAD
         this.dollar = this.$page.flash.saldo * this.$page.flash.idrrate;
       } // if (this.dollar < 1) {
       //     this.dollar = 1;
       // }
       // this.data.dollar = this.dollar;
 
+=======
+        this.dollar = parseInt(this.$page.flash.saldo * this.$page.flash.idrrate);
+      }
+
+      if (this.$page.flash.currency === 'idr') {
+        this.data.dollar = this.dollar / this.$page.flash.idrrate;
+      } else {
+        this.data.dollar = this.dollar;
+      }
+
+      if (this.dollar < 1) {
+        this.dollar = 1;
+      }
+>>>>>>> 9164d773f17cd47faf0deb5a6c1516d74e2e61f6
     }
   },
   methods: {
@@ -191,7 +206,10 @@ var render = function() {
                 _vm._s(
                   _vm.$page.flash.currency === "usd"
                     ? "$" + _vm.$page.flash.saldo
-                    : "Rp. " + _vm.$page.flash.saldo * _vm.$page.flash.idrrate
+                    : "Rp. " +
+                        parseInt(
+                          _vm.$page.flash.saldo * _vm.$page.flash.idrrate
+                        )
                 ) +
                 ")\n                "
             )

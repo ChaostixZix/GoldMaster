@@ -30,7 +30,7 @@
                                                 $ {{ p.dollar }}/G
                                             </td>
                                             <td v-else>
-                                                Rp. {{parseFloat($page.flash.idrrate)*parseFloat(p.dollar)}}/G
+                                                Rp. {{parseInt($page.flash.idrrate*p.dollar)}}/G
                                             </td>
                                             <td>
                                                 <inertia-link :href="$route('user.sell')"

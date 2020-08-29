@@ -116,6 +116,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -138,11 +139,41 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    Echo.channel('Item').listen('ItemEvents', function (e) {
+    Echo.channel('Item').listen('ItemEvents', function (r) {
+      var e = r.message;
+      console.log(e);
+
       _this.$inertia.reload({
         preserveState: false,
         preserveScroll: true,
         only: ['order']
+      }).then(function () {
+        if (e.type === 'order_cancel') {
+          _this.$notify({
+            type: 'error',
+            group: 'foo',
+            title: 'Cancelled',
+            text: 'ID Order : ' + e.id + '!'
+          });
+        }
+
+        if (e.type === 'order_baru') {
+          _this.$notify({
+            type: 'success',
+            group: 'foo',
+            title: 'New Order',
+            text: 'ID Order : ' + e.id + '!'
+          });
+        }
+
+        if (e.type === 'order_update') {
+          _this.$notify({
+            type: 'warn',
+            group: 'foo',
+            title: 'Order Update',
+            text: 'ID Order : ' + e.id + '!'
+          });
+        }
       });
     });
   },
@@ -169,6 +200,9 @@ __webpack_require__.r(__webpack_exports__);
     }, {
       width: '10%',
       label: 'Contact'
+    }, {
+      width: '10%',
+      label: 'Date'
     }, {
       width: '10%',
       label: 'Status'
@@ -361,6 +395,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Shared_Messages__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Shared/Messages */ "./resources/js/Utils/Shared/Messages.vue");
+//
+//
+//
 //
 //
 //
@@ -594,6 +631,10 @@ var render = function() {
                                               _vm._s(p.contacttype) +
                                               ")"
                                           )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(_vm._s(p.created_at))
                                         ]),
                                         _vm._v(" "),
                                         _c("td", [
@@ -903,6 +944,11 @@ var render = function() {
     "div",
     { staticClass: "main-content" },
     [
+      _c("notifications", {
+        staticStyle: { "margin-top": "5rem" },
+        attrs: { group: "foo" }
+      }),
+      _vm._v(" "),
       _c(
         "b-toast",
         {
