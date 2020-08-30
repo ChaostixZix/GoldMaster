@@ -81,6 +81,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -227,6 +232,30 @@ var render = function() {
                                     attrs: { for: "password" }
                                   },
                                   [_vm._v("Password")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "float-right" },
+                                  [
+                                    _c(
+                                      "inertia-link",
+                                      {
+                                        staticClass: "text-small",
+                                        attrs: {
+                                          href: _vm.$route(
+                                            "user.auth.forgotPage"
+                                          )
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                    Forgot Password?\n                                                "
+                                        )
+                                      ]
+                                    )
+                                  ],
+                                  1
                                 )
                               ]),
                               _vm._v(" "),
