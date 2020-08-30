@@ -27,6 +27,11 @@
                                     <div class="form-group">
                                         <div class="d-block">
                                             <label for="password" class="control-label">Password</label>
+                                            <div class="float-right">
+                                                <inertia-link :href="$route('user.auth.forgotPage')" class="text-small">
+                                                    Forgot Password?
+                                                </inertia-link>
+                                            </div>
                                         </div>
                                         <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
                                         <div class="invalid-feedback">
