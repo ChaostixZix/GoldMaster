@@ -9,6 +9,10 @@ Route::group([
 {
     Route::get('loginPage', 'UserAuthController@loginPage')->name('user.auth.loginPage');
     Route::get('registerPage', 'UserAuthController@registerPage')->name('user.auth.registerPage');
+    Route::get('forgotPage', 'UserAuthController@forgotPage')->name('user.auth.forgotPage');
+    Route::get('resetPass/{code}', 'UserAuthController@resetPass')->name('user.auth.resetPass');
+    Route::post('resetNow/{id_user}/{password}', 'UserAuthController@resetNow')->name('user.auth.resetNow');
+    Route::get('forgotNow/{email}', 'UserAuthController@forgotNow')->name('user.auth.forgotNow');
     Route::post('register', 'UserAuthController@register')->name('user.auth.register');
     Route::post('login', 'UserAuthController@login')->name('user.auth.login');
     Route::get('logout', 'UserAuthController@logout')->name('user.auth.logout');
