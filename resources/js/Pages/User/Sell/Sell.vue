@@ -2,9 +2,6 @@
     <App topnav="Sell">
         <div class="row">
             <Messages></Messages>
-            <div v-if="sellnow" class="col-12">
-                <SellNow :p="p" v-if="sellnow"></SellNow>
-            </div>
             <div class="col-12">
                 <div v-if="perCategory && items.length > 0" class="alert alert-info show fade">
                     <div class="alert-body">
@@ -71,6 +68,9 @@
                         No Data
                     </div>
                 </div>
+            </div>
+            <div v-if="sellnow" class="col-12">
+                <SellNow :p="p" v-if="sellnow"></SellNow>
             </div>
         </div>
     </App>
