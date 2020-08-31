@@ -37,6 +37,7 @@ class Kernel extends ConsoleKernel
                 if($diff > 59)
                 {
                     $do = (new Order())->cancel($g->id_order);
+                    var_dump($do);
                 }
             }
         })->everyMinute();
