@@ -85469,32 +85469,32 @@ var map = {
 	"./Admin/Game/Game": [
 		"./resources/js/Pages/Admin/Game/Game.vue",
 		0,
-		11
+		13
 	],
 	"./Admin/Game/Game.vue": [
 		"./resources/js/Pages/Admin/Game/Game.vue",
 		0,
-		11
+		13
 	],
 	"./Admin/Game/TambahGame": [
 		"./resources/js/Pages/Admin/Game/TambahGame.vue",
-		24
+		26
 	],
 	"./Admin/Game/TambahGame.vue": [
 		"./resources/js/Pages/Admin/Game/TambahGame.vue",
-		24
+		26
 	],
 	"./Admin/Items/Items": [
 		"./resources/js/Pages/Admin/Items/Items.vue",
 		0,
 		2,
-		20
+		22
 	],
 	"./Admin/Items/Items.vue": [
 		"./resources/js/Pages/Admin/Items/Items.vue",
 		0,
 		2,
-		20
+		22
 	],
 	"./Admin/Items/ItemsEdit": [
 		"./resources/js/Pages/Admin/Items/ItemsEdit.vue",
@@ -85508,13 +85508,13 @@ var map = {
 		"./resources/js/Pages/Admin/MemberStock/MemberStock.vue",
 		0,
 		3,
-		21
+		23
 	],
 	"./Admin/MemberStock/MemberStock.vue": [
 		"./resources/js/Pages/Admin/MemberStock/MemberStock.vue",
 		0,
 		3,
-		21
+		23
 	],
 	"./Admin/MemberStock/MemberStockAdd": [
 		"./resources/js/Pages/Admin/MemberStock/MemberStockAdd.vue",
@@ -85527,94 +85527,94 @@ var map = {
 	"./Admin/Order/Order": [
 		"./resources/js/Pages/Admin/Order/Order.vue",
 		0,
-		10
+		12
 	],
 	"./Admin/Order/Order.vue": [
 		"./resources/js/Pages/Admin/Order/Order.vue",
 		0,
-		10
+		12
 	],
 	"./Admin/Order/OrderEdit": [
 		"./resources/js/Pages/Admin/Order/OrderEdit.vue",
-		25
+		27
 	],
 	"./Admin/Order/OrderEdit.vue": [
 		"./resources/js/Pages/Admin/Order/OrderEdit.vue",
-		25
+		27
 	],
 	"./Admin/Server/Server": [
 		"./resources/js/Pages/Admin/Server/Server.vue",
 		0,
-		12
+		14
 	],
 	"./Admin/Server/Server.vue": [
 		"./resources/js/Pages/Admin/Server/Server.vue",
 		0,
-		12
+		14
 	],
 	"./Admin/Server/TambahServer": [
 		"./resources/js/Pages/Admin/Server/TambahServer.vue",
-		26
+		28
 	],
 	"./Admin/Server/TambahServer.vue": [
 		"./resources/js/Pages/Admin/Server/TambahServer.vue",
-		26
+		28
 	],
 	"./Admin/TradeMode/TambahTradeMode": [
 		"./resources/js/Pages/Admin/TradeMode/TambahTradeMode.vue",
-		27
+		29
 	],
 	"./Admin/TradeMode/TambahTradeMode.vue": [
 		"./resources/js/Pages/Admin/TradeMode/TambahTradeMode.vue",
-		27
+		29
 	],
 	"./Admin/TradeMode/TradeMode": [
 		"./resources/js/Pages/Admin/TradeMode/TradeMode.vue",
 		0,
-		13
+		15
 	],
 	"./Admin/TradeMode/TradeMode.vue": [
 		"./resources/js/Pages/Admin/TradeMode/TradeMode.vue",
 		0,
-		13
+		15
 	],
 	"./Admin/USDRate/USDRate": [
 		"./resources/js/Pages/Admin/USDRate/USDRate.vue",
-		14
+		16
 	],
 	"./Admin/USDRate/USDRate.vue": [
 		"./resources/js/Pages/Admin/USDRate/USDRate.vue",
-		14
+		16
 	],
 	"./Admin/Withdraw/Withdraw": [
 		"./resources/js/Pages/Admin/Withdraw/Withdraw.vue",
 		0,
-		15
+		17
 	],
 	"./Admin/Withdraw/Withdraw.vue": [
 		"./resources/js/Pages/Admin/Withdraw/Withdraw.vue",
 		0,
-		15
+		17
 	],
 	"./Admin/Withdraw/WithdrawEdit": [
 		"./resources/js/Pages/Admin/Withdraw/WithdrawEdit.vue",
-		28
+		30
 	],
 	"./Admin/Withdraw/WithdrawEdit.vue": [
 		"./resources/js/Pages/Admin/Withdraw/WithdrawEdit.vue",
-		28
+		30
 	],
 	"./Depan/Depan": [
 		"./resources/js/Pages/Depan/Depan.vue",
 		0,
 		5,
-		18
+		20
 	],
 	"./Depan/Depan.vue": [
 		"./resources/js/Pages/Depan/Depan.vue",
 		0,
 		5,
-		18
+		20
 	],
 	"./Depan/SellDepan": [
 		"./resources/js/Pages/Depan/SellDepan.vue",
@@ -85628,69 +85628,69 @@ var map = {
 	],
 	"./User/Auth/Forgot": [
 		"./resources/js/Pages/User/Auth/Forgot.vue",
-		29
+		8
 	],
 	"./User/Auth/Forgot.vue": [
 		"./resources/js/Pages/User/Auth/Forgot.vue",
-		29
+		8
 	],
 	"./User/Auth/Login": [
 		"./resources/js/Pages/User/Auth/Login.vue",
 		1,
-		22
+		24
 	],
 	"./User/Auth/Login.vue": [
 		"./resources/js/Pages/User/Auth/Login.vue",
 		1,
-		22
+		24
 	],
 	"./User/Auth/Register": [
 		"./resources/js/Pages/User/Auth/Register.vue",
 		1,
-		30
+		31
 	],
 	"./User/Auth/Register.vue": [
 		"./resources/js/Pages/User/Auth/Register.vue",
 		1,
-		30
+		31
 	],
 	"./User/Auth/ResetPass": [
 		"./resources/js/Pages/User/Auth/ResetPass.vue",
-		33
+		9
 	],
 	"./User/Auth/ResetPass.vue": [
 		"./resources/js/Pages/User/Auth/ResetPass.vue",
-		33
+		9
 	],
 	"./User/Dashboard/Depan": [
 		"./resources/js/Pages/User/Dashboard/Depan.vue",
-		16
+		18
 	],
 	"./User/Dashboard/Depan.vue": [
 		"./resources/js/Pages/User/Dashboard/Depan.vue",
-		16
+		18
 	],
 	"./User/History/History": [
 		"./resources/js/Pages/User/History/History.vue",
 		0,
-		17
+		19
 	],
 	"./User/History/History.vue": [
 		"./resources/js/Pages/User/History/History.vue",
 		0,
-		17
+		19
 	],
 	"./User/MemberStock/MemberStock": [
 		"./resources/js/Pages/User/MemberStock/MemberStock.vue",
 		0,
 		4,
-		23
+		25
 	],
 	"./User/MemberStock/MemberStock.vue": [
 		"./resources/js/Pages/User/MemberStock/MemberStock.vue",
 		0,
 		4,
-		23
+		25
 	],
 	"./User/MemberStock/MemberStockAdd": [
 		"./resources/js/Pages/User/MemberStock/MemberStockAdd.vue",
@@ -85702,41 +85702,41 @@ var map = {
 	],
 	"./User/Profile/Profile": [
 		"./resources/js/Pages/User/Profile/Profile.vue",
-		8
+		10
 	],
 	"./User/Profile/Profile.vue": [
 		"./resources/js/Pages/User/Profile/Profile.vue",
-		8
+		10
 	],
 	"./User/Sell/Sell": [
 		"./resources/js/Pages/User/Sell/Sell.vue",
-		32,
+		33,
 		0,
-		9
+		11
 	],
 	"./User/Sell/Sell.vue": [
 		"./resources/js/Pages/User/Sell/Sell.vue",
-		32,
+		33,
 		0,
-		9
+		11
 	],
 	"./User/Sell/SellNow": [
 		"./resources/js/Pages/User/Sell/SellNow.vue",
-		19
+		21
 	],
 	"./User/Sell/SellNow.vue": [
 		"./resources/js/Pages/User/Sell/SellNow.vue",
-		19
+		21
 	],
 	"./User/Withdraw/Withdraw": [
 		"./resources/js/Pages/User/Withdraw/Withdraw.vue",
 		1,
-		31
+		32
 	],
 	"./User/Withdraw/Withdraw.vue": [
 		"./resources/js/Pages/User/Withdraw/Withdraw.vue",
 		1,
-		31
+		32
 	]
 };
 function webpackAsyncContext(req) {
@@ -85833,8 +85833,8 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "",
-  cluster: "mt1",
+  key: "bd17ab327430665daddf",
+  cluster: "ap1",
   forceTLS: false
 }); // try {
 //     window.Popper = require('popper.js').default;
@@ -85878,8 +85878,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/bintangputra/Documents/Project/GoldMaster/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/bintangputra/Documents/Project/GoldMaster/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/chaostix/Documents/Project/GoldMaster/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/chaostix/Documents/Project/GoldMaster/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
