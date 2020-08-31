@@ -33,8 +33,9 @@
                                                     <div v-if="p.status_o === 'aktif'" class="badge badge-primary">Active</div>
                                                     <div v-if="p.status_o === 'pending'" class="badge badge-warning">Pending</div>
                                                     <div v-if="p.status_o === 'done'" class="badge badge-success">Done</div>
+                                                    <div v-if="p.status_o === 'cancel'" class="badge badge-danger">Cancelled</div>
                                                 </td>
-                                                <td>
+                                                <td v-if="p.status_o !== 'cancel'">
                                                     <button v-if="p.status_o !== 'done'" @click="download(p)"
                                                             class="btn btn-sm btn-primary">
                                                         <i class="fa fa-download"></i>

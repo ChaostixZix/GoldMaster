@@ -61,7 +61,8 @@ class Order extends Model
         $get = $this->getById($id)[0];
         $butuh = (new Items())->getById($get->id_items)[0]->butuh;
         (new Items())->updateRaw($get->id_items, ['butuh' => $butuh + $get->quantity]);
-        $this->db()->where('id_order', $id)->delete();
+//        $this->db()->where('id_order', $id)->delete();
+        $this->db()->where('id_order', $id)->update(['status_o' => 'cancel']);
         event(new ItemEvents(['type' => 'order_cancel', 'id' => $id]));
         return true;
     }

@@ -28,8 +28,6 @@ class HistoryController extends Controller
                     $g->diff = $diff;
                     $get2[] = $g;
                 }
-
-
                 return $get2;
             }
         ]);
