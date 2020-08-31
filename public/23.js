@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[23],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/User/MemberStock/MemberStock.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/User/MemberStock/MemberStock.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Admin/MemberStock/MemberStock.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/Admin/MemberStock/MemberStock.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -13,10 +13,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Utils_Shared_Pagination__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Utils/Shared/Pagination */ "./resources/js/Utils/Shared/Pagination.vue");
 /* harmony import */ var _Utils_Layout_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Utils/Layout/App */ "./resources/js/Utils/Layout/App.vue");
 /* harmony import */ var _Utils_Shared_Messages__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../Utils/Shared/Messages */ "./resources/js/Utils/Shared/Messages.vue");
-/* harmony import */ var _MemberStockAdd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MemberStockAdd */ "./resources/js/Pages/User/MemberStock/MemberStockAdd.vue");
-//
-//
-//
+/* harmony import */ var _Admin_MemberStock_MemberStockAdd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Admin/MemberStock/MemberStockAdd */ "./resources/js/Pages/Admin/MemberStock/MemberStockAdd.vue");
 //
 //
 //
@@ -105,17 +102,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    MemberStockAdd: _MemberStockAdd__WEBPACK_IMPORTED_MODULE_4__["default"],
+    MemberStockAdd: _Admin_MemberStock_MemberStockAdd__WEBPACK_IMPORTED_MODULE_4__["default"],
     Messages: _Utils_Shared_Messages__WEBPACK_IMPORTED_MODULE_3__["default"],
     App: _Utils_Layout_App__WEBPACK_IMPORTED_MODULE_2__["default"],
     Pagination: _Utils_Shared_Pagination__WEBPACK_IMPORTED_MODULE_1__["default"],
     Datatable: _Utils_Shared_Datatable__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    stocks: Array,
     server: Array,
     game: Array,
-    neededstocks: Array
+    stocks: Array
+  },
+  mounted: function mounted() {
+    this.load();
   },
   created: function created() {
     var _this = this;
@@ -124,9 +123,6 @@ __webpack_require__.r(__webpack_exports__);
       _this.reload();
     });
   },
-  mounted: function mounted() {
-    this.load();
-  },
   data: function data() {
     var sortOrders = {};
     var columns = [{
@@ -134,16 +130,22 @@ __webpack_require__.r(__webpack_exports__);
       label: '#'
     }, {
       width: '10%',
-      label: 'Email'
+      label: 'Username'
+    }, {
+      width: '10%',
+      label: 'Contact'
     }, {
       width: '15%',
       label: 'Stock'
     }, {
-      width: '15%',
+      width: '25%',
       label: 'Server'
     }, {
-      width: '33%',
+      width: '20%',
       label: 'Game'
+    }, {
+      width: '33%',
+      label: 'Date'
     }, {
       width: '33%',
       label: 'Action'
@@ -153,7 +155,6 @@ __webpack_require__.r(__webpack_exports__);
     });
     return {
       edit: false,
-      type: '',
       dataedit: {},
       columns: columns,
       sortKey: 'deadline',
@@ -179,12 +180,8 @@ __webpack_require__.r(__webpack_exports__);
       this.$inertia.reload({
         preserveState: false,
         preserveScroll: true,
-        only: ['neededstocks', 'stocks']
+        only: ['stocks']
       });
-    },
-    insert: function insert() {
-      this.type = 'baru';
-      this.edit = true;
     },
     ubah: function ubah(p) {
       this.type = 'edit';
@@ -192,16 +189,12 @@ __webpack_require__.r(__webpack_exports__);
       this.edit = true;
     },
     hapus: function hapus(id) {
-      var _this2 = this;
-
-      this.$inertia.post(this.$route('user.memberstock.delete', {
+      this.$inertia.post(this.$route('admin.memberstock.delete', {
         id: id
       }), {}, {
         preserveState: false,
         preserveScroll: true,
-        only: ['stocks', 'neededstocks']
-      }).then(function () {
-        _this2.reload();
+        only: ['stocks']
       });
     },
     load: function load() {
@@ -239,14 +232,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     filteredProjects: function filteredProjects() {
-      var _this3 = this;
+      var _this2 = this;
 
       var data = this.data;
 
       if (this.search) {
         data = data.filter(function (row) {
           return Object.keys(row).some(function (key) {
-            return String(row[key]).toLowerCase().indexOf(_this3.search.toLowerCase()) > -1;
+            return String(row[key]).toLowerCase().indexOf(_this2.search.toLowerCase()) > -1;
           });
         });
       }
@@ -256,13 +249,13 @@ __webpack_require__.r(__webpack_exports__);
 
       if (sortKey) {
         data = data.slice().sort(function (a, b) {
-          var index = _this3.getIndex(_this3.columns, 'name', sortKey) + 1;
+          var index = _this2.getIndex(_this2.columns, 'name', sortKey) + 1;
           a = String(a[sortKey]).toLowerCase();
           b = String(b[sortKey]).toLowerCase();
 
-          if (_this3.columns[index].type && _this3.columns[index].type === 'date') {
+          if (_this2.columns[index].type && _this2.columns[index].type === 'date') {
             return (a === b ? 0 : new Date(a).getTime() > new Date(b).getTime() ? 1 : -1) * order;
-          } else if (_this3.columns[index].type && _this3.columns[index].type === 'number') {
+          } else if (_this2.columns[index].type && _this2.columns[index].type === 'number') {
             return (+a === +b ? 0 : +a > +b ? 1 : -1) * order;
           } else {
             return (a === b ? 0 : a > b ? 1 : -1) * order;
@@ -349,10 +342,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/User/MemberStock/MemberStock.vue?vue&type=template&id=78091ace&":
-/*!**************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/User/MemberStock/MemberStock.vue?vue&type=template&id=78091ace& ***!
-  \**************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Admin/MemberStock/MemberStock.vue?vue&type=template&id=09fef350&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/Admin/MemberStock/MemberStock.vue?vue&type=template&id=09fef350& ***!
+  \***************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -364,305 +357,282 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("App", { attrs: { topnav: "Stocks" } }, [
+  return _c("App", { attrs: { topnav: "List Member Stok" } }, [
     _c(
       "div",
       { staticClass: "row" },
       [
         _c("Messages"),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-12" },
-          [
-            _vm._l(_vm.neededstocks[0], function(ns) {
-              return _c("div", { staticClass: "alert alert-info" }, [
-                _vm._v(
-                  "Admin needed  " +
-                    _vm._s(ns.butuh) +
-                    " in " +
-                    _vm._s(ns.kategori) +
-                    " - " +
-                    _vm._s(ns.server)
-                )
-              ])
-            }),
+        _c("div", { staticClass: "col-12" }, [
+          _c("div", { staticClass: "card card-primary" }, [
+            _c("div", { staticClass: "card-header bg-primary" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "dataTables_filter",
+                  attrs: { id: "dataTableExample_filter" }
+                },
+                [
+                  _c("label", [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.search,
+                          expression: "search"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "search", placeholder: "Search" },
+                      domProps: { value: _vm.search },
+                      on: {
+                        input: [
+                          function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.search = $event.target.value
+                          },
+                          function($event) {
+                            return _vm.resetPagination()
+                          }
+                        ]
+                      }
+                    })
+                  ])
+                ]
+              )
+            ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card card-primary" }, [
-              _c("div", { staticClass: "card-header bg-primary" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", [
                 _c(
                   "div",
                   {
-                    staticClass: "dataTables_filter",
-                    attrs: { id: "dataTableExample_filter" }
+                    staticClass: "dataTables_wrapper dt-bootstrap4 no-footer",
+                    attrs: { id: "dataTableExample_wrapper" }
                   },
                   [
-                    _c("label", [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.search,
-                            expression: "search"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "search", placeholder: "Search" },
-                        domProps: { value: _vm.search },
-                        on: {
-                          input: [
-                            function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.search = $event.target.value
-                            },
-                            function($event) {
-                              return _vm.resetPagination()
-                            }
-                          ]
-                        }
-                      })
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _c("div", [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "dataTables_wrapper dt-bootstrap4 no-footer",
-                      attrs: { id: "dataTableExample_wrapper" }
-                    },
-                    [
-                      _c("div", { staticClass: "row" }, [
-                        _c(
-                          "div",
-                          { staticClass: "col-sm-12" },
-                          [
-                            _c(
-                              "Datatable",
-                              {
-                                attrs: {
-                                  "hide-header": "false",
-                                  columns: _vm.columns,
-                                  sortKey: _vm.sortKey,
-                                  sortOrders: _vm.sortOrders
-                                },
-                                on: { sort: _vm.sortBy }
-                              },
-                              [
-                                _c(
-                                  "tbody",
-                                  [
-                                    _vm._l(_vm.paginated, function(p) {
-                                      return p.server !== null &&
-                                        p.kategori !== null &&
-                                        p.email !== null
-                                        ? _c(
-                                            "tr",
-                                            {
-                                              staticClass: "odd",
-                                              attrs: { role: "row" }
-                                            },
-                                            [
-                                              _c("td", [
-                                                _vm._v("#" + _vm._s(p.id_stock))
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("td", [
-                                                _vm._v(_vm._s(p.email))
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("td", [
-                                                _vm._v(_vm._s(p.stock))
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("td", [
-                                                _vm._v(_vm._s(p.server))
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("td", [
-                                                _vm._v(_vm._s(p.kategori))
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("td", [
-                                                _c(
-                                                  "button",
-                                                  {
-                                                    staticClass:
-                                                      "btn btn-sm btn-white",
-                                                    on: {
-                                                      click: function($event) {
-                                                        return _vm.ubah(p)
-                                                      }
-                                                    }
-                                                  },
-                                                  [
-                                                    _c("i", {
-                                                      staticClass: "fa fa-edit"
-                                                    })
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "button",
-                                                  {
-                                                    staticClass:
-                                                      "btn btn-sm btn-danger",
-                                                    on: {
-                                                      click: function($event) {
-                                                        return _vm.hapus(
-                                                          p.id_stock
-                                                        )
-                                                      }
-                                                    }
-                                                  },
-                                                  [
-                                                    _c("i", {
-                                                      staticClass: "fa fa-trash"
-                                                    })
-                                                  ]
-                                                )
-                                              ])
-                                            ]
-                                          )
-                                        : _vm._e()
-                                    }),
-                                    _vm._v(" "),
-                                    _vm._l(_vm.paginated, function(p) {
-                                      return p.server === null ||
-                                        p.kategori === null ||
-                                        p.email === null
-                                        ? _c(
-                                            "tr",
-                                            {
-                                              staticClass:
-                                                "odd text-white bg-danger",
-                                              attrs: { e: "", role: "row" }
-                                            },
-                                            [
-                                              _c("td", [
-                                                _vm._v("#" + _vm._s(p.id_stock))
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("td", [
-                                                _vm._v(_vm._s(p.email))
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("td", [
-                                                _vm._v(_vm._s(p.stock))
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("td", [
-                                                _vm._v(_vm._s(p.server))
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("td", [
-                                                _vm._v(_vm._s(p.kategori))
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("td", [
-                                                _c(
-                                                  "button",
-                                                  {
-                                                    staticClass:
-                                                      "btn btn-sm btn-primary",
-                                                    on: {
-                                                      click: function($event) {
-                                                        return _vm.ubah(p)
-                                                      }
-                                                    }
-                                                  },
-                                                  [
-                                                    _c("i", {
-                                                      staticClass: "fa fa-edit"
-                                                    })
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "button",
-                                                  {
-                                                    staticClass:
-                                                      "btn btn-sm btn-danger",
-                                                    on: {
-                                                      click: function($event) {
-                                                        return _vm.hapus(
-                                                          p.id_stock
-                                                        )
-                                                      }
-                                                    }
-                                                  },
-                                                  [
-                                                    _c("i", {
-                                                      staticClass: "fa fa-trash"
-                                                    })
-                                                  ]
-                                                )
-                                              ])
-                                            ]
-                                          )
-                                        : _vm._e()
-                                    })
-                                  ],
-                                  2
-                                )
-                              ]
-                            )
-                          ],
-                          1
-                        )
-                      ]),
-                      _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
                       _c(
                         "div",
-                        { staticClass: "row" },
+                        { staticClass: "col-sm-12" },
                         [
-                          _c("div", { staticClass: "col-sm-12 col-md-5" }),
-                          _vm._v(" "),
-                          _c("Pagination", {
-                            attrs: {
-                              pagination: _vm.pagination,
-                              client: true,
-                              filtered: _vm.filteredProjects
-                            },
-                            on: {
-                              prev: function($event) {
-                                --_vm.pagination.currentPage
+                          _c(
+                            "Datatable",
+                            {
+                              attrs: {
+                                "hide-header": "false",
+                                columns: _vm.columns,
+                                sortKey: _vm.sortKey,
+                                sortOrders: _vm.sortOrders
                               },
-                              next: function($event) {
-                                ++_vm.pagination.currentPage
-                              }
-                            }
-                          })
+                              on: { sort: _vm.sortBy }
+                            },
+                            [
+                              _c(
+                                "tbody",
+                                [
+                                  _vm._l(_vm.paginated, function(p) {
+                                    return p.server !== null &&
+                                      p.kategori !== null &&
+                                      p.email !== null
+                                      ? _c(
+                                          "tr",
+                                          {
+                                            staticClass: "odd",
+                                            attrs: { role: "row" }
+                                          },
+                                          [
+                                            _c("td", [
+                                              _vm._v("#" + _vm._s(p.id_stock))
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _vm._v(_vm._s(p.username))
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td", [_vm._v(_vm._s(p.telp))]),
+                                            _vm._v(" "),
+                                            _c("td", [_vm._v(_vm._s(p.stock))]),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _vm._v(_vm._s(p.server))
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _vm._v(_vm._s(p.kategori))
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _vm._v(_vm._s(p.updated_at))
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _c(
+                                                "button",
+                                                {
+                                                  staticClass:
+                                                    "btn btn-sm btn-primary",
+                                                  on: {
+                                                    click: function($event) {
+                                                      return _vm.ubah(p)
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("i", {
+                                                    staticClass: "fa fa-edit"
+                                                  })
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "button",
+                                                {
+                                                  staticClass:
+                                                    "btn btn-sm btn-danger",
+                                                  on: {
+                                                    click: function($event) {
+                                                      return _vm.hapus(
+                                                        p.id_stock
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("i", {
+                                                    staticClass: "fa fa-trash"
+                                                  })
+                                                ]
+                                              )
+                                            ])
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  }),
+                                  _vm._v(" "),
+                                  _vm._l(_vm.paginated, function(p) {
+                                    return p.server === null ||
+                                      p.kategori === null ||
+                                      p.email === null
+                                      ? _c(
+                                          "tr",
+                                          {
+                                            staticClass:
+                                              "odd text-white bg-danger",
+                                            attrs: { e: "", role: "row" }
+                                          },
+                                          [
+                                            _c("td", [
+                                              _vm._v("#" + _vm._s(p.id_stock))
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _vm._v(_vm._s(p.username))
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td", [_vm._v(_vm._s(p.telp))]),
+                                            _vm._v(" "),
+                                            _c("td", [_vm._v(_vm._s(p.stock))]),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _vm._v(_vm._s(p.server))
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _vm._v(_vm._s(p.kategori))
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _vm._v(_vm._s(p.updated_at))
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _c(
+                                                "button",
+                                                {
+                                                  staticClass:
+                                                    "btn btn-sm btn-primary",
+                                                  on: {
+                                                    click: function($event) {
+                                                      return _vm.ubah(p)
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("i", {
+                                                    staticClass: "fa fa-edit"
+                                                  })
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "button",
+                                                {
+                                                  staticClass:
+                                                    "btn btn-sm btn-white",
+                                                  on: {
+                                                    click: function($event) {
+                                                      return _vm.hapus(
+                                                        p.id_stock
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("i", {
+                                                    staticClass: "fa fa-trash"
+                                                  })
+                                                ]
+                                              )
+                                            ])
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  })
+                                ],
+                                2
+                              )
+                            ]
+                          )
                         ],
                         1
                       )
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-footer" }, [
-                _c(
-                  "button",
-                  { staticClass: "btn btn-primary", on: { click: _vm.insert } },
-                  [
-                    _c("i", { staticClass: "fa fa-plus" }),
-                    _vm._v(
-                      "\n                        Tambah\n                    "
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "row" },
+                      [
+                        _c("div", { staticClass: "col-sm-12 col-md-5" }),
+                        _vm._v(" "),
+                        _c("Pagination", {
+                          attrs: {
+                            pagination: _vm.pagination,
+                            client: true,
+                            filtered: _vm.filteredProjects
+                          },
+                          on: {
+                            prev: function($event) {
+                              --_vm.pagination.currentPage
+                            },
+                            next: function($event) {
+                              ++_vm.pagination.currentPage
+                            }
+                          }
+                        })
+                      ],
+                      1
                     )
                   ]
                 )
               ])
             ])
-          ],
-          2
-        ),
+          ])
+        ]),
         _vm._v(" "),
         _c(
           "div",
@@ -795,17 +765,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/Pages/User/MemberStock/MemberStock.vue":
-/*!*************************************************************!*\
-  !*** ./resources/js/Pages/User/MemberStock/MemberStock.vue ***!
-  \*************************************************************/
+/***/ "./resources/js/Pages/Admin/MemberStock/MemberStock.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/Pages/Admin/MemberStock/MemberStock.vue ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _MemberStock_vue_vue_type_template_id_78091ace___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MemberStock.vue?vue&type=template&id=78091ace& */ "./resources/js/Pages/User/MemberStock/MemberStock.vue?vue&type=template&id=78091ace&");
-/* harmony import */ var _MemberStock_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MemberStock.vue?vue&type=script&lang=js& */ "./resources/js/Pages/User/MemberStock/MemberStock.vue?vue&type=script&lang=js&");
+/* harmony import */ var _MemberStock_vue_vue_type_template_id_09fef350___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MemberStock.vue?vue&type=template&id=09fef350& */ "./resources/js/Pages/Admin/MemberStock/MemberStock.vue?vue&type=template&id=09fef350&");
+/* harmony import */ var _MemberStock_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MemberStock.vue?vue&type=script&lang=js& */ "./resources/js/Pages/Admin/MemberStock/MemberStock.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -816,8 +786,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _MemberStock_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _MemberStock_vue_vue_type_template_id_78091ace___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _MemberStock_vue_vue_type_template_id_78091ace___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _MemberStock_vue_vue_type_template_id_09fef350___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _MemberStock_vue_vue_type_template_id_09fef350___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -827,38 +797,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/Pages/User/MemberStock/MemberStock.vue"
+component.options.__file = "resources/js/Pages/Admin/MemberStock/MemberStock.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/User/MemberStock/MemberStock.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/Pages/User/MemberStock/MemberStock.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************/
+/***/ "./resources/js/Pages/Admin/MemberStock/MemberStock.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/Pages/Admin/MemberStock/MemberStock.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberStock_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./MemberStock.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/User/MemberStock/MemberStock.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberStock_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./MemberStock.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Admin/MemberStock/MemberStock.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberStock_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/Pages/User/MemberStock/MemberStock.vue?vue&type=template&id=78091ace&":
-/*!********************************************************************************************!*\
-  !*** ./resources/js/Pages/User/MemberStock/MemberStock.vue?vue&type=template&id=78091ace& ***!
-  \********************************************************************************************/
+/***/ "./resources/js/Pages/Admin/MemberStock/MemberStock.vue?vue&type=template&id=09fef350&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/Pages/Admin/MemberStock/MemberStock.vue?vue&type=template&id=09fef350& ***!
+  \*********************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberStock_vue_vue_type_template_id_78091ace___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./MemberStock.vue?vue&type=template&id=78091ace& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/User/MemberStock/MemberStock.vue?vue&type=template&id=78091ace&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberStock_vue_vue_type_template_id_78091ace___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberStock_vue_vue_type_template_id_09fef350___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./MemberStock.vue?vue&type=template&id=09fef350& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Admin/MemberStock/MemberStock.vue?vue&type=template&id=09fef350&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberStock_vue_vue_type_template_id_09fef350___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberStock_vue_vue_type_template_id_78091ace___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberStock_vue_vue_type_template_id_09fef350___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
