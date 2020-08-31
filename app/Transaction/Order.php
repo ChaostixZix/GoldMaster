@@ -60,6 +60,8 @@ class Order extends Model
     {
         $get = $this->getById($id)[0];
         $butuh = (new Items())->getById($get->id_items)[0]->butuh;
+        var_dump($butuh);
+        var_dump($get->quantity);
         (new Items())->updateRaw($get->id_items, ['butuh' => $butuh + $get->quantity]);
 //        $this->db()->where('id_order', $id)->delete();
         $this->db()->where('id_order', $id)->update(['status_o' => 'cancel']);
@@ -69,7 +71,7 @@ class Order extends Model
 
     public function insertRaw(array $insert)
     {
-          date_default_timezone_set('Asia/Hong_Kong');
+          date_default_timezone_set('Etc/GMT+8');
         $insert['created_at'] = date('Y-m-d H:i:s');
         $id = $this->db()->insertGetId($insert);
         event(new ItemEvents(['type' => 'order_baru', 'id' => $id]));
