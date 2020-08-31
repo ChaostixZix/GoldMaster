@@ -20,23 +20,20 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @param \Illuminate\Console\Scheduling\Schedule $schedule
      * @return void
      */
     protected function schedule(Schedule $schedule)
     {
-          date_default_timezone_set('Asia/Hong_Kong');
-        $schedule->call(function ()
-        {
+        date_default_timezone_set('Etc/GMT+8');
+        $schedule->call(function () {
             $get = (new Order())->getAllNotCancelled();
-            foreach ($get as $g)
-            {
-                $to = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', date('Y-m-d H:s:i'));
-                $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $g->created_at);
+            foreach ($get as $g) {
+                $to = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'));
+                $from = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $g->created_at);
                 $diff = $to->diffInMinutes($from);
                 var_dump($diff);
-                if($diff > 59)
-                {
+                if ($diff > 59) {
                     $do = (new Order())->cancel($g->id_order);
                 }
             }
@@ -50,7 +47,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }

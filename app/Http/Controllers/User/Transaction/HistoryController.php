@@ -22,8 +22,8 @@ class HistoryController extends Controller
                 $get2 = [];
                 foreach ($get as $g)
                 {
-                    $to = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', date('Y-m-d H:s:i'));
-                    $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $g->created_at);
+                    $to = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'));
+                    $from = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $g->created_at);
                     $diff = $to->diffInMinutes($from);
                     $g->diff = $diff;
                     $get2[] = $g;
