@@ -1,6 +1,7 @@
 <template>
     <App>
         <div class="row">
+            <div class="alert alert-primary text-white">If you experience errors. Please clear your cache and refresh</div>
             <div class="col-lg-4 col-12">
                 <div class="row">
                     <div class="col-12">
