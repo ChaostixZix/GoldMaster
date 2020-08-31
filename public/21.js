@@ -44,6 +44,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SellNow",
@@ -149,14 +152,6 @@ var render = function() {
             _vm._v(" "),
             _c("p", [_vm._v(_vm._s(_vm.p.kategori))]),
             _vm._v(" "),
-            _c("div", { staticClass: "alert alert-info" }, [
-              _vm._v(
-                "Quantity: How much gold you want to sell (must be lower than " +
-                  _vm._s(_vm.p.butuh) +
-                  ")"
-              )
-            ]),
-            _vm._v(" "),
             _c("label", { staticClass: "form-control-label" }, [
               _vm._v("\n\n            Quantity "),
               _c("span", [
@@ -195,7 +190,11 @@ var render = function() {
             }),
             _vm._v(" "),
             _c("div", { staticClass: "alert alert-info" }, [
-              _vm._v("Nickname: Your character name in game")
+              _vm._v(
+                "Quantity: How much gold you want to sell (must be lower than " +
+                  _vm._s(_vm.p.butuh) +
+                  ")\n        "
+              )
             ]),
             _vm._v(" "),
             _c("label", { staticClass: "form-control-label" }, [
@@ -221,7 +220,11 @@ var render = function() {
                   _vm.$set(_vm.data, "nama", $event.target.value)
                 }
               }
-            })
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "alert alert-info" }, [
+              _vm._v("Nickname: Your character name in game")
+            ])
           ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-footer" }, [

@@ -10,18 +10,21 @@
                 Game
             </label>
             <p>{{p.kategori}}</p>
-            <div class="alert alert-info">Quantity: How much gold you want to sell (must be lower than {{p.butuh}})</div>
             <label class="form-control-label">
 
                 Quantity <span> ({{this.$page.flash.currency === 'usd' ? '$'+data.price : 'Rp. '+idr}}) </span>
             </label>
             <input v-model="data.quantity" class="form-control" type="number">
-            <div class="alert alert-info">Nickname: Your character name in game</div>
+            <div class="alert alert-info">Quantity: How much gold you want to sell (must be lower than {{p.butuh}})
+            </div>
+
 
             <label class="form-control-label">
                 Nickname
             </label>
             <input v-model="data.nama" class="form-control">
+            <div class="alert alert-info">Nickname: Your character name in game</div>
+
         </div>
         <div class="card-footer">
             <button @click="submit" class="btn btn-primary">
