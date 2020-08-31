@@ -34,6 +34,8 @@ class Kernel extends ConsoleKernel
                 $diff = $to->diffInMinutes($from);
                 if ($diff > 59 && $g->file === NULL) {
                     $do = (new Order())->cancel($g->id_order);
+                }else{
+                    var_dump('test');
                 }
             }
         })->everyMinute();
