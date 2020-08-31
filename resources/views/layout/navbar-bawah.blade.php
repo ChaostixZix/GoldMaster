@@ -10,6 +10,11 @@
                         <span>Home</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('depan.index') }}" class="nav-link"><i class="fa fa-home"></i>
+                        <span>Page Rate</span>
+                    </a>
+                </li>
                 <li class="nav-item dropdown">
                     <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i
                             class="fa fa-cart-plus"></i><span>Transaction</span></a>
