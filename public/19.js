@@ -933,7 +933,8 @@ var render = function() {
                                       )
                                     : _vm._e(),
                                   _vm._v(" "),
-                                  p.status_o === "aktif"
+                                  p.status_o === "aktif" &&
+                                  p.status_o !== "cancel"
                                     ? _c("div", { staticClass: "bullet" })
                                     : _vm._e(),
                                   _vm._v(" "),

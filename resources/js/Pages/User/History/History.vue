@@ -167,7 +167,7 @@
                                         <div v-if="p.status_o !== 'done'" class="media-links">
                                             <a v-if="p.status_o === 'aktif'" @click="details(p)"
                                                class="btn btn-sm btn-info text-white" href="#">Delivery Details</a>
-                                            <div v-if="p.status_o === 'aktif'" class="bullet"></div>
+                                            <div v-if="p.status_o === 'aktif' && p.status_o !== 'cancel'" class="bullet"></div>
                                             <a v-if="p.file === null" @click="cancel(p.id_order)"
                                                class="btn btn-sm btn-danger text-white" href="#">Cancel</a>
                                         </div>
