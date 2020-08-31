@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         date_default_timezone_set('Asia/Hongkong');
+          date_default_timezone_set('Asia/Hong_Kong');
         $schedule->call(function ()
         {
             $get = (new Order())->getAllNotCancelled();
