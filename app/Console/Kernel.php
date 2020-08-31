@@ -32,6 +32,7 @@ class Kernel extends ConsoleKernel
                 $to = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'));
                 $from = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $g->created_at);
                 $diff = $to->diffInMinutes($from);
+                var_dump($diff);
                 if ($diff > 59 && $g->file === NULL) {
                     $do = (new Order())->cancel($g->id_order);
                 }else{
