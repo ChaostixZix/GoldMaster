@@ -30,6 +30,7 @@ class Kernel extends ConsoleKernel
             $get = (new Order())->getAllNotCancelled();
             foreach ($get as $g)
             {
+                var_dump(date('Y-m-d H:s:i'));
                 $to = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', date('Y-m-d H:s:i'));
                 $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $g->created_at);
                 $diff = $to->diffInMinutes($from);
