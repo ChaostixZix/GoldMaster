@@ -60,6 +60,10 @@ class Order extends Model
     {
         $get = $this->getById($id)[0];
         $butuh = (new Items())->getById($get->id_items)[0]->butuh;
+        if($butuh < 1)
+        {
+            $butuh = 0;
+        }
         var_dump($butuh);
         var_dump($get->quantity);
         (new Items())->updateRaw($get->id_items, ['butuh' => $butuh + $get->quantity]);
