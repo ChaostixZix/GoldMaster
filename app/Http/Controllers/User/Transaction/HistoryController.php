@@ -15,7 +15,7 @@ class HistoryController extends Controller
 {
     public function index()
     {
-          date_default_timezone_set('Etc/GMT+8');
+          date_default_timezone_set('Asia/Makassar');
         return Inertia::render('User/History/History', [
             'orders' => function () {
                 $get = (new Order())->getByUser(Session::get('id_user'));

@@ -25,24 +25,22 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        date_default_timezone_set('Etc/GMT+8');
+        date_default_timezone_set('Asia/Makassar');
         var_dump(date('Y-m-d H:i:s'));
-        $schedule->call(function () {
-            $get = (new Order())->getAllNotCancelled();
-            foreach ($get as $g) {
-                var_dump(date('Y-m-d H:i:s'));
-                var_dump($g->created_at);
-                $to = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'));
-                $from = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $g->created_at);
-                $diff = $to->diffInMinutes($from);
-                var_dump($diff);
-                if ($diff > 59 && $g->file === NULL) {
-                    $do = (new Order())->cancel($g->id_order);
-                } else {
-                    var_dump('test');
-                }
-            }
-        })->everyMinute();
+//        $schedule->call(function () {
+//            $get = (new Order())->getAllNotCancelled();
+//            foreach ($get as $g) {
+////                var_dump(date('Y-m-d H:i:s'));
+//                $to = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'));
+//                $from = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $g->created_at);
+//                $diff = $to->diffInMinutes($from);
+//                if ($diff > 59 && $g->file === NULL) {
+//                    $do = (new Order())->cancel($g->id_order);
+//                } else {
+//                    var_dump('test');
+//                }
+//            }
+//        })->everyMinute();
     }
 
 

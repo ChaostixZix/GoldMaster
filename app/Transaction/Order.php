@@ -71,7 +71,7 @@ class Order extends Model
 
     public function insertRaw(array $insert)
     {
-          date_default_timezone_set('Etc/GMT+8');
+          date_default_timezone_set('Asia/Makassar');
         $insert['created_at'] = date('Y-m-d H:i:s');
         $id = $this->db()->insertGetId($insert);
         event(new ItemEvents(['type' => 'order_baru', 'id' => $id]));

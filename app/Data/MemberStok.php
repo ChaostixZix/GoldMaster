@@ -60,7 +60,7 @@ class MemberStok extends Model
 
     public function ubah($id, array $update)
     {
-          date_default_timezone_set('Etc/GMT+8');
+          date_default_timezone_set('Asia/Makassar');
         $update['updated_at'] = date('Y-m-d');
          $this->db()->where('id_stock', $id)->update($update);
         event(new ItemEvents('test'));
@@ -69,7 +69,7 @@ class MemberStok extends Model
 
     public function insertRaw(array $insert)
     {
-          date_default_timezone_set('Etc/GMT+8');
+          date_default_timezone_set('Asia/Makassar');
         $insert['updated_at'] = date('Y-m-d');
          $this->db()->insert($insert);
         event(new ItemEvents('test'));
