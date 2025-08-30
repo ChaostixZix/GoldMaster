@@ -25,8 +25,8 @@ Route::get('/test', function () {
     ]);
 });
 
-// Simple HTML route
-Route::get('/welcome', function () {
+// Simple HTML route to show a working interface
+Route::get('/demo', function () {
     return view('welcome');
 });
 
