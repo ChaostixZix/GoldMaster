@@ -28,6 +28,7 @@
         "@inertiajs/inertia-vue": "^0.1.4",
         "bootstrap-vue": "^2.15.0",
         "laravel-echo": "^1.8.1",
+        "playwright": "^1.55.0",
         "pusher-js": "^7.0.0",
         "vue-money-format": "^1.2.0",
         "vue-notification": "^1.3.20",
