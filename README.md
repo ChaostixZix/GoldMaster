@@ -1,32 +1,23 @@
- # Penjualan Item MMORPG Web App
+# gold-master
 
- Ini adalah aplikasi web untuk menjual item MMORPG. Aplikasi ini menggunakan Laravel dengan frontend VueJS dan InertiaJS.
+## Overview
+Laravel web application for selling MMORPG items with a Vue and Inertia-based frontend.
 
- ## Instalasi
+## Problem
+An item-selling workflow for game goods needs storefront, transaction, and notification support in one application.
 
- Pastikan Anda telah menginstal PHP dan Node.js. Kemudian jalankan perintah berikut:
+## Solution
+This repository contains the Laravel application, frontend assets, and supporting data for the Gold Master marketplace.
 
- ```bash
- composer install
- npm install
- cp .env.example .env
- php artisan key:generate
- ```
+## Demo
+No public demo is documented.
 
- ## Menjalankan Aplikasi
-
- Untuk menjalankan aplikasi dalam mode pengembangan, gunakan perintah:
-
- ```bash
- npm run dev
- php artisan serve
- ```
-
- ## Fitur
-
- - Penjualan item MMORPG
- - Notifikasi push otomatis setiap kali ada item yang terjual
-
- ## Kontribusi
-
- Jika Anda ingin berkontribusi pada proyek ini, silakan buka isu atau kirimkan pull request.
+## Setup
+```bash
+composer install
+npm install
+cp .env.example .env
+php artisan key:generate
+npm run dev
+php artisan serve
+```
