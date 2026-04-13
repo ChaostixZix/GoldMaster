@@ -13,6 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Test route to verify Laravel is working
+Route::get('/test', function () {
+    return response()->json([
+        'message' => 'Laravel 7 application is running successfully with PHP 8.3!',
+        'php_version' => PHP_VERSION,
+        'laravel_version' => app()->version(),
+        'environment' => app()->environment(),
+        'database' => 'SQLite connected',
+        'time' => now()
+    ]);
+});
+
+// Simple HTML route to show a working interface
+Route::get('/demo', function () {
+    return view('welcome');
+});
+
 Route::group(['prefix' => '', 'middleware' => 'UserShow'], function (){
     Route::get('', [\App\Http\Controllers\InertiaController::class, 'index'])->name('depan.index');
     Route::get('changeCurrency/{currency}', [\App\Http\Controllers\CurrencyController::class, 'change'])->name('depan.changeCurrency');
